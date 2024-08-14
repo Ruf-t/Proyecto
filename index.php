@@ -9,9 +9,9 @@
 </head>
 
 <body>
-<div class="login-container">
+    <div class="login-container">
         <div class="left-panel">
-            <img src="background.jpg" alt="Fondo">
+            <img src="resources/img/foto-taxi.jpg" alt="Fondo">
         </div>
         <div class="right-panel">
             <div class="logo">
@@ -19,7 +19,7 @@
             </div>
             <h2>Inicio sesión Administrador</h2>
             <p>Ingresa tu email y contraseña</p>
-            <form action="#" method="post">
+            <form action="login-bd.php" method="post">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Ingresa tu email">
                 <label for="password">Contraseña</label>
@@ -29,8 +29,7 @@
         </div>
     </div>
 
-
-
     <script src="resources/script.js"></script>
 </body>
+
 </html>
