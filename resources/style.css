@@ -104,3 +104,34 @@ button {
 button:hover {
     background-color: var(--colorGris1);
 }
+
+
+
+/*! HOME **/
+/** SIDE BAR **/
+.sidebar-container {
+    position: fixed;
+    background: #1c1c1c;
+    width: 60% ;
+    max-width: 300px;
+    height: 100vh; 
+    top: 0;
+    left: 0;    
+}
+
+.menu-container nav {
+    padding-top: 2rem; 
+}
+
+.menu-container nav a {
+    display: block;
+    text-decoration: none;
+    padding: 1rem;
+    color: #c7c7c7;
+}
+
+.menu-container nav a:hover  {
+    border-left: 5px solid #c7c7c7;
+    /* background: #ffae00; */
+    color: #ffae00;
+}
