@@ -17,7 +17,7 @@
             <div class="logo">
                 <img src="resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3A.svg" alt="Logo">
             </div>
-            <h2>Inicio sesión Administrador</h2>
+            <h2>Registrarse como administrador</h2>
             <p>Ingresa tu email y contraseña</p>
             <form action="login-bd.php" method="post">
                 <label for="email">Email</label>
@@ -33,3 +33,9 @@
 </body>
 
 </html>
+
+
+
+<!-- LOS TAXIMETRISTAS VAN A SER REGISTRADOS POR LOS ADMSINITRADOS, POR LO TANTO
+ SOLO LOS ADMINISTRADORES VAN A TENER 
+ REGISTRO Y LOS TAXIMETRISTAS VAN A TENER UN LOGIN NOMAS -->
