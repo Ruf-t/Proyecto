@@ -16,11 +16,8 @@
 }
 
 body {
-  background-color: var(--colorBlanco);
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .header{
@@ -43,16 +40,24 @@ body {
   position: fixed;
   right: 3;
 }
-
-
-
-.login-container {
+.login-box{
   display: flex;
-  width: 800px;
-  height: 450px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  margin: 0;
+}
+.login-container {
+  width: 80%;
+  max-width: 900px;
+  height: 90%;
+  max-height: 500px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .left-panel {
@@ -72,6 +77,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
 }
 .logo {
   display: flex;
@@ -122,6 +128,8 @@ button {
 button:hover {
   background-color: var(--colorGris1);
 }
+
+
 
 /*! HOME **/
 /** SIDE BAR **/

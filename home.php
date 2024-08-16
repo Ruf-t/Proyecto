@@ -32,19 +32,19 @@
 
 
     <main>
-            <div class="header">
-                <div class="desplegar-menu">
-                    <button id="change-button">
-                        <img src="resources/img/Iconos-SVG/white/menu-line.svg">
-                    </button>
-                </div>
-                <div class="nombre-usuario">
-                    <h1>Usuario</h1>
-                </div>
-                <div class="exit-img">
-                    <img src="resources/img/Iconos-SVG/exit-icon.svg">
-                </div>
+        <div class="header">
+            <div class="desplegar-menu">
+                <button id="change-button">
+                    <img src="resources/img/Iconos-SVG/white/menu-line.svg">
+                </button>
             </div>
+            <div class="nombre-usuario">
+                <h1>Usuario</h1>
+            </div>
+            <div class="exit-img">
+                <img src="resources/img/Iconos-SVG/exit-icon.svg">
+            </div>
+        </div>
 
         
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores pariatur laboriosam debitis facere iure,
