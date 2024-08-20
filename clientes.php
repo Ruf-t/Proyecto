@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="resources/style.css">
-</head>
-
+<?php
+    include 'header.php';
+?>
 <body>
     <div class="sidebar-container">
         <div class="div-usuario">

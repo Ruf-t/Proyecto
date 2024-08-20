@@ -1,8 +1,41 @@
 <link rel="stylesheet" href="resources/style.css">
 
+<body id="body-home">
+    <main>
+        <?php
+        include 'header.php';
+        ?>
 
+        <h3>Panel de administracion</h3>
+        
+        <div class="div-panel-administracion">
+            <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-blue.svg">Ordenes Totales<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+            <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-red.svg">Ganancias Totales<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>                
+            <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-orange.svg">Taxis<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+        </div>
+        </div>
 
-<body>
+        <div class="div-taxistas-mes">
+            <p>Taximetristas del mes</p>
+            <div>
+                <p>Maharrm Hasanli</p>
+                <p>+598 92112906</p>
+            </div>
+            <div>
+                <p>Gina Garza</p>
+                <p>+598 92112906</p>
+            </div>
+            <div>
+                <p>Brian Reed</p>
+                <p>+598 92112906</p>
+            </div>
+            <div>
+                <p>Tammy Spencer</p>
+                <p>+598 92112906</p>
+            </div>
+        </div>
+    </main>
+
     <div class="sidebar-container">
         <div class="div-usuario">
             <h1 class="user-name">Usuario</h1>
@@ -24,33 +57,12 @@
         </div>
         <div class="config-container">
             <nav>
-                <a href="configuracion.php" class="a-menu"><img
-                        src="resources/img/Iconos-SVG/white/setting.svg">Configuracion</a>
+                <a href="configuracion.php" class="a-menu">
+                    <img src="resources/img/Iconos-SVG/white/setting.svg">Configuracion</a>
             </nav>
         </div>
     </div>
 
-
-    <main>
-        <div class="header">
-            <div class="desplegar-menu">
-                <button id="change-button">
-                    <img src="resources/img/Iconos-SVG/white/menu-line.svg">
-                </button>
-            </div>
-            <div class="nombre-usuario">
-                <h1>Usuario</h1>
-            </div>
-            <div class="exit-img">
-                <img src="resources/img/Iconos-SVG/exit-icon.svg">
-            </div>
-        </div>
-
-        
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores pariatur laboriosam debitis facere iure,
-            reprehenderit blanditiis, consequatur fugit quam nam cupiditate non quae ab? Harum, rem. Eum eius impedit
-            accusamus!</p>
-    </main>
 
 
     <script src="resources/script.js"></script>

@@ -1,9 +1,6 @@
-<link rel="stylesheet" href="resources/style.css">
-
 <?php
     include 'header.php';
 ?>
-
 <body>
     <div class="sidebar-container">
         <div class="div-usuario">
@@ -35,8 +32,6 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores pariatur laboriosam debitis facere iure, reprehenderit blanditiis, consequatur fugit quam nam cupiditate non quae ab? Harum, rem. Eum eius impedit accusamus!</p>
     </main>
 
-
     <script src="resources/script.js"></script>
 </body>
-
 </html>
