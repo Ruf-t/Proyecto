@@ -5,35 +5,33 @@
         <?php
         include 'header.php';
         ?>
-
-        <h3>Panel de administracion</h3>
-        
-        <div class="div-panel-administracion">
-            <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-blue.svg">Ordenes Totales<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-            <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-red.svg">Ganancias Totales<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>                
-            <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-orange.svg">Taxis<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-        </div>
-        </div>
-
-        <div class="div-taxistas-mes">
-            <p>Taximetristas del mes</p>
-            <div>
-                <p>Maharrm Hasanli</p>
-                <p>+598 92112906</p>
+            <div class="div-panel-administracion">
+                <h3>Panel de administracion</h3>
+                <div class="div-botones-administracion">
+                    <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-blue.svg">Ordenes Totales<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+                    <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-red.svg">Ganancias Totales<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>                
+                    <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-orange.svg">Taxis<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+                </div>
             </div>
-            <div>
-                <p>Gina Garza</p>
-                <p>+598 92112906</p>
+            <div class="div-taxistas-mes">
+                <p>Taximetristas del mes</p>
+                <div>
+                    <p>Maharrm Hasanli</p>
+                    <p>+598 92112906</p>
+                </div>
+                <div>
+                    <p>Gina Garza</p>
+                    <p>+598 92112906</p>
+                </div>
+                <div>
+                    <p>Brian Reed</p>
+                    <p>+598 92112906</p>
+                </div>
+                <div>
+                    <p>Tammy Spencer</p>
+                    <p>+598 92112906</p>
+                </div>
             </div>
-            <div>
-                <p>Brian Reed</p>
-                <p>+598 92112906</p>
-            </div>
-            <div>
-                <p>Tammy Spencer</p>
-                <p>+598 92112906</p>
-            </div>
-        </div>
     </main>
 
     <div class="sidebar-container">

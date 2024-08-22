@@ -33,8 +33,10 @@ body {
 }
 
 .div-panel-administracion{
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  /* justify-content: space-between; */
+  grid-column: 1 / 2;
+  grid-row:2/3 ;
   gap: 10px; 
   width: 65%;
 
@@ -61,6 +63,19 @@ body {
     
   } 
 
+main{     
+  display: grid;
+  grid-template-columns: 70% 30% ;
+  grid-template-rows: 10% 20% 40% 40% ;
+  margin-left: 18.75rem;
+  padding-left: 2rem;
+  background-color: var(--colorBlanco);
+    
+}
+
+.div-botones-administracion{
+  display: flex;
+}
 
 .header{
   display: flex;
@@ -129,7 +144,6 @@ body {
   }
 
 }
-
 
 .logo {
   display: flex;
@@ -259,11 +273,9 @@ button:hover {
   border-top-right-radius: 5px
 }
 
-main{
-    margin-left: 18.75rem;
-    padding-left: 2rem;
-    background-color: var(--colorBlanco);
-}
+
+
+
 
 
 
