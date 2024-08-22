@@ -21,17 +21,14 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--colorNegro2);
 }
+
 
 #body-home{
   display: grid;
   /* grid-template-columns: 30% 70%; */
-  grid-template-rows: 1fr;
-
-  & main{
-    /* grid-column: 2; */
-
-  }
+  grid-template-rows: 1fr;  
 
 }
 
@@ -69,20 +66,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 1.2rem 1rem 0;
 }
-
-.desplegar-menu {
-  position: fixed;
-  left: 3;
-}
-
-.nombre-usuario {
-  margin-left: 3rem;
-}
-
 .exit-img {
-  position: fixed;
   right: 3;
 }
 .login-box{
@@ -117,18 +103,39 @@ body {
 
 .right-panel {
   width: 50%;
+  height: 100%;
   background-color: var(--colorBlanco);
-  padding: 40px;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
 }
+
+@media(max-width: 800px){
+  .left-panel{
+    display: none;
+  }
+
+  .right-panel{
+    width: 90%;
+    height: 120%;
+    max-height: 500px;
+    background-color: var(--colorBlanco);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+}
+
+
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.2rem;
 
   img {
     width: 100px;
@@ -240,12 +247,22 @@ button:hover {
     background-color: #fff;
     color:#ffae00 ; 
     border-bottom-left-radius:  2rem; 
-    border-top-left-radius:  2rem; 
+    border-top-left-radius:  2rem
+}
+
+.above-active{
+  border-bottom-right-radius: 5px
+
+}
+
+.below-active{
+  border-top-right-radius: 5px
 }
 
 main{
-    margin-left: 325px;
-    margin-right: 25px;
+    margin-left: 18.75rem;
+    padding-left: 2rem;
+    background-color: var(--colorBlanco);
 }
 
 

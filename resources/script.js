@@ -19,5 +19,18 @@ alinks.forEach(link => {
         const activeImgSrc = imgsrc.replace('white/', 'yellow/');
         img.setAttribute('src', activeImgSrc);
         
+
+
+         // Referenciar al <a> de arriba (si existe) y añadir clase
+         const prevLink = link.previousElementSibling;
+         if (prevLink) {
+             prevLink.classList.add('above-active');
+         }
+ 
+         // Referenciar al <a> de abajo (si existe) y añadir clase
+         const nextLink = link.nextElementSibling;
+         if (nextLink) {
+             nextLink.classList.add('below-active');
+         }
     }
 });

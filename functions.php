@@ -33,8 +33,8 @@ else{
 print "Bienvenido"; 
 } 
 
-?>
 }
+?>
 
 
 

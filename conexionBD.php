@@ -2,9 +2,11 @@
 function conectar_bd(){
 
 $servidor = "localhost";
-$bd = "ejercicio";
+$bd = "proyecto";
 $usuario = "root";
-$pass = "";
+$pass = "root";
+// Por default "", en computadora de Juan "root"
+// nombre bd --> proyecto
 
 //definir la conexion usando las variables.
 
