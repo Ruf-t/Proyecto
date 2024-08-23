@@ -1,21 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   --colorAmarillo: #f1b92e;
+  --colorAmarilloo: rgba(255, 150, 51, 0.05);
+  --colorAmarillo2: rgba(255, 150, 51, 0.2);
+  --colorAmarillo3: rgb(255, 149, 51, 0.5);
+  --colorAmarillo4: rgb(255, 149, 51);
+
   --colorNegro1: #000;
   --colorNegro2: #121212;
+
   --colorBlanco: #fff;
+  --colorBlanco2: #f6f6f6;
+
   --colorGris1: #333;
   --colorGris2: #777;
   --colorGris3: #555;
-  --colorAzul: rgb(51, 102, 255);
+
+  --colorAzul: rgba(51, 102, 255, 0.2);
+  --colorAzul2: rgb(51, 102, 255, 0.5);
+  --colorAzul3: rgb(51, 102, 255);
+
+  --colorRojo: hsla(356, 100%, 60%, 0.2);
+  --colorRojo2: hsla(356, 100%, 60%, 0.5);
+  --colorRojo3: hsla(356, 100%, 60%);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif; 
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
@@ -25,59 +40,107 @@ body {
 }
 
 
-#body-home{
+
+#body-home {
   display: grid;
   /* grid-template-columns: 30% 70%; */
-  grid-template-rows: 1fr;  
-
+  grid-template-rows: 1fr;
 }
 
-.div-panel-administracion{
+.div-panel-administracion {
   display: grid;
-  /* justify-content: space-between; */
   grid-column: 1 / 2;
-  grid-row:2/3 ;
-  gap: 10px; 
+  grid-row: 2/3;
+  /* gap: 40px;  */
   width: 65%;
 
-   & button {
+  .div-botones-administracion {
     display: flex;
-    gap: 5px;
-    border-radius: 1rem;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border: none;  
-  }
-   
-    & button:nth-child(1){
-      background-color: rgb(214, 224, 255);
-    }
-    & button:nth-child(2){
-      background-color: rgb(255, 214, 217) ;
-    }
-    & button:nth-child(3){
-      background-color: rgb(255, 234, 214);
-    }
-    
-  } 
+    justify-content: space-between;
+    gap: 10px;
+    margin-right: 5px;
 
-main{     
+    button {
+      display: flex;
+      gap: 5px;
+      border-radius: 1rem;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border: none;
+      transition: ease-in-out 170ms;
+      font-weight: 600;
+    }
+
+    & button:nth-child(1) {
+      background-color: var(--colorAzul);
+      color: var(--colorAzul3);
+    }
+    & button:nth-child(2) {
+      background-color: var(--colorRojo);
+      color: var(--colorRojo3);
+    }
+    & button:nth-child(3) {
+      background-color: var(--colorAmarillo2);
+      color: var(--colorAmarillo4);
+    }
+
+    & button:nth-child(1):hover {
+      background-color: var(--colorAzul2);
+    }
+    & button:nth-child(2):hover {
+      background-color: var(--colorRojo2);
+    }
+    & button:nth-child(3):hover {
+      background-color: var(--colorAmarillo3);
+    }
+  }
+}
+
+main{
   display: grid;
-  grid-template-columns: 70% 30% ;
-  grid-template-rows: 10% 20% 40% 40% ;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 10% 20% 40% 40%;
   margin-left: 18.75rem;
   padding-left: 2rem;
   background-color: var(--colorBlanco);
-    
+  
+  & > .header {
+    grid-column: 1/3;
+  }
+}
+.div-taxistas-mes {
+  grid-column: 2/3;
+  grid-row: 2/4;
+  background-color: var(--colorBlanco2);
+  border-radius: 1rem;
+  margin-right:2rem;
+  padding: 5px;
+  
+  & p{
+    text-align:start; 
+  }
+
+  & h3{
+    text-align: center;
+    margin-top: 7px;
+    margin-bottom: 1rem;
+  }
+  & .nombre-taxistas-mes{
+    font-weight: 600;
+  }
+
+  & .num-taxistas-mes{
+    font-weight: 300;
+  }
 }
 
-.div-botones-administracion{
+.div-botones-administracion {
   display: flex;
 }
 
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,11 +149,11 @@ main{
 .exit-img {
   right: 3;
 }
-.login-box{
+.login-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; 
+  height: 100vh;
   margin: 0;
 }
 .login-container {
@@ -124,15 +187,27 @@ main{
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
-@media(max-width: 800px){
-  .left-panel{
+.p-log-reg{
+  margin-top: 15px;
+
+  & a{
+    text-decoration: none;
+    color: var(--colorAmarillo);
+  }
+}
+
+@media (max-width: 800px) {
+  .login-container{
+    border-radius: 10px;
+  }
+  .left-panel {
     display: none;
+    border-radius: 10px;
   }
 
-  .right-panel{
+  .right-panel {
     width: 90%;
     height: 120%;
     max-height: 500px;
@@ -141,8 +216,8 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 10px ;
   }
-
 }
 
 .logo {
@@ -159,7 +234,7 @@ main{
 h2 {
   color: var(--colorGris1);
   margin-bottom: 10px;
-  }
+}
 
 p {
   color: var(--colorGris2);
@@ -178,22 +253,37 @@ input {
   margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  transition: ease-in-out 200ms;
 }
 
- button {
+input:hover{
+  border-color: var(--colorAmarillo);
+  transition: ease-in-out 170ms;
+}
+
+
+input:focus{
+  background-color: var(--colorAmarilloo);
+  border-color: var(--colorAmarillo);
+  outline: none;
+  /* border: 1px solid red; */
+}
+
+
+
+button {
   width: 100%;
   padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  transition: ease-in-out 230ms;
 }
 
 button:hover {
-  background-color: var(--colorGris1);
-} 
-
-
+  background-color: var(--colorAmarillo4);
+}
 
 /*! HOME **/
 /** SIDE BAR **/
@@ -207,16 +297,15 @@ button:hover {
   padding-top: 1rem;
 }
 
-.div-usuario{
-    padding: 1rem;
+.div-usuario {
+  padding: 1rem;
 }
-.user-name{
-    color: white;
+.user-name {
+  color: white;
 }
-.user-num{
-    color: grey;
+.user-num {
+  color: grey;
 }
-
 
 .menu-container nav {
   padding-top: 2rem;
@@ -232,16 +321,16 @@ button:hover {
   text-align: center;
 }
 
-.menu-container nav a img{
-    font-size: 25px;
-    align-items: center;
+.menu-container nav a img {
+  font-size: 25px;
+  align-items: center;
 }
 
 .menu-container nav a:hover {
   color: #fcc652;
 }
 
-.config-container{
+.config-container {
   position: fixed;
   bottom: 0;
 }
@@ -258,24 +347,16 @@ button:hover {
 }
 
 .a-menu.active {
-    background-color: #fff;
-    color:#ffae00 ; 
-    border-bottom-left-radius:  2rem; 
-    border-top-left-radius:  2rem
+  background-color: #fff;
+  color: #ffae00;
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
 }
 
-.above-active{
-  border-bottom-right-radius: 5px
-
+.above-active {
+  border-bottom-right-radius: 5px;
 }
 
-.below-active{
-  border-top-right-radius: 5px
+.below-active {
+  border-top-right-radius: 5px;
 }
-
-
-
-
-
-
-

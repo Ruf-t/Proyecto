@@ -5,33 +5,56 @@
         <?php
         include 'header.php';
         ?>
-            <div class="div-panel-administracion">
-                <h3>Panel de administracion</h3>
-                <div class="div-botones-administracion">
-                    <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-blue.svg">Ordenes Totales<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                    <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-red.svg">Ganancias Totales<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>                
-                    <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-orange.svg">Taxis<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                </div>
+        <div class="div-panel-administracion">
+            <h3>Panel de administracion</h3>
+            <div class="div-botones-administracion">
+                <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-blue.svg">Ordenes Totales<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+                <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-red.svg">Ganancias Totales<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+                <button><img src="resources/img/Iconos-SVG/icons-others/folder-open-orange.svg">Taxis<img src="resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
             </div>
-            <div class="div-taxistas-mes">
-                <p>Taximetristas del mes</p>
-                <div>
-                    <p>Maharrm Hasanli</p>
-                    <p>+598 92112906</p>
-                </div>
-                <div>
-                    <p>Gina Garza</p>
-                    <p>+598 92112906</p>
-                </div>
-                <div>
-                    <p>Brian Reed</p>
-                    <p>+598 92112906</p>
-                </div>
-                <div>
-                    <p>Tammy Spencer</p>
-                    <p>+598 92112906</p>
-                </div>
+        </div>
+        <section class="div-taxistas-mes">
+
+            <h3>Taximetristas del mes</h3>
+
+            <div>
+                <p class="nombre-taxistas-mes">Maharrm Hasanli</p>
+                <p class="num-taxistas-mes">+598 92112906</p>
             </div>
+            <div>
+                <p class="nombre-taxistas-mes">Gina Garza</p>
+                <p class="num-taxistas-mes">+598 92112906</p>
+            </div>
+            <div>
+                <p class="nombre-taxistas-mes">Brian Reed</p>
+                <p class="num-taxistas-mes">+598 92112906</p>
+            </div>
+            <div>
+                <p class="nombre-taxistas-mes">Tammy Spencer</p>
+                <p class="num-taxistas-mes">+598 92112906</p>
+            </div>
+
+
+
+
+
+        </section>
+
+        <section class="">
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+
     </main>
 
     <div class="sidebar-container">
