@@ -1,14 +1,13 @@
 <link rel="stylesheet" href="resources/style.css">
-
+    
 <?php
     include 'header.php';
 ?>
-
 <body>
     <div class="sidebar-container">
         <div class="div-usuario">
             <h1 class="user-name">Usuario</h1>
-            <p class="user-num">+598 92112906</p>
+            <p class="user-num">+598 92 112 906</p>
         </div>
         <div class="menu-container">
             <nav>
@@ -38,5 +37,4 @@
 
     <script src="resources/script.js"></script>
 </body>
-
 </html>

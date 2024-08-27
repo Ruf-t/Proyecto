@@ -37,65 +37,13 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--colorNegro2);
+  width: 100%;
 }
-
-
 
 #body-home {
   display: grid;
   /* grid-template-columns: 30% 70%; */
   grid-template-rows: 1fr;
-}
-
-.div-panel-administracion {
-  display: grid;
-  grid-column: 1 / 2;
-  grid-row: 2/3;
-  /* gap: 40px;  */
-  width: 65%;
-
-  .div-botones-administracion {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-right: 5px;
-
-    button {
-      display: flex;
-      gap: 5px;
-      border-radius: 1rem;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      border: none;
-      transition: ease-in-out 170ms;
-      font-weight: 600;
-    }
-
-    & button:nth-child(1) {
-      background-color: var(--colorAzul);
-      color: var(--colorAzul3);
-    }
-    & button:nth-child(2) {
-      background-color: var(--colorRojo);
-      color: var(--colorRojo3);
-    }
-    & button:nth-child(3) {
-      background-color: var(--colorAmarillo2);
-      color: var(--colorAmarillo4);
-    }
-
-    & button:nth-child(1):hover {
-      background-color: var(--colorAzul2);
-    }
-    & button:nth-child(2):hover {
-      background-color: var(--colorRojo2);
-    }
-    & button:nth-child(3):hover {
-      background-color: var(--colorAmarillo3);
-    }
-  }
 }
 
 main{
@@ -110,45 +58,8 @@ main{
     grid-column: 1/3;
   }
 }
-.div-taxistas-mes {
-  grid-column: 2/3;
-  grid-row: 2/4;
-  background-color: var(--colorBlanco2);
-  border-radius: 1rem;
-  margin-right:2rem;
-  padding: 5px;
-  
-  & p{
-    text-align:start; 
-  }
 
-  & h3{
-    text-align: center;
-    margin-top: 7px;
-    margin-bottom: 1rem;
-  }
-  & .nombre-taxistas-mes{
-    font-weight: 600;
-  }
-
-  & .num-taxistas-mes{
-    font-weight: 300;
-  }
-}
-
-.div-botones-administracion {
-  display: flex;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.2rem 1rem 0;
-}
-.exit-img {
-  right: 3;
-}
+/** LOGIN **/
 .login-box {
   display: flex;
   justify-content: center;
@@ -261,15 +172,11 @@ input:hover{
   transition: ease-in-out 170ms;
 }
 
-
 input:focus{
   background-color: var(--colorAmarilloo);
   border-color: var(--colorAmarillo);
   outline: none;
-  /* border: 1px solid red; */
 }
-
-
 
 button {
   width: 100%;
@@ -285,7 +192,99 @@ button:hover {
   background-color: var(--colorAmarillo4);
 }
 
-/*! HOME **/
+/*! PANEL/HOME **/
+.div-panel-administracion {
+  display: grid;
+  grid-column: 1 / 2;
+  grid-row: 2/3;
+  width: 85%;
+
+  .div-botones-administracion {
+    display: flex;
+    justify-content: space-between;
+    gap: .7rem;
+    margin-right: 5px;
+
+    button {
+      display: flex; 
+      gap: 5px;
+      border-radius: .5rem;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border: none;
+      transition: ease-in-out 170ms;
+      font-weight: 600;
+    }
+
+    & button:nth-child(1) {
+      background-color: var(--colorAzul);
+      color: var(--colorAzul3);
+    }
+    & button:nth-child(2) {
+      background-color: var(--colorRojo);
+      color: var(--colorRojo3);
+    }
+    & button:nth-child(3) {
+      background-color: var(--colorAmarillo2);
+      color: var(--colorAmarillo4);
+    }
+
+    & button:nth-child(1):hover {
+      background-color: var(--colorAzul2);
+    }
+    & button:nth-child(2):hover {
+      background-color: var(--colorRojo2);
+    }
+    & button:nth-child(3):hover {
+      background-color: var(--colorAmarillo3);
+    }
+  }
+}
+
+.div-taxistas-mes {
+  grid-column: 2/3;
+  grid-row: 2/4;
+  background-color: var(--colorBlanco2);
+  border-radius: .5rem;
+  margin-right:2rem;
+  padding: 5px;
+  margin-left: 1rem;
+  
+  & p{
+    text-align:start; 
+  }
+
+  & h3{
+    text-align: center;
+    margin-top: 7px;
+    margin-bottom: 1rem;
+  }
+  & .nombre-taxistas-mes{
+    font-weight: 600;
+  }
+
+  & .num-taxistas-mes{
+    font-weight: 300;
+  }
+}
+
+.div-botones-administracion {
+  display: flex;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem 1rem 0;
+}
+
+.exit-img {
+  right: 3;
+}
+
 /** SIDE BAR **/
 .sidebar-container {
   position: fixed;
@@ -360,3 +359,36 @@ button:hover {
 .below-active {
   border-top-right-radius: 5px;
 }
+
+/*! VIAJES **/
+/*? ESTILO TABLAS */
+.div-tabla-viajes{
+  width: 100%;
+  /* overflow-x: auto; */
+}
+
+#main-viajes{
+  /* display: flex; */
+}
+table {
+  width: 100%;
+  min-width: 250px;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 1rem;
+  text-align: left;
+}
+th, td {
+  padding: 2px;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #f4f4f4;
+  border-radius: .2rem;
+}
+.income {
+  color: #28a745;
+  font-weight: bold;
+}
+
+

@@ -22,4 +22,4 @@ if (isset($_POST["envio"])) {
         echo "Error al registrar el usuario: " . mysqli_error($con);
     }
 }
-?>
+
