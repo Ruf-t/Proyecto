@@ -9,14 +9,8 @@ $passwordAdmin = $_POST["passwordAdmin"];
 // Variables del Login Taximetrista
 
 
-
-
-
-
+session_start();
 function ValidarAdmin($emailAdmin, $passwordAdmin){
-
-// session_start();
-
 // $nombre = $_POST['user'];
 // $password = $_POST['password'];
 

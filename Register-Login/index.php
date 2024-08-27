@@ -7,12 +7,10 @@
     
     <link rel="stylesheet" href="../resources/style.css">
 </head>
-
 <body>
     <div class="login-box">
         <div class="login-container">
             <div class="left-panel">
- 
                 <img src="../resources/img/Others/foto-taxi.jpg" alt="Fondo">
             </div>
             <div class="right-panel">

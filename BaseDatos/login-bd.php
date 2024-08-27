@@ -3,6 +3,8 @@ require("conexionBD.php");
 
 $con = conectar_bd();
 
+session_start();
+
 if (isset($_POST["envio"])) {
 
     $user = $_POST["user"];
@@ -12,11 +14,25 @@ if (isset($_POST["envio"])) {
     logear($con, $user, $contrasenia);
 }
 
+function cerrarSesion(){
+    if (!isset($_SESSION['user'])) {
+        header("Location: index.php");
+        exit;
+    }
+    if (isset($_POST['cerrar_sesion'])) {    
+        // Destruir todas las variables de sesión
+        session_unset();
+    
+        // Destruir la sesión
+        session_destroy();
+    
+        // Redirigir al usuario al inicio de sesión
+        header("Location: index.php");
+        exit;
+    }
+}
+
 function logear($con, $user, $contrasenia) {
-
-    // Iniciar la sesión
-    session_start();
-
     $consulta_login = "SELECT * FROM administrador WHERE Usuario = '$user'";
     $resultado_login = mysqli_query($con, $consulta_login);
 
@@ -41,4 +57,3 @@ function logear($con, $user, $contrasenia) {
         echo "Usuario no encontrado.<br>";
     }
 }
-?>

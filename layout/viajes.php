@@ -1,13 +1,26 @@
 <link rel="stylesheet" href="../resources/style.css">
 
 <body id="body-home">
-    <main id="main-viajes">
+    <main>
         <?php
         include '../header.php';
         ?>
         <div class="div-tabla-viajes">
             <table>
                 <thead>
+                    <select>
+                        <option value="" selected disabled>Selecciona un turno</option>
+                        <option>Turno 1</option>
+                        <option>Turno 2</option>
+                    </select>
+                    <tr>
+                        <th><button>Hoy</button></th>
+                        <th><button>Hace un dia</button></th>
+                        <th><button>En la semana</button></th>
+                        <th><button>En el mes</button></th>
+                        <th><button>Ultimos 6 meses</button></th>
+                        <th><button>Fecha personalizada</button></th>
+                    </tr>
                     <tr>
                         <th>Cliente</th>
                         <th>Número de coche</th>
