@@ -94,13 +94,14 @@
 }
 
 /* Simple style for larger screens */
-@media only screen and (min-width: 601px) {
+/* @media only screen and (min-width: 601px) {
     .body-login {
-        /* background-color: #f4f4f4; */
+         background-color: #f4f4f4;
     }
-}
+} */
 
-#selectButton{
+/* Estilos existentes */
+#selectButton {
     width: 100%;
     background-color: var(--amarillo);
     background-color: #FFA500;
@@ -108,15 +109,25 @@
     border-radius: 5px;
 }
 
-
-.hidden{
-    display:none;
-    
+.hidden {
+    display: none;
+    padding-right: 9px;
 }
 
-.formulario{
-    background-color:var(--amarillo2);
-    border: 1px solid --amarillo2;
-    border-bottom-left-radius:5px;
-    border-bottom-right-radius:5px;
+.formulario {
+    background-color: var(--amarillo2);
+    border: 1px solid var(--amarillo2);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px; /* Padding general para todo el formulario */
+}
+
+/* Aplica padding específicamente a los elementos p e input */
+.formulario p, 
+.formulario input {
+    padding: 10px; /* Ajusta el valor según tus necesidades */
+}
+
+#flecha{
+    transform: rotate(90deg);
 }

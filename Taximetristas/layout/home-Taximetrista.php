@@ -13,7 +13,7 @@
     <h1>Inciar sesión</h1>
     <!-- Botón select -->
     <button id="selectButton">Iniciar Jornada <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"
-            alt=""></button>
+            alt="" id="flecha"></button>
 
     <!-- Contenedor de los inputs y el botón adicional -->
     <div id="formContainer" class="hidden">

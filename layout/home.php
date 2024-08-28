@@ -14,30 +14,46 @@
             </div>
         </div>
         <section class="div-taxistas-mes">
-            <h3>Taximetristas del mes</h3>
+            <h3>Taximetristas del mes<img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></h3>
             <div>
-                <p class="nombre-taxistas-mes">Maharrm Hasanli</p>
-                <p class="num-taxistas-mes">+598 92112906</p>
+                <img src="../resources/img/Logos-PNG/Avatar/A2.png">
+                <div>    
+                    <p class="nombre-taxistas-mes">Maharrm Hasanli</p>
+                    <p class="num-taxistas-mes">+598 92112906</p>
+                </div>
             </div>
             <div>
-                <p class="nombre-taxistas-mes">Gina Garza</p>
-                <p class="num-taxistas-mes">+598 92112906</p>
+                <img src="../resources/img/Logos-PNG/Avatar/A4.png">
+                <div>
+                    <p class="nombre-taxistas-mes">Gina Garza</p>
+                    <p class="num-taxistas-mes">+598 92112906</p>
+                </div>
             </div>
             <div>
-                <p class="nombre-taxistas-mes">Brian Reed</p>
-                <p class="num-taxistas-mes">+598 92112906</p>
+                <img src="../resources/img/Logos-PNG/Avatar/A5.png">
+                <div>
+                    <p class="nombre-taxistas-mes">Brian Reed</p>
+                    <p class="num-taxistas-mes">+598 92112906</p>
+                </div>
             </div>
             <div>
-                <p class="nombre-taxistas-mes">Tammy Spencer</p>
-                <p class="num-taxistas-mes">+598 92112906</p>
+                <img src="../resources/img/Logos-PNG/Avatar/A1.png">
+                <div>
+                    <p class="nombre-taxistas-mes">Tammy Spencer</p>
+                    <p class="num-taxistas-mes">+598 92112906</p>
+                </div>
             </div>
             <div>
-                <p class="nombre-taxistas-mes">Tammy Spencer</p>
-                <p class="num-taxistas-mes">+598 92112906</p>
+                <img src="../resources/img/Logos-PNG/Avatar/A3.png">
+                <div>
+                    <p class="nombre-taxistas-mes">Juan Steward</p>
+                    <p class="num-taxistas-mes">+598 92112906</p>
+                </div>
             </div>
         </section>
         <div class="div-tabla-panel">
             <table id="table-panel">
+
                 <thead>
                     <tr>
                         <th>Taximetrista</th>

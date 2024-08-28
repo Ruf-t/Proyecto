@@ -12,6 +12,7 @@
 
   --colorBlanco: #fff;
   --colorBlanco2: #f6f6f6;
+  --colorBlanco3: #F7F9FC;
 
   --colorGris1: #333;
   --colorGris2: #777;
@@ -45,8 +46,10 @@ body {
 }
 
 main{
+  border: 5px 5px 5px 5px  black;
+
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 60% 40%;
   grid-template-rows: 10% 20% 35% 33%;
   margin-left: 18.75rem;
   padding-left: 2rem;
@@ -198,7 +201,8 @@ button:hover {
   display: grid;
   grid-column: 1 / 2;
   grid-row: 2/3;
-  width: 65%;
+  width: 95%;
+  /* height: 80%; */
 
   .div-botones-administracion {
     display: flex;
@@ -231,7 +235,6 @@ button:hover {
       background-color: var(--colorAmarillo2);
       color: var(--colorAmarillo4);
     }
-
     & button:nth-child(1):hover {
       background-color: var(--colorAzul2);
     }
@@ -247,16 +250,47 @@ button:hover {
 .div-taxistas-mes {
   grid-column: 2/3;
   grid-row: 2/4;
-  background-color: var(--colorBlanco2);
   border-radius: .5rem;
   margin-right:2rem;
   padding: 5px;
-  margin-left: 1rem;
-  
-  & p{
-    text-align:start; 
+  gap: 1rem;
+
+  & h3{
+    padding-left: .5rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    & img{
+      padding-left: 6.5rem;
+    }
   }
 
+  & p{
+    text-align:start;
+    margin-left: 1rem;
+    margin-bottom: 0;
+  }
+
+  & div{
+    padding: .5rem;
+    border-radius: .3rem;
+    margin-bottom: 1rem;
+    background-color: var(--colorBlanco3);  
+    display: flex;
+  
+    & div{
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    & img{
+      padding: .2rem;
+      text-align: center;
+    } 
+  }
+    
   & h3{
     text-align: center;
     margin-top: 7px;
@@ -264,10 +298,12 @@ button:hover {
   }
   & .nombre-taxistas-mes{
     font-weight: 600;
+    margin: 0;
   }
 
   & .num-taxistas-mes{
     font-weight: 300;
+    margin: 0;
   }
 }
 
@@ -345,6 +381,7 @@ button:hover {
 .menu-container nav a img {
   font-size: 25px;
   align-items: center;
+  margin-right: .5rem;
 }
 
 .menu-container nav a:hover {
@@ -370,11 +407,15 @@ button:hover {
   color: #fcc652;
 }
 
+.a-menu{
+  font-weight: 600;
+}
 .a-menu.active {
   background-color: #fff;
   color: #ffae00;
   border-bottom-left-radius: 2rem;
   border-top-left-radius: 2rem;
+  font-weight: 600;
 }
 
 .above-active {
@@ -491,8 +532,12 @@ select{
   border-collapse: collapse;
   margin: 1rem 0;
   font-size: 1rem;
-  text-align: left;
+  text-align: center;
   width: 100%;
+}
+.columnas-tabla-clientes{
+  background-color: #f4f4f4;
+  height: 40px;
 }
 .tabla-clientes th:last-child, .tabla-clientes td:last-child {
   border-right: none;
@@ -500,7 +545,7 @@ select{
 .tabla-clientes th button {
   border-collapse: collapse;
   font-size: 1rem;
-  text-align: left;
+  text-align: center;
   padding: 1rem 0 1rem 0;
   background-color: #f4f4f4;
   border-radius: .2rem;
@@ -518,4 +563,39 @@ select{
 .tabla-clientes .income {
   color: #28a745;
   font-weight: bold;
+}
+
+.tabla-clientes, .tabla-clientes th, .tabla-clientes td {
+  border: none;
+}
+.boton-editar{
+  background-color: white;
+  width: 40px;
+}
+.boton-editar:hover{
+  background-color: #dddada;
+}
+
+.boton-papelera{
+  background-color: white;
+  width: 40px;
+}
+.boton-papelera:hover{
+  background-color: #dddada;
+}
+
+.div-cantidad-clientes{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.div-paginas{
+  display: flex;
+  align-items: center;
+
+}
+.paginas{
+  margin: 3px;
+  height: 2.7rem;
+  width: 2.7rem;
 }

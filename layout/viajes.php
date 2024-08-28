@@ -32,7 +32,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><img src="avatar1.png" alt="Sierra Ferguson" class="avatar"><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
+                    <td><img src="A1.png" alt="Sierra Ferguson" class="avatar"><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
                     <td>2023</td>
                     <td>04.12.2021 20:30</td>
                     <td>Km 120.000</td>
