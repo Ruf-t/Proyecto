@@ -34,3 +34,18 @@ alinks.forEach(link => {
          }
     }
 });
+
+
+
+
+
+// ------HOME TAXIMETRISTA--------
+   // Obtener el botón y el contenedor de los elementos
+   const selectButton = document.getElementById('selectButton');
+   const formContainer = document.getElementById('formContainer');
+
+   // Agregar un evento al botón
+   selectButton.addEventListener('click', function() {
+       // Alternar la visibilidad del contenedor
+       formContainer.classList.toggle('hidden');
+   });

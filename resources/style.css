@@ -37,19 +37,17 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--colorNegro2);
-  width: 100%;
 }
 
 #body-home {
   display: grid;
-  /* grid-template-columns: 30% 70%; */
   grid-template-rows: 1fr;
 }
 
 main{
   display: grid;
   grid-template-columns: 70% 30%;
-  grid-template-rows: 10% 20% 40% 40%;
+  grid-template-rows: 10% 20% 35% 33%;
   margin-left: 18.75rem;
   padding-left: 2rem;
   background-color: var(--colorBlanco);
@@ -57,18 +55,9 @@ main{
   & > .header {
     grid-column: 1/3;
   }
-
-
   & > .div-addCliente{
     grid-column: 1/3;
   }
-/*   
-  & > .div-addCliente > .boton-add-cliente{
-    grid-column: 2/3;
-  } */
-
-
-
 }
 
 /** LOGIN **/
@@ -209,7 +198,7 @@ button:hover {
   display: grid;
   grid-column: 1 / 2;
   grid-row: 2/3;
-  width: 85%;
+  width: 65%;
 
   .div-botones-administracion {
     display: flex;
@@ -290,11 +279,11 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.2rem 1rem 0;
+  padding: 1rem 2.1rem 1rem 0;
 }
 
 .exit-img {
-  right: 3;
+  right: 4;
 }
 
 .div-addCliente{
@@ -396,54 +385,91 @@ button:hover {
   border-top-right-radius: 5px;
 }
 
-/*! VIAJES **/
-/*? ESTILO TABLAS */
-.div-tabla-viajes{
-  width: 100%;
-  min-width: 1000px;
-  height: 100%;
-  min-height: 400px;
-  align-items: center;
-  justify-content: center;
-  grid-column: 1/2;
-}
 select{
   color: var(--colorAmarillo4);
-  padding: .5rem 1rem; 
-  text-decoration: none; 
-  font-size: 1rem; 
+  padding: .5rem 1rem;
+  text-decoration: none;
+  font-size: 1rem;
   cursor: pointer; 
   border-radius: .4rem; 
   font-weight: bold;
 }
-table {
+
+/*? ESTILO TABLA HOME/PANEL */
+.div-tabla-panel{
+  display: grid;
+  width: 100%;
+  min-width: 400px;
+  height: 100%;
+  min-height: 100px;
+  grid-row: 4/5;
+  grid-column: 1/3;
+}
+#table-panel{
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 1rem;
+  text-align: center;
+  margin-right: 2rem;
+}
+#table-panel th, td {
+  padding: 2px;
+}
+#table-panel tr {
+  padding: 2px;
+}
+#table-panel th{
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+}
+#table-panel th{
+  background-color: #f4f4f4;
+  border-radius: .2rem;
+  box-sizing: border-box;
+}
+
+#table-panel, #table-panel th, #table-panel td {
+  border: none;
+}
+
+/*! VIAJES **/
+/*? TABLA VIAJES */
+.div-tabla-viajes{
+  width: 100%;
+  min-width: 1000px;
+  height: 100%;
+  min-height: 200px;
+  grid-column: 1/2;
+}
+#tabla-viajes {
   border-collapse: collapse;
   margin: 1rem 0;
   font-size: 1rem;
   text-align: left;
 }
-th, td {
+#tabla-viajes th, td {
   padding: 2px;
   border-bottom: 1px solid #ddd;
 }
-th button{
+#tabla-viajesth button{
   border-collapse: collapse;
   font-size: 1rem;
   text-align: left;
   padding: 1rem 0 1rem 0;
 }
-th,  button{
+#tabla-viajes th,  button{
   background-color: #f4f4f4;
   border-radius: .2rem;
   box-sizing: border-box;
 }
-table th:nth-child(3), table td:nth-child(3) {
+#tabla-viajes th:nth-child(3), #tabla-viajes td:nth-child(3) {
     width: 10rem;
 }
-table th:nth-child(4), table td:nth-child(4) {
+#tabla-viajes th:nth-child(4), #tabla-viajes td:nth-child(4) {
   width: 10rem;
 }
-table th:nth-child(5), table td:nth-child(5) {
+#tabla-viajes th:nth-child(5), #tabla-viajes td:nth-child(5) {
   width: 10rem;
 }
 .income {
@@ -451,10 +477,7 @@ table th:nth-child(5), table td:nth-child(5) {
   font-weight: bold;
 }
 
-
-/*TABLA CLIENTES*/
-
-/* Estilo para el contenedor de la tabla de clientes */
+/*? TABLA CLIENTES*/
 .tabla-clientes {
   width: 100%;
   min-width: 1000px;
@@ -464,19 +487,6 @@ table th:nth-child(5), table td:nth-child(5) {
   justify-content: center;
   grid-column: 1/2;
 }
-
-/* Estilo para los selectores */
-.tabla-clientes select {
-  color: var(--colorAmarillo4);
-  padding: .5rem 1rem;
-  text-decoration: none;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: .4rem;
-  font-weight: bold;
-}
-
-/* Estilo para la tabla */
 .tabla-clientes table {
   border-collapse: collapse;
   margin: 1rem 0;
@@ -484,22 +494,9 @@ table th:nth-child(5), table td:nth-child(5) {
   text-align: left;
   width: 100%;
 }
-
-/* Estilo para las celdas de la tabla */
-.tabla-clientes th,
-.tabla-clientes td {
-  padding: 2px;
-  border-bottom: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-}
-
-/* Remover borde derecho del último encabezado y celda */
-.tabla-clientes th:last-child,
-.tabla-clientes td:last-child {
+.tabla-clientes th:last-child, .tabla-clientes td:last-child {
   border-right: none;
 }
-
-/* Estilo para botones en encabezados de la tabla */
 .tabla-clientes th button {
   border-collapse: collapse;
   font-size: 1rem;
@@ -509,30 +506,16 @@ table th:nth-child(5), table td:nth-child(5) {
   border-radius: .2rem;
   box-sizing: border-box;
 }
-
-/* Ajuste de ancho para columnas específicas */
-.tabla-clientes table th:nth-child(3),
-.tabla-clientes table td:nth-child(3) {
+.tabla-clientes th:nth-child(3), .tabla-clientes td:nth-child(3) {
   width: 10rem;
 }
-
-.tabla-clientes table th:nth-child(4),
-.tabla-clientes table td:nth-child(4) {
+.tabla-clientes th:nth-child(4), .tabla-clientes td:nth-child(4) {
   width: 10rem;
 }
-
-.tabla-clientes table th:nth-child(5),
-.tabla-clientes table td:nth-child(5) {
+.tabla-clientes th:nth-child(5), .tabla-clientes td:nth-child(5) {
   width: 10rem;
 }
-
-/* Estilo para la columna de ingresos */
 .tabla-clientes .income {
   color: #28a745;
   font-weight: bold;
 }
-
-
-
-
-

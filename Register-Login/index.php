@@ -15,7 +15,6 @@
             </div>
             <div class="right-panel">
                 <div class="logo">
-     
                     <img src="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3A.svg" alt="Logo">
                 </div>
                 <h2>Inicio sesión Administrador</h2>

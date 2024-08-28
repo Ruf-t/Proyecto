@@ -1,6 +1,6 @@
+<html>
 <link rel="stylesheet" href="../resources/style.css">
-
-<body id="body-home">
+<body id="body-home">   
     <main>
         <?php
         include '../header.php';
@@ -31,10 +31,13 @@
                 <p class="nombre-taxistas-mes">Tammy Spencer</p>
                 <p class="num-taxistas-mes">+598 92112906</p>
             </div>
+            <div>
+                <p class="nombre-taxistas-mes">Tammy Spencer</p>
+                <p class="num-taxistas-mes">+598 92112906</p>
+            </div>
         </section>
-
-        <div class="tabla-viajes">
-            <table>
+        <div class="div-tabla-panel">
+            <table id="table-panel">
                 <thead>
                     <tr>
                         <th>Taximetrista</th>
@@ -46,46 +49,46 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td><img src="avatar1.png" alt="Sierra Ferguson" class="avatar"><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
-                    <td>2023</td>
-                    <td>04.12.2021 20:30</td>
-                    <td>Km 120.000</td>
-                    <td>Km 120.050</td>
-                    <td class="income">$420</td>
-                </tr>
-                <tr>
-                    <td><img src="avatar2.png" alt="Sierra Ferguson" class="avatar"><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
-                    <td>2211</td>
-                    <td>04.12.2021 20:24</td>
-                    <td>Km 32.000</td>
-                    <td>Km 32.023</td>
-                    <td class="income">$240</td>
-                </tr>
-                <tr>
-                    <td><img src="avatar3.png" alt="Sierra Ferguson" class="avatar"><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
-                    <td>4647</td>
-                    <td>04.12.2021 20:23</td>
-                    <td>Km 450.000</td>
-                    <td>Km 450.120</td>
-                    <td class="income">$1020</td>
-                </tr>
-                <tr>
-                    <td><img src="avatar4.png" alt="Sierra Ferguson" class="avatar"><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
-                    <td>2637</td>
-                    <td>17.11.2021 12:19</td>
-                    <td>Km 362.757</td>
-                    <td>Km 362.780</td>
-                    <td class="income">$300</td>
-                </tr>
-                <tr>
-                    <td><img src="avatar5.png" alt="Sierra Ferguson" class="avatar"><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
-                    <td>3002</td>
-                    <td>04.12.2021 20:30</td>
-                    <td>Km 23.899</td>
-                    <td>Km 23.920</td>
-                    <td class="income">$270</td>
-                </tr>
+                    <tr>
+                        <td><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
+                        <td>2023</td>
+                        <td>04.12.2021 20:30</td>
+                        <td>Km 120.000</td>
+                        <td>Km 120.050</td>
+                        <td class="income">$420</td>
+                    </tr>
+                    <tr>
+                        <td><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
+                        <td>2211</td>
+                        <td>04.12.2021 20:24</td>
+                        <td>Km 32.000</td>
+                        <td>Km 32.023</td>
+                        <td class="income">$240</td>
+                    </tr>
+                    <tr>
+                        <td><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
+                        <td>4647</td>
+                        <td>04.12.2021 20:23</td>
+                        <td>Km 450.000</td>
+                        <td>Km 450.120</td>
+                        <td class="income">$1020</td>
+                    </tr>
+                    <tr>
+                        <td><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
+                        <td>2637</td>
+                        <td>17.11.2021 12:19</td>
+                        <td>Km 362.757</td>
+                        <td>Km 362.780</td>
+                        <td class="income">$300</td>
+                    </tr>
+                    <tr>
+                        <td><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
+                        <td>3002</td>
+                        <td>04.12.2021 20:30</td>
+                        <td>Km 23.899</td>
+                        <td>Km 23.920</td>
+                        <td class="income">$270</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -111,7 +114,7 @@
                         src="../resources/img/Iconos-SVG/white/driver.svg">Taximetristas</a>
                 <a href="ingresos.php" class="a-menu"><img
                         src="../resources/img/Iconos-SVG/white/ingresos.svg">Ingresos</a>
-                <a href="taxis.php" class="a-menu">
+                        <a href="taxis.php" class="a-menu">
                     <img src="../resources/img/Iconos-SVG/white/taxi.svg">Taxis
                 </a>
             </nav>

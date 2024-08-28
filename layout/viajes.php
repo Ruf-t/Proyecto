@@ -6,7 +6,7 @@
         include '../header.php';
         ?>
         <div class="div-tabla-viajes">
-            <table>
+            <table id="tabla-viajes">
                 <thead>
                     <select>
                         <option value="" selected disabled>Selecciona un turno</option>

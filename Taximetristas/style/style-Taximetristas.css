@@ -1,8 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 :root{
     --amarillo: #FDCD03;
-    --whie: #FFF;
+    --white: #fff;
+    --amarillo2:hsla(48, 100%, 51%, 0.710);
 }
 
+*{
+    font-family: "Montserrat", sans-serif;
+    
+}
 
 /* General styles */
 .body-login {
@@ -33,38 +39,58 @@
 }
 
 .logo {
-    max-width: 75px ;
+    max-width:35%;
     height: auto;
     border-radius: 10px;
 }
 
+.p-log-reg{
+    color:white;
 
+    & a{
+        color: var(--amarillo);
+        text-decoration: none;
+    }
+}
 
 /* Background image for mobile devices */
 @media only screen and (max-width: 600px) {
     .body-login {
+
+        margin-top:5rem;
         background: url('../../resources/img/Others/foto-taxi-cel.png') no-repeat center center fixed;
         background-size: cover;
     }
-    input{
-        color: white;
+    
+    .title-login{
+        color:white;
+    }
+    #user, #contrasenia{
+        background-color: white;
         border-radius: 10px;
         height: 50px;
         width: 335px;
-        margin: 20px
+        /* margin-top: 20px; */
+        margin-bottom: 10px;
+        border: 1px solid rgb(255, 255, 255);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    #user::placeholder, #contrasenia::placeholder{
+       color: #000;
+       padding-left: 10px;
     }
 
-    .login-TXs{
+    .button-login-TXs{
         inset:all;
         background-color:var(--amarillo);
         width: 330px;
-        height: 79px;
-        color:var(--whie);
+        height: 50px;
+        color: black;
+        border-radius:5px ;
+        border: none;
+        margin-top: 30px;
     }
 
-    h2{
-        color: white;
-    }
 }
 
 /* Simple style for larger screens */
@@ -72,4 +98,25 @@
     .body-login {
         /* background-color: #f4f4f4; */
     }
+}
+
+#selectButton{
+    width: 100%;
+    background-color: var(--amarillo);
+    background-color: #FFA500;
+    border-color: #FFA500;
+    border-radius: 5px;
+}
+
+
+.hidden{
+    display:none;
+    
+}
+
+.formulario{
+    background-color:var(--amarillo2);
+    border: 1px solid --amarillo2;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
 }
