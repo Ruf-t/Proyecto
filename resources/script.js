@@ -19,13 +19,11 @@ alinks.forEach(link => {
         const activeImgSrc = imgsrc.replace('white/', 'yellow/');
         img.setAttribute('src', activeImgSrc);
         
-
-
          // Referenciar al <a> de arriba (si existe) y añadir clase
          const prevLink = link.previousElementSibling;
          if (prevLink) {
              prevLink.classList.add('above-active');
-         }
+         }1
  
          // Referenciar al <a> de abajo (si existe) y añadir clase
          const nextLink = link.nextElementSibling;
@@ -34,10 +32,6 @@ alinks.forEach(link => {
          }
     }
 });
-
-
-
-
 
 // ------HOME TAXIMETRISTA--------
    // Obtener el botón y el contenedor de los elementos
@@ -49,3 +43,32 @@ alinks.forEach(link => {
        // Alternar la visibilidad del contenedor
        formContainer.classList.toggle('hidden');
    });
+
+
+// --------Botones para cambiar páginas-----------
+function cambioColorBoton(button) {
+    // Selecciona solo los botones con texto 1 y 2
+    const buttons = document.querySelectorAll('.paginas');
+    
+    // Remueve la clase 'active' solo de los botones 1 y 2
+    buttons.forEach(btn => {
+        if (btn.textContent === '1' || btn.textContent === '2') {
+            btn.classList.remove('active');
+        }   
+    });
+    
+    // Añade la clase 'active' al botón presionado
+    button.classList.add('active');
+}
+
+// // Activar el botón 1 al cargar la página
+// document.addEventListener('DOMContentLoaded', function() {
+//     activarBoton(1);
+// });
+
+function activarBoton(numero) {
+    // Encuentra el botón correspondiente y activa su color
+    const button = document.querySelector(`.paginas:nth-of-type(${parseInt(numero) + 1})`);
+    cambioColorBoton(button);
+}
+

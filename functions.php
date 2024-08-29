@@ -15,7 +15,6 @@ $passwordAdmin = $_POST["passwordAdmin"];
 
 
 // Variables de Formularios Taximetristas
-
 $KmInicialTaximetrista = $_POST["KmInicialTaximetrista"];
 $FechaJornadaTaximetrista = $_POST["FechaJornadaTaximetrista"];
 $NumeroDeCocheTaximetrista = $_POST["NumeroDeCocheTaximetrista"];
@@ -45,12 +44,21 @@ function ValidarAdmin($emailAdmin, $passwordAdmin)
 
 
 
-function envioFormUserTaxis($con, $FechaJornadaTaximetrista, $NumeroDeCocheTaximetrista)
+function envioFormUserTaxis($con, $KmInicialTaximetrista,$NumeroDeCocheTaximetrista)
 {
     $text = "<h4 class='text'>Cliente agregado con exito!</h4>";
-    $consulta_insertar_jornada_Taximetrista = "INSERT INTO 'jornada'('Km_Inicio', 'Km_Final', 'FK-Taxi') VALUES 
-    ('','[value-3]','[value-4]')";
+    $consulta_insertar_jornada_Taximetrista = "INSERT INTO `jornada` (`ID`, `Km_Inicio`, `Km_Final`, `Fecha`, `FK-Taxi`) VALUES 
+    ('NULL', '$KmInicialTaximetrista', 'NULL', 'current_timestamp()', '$NumeroDeCocheTaximetrista');";
 
+
+if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
+    echo $text;
+    // Mostrar los datos
+    // echo consultar_datos_Usuario($con);
+} else {
+    echo "Error al insertar datos: " . mysqli_error($con) . "<br>";
+    echo "Consulta: " . $consulta_insertar_jornada_Taximetrista . "<br>";
+}
 
 }
 

@@ -20,8 +20,8 @@
     <form action="" class="formulario">
         <p>Km inicial</p>
         <input type="number" placeholder="">
-        <p>Fecha</p>
-        <input type="date" placeholder="">
+        <!-- <p>Fecha</p>
+        <input type="date" placeholder=""> -->
         <p>Número de coche</p>
         <input type="text" placeholder="">
         <button>Submit</button>

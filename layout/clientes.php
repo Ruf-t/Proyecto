@@ -61,10 +61,10 @@
             <div class="div-cantidad-clientes">
                 <h3 class="total-clientes">Total de clientes: $5</h3>
                 <div class="div-paginas">
-                    <button class="paginas"><img src="../resources/img/Iconos-SVG/icons-others/flecha-menorque.svg"></button>
-                    <button class="paginas">1</button>
-                    <button class="paginas">2</button>
-                    <button class="paginas"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+                    <button class="pasar-paginas" onclick="activarBoton('1')"><img src="../resources/img/Iconos-SVG/icons-others/flecha-menorque.svg"></button>
+                    <button class="paginas active" onclick="cambioColorBoton(this)">1</button>
+                    <button class="paginas" >2</button>
+                    <button class="pasar-paginas" onclick="activarBoton('2')"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
                 </div>
             </div>
         </div>  
