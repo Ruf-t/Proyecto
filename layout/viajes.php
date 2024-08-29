@@ -5,21 +5,13 @@
         <?php
         include '../header.php';
         ?>
-        <div class="div-panel-administracion">
-            <h3>Panel de administracion</h3>
-            <div class="div-botones-administracion">
-                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-blue.svg">Ordenes Totales<img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-red.svg">Ganancias Totales<img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-orange.svg">Taxis<img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-            </div>
-        </div>
-        <!-- <div class="btn-select-turno">
+        <div class="btn-select-turno">
             <select>
                 <option value="" selected disabled>Selecciona un turno</option>
                 <option>Turno 1</option>
                 <option>Turno 2</option>
             </select>
-        </div> -->
+        </div>
         <div class="div-tabla-viajes">
             <table id="tabla-viajes">
                 <thead>

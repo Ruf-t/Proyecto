@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/resources/style.css">
+<link rel="stylesheet" href="../resources/style.css">
 
 <?php
     include 'header.php';

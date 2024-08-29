@@ -316,6 +316,7 @@ button:hover {
 }
 
 .header {
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -331,6 +332,7 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   gap: .7rem;
+  grid-row: 2/3;
 }
 
 .boton-add-cliente{
@@ -484,8 +486,9 @@ select{
 .btn-select-turno{
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content:center;
   width: 50%;
+  grid-row: 2/3;
 }
 
 /*? TABLA VIAJES */
@@ -541,6 +544,7 @@ select{
   align-items: center;
   justify-content: center;
   grid-column: 1/2;
+  grid-row: 3/4;
 }
 .tabla-clientes table {
   border-collapse: collapse;
@@ -598,7 +602,6 @@ select{
   background-color: #dddada;
 }
 
-
 .div-cantidad-clientes{
   display: flex;
   justify-content: space-between;
@@ -627,3 +630,77 @@ select{
   background-color: var(--colorAmarillo4);
   color: black;
 }
+
+/*Tabla Taximetristas*/
+.tabla-taximetristas {
+  width: 100%;
+  min-width: 1000px;
+  height: 100%;
+  min-height: 400px;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1/2;
+  grid-row: 3/4;
+}
+.tabla-taximetristas table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 1rem;
+  text-align: center;
+  width: 100%;
+}
+.columnas-tabla-taximetristas{
+  background-color: #f4f4f4;
+  height: 40px;
+}
+.tabla-taximetristas th:last-child, .tabla-taximetristas td:last-child {
+  border-right: none;
+}
+.tabla-taximetristas th button {
+  border-collapse: collapse;
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+  background-color: #f4f4f4;
+  border-radius: .2rem;
+  box-sizing: border-box;
+}
+.tabla-taximetristas th:nth-child(3), .tabla-taximetristas td:nth-child(3) {
+  width: 10rem;
+}
+.tabla-taximetristas th:nth-child(4), .tabla-taximetristas td:nth-child(4) {
+  width: 10rem;
+}
+.tabla-taximetristas th:nth-child(5), .tabla-taximetristas td:nth-child(5) {
+  width: 10rem;
+}
+.tabla-taximetristas .income {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.tabla-taximetristas, .tabla-taximetristas th, .tabla-taximetristas td {
+  border: none;
+}
+.boton-info{
+  background-color: white;
+  width: 40px;
+}
+.boton-info:hover{
+  background-color: #dddada;
+}
+
+.boton-papelera{
+  background-color: white;
+  width: 40px;
+}
+.boton-papelera:hover{
+  background-color: #dddada;
+}
+
+.div-cantidad-taximetristas{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
