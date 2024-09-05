@@ -42,6 +42,8 @@ if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
 }
 
 
+
+
 // Variables del Login Taximetrista
 
 
@@ -61,8 +63,8 @@ if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
     
     // 		require_once 'conexionBD.php';
     //   $conn = dbConnect();
-
-
+    
+    
     // $consulta = mysqli_query($conn, "SELECT * FROM  WHERE user = '$nombre' AND pass = '$password'");
 
     // if (!$consulta) {
@@ -72,11 +74,6 @@ if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
     // }
 // }
 
-
-    
-
-
-
 // function AgregarUsuario($con, $nombre, $apellido, $email, $password, $dirCalle, $dirNum)
 // {
 //     $text = "<h4 class='text'>Cliente agregado con exito!</h4>";
@@ -84,9 +81,9 @@ if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
 //     ('$nombre', '$password', '$dirCalle', '$apellido', '$email', '$dirNum')";
 
 //     if (mysqli_query($con, $consulta_insertar_user)) {
-//         echo $text;
-        // Mostrar los datos
-        // echo consultar_datos_Usuario($con);
+    //         echo $text;
+    // Mostrar los datos
+    // echo consultar_datos_Usuario($con);
 //     } else {
 //         echo "Error al insertar datos: " . mysqli_error($con) . "<br>";
 //         echo "Consulta: " . $consulta_insertar_user . "<br>";
@@ -94,8 +91,50 @@ if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
 // }
 
 
+// funcion inciar jornada
+function FormJornadaUserTaxis($con, $KmInicialTaximetrista,$NumeroDeCocheTaximetrista){
+    $text = "<h4 class='text'>Cliente agregado con exito!</h4>";
+    $consulta_insertar_jornada_Taximetrista = "INSERT INTO jornada (ID, Km_Inicio, Km_Final, Fecha, FK-Taxi) VALUES 
+    ('', '$KmInicialTaximetrista', Null, current_timestamp(), '$NumeroDeCocheTaximetrista');";
+
+if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
+    echo $text;
+    // Mostrar los datos
+    // echo consultar_datos_Usuario($con);
+} else {
+    echo "Error al insertar datos: " . mysqli_error($con) . "<br>";
+    echo "Consulta: " . $consulta_insertar_jornada_Taximetrista . "<br>";
+}
+}
 
 
+function datos_tabla_viaje($con) {
+    $consulta = "SELECT * FROM viaje";
+    $resultado = mysqli_query($con, $consulta);
 
+    if (!$resultado) {
+        echo "Error al ejecutar la consulta: " . mysqli_error($con);
+        return null;
+    }
+
+    $datos = array();
+    while ($fila = mysqli_fetch_array($resultado)) {
+        $datos[] = $fila;
+    }
+
+    return $datos;
+}
+
+
+// CREATE TABLE `viaje` (
+//     `ID` int(11) NOT NULL,
+//     `Tarifa` varchar(100) NOT NULL,
+//     `Método de pago` varchar(60) NOT NULL,
+//     `Fk_Taximetrista` int(11) NOT NULL,
+//     `Fk_Cliente_Registrado` int(11) NOT NULL,
+//     `Fk_Taxi` int(11) NOT NULL,
+//     `Fk_Jornada` int(11) NOT NULL,
+//     `Fk_Turno` int(11) NOT NULL
+//   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 

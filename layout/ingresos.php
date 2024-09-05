@@ -1,10 +1,78 @@
 <link rel="stylesheet" href="../resources/style.css">
 
-<?php
-    include 'header.php';
-?>
+<body id="body-home">
+    <main>
+        <?php
+        include '../header.php';
+        ?>
+        <div class="btn-select-filtro">
+            <p>Filtro</p>
+            <div class="selects">
+            <select>
+                <option value="" selected disabled>Fecha</option>
+                <option>Turno 1</option>
+                <option>Turno 2</option>
+            </select>
+            <select>
+                <option value="" selected disabled>Turno</option>
+                <option>Turno 1</option>
+                <option>Turno 2</option>
+            </select>
+            <button class="btn-aplicar-filtro">Aplicar filtro</button>
+            </div>
+        </div>
+        <div class="div-tabla-ingresos">
+            <table id="tabla-ingresos">
+                <thead>
+                    <tr>
+                        <th>N° Taxi</th>
+                        <th>Taxista</th>
+                        <th>Turnos</th>
+                        <th>Fecha</th>
+                        <th>Ingresos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Pepe</td>
+                    <td>Hoy</td>
+                    <td>9/05/2024</td>
+                    <td class="income">$420</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Pepe</td>
+                    <td>Hoy</td>
+                    <td>9/05/2024</td>
+                    <td class="income">$420</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Pepe</td>
+                    <td>Hoy</td>
+                    <td>9/05/2024</td>
+                    <td class="income">$420</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Pepe</td>
+                    <td>Hoy</td>
+                    <td>9/05/2024</td>
+                    <td class="income">$420</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Pepe</td>
+                    <td>Hoy</td>
+                    <td>9/05/2024</td>
+                    <td class="income">$420</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
 
-<body>
     <div class="sidebar-container">
         <div class="div-usuario">
             <h1 class="user-name">Usuario</h1>
@@ -13,30 +81,25 @@
         <div class="menu-container">
             <nav>
                 <a href="home.php" class="a-menu">
-                    <img src="/resources/img/Iconos-SVG/white/home.svg">Panel
+                    <img src="../resources/img/Iconos-SVG/white/home.svg">Panel
                 </a>
-                <a href="viajes.php" class="a-menu"><img src="/resources/img/Iconos-SVG/white/bookmark.svg">Viajes</a>
-                <a href="clientes.php" class="a-menu"><img src="/resources/img/Iconos-SVG/white/cliente.svg">Clientes</a>
-                <a href="taxistas.php" class="a-menu"><img src="/resources/img/Iconos-SVG/white/driver.svg">Taximetristas</a>
-                <a href="ingresos.php" class="a-menu"><img src="/resources/img/Iconos-SVG/white/ingresos.svg">Ingresos</a>
-                <a href="taxis.php" class="a-menu"><img src="/resources/img/Iconos-SVG/white/taxi.svg">Taxis</a>
+                <a href="viajes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/bookmark.svg">Viajes</a>
+                <a href="clientes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/cliente.svg">Clientes</a>
+                <a href="taxistas.php" class="a-menu"><img
+                        src="../resources/img/Iconos-SVG/white/driver.svg">Taximetristas</a>
+                <a href="ingresos.php" class="a-menu"><img
+                        src="../resources/img/Iconos-SVG/white/ingresos.svg">Ingresos</a>
+                <a href="taxis.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/taxi.svg">Taxis</a>
             </nav>
         </div>
         <div class="config-container">
             <nav>
-                <a href="configuracion.php" class="a-menu"><img src="/resources/img/Iconos-SVG/white/setting.svg">Configuracion</a>
-            </nav>    
+                <a href="configuracion.php" class="a-menu">
+                    <img src="../resources/img/Iconos-SVG/white/setting.svg">Configuracion</a>
+            </nav>
         </div>
     </div>
-    <main>
-        <header>
-            Hola, Usuario
-        </header>   
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores pariatur laboriosam debitis facere iure, reprehenderit blanditiis, consequatur fugit quam nam cupiditate non quae ab? Harum, rem. Eum eius impedit accusamus!</p>
-    </main>
-
-
-    <script src="/resources/script.js"></script>
+    
+    <script src="../resources/script.js"></script>
 </body>
-
 </html>
