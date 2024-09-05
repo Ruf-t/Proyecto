@@ -101,7 +101,7 @@
 } */
 
 /* Estilos existentes */
-#selectButton {
+.selectButton {
     width: 100%;
     background-color: var(--amarillo);
     background-color: #FFA500;

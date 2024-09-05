@@ -34,15 +34,21 @@ alinks.forEach(link => {
 });
 
 // ------HOME TAXIMETRISTA--------
-   // Obtener el botón y el contenedor de los elementos
-   const selectButton = document.getElementById('selectButton');
-   const formContainer = document.getElementById('formContainer');
+// Obtener todos los botones con la clase selectButton
+const buttons = document.querySelectorAll('.selectButton');
 
-   // Agregar un evento al botón
-   selectButton.addEventListener('click', function() {
-       // Alternar la visibilidad del contenedor
-       formContainer.classList.toggle('hidden');
-   });
+// Añadir un evento click a cada botón
+buttons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Obtener el id del contenedor objetivo desde el atributo data-target
+        const targetId = button.getAttribute('data-target');
+        const container = document.getElementById(targetId);
+        
+        // Alternar la visibilidad del contenedor
+        container.classList.toggle('hidden');
+    });
+});
+
 
 
 // --------Botones para cambiar páginas-----------
