@@ -2,17 +2,12 @@
 include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
 
 session_start();
-    if (!isset($_SESSION['user'])) {
+    if (!isset($_SESSION['userTaxi'])) {
         header("Location: index-Taximetrista.php");
         exit;
     }
-if (isset($_SESSION['usuario'])) {
-    echo "Bienvenido, " . $_SESSION['usuario'];
-} else {
-    // Si no hay sesión iniciada, redirigir al login
-    header("Location: login.php");
-}
 
+    $userTaxi = $_SESSION['userTaxi'];
 if (isset($_POST['KmInicialTaximetrista']) && isset($_POST['NumeroDeCocheTaximetrista'])) {
     // Obtener datos del formulario
     $KmInicialTaximetrista = $_POST["KmInicialTaximetrista"];
@@ -23,6 +18,13 @@ if (isset($_POST['KmInicialTaximetrista']) && isset($_POST['NumeroDeCocheTaximet
      // echo '<br>' . '<button class="form-button" id="back"><a href="index.php">Volver a la página principal</a></button>';
     // echo"</div>";
     // Llamar a la función para agregar usuario
+}
+if (isset($_POST['KmFinalTaximetrista'])) {
+    // Obtener datos del formulario
+    $KmFinalTaximetrista = $_POST["KmFinalTaximetrista"];
+
+    FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista);  
+
 }
 ?>
 
@@ -39,7 +41,10 @@ if (isset($_POST['KmInicialTaximetrista']) && isset($_POST['NumeroDeCocheTaximet
 </head>
 
 <body>
-    <h3>Jornada</h3>
+        <?php
+        include 'header-Taximetrista.php';
+        ?>
+    
     <!-- Botón select -->
     <button class="selectButton" data-target="formContainer1">Iniciar Jornada <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
     <!-- Contenedor de Iniciar Jornada -->

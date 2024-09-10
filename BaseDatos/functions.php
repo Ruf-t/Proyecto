@@ -22,9 +22,14 @@ function FormJornadaUserTaxis($con, $KmInicialTaximetrista, $NumeroDeCocheTaxime
     if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
         // Obtener el ID de la jornada recién insertada
         $id_jornada = mysqli_insert_id($con);
+        $id_numCocheTaxi = mysqli_insert_id($con);
         
         // Guardar el ID de la jornada en la sesión del usuario
         $_SESSION['id_jornada'] = $id_jornada;
+        $_SESSION['NumeroDeCocheTaximetrista'] = $NumeroDeCocheTaximetrista;
+        $_SESSION['KmInicialTaximetrista'] = $KmInicialTaximetrista;
+      
+
         
         echo "<h4 class='text'>Jornada iniciada con éxito! $id_jornada</h4>";
     } else {
@@ -33,10 +38,14 @@ function FormJornadaUserTaxis($con, $KmInicialTaximetrista, $NumeroDeCocheTaxime
     }
 }
 
-function FormInciarViajeUserTaxis($con, $CostoViajeTaximetrista,$MetodoDePagoTaximetrista,$ClienteViajeTaximetrista,$TaximetristaUser){
+function FormInciarViajeUserTaxis($con, $CostoViajeTaximetrista,$MetodoDePagoTaximetrista,$ClienteViajeTaximetrista,$TaximetristaUser,$NumeroDeCocheTaximetrista){
     $text = "<h4 class='text'>Cliente agregado con exito!</h4>";
-    $consulta_insertar_viaje_Taximetrista = "INSERT INTO `viaje`(`ID`, `Tarifa`, `Método de pago`, `Fk_Taximetrista`, `Fk_Cliente_Registrado`, `Fk_Taxi`, `Fk_Jornada`, `Fk_Turno`) VALUES
-     ('$CostoViajeTaximetrista','$MetodoDePagoTaximetrista','$TaximetristaUser','$ClienteViajeTaximetrista','','','','')";
+
+
+$consulta_insertar_viaje_Taximetrista = "INSERT INTO `viaje`(`ID`, `Tarifa`, `Método de pago`, `Fecha`, `Fk_Taximetrista`, `Fk_Cliente_Registrado`, `Fk_Taxi`, `Fk_Jornada`, `Fk_Turno`) VALUES
+     ('$CostoViajeTaximetrista','$MetodoDePagoTaximetrista','','$TaximetristaUser','$ClienteViajeTaximetrista','$NumeroDeCocheTaximetrista','','','')";
+
+
 
 if (mysqli_query($con, $consulta_insertar_viaje_Taximetrista)) {
     echo $text;
@@ -45,8 +54,32 @@ if (mysqli_query($con, $consulta_insertar_viaje_Taximetrista)) {
 } else {
     echo "Error al insertar datos: " . mysqli_error($con) . "<br>";
     echo "Consulta: " . $consulta_insertar_viaje_Taximetrista . "<br>";
+    }
 }
 
+
+function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista){
+   // Verificar si la sesión ya está iniciada
+   if (session_status() === PHP_SESSION_NONE) {
+    session_start(); // Iniciar la sesión solo si no está activa
+}
+    $text = "<h4 class='text'>Jornada Terminada</h4>";
+    $id_jornada = $_SESSION['id_jornada'];
+    $NumeroDeCocheTaximetrista = $_SESSION['NumeroDeCocheTaximetrista'];
+    $KmInicialTaximetrista = $_SESSION['KmInicialTaximetrista'];
+    
+    // Insertar la nueva jornada en la base de datos
+    $consulta_actualizar_jornada_Taximetrista = "UPDATE `jornada` SET `Km_Final`='$KmFinalTaximetrista', `Fecha`=current_timestamp() 
+    WHERE `ID`='$id_jornada' AND `FK-Taxi`='$NumeroDeCocheTaximetrista'";
+    
+
+    if (mysqli_query($con, $consulta_actualizar_jornada_Taximetrista)) {
+        // Obtener el ID de la jornada recién insertada
+        echo $text;
+    } else {
+        echo "Error al iniciar la jornada: " . mysqli_error($con) . "<br>";
+        echo "Consulta: " . $consulta_actualizar_jornada_Taximetrista . "<br>";
+    }
 }
 
 

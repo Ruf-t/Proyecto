@@ -2,17 +2,6 @@
 include("/xampp/htdocs/Proyecto/BaseDatos/register-BD.php");
 if (
     isset($_POST['envioRegisterTaximetrista'])
-    // isset($_POST['KmInicialTaximetrista']) && 
-    // isset($_POST['NumeroDeCocheTaximetrista']) && 
-    // isset($_POST['nombre']) && 
-    // isset($_POST['apellido']) && 
-    // isset($_POST['direccionTaximetrista']) && 
-    // isset($_POST['telTaxista']) && 
-    // isset($_POST['libretaConducir']) && 
-    // isset($_POST['vencimientoLibrCond']) && 
-    // isset($_POST['fechaNacTaximetrista']) && 
-    // isset($_POST['userTaxi']) && 
-    // isset($_POST['contraseniaTaxi'])
 ) {
     // Obtener datos del formulario
     $KmInicialTaximetrista = $_POST["KmInicialTaximetrista"];
