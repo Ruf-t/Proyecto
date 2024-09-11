@@ -4,6 +4,8 @@
     <main>
         <?php
         include '../header.php';
+        require_once 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
+        $datos_taxista = mostrar_datos_taxistas($con);
         ?>
         <div class="div-addCliente">
             <h1>Lista de Taximetristas</h1>
@@ -23,51 +25,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Sierra</td>
-                    <td>Ferguson</td>
-                    <td>9/5/1990</td>
-                    <td>6/02/2030</td>
-                    <td>Matutino</td>
-                    <td>092 612 202</td>
-                    <td><button class="boton-info"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="info"></button></td>
-                </tr>
-                <tr>
-                <td>Sierra</td>
-                    <td>Ferguson</td>
-                    <td>9/5/1990</td>
-                    <td>6/02/2030</td>
-                    <td>Matutino</td>
-                    <td>092 612 202</td>
-                    <td><button class="boton-info"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="info"></button></td>
-                </tr>
-                <tr>
-                <td>Sierra</td>
-                    <td>Ferguson</td>
-                    <td>9/5/1990</td>
-                    <td>6/02/2030</td>
-                    <td>Matutino</td>
-                    <td>092 612 202</td>
-                    <td><button class="boton-info"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="info"></button></td>
-                </tr>
-                <tr>
-                <td>Sierra</td>
-                    <td>Ferguson</td>
-                    <td>9/5/1990</td>
-                    <td>6/02/2030</td>
-                    <td>Matutino</td>
-                    <td>092 612 202</td>
-                    <td><button class="boton-info"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="info"></button></td>
-                </tr>
-                <tr>
-                <td>Sierra</td>
-                    <td>Ferguson</td>
-                    <td>9/5/1990</td>
-                    <td>6/02/2030</td>
-                    <td>Matutino</td>
-                    <td>092 612 202</td>
-                    <td><button class="boton-info"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="info"></button></td>
-                </tr>
+                <?php foreach ($datos_taxista as $fila) { ?>
+                        <tr>
+                            <td><?php echo $fila['ID']; ?></td>    
+                            <td><?php echo $fila['Fecha_Expiracion_Licencia']; ?></td>    
+                            <td><?php echo $fila['Fecha_Nacimiento']; ?></td>    
+                            <td><img src="../resources/img/Iconos-SVG/icons-others/edit.svg"></td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
             <div class="div-cantidad-taximetristas">

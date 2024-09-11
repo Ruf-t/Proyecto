@@ -108,14 +108,15 @@ if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
 }
 
 
+// funcion datos de tabla viajes
 function datos_tabla_viaje($con) {
-    $consulta = "SELECT * FROM viaje";
-    $resultado = mysqli_query($con, $consulta);
+    $consulta_datos_viaje = "SELECT viaje.*, taxi.numero_taxi, persona.Nombre
+                             FROM viaje
+                             INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID
+                             INNER JOIN cliente_registrado ON cliente_registrado.Fk_Persona = cliente_registrado.Fk_Persona
+                             INNER JOIN persona ON cliente_registrado.Fk_Persona = persona.ID";
 
-    if (!$resultado) {
-        echo "Error al ejecutar la consulta: " . mysqli_error($con);
-        return null;
-    }
+    $resultado = mysqli_query($con, $consulta_datos_viaje);
 
     $datos = array();
     while ($fila = mysqli_fetch_array($resultado)) {
@@ -125,16 +126,29 @@ function datos_tabla_viaje($con) {
     return $datos;
 }
 
+//función añadir clientes
+function mostrar_datos_cliente($con) {
+    $consulta_datos_cliente = "SELECT * FROM persona 
+                               JOIN cliente_registrado  ON persona.ID = cliente_registrado.Fk_Persona";
 
-// CREATE TABLE `viaje` (
-//     `ID` int(11) NOT NULL,
-//     `Tarifa` varchar(100) NOT NULL,
-//     `Método de pago` varchar(60) NOT NULL,
-//     `Fk_Taximetrista` int(11) NOT NULL,
-//     `Fk_Cliente_Registrado` int(11) NOT NULL,
-//     `Fk_Taxi` int(11) NOT NULL,
-//     `Fk_Jornada` int(11) NOT NULL,
-//     `Fk_Turno` int(11) NOT NULL
-//   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    $resultado_cliente = mysqli_query($con, $consulta_datos_cliente);
 
+    $datos_cliente = array();
+    while ($fila = mysqli_fetch_array($resultado_cliente)) {
+        $datos_cliente[] = $fila;
+    }
 
+    return $datos_cliente;
+}
+function mostrar_datos_taxistas($con) {
+    $consulta_datos_taxistas = "SELECT * FROM taximetrista";
+
+    $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);
+
+    $datos_taxistas = array();
+    while ($fila = mysqli_fetch_array($resultado_taxistas)) {
+        $datos_taxistas[] = $fila;
+    }
+
+    return $datos_taxistas;
+}

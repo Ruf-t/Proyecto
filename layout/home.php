@@ -4,6 +4,8 @@
     <main>
         <?php
         include '../header.php';
+        require_once 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
+        $datos_viaje = datos_tabla_viaje($con);
         ?>
         <div class="div-panel-administracion">
             <h3>Panel de administracion</h3>
@@ -36,20 +38,6 @@
                     <p class="num-taxistas-mes">+598 92112906</p>
                 </div>
             </div>
-            <div>
-                <img src="../resources/img/Logos-PNG/Avatar/A1.png">
-                <div>
-                    <p class="nombre-taxistas-mes">Tammy Spencer</p>
-                    <p class="num-taxistas-mes">+598 92112906</p>
-                </div>
-            </div>
-            <div>
-                <img src="../resources/img/Logos-PNG/Avatar/A3.png">
-                <div>
-                    <p class="nombre-taxistas-mes">Juan Steward</p>
-                    <p class="num-taxistas-mes">+598 92112906</p>
-                </div>
-            </div>
         </section>
         <div class="div-tabla-panel">
             <table id="table-panel">
@@ -59,52 +47,18 @@
                         <th>Taximetrista</th>
                         <th>Número de coche</th>
                         <th>Fecha Viaje</th>
-                        <th>Km Inicial</th>
-                        <th>Km Final</th>
                         <th>Ingreso</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
-                        <td>2023</td>
-                        <td>04.12.2021 20:30</td>
-                        <td>Km 120.000</td>
-                        <td>Km 120.050</td>
-                        <td class="income">$420</td>
-                    </tr>
-                    <tr>
-                        <td><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
-                        <td>2211</td>
-                        <td>04.12.2021 20:24</td>
-                        <td>Km 32.000</td>
-                        <td>Km 32.023</td>
-                        <td class="income">$240</td>
-                    </tr>
-                    <tr>
-                        <td><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
-                        <td>4647</td>
-                        <td>04.12.2021 20:23</td>
-                        <td>Km 450.000</td>
-                        <td>Km 450.120</td>
-                        <td class="income">$1020</td>
-                    </tr>
-                    <tr>
-                        <td><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
-                        <td>2637</td>
-                        <td>17.11.2021 12:19</td>
-                        <td>Km 362.757</td>
-                        <td>Km 362.780</td>
-                        <td class="income">$300</td>
-                    </tr>
-                    <tr>
-                        <td><span class="name">Sierra Ferguson<br><small>+998 (93) 486-46-15</small></span></td>
-                        <td>3002</td>
-                        <td>04.12.2021 20:30</td>
-                        <td>Km 23.899</td>
-                        <td>Km 23.920</td>
-                        <td class="income">$270</td>
-                    </tr>
+                    <?php foreach ($datos_viaje as $fila) { ?>
+                        <tr>
+                            <td><?php echo $fila['Nombre']; ?></td>    
+                            <td><?php echo $fila['numero_taxi']; ?></td>    
+                            <td><?php echo $fila['Fecha']; ?></td>    
+                            <td><?php echo $fila['Tarifa']; ?></td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

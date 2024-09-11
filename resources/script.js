@@ -61,14 +61,36 @@ function cambioColorBoton(button) {
     button.classList.add('active');
 }
 
-// // Activar el botón 1 al cargar la página
-// document.addEventListener('DOMContentLoaded', function() {
-//     activarBoton(1);
-// });
-
 function activarBoton(numero) {
     // Encuentra el botón correspondiente y activa su color
     const button = document.querySelector(`.paginas:nth-of-type(${parseInt(numero) + 1})`);
     cambioColorBoton(button);
 }
+
+
+// --------Botones para desplegar el popup-----------
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Obtener elementos del DOM
+    const botonAbrir = document.getElementById('abrir-popup');
+    const popup = document.getElementById('popup');
+    const botonCerrar = document.getElementById('cerrar-popup');
+
+    // Mostrar el popup cuando se hace clic en el botón "Abrir Formulario"
+    botonAbrir.addEventListener('click', () => {
+        popup.classList.remove('oculto');
+    });
+
+    // Cerrar el popup cuando se hace clic en la "X"
+    botonCerrar.addEventListener('click', () => {
+        popup.classList.add('oculto');
+    });
+
+    // Cerrar el popup si se hace clic fuera del contenido del popup
+    window.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.classList.add('oculto');
+        }
+    });
+});
 
