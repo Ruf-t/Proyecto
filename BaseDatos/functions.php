@@ -12,46 +12,42 @@ if (!$con) {
     die("Error de conexión: " . mysqli_connect_error());
 }
 
-// Procesar el formulario de añadir usuario
-// if (isset($_POST['KmInicialTaximetrista']) && isset($_POST['NumeroDeCocheTaximetrista'])) {
-//     // Obtener datos del formulario
-//     $KmInicialTaximetrista = $_POST["KmInicialTaximetrista"];
-//     $NumeroDeCocheTaximetrista = $_POST["NumeroDeCocheTaximetrista"];   
 
-//     // echo '<div class="container">'; 
-// envioFormUserTaxis($con,$KmInicialTaximetrista,$NumeroDeCocheTaximetrista);   // echo '<br>' . '<button class="form-button" id="back"><a href="index.php">Volver a la página principal</a></button>';
-//     // echo"</div>";
-//     // Llamar a la función para agregar usuario
-// }
+function FormJornadaUserTaxis($con, $KmInicialTaximetrista, $NumeroDeCocheTaximetrista) {
+    session_start(); // Iniciar la sesión
+    // Insertar la nueva jornada en la base de datos
+    $consulta_insertar_jornada_Taximetrista = "INSERT INTO `jornada` (`Km_Inicio`, `Km_Final`, `Fecha`, `FK-Taxi`) 
+    VALUES ('$KmInicialTaximetrista', NULL, current_timestamp(), '$NumeroDeCocheTaximetrista')";
 
+    if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
+        // Obtener el ID de la jornada recién insertada
+        $id_jornada = mysqli_insert_id($con);
+        
+        // Guardar el ID de la jornada en la sesión del usuario
+        $_SESSION['id_jornada'] = $id_jornada;
+        
+        echo "<h4 class='text'>Jornada iniciada con éxito! $id_jornada</h4>";
+    } else {
+        echo "Error al iniciar la jornada: " . mysqli_error($con) . "<br>";
+        echo "Consulta: " . $consulta_insertar_jornada_Taximetrista . "<br>";
+    }
+}
 
-function envioFormUserTaxis($con, $KmInicialTaximetrista,$NumeroDeCocheTaximetrista){
+function FormInciarViajeUserTaxis($con, $CostoViajeTaximetrista,$MetodoDePagoTaximetrista,$ClienteViajeTaximetrista,$TaximetristaUser){
     $text = "<h4 class='text'>Cliente agregado con exito!</h4>";
-    $consulta_insertar_jornada_Taximetrista = "INSERT INTO `jornada` (`ID`, `Km_Inicio`, `Km_Final`, `Fecha`, `FK-Taxi`) VALUES 
-    ('', '$KmInicialTaximetrista', Null, current_timestamp(), '$NumeroDeCocheTaximetrista');";
+    $consulta_insertar_viaje_Taximetrista = "INSERT INTO `viaje`(`ID`, `Tarifa`, `Método de pago`, `Fk_Taximetrista`, `Fk_Cliente_Registrado`, `Fk_Taxi`, `Fk_Jornada`, `Fk_Turno`) VALUES
+     ('$CostoViajeTaximetrista','$MetodoDePagoTaximetrista','$TaximetristaUser','$ClienteViajeTaximetrista','','','','')";
 
-if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
+if (mysqli_query($con, $consulta_insertar_viaje_Taximetrista)) {
     echo $text;
     // Mostrar los datos
     // echo consultar_datos_Usuario($con);
 } else {
     echo "Error al insertar datos: " . mysqli_error($con) . "<br>";
-    echo "Consulta: " . $consulta_insertar_jornada_Taximetrista . "<br>";
+    echo "Consulta: " . $consulta_insertar_viaje_Taximetrista . "<br>";
 }
 
 }
-
-
-
-
-// Variables del Login Taximetrista
-
-
-// Variables de Formularios Taximetristas
-// $KmInicialTaximetrista = $_POST["KmInicialTaximetrista"];
-// $FechaJornadaTaximetrista = $_POST["FechaJornadaTaximetrista"];
-// $NumeroDeCocheTaximetrista = $_POST["NumeroDeCocheTaximetrista"];
-
 
 
 
@@ -92,10 +88,10 @@ if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
 
 
 // funcion inciar jornada
-function FormJornadaUserTaxis($con, $KmInicialTaximetrista,$NumeroDeCocheTaximetrista){
-    $text = "<h4 class='text'>Cliente agregado con exito!</h4>";
-    $consulta_insertar_jornada_Taximetrista = "INSERT INTO jornada (ID, Km_Inicio, Km_Final, Fecha, FK-Taxi) VALUES 
-    ('', '$KmInicialTaximetrista', Null, current_timestamp(), '$NumeroDeCocheTaximetrista');";
+// function FormJornadaUserTaxis($con, $KmInicialTaximetrista,$NumeroDeCocheTaximetrista){
+//     $text = "<h4 class='text'>Cliente agregado con exito!</h4>";
+//     $consulta_insertar_jornada_Taximetrista = "INSERT INTO jornada (ID, Km_Inicio, Km_Final, Fecha, FK-Taxi) VALUES 
+//     ('', '$KmInicialTaximetrista', Null, current_timestamp(), '$NumeroDeCocheTaximetrista');";
 
 if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
     echo $text;
@@ -105,18 +101,17 @@ if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
     echo "Error al insertar datos: " . mysqli_error($con) . "<br>";
     echo "Consulta: " . $consulta_insertar_jornada_Taximetrista . "<br>";
 }
-}
 
 
-// funcion datos de tabla viajes
+
 function datos_tabla_viaje($con) {
-    $consulta_datos_viaje = "SELECT viaje.*, taxi.numero_taxi, persona.Nombre
-                             FROM viaje
-                             INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID
-                             INNER JOIN cliente_registrado ON cliente_registrado.Fk_Persona = cliente_registrado.Fk_Persona
-                             INNER JOIN persona ON cliente_registrado.Fk_Persona = persona.ID";
+    $consulta = "SELECT * FROM viaje";
+    $resultado = mysqli_query($con, $consulta);
 
-    $resultado = mysqli_query($con, $consulta_datos_viaje);
+    if (!$resultado) {
+        echo "Error al ejecutar la consulta: " . mysqli_error($con);
+        return null;
+    }
 
     $datos = array();
     while ($fila = mysqli_fetch_array($resultado)) {
