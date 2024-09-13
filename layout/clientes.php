@@ -11,31 +11,26 @@
 
         <div class="div-addCliente">
             <h1>Clientes</h1>
-            <button id="abrir-popup" class="boton-add-cliente">Añadir cliente</button>
+            <button id="btn-abrir-modal" class="boton-add-cliente">Añadir cliente</button>
         </div>
-
-        <!-- Popup (Modal) -->
-        <div id="popup" class="oculto">
-            <div class="popup-contenido">
-                <span id="cerrar-popup" class="cerrar">&times;</span>
-                <h2>Formulario</h2>
-                <form action="#" method="post">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required>
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-
-                    <label for="telefono">Teléfono:</label>
-                    <input type="tel" id="telefono" name="telefono" required>
-
-                    <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" required></textarea>
-
-                    <button type="submit">Enviar</button>
-                </form>
+        
+        
+        <dialog id="modal">
+            <div>
+                <h2>Agregar Nuevo Cliente</h2>
             </div>
-        </div>
+            <form id="formulario" method="post">
+                <label>Tu nombre<input type="text" name="nombre"></label>
+
+                <label>Tu correo<input type="email" name="correo"></label>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quasi incidunt ratione natus nostrum? Natus quas distinctio impedit voluptates numquam hic quia odit, veritatis tempora nostrum dicta laborum, et maiores!</p>
+
+                <button type="submit">Enviar</button>
+                <button id="btn-cerrar-modal" type="button">Cerrar modal</button>
+            </form>
+        </dialog>
+        
 
         <div class="tabla-clientes">
             <table>

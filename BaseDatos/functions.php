@@ -93,35 +93,21 @@ if (mysqli_query($con, $consulta_insertar_viaje_Taximetrista)) {
 //     $consulta_insertar_jornada_Taximetrista = "INSERT INTO jornada (ID, Km_Inicio, Km_Final, Fecha, FK-Taxi) VALUES 
 //     ('', '$KmInicialTaximetrista', Null, current_timestamp(), '$NumeroDeCocheTaximetrista');";
 
-if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
-    echo $text;
-    // Mostrar los datos
-    // echo consultar_datos_Usuario($con);
-} else {
-    echo "Error al insertar datos: " . mysqli_error($con) . "<br>";
-    echo "Consulta: " . $consulta_insertar_jornada_Taximetrista . "<br>";
-}
 
 
 
-function datos_tabla_viaje($con) {
-    $consulta = "SELECT * FROM viaje";
-    $resultado = mysqli_query($con, $consulta);
 
-    if (!$resultado) {
-        echo "Error al ejecutar la consulta: " . mysqli_error($con);
-        return null;
-    }
 
-    $datos = array();
-    while ($fila = mysqli_fetch_array($resultado)) {
-        $datos[] = $fila;
-    }
+// if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
+//     echo $text;
+//     // Mostrar los datos
+//     // echo consultar_datos_Usuario($con);
+// } else {
+//     echo "Error al insertar datos: " . mysqli_error($con) . "<br>";
+//     echo "Consulta: " . $consulta_insertar_jornada_Taximetrista . "<br>";
+// }
 
-    return $datos;
-}
-
-//función añadir clientes
+//función mostrar clientes
 function mostrar_datos_cliente($con) {
     $consulta_datos_cliente = "SELECT * FROM persona 
                                JOIN cliente_registrado  ON persona.ID = cliente_registrado.Fk_Persona";
@@ -135,6 +121,8 @@ function mostrar_datos_cliente($con) {
 
     return $datos_cliente;
 }
+
+// funcion mostrar taxistas
 function mostrar_datos_taxistas($con) {
     $consulta_datos_taxistas = "SELECT * FROM taximetrista";
 
@@ -147,3 +135,23 @@ function mostrar_datos_taxistas($con) {
 
     return $datos_taxistas;
 }
+
+// funcion mostrar viajes
+function datos_tabla_viaje($con) {
+    $consulta_datos_viaje = "SELECT viaje.*, taxi.numero_taxi, persona.Nombre
+                             FROM viaje
+                             INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID
+                             INNER JOIN cliente_registrado ON cliente_registrado.Fk_Persona = cliente_registrado.Fk_Persona
+                             INNER JOIN persona ON cliente_registrado.Fk_Persona = persona.ID";
+
+    $resultado = mysqli_query($con, $consulta_datos_viaje);
+
+    $datos = array();
+    while ($fila = mysqli_fetch_array($resultado)) {
+        $datos[] = $fila;
+    }
+
+    return $datos;
+}
+
+

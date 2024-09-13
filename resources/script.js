@@ -74,29 +74,39 @@ function activarBoton(numero) {
 }
 
 
-// --------Botones para desplegar el popup-----------
+// --------DESPLEGAR MODAL-----------
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Obtener elementos del DOM
-    const botonAbrir = document.getElementById('abrir-popup');
-    const popup = document.getElementById('popup');
-    const botonCerrar = document.getElementById('cerrar-popup');
+const btnAbrirModal = document.getElementById('btn-abrir-modal');
+const btnCerrarModal = document.getElementById('btn-cerrar-modal');
+const modal = document.getElementById('modal');
+const formulario = document.getElementById('formulario');
 
-    // Mostrar el popup cuando se hace clic en el botón "Abrir Formulario"
-    botonAbrir.addEventListener('click', () => {
-        popup.classList.remove('oculto');
-    });
+btnAbrirModal.addEventListener('click', () => {
+    modal.showModal();
+});
 
-    // Cerrar el popup cuando se hace clic en la "X"
-    botonCerrar.addEventListener('click', () => {
-        popup.classList.add('oculto');
-    });
+btnCerrarModal.addEventListener('click', () => {
+    modal.close();
+});
 
-    // Cerrar el popup si se hace clic fuera del contenido del popup
-    window.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            popup.classList.add('oculto');
-        }
+// Prevenir que el modal se cierre automáticamente y hacer el POST manualmente
+formulario.addEventListener('submit', (event) => {
+    event.preventDefault(); // Evita el cierre automático
+
+    const formData = new FormData(formulario);
+
+    // Puedes realizar la lógica para enviar los datos aquí, por ejemplo, usando fetch
+    fetch('ruta_a_tu_archivo.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        modal.close(); // Cerrar modal manualmente después de enviar
+    })
+    .catch(error => {
+        console.error('Error:', error);
     });
 });
 
