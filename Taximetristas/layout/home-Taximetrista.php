@@ -8,24 +8,44 @@ session_start();
     }
 
     $userTaxi = $_SESSION['userTaxi'];
-if (isset($_POST['KmInicialTaximetrista']) && isset($_POST['NumeroDeCocheTaximetrista'])) {
-    // Obtener datos del formulario
-    $KmInicialTaximetrista = $_POST["KmInicialTaximetrista"];
-    $NumeroDeCocheTaximetrista = $_POST["NumeroDeCocheTaximetrista"];   
 
-    // echo '<div class="container">'; 
-    FormJornadaUserTaxis($con,$KmInicialTaximetrista,$NumeroDeCocheTaximetrista);  
-     // echo '<br>' . '<button class="form-button" id="back"><a href="index.php">Volver a la página principal</a></button>';
-    // echo"</div>";
-    // Llamar a la función para agregar usuario
-}
-if (isset($_POST['KmFinalTaximetrista'])) {
-    // Obtener datos del formulario
-    $KmFinalTaximetrista = $_POST["KmFinalTaximetrista"];
 
-    FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista);  
+    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['envioIniciarJornadaTaximetrista'])) {
+            // Obtener datos del formulario
+            $KmInicialTaximetrista = $_POST['KmInicialTaximetrista'];
+            $NumeroDeCocheTaximetrista = $_POST['NumeroDeCocheTaximetrista'];
 
-}
+            FormJornadaUserTaxis($con, $KmInicialTaximetrista, $NumeroDeCocheTaximetrista);
+        } 
+
+        if (isset($_POST['envioViajeTaximetrista'])) {
+            // Obtener datos del formulario
+            $CostoViajeTaximetrista = $_POST['CostoViajeTaximetrista'];
+            $MetodoDePagoTaximetrista = $_POST['MetodoDePagoTaximetrista'];
+            $ClienteViajeTaximetrista = $_POST['ClienteViajeTaximetrista'];
+            $TaximetristaUser = $_SESSION['userTaxi'];
+            // $NumeroDeCocheTaximetrista = $_SESSION['NumeroDeCocheTaximetrista'];
+
+
+            FormInciarViajeUserTaxis($con, $CostoViajeTaximetrista,$MetodoDePagoTaximetrista,$ClienteViajeTaximetrista,$TaximetristaUser);
+        }    
+        
+        if (isset($_POST['envioFinalizarJornadaTaximetrista'])) {
+            // Obtener datos del formulario
+            $KmFinalTaximetrista = $_POST['KmFinalTaximetrista'];
+            $CostoViajeTaximetrista = $_POST['CostoViajeTaximetrista'];
+            $MetodoDePagoTaximetrista = $_POST['MetodoDePagoTaximetrista'];
+            $ClienteViajeTaximetrista = $_POST['ClienteViajeTaximetrista'];
+            $TaximetristaUser = $_SESSION['userTaxi'];
+            // $NumeroDeCocheTaximetrista = $_POST['NumeroDeCocheTaximet';
+            FormTerminarJornadaUserTaxis($con, $CostoViajeTaximetrista, $MetodoDePagoTaximetrista, $ClienteViajeTaximetrista, $TaximetristaUser, $KmFinalTaximetrista);
+        }
+    // }
+
+
+
+
 ?>
 
 
@@ -55,13 +75,25 @@ if (isset($_POST['KmFinalTaximetrista'])) {
         <!-- <p>Fecha</p>
         <input type="date" placeholder=""> -->
         <p>Número de coche</p>
-        <input type="text" name="NumeroDeCocheTaximetrista" id="NumeroDeCocheTaximetrista"  placeholder="">
-        <button>Guardar</button>
+        <!-- <input type="text" name="NumeroDeCocheTaximetrista" id="NumeroDeCocheTaximetrista"  placeholder=""> -->
+        <?php $matriculas = obtenerMatrículasTaxis($con);?>
+
+        <label for="NumeroDeCocheTaximetrista">Selecciona la matrícula del taxi:</label>
+        <select name="NumeroDeCocheTaximetrista" id="NumeroDeCocheTaximetrista" required>
+            <option value="">--Selecciona una matrícula--</option>
+            <?php foreach ($matriculas as $matricula): ?>
+                <option value="<?php echo $matricula['ID']; ?>">
+                    <?php echo $matricula['Matricula']; ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+
+        <button type="submit" name="envioIniciarJornadaTaximetrista">Guardar</button>
     </form>    
     </div>
 
 
-    <button class="selectButton" data-target="formContainer2">Iniciar viaje <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
+    <button class="selectButton" data-target="formContainer2">Iniciar viaje<img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
     <!-- Contenedor de Iniciar Viaje -->
     <div id="formContainer2" class="hidden">
     <form action="home-Taximetrista.php" method="post" class="formulario">
@@ -76,8 +108,18 @@ if (isset($_POST['KmFinalTaximetrista'])) {
         <option value="otros">Otros</option>
     </select>
     <p>Ingresa el nombre del cliente (Si es que esta registrado)</p>
-    <input type="text" name="ClienteViajeTaximetrista" id="ClienteViajeTaximetrista" placeholder="">
-        <button>Guardar</button>
+    <select name="ClienteViajeTaximetrista" id="ClienteViajeTaximetrista" required>
+    <option value="">--Selecciona un cliente--</option>
+   
+    <?php $clientes = obtenerClientesRegistrados($con); 
+    foreach ($clientes as $cliente): ?>
+        <option value="<?php echo $cliente['ClienteID']; ?>">
+            <?php echo $cliente['Nombre']; ?>
+        </option>
+    <?php endforeach; ?>
+</select>
+        
+    <button type="submit" name="envioViajeTaximetrista">Guardar</button>
     </form>    
     </div>
 
@@ -89,7 +131,7 @@ if (isset($_POST['KmFinalTaximetrista'])) {
     <form action="home-Taximetrista.php" method="post" class="formulario">
         <p>Km final</p>
         <input type="number" name="KmFinalTaximetrista" id="KmFinalTaximetrista" placeholder="Ingresa el Km final de la jornada">
-        <button>Guardar</button>
+        <button type="submit" name="envioFinalizarJornadaTaximetrista">Guardar</button>
     </form>    
     </div>
 

@@ -1,8 +1,8 @@
 <?php    
-    // if (!isset($_SESSION['user'])) {
-    //     header("Location: index.php");
-    //     exit;
-    // }
+    if (!isset($_SESSION['user'])) {
+        header("Location: index.php");
+        exit;
+    }
 ?>
 <div class="header">
     <div class="nombre-usuario">
