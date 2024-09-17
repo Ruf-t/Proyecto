@@ -6,11 +6,8 @@ session_start();
         header("Location: index-Taximetrista.php");
         exit;
     }
-
     $userTaxi = $_SESSION['userTaxi'];
 
-
-    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['envioIniciarJornadaTaximetrista'])) {
             // Obtener datos del formulario
             $KmInicialTaximetrista = $_POST['KmInicialTaximetrista'];
@@ -34,17 +31,10 @@ session_start();
         if (isset($_POST['envioFinalizarJornadaTaximetrista'])) {
             // Obtener datos del formulario
             $KmFinalTaximetrista = $_POST['KmFinalTaximetrista'];
-            $CostoViajeTaximetrista = $_POST['CostoViajeTaximetrista'];
-            $MetodoDePagoTaximetrista = $_POST['MetodoDePagoTaximetrista'];
-            $ClienteViajeTaximetrista = $_POST['ClienteViajeTaximetrista'];
             $TaximetristaUser = $_SESSION['userTaxi'];
             // $NumeroDeCocheTaximetrista = $_POST['NumeroDeCocheTaximet';
-            FormTerminarJornadaUserTaxis($con, $CostoViajeTaximetrista, $MetodoDePagoTaximetrista, $ClienteViajeTaximetrista, $TaximetristaUser, $KmFinalTaximetrista);
+            FormTerminarJornadaUserTaxis($con, $TaximetristaUser, $KmFinalTaximetrista);
         }
-    // }
-
-
-
 
 ?>
 
@@ -71,11 +61,8 @@ session_start();
     <div id="formContainer1" class="hidden">
     <form action="home-Taximetrista.php" method="post" class="formulario">
         <p>Km inicial</p>
-        <input type="number" name="KmInicialTaximetrista" id="KmInicialTaximetrista" placeholder="">
-        <!-- <p>Fecha</p>
-        <input type="date" placeholder=""> -->
+        <input type="number" name="KmInicialTaximetrista" id="KmInicialTaximetrista" placeholder="" required>
         <p>Número de coche</p>
-        <!-- <input type="text" name="NumeroDeCocheTaximetrista" id="NumeroDeCocheTaximetrista"  placeholder=""> -->
         <?php $matriculas = obtenerMatrículasTaxis($con);?>
 
         <label for="NumeroDeCocheTaximetrista">Selecciona la matrícula del taxi:</label>
@@ -98,26 +85,27 @@ session_start();
     <div id="formContainer2" class="hidden">
     <form action="home-Taximetrista.php" method="post" class="formulario">
         <p>Costo</p>
-        <input type="number" name="CostoViajeTaximetrista" id="CostoViajeTaximetrista" placeholder="">
+        <input type="number" name="CostoViajeTaximetrista" id="CostoViajeTaximetrista" placeholder="" required>
         <p>Metodo de pago</p>
-        <select name="MetodoDePagoTaximetrista" id="MetodoDePagoTaximetrista">
+        <select name="MetodoDePagoTaximetrista" id="MetodoDePagoTaximetrista" required>
         <option value="">Seleccione un método de pago</option>
         <option value="efectivo">Efectivo</option>
         <option value="tarjeta">Tarjeta</option>
         <option value="transferencia">Transferencia bancaria</option>
-        <option value="otros">Otros</option>
     </select>
     <p>Ingresa el nombre del cliente (Si es que esta registrado)</p>
-    <select name="ClienteViajeTaximetrista" id="ClienteViajeTaximetrista" required>
+    <select name="ClienteViajeTaximetrista" id="ClienteViajeTaximetrista" >
     <option value="">--Selecciona un cliente--</option>
-   
-    <?php $clientes = obtenerClientesRegistrados($con); 
+    
+    <?php 
+    $clientes = obtenerClientesRegistrados($con); 
     foreach ($clientes as $cliente): ?>
         <option value="<?php echo $cliente['ClienteID']; ?>">
             <?php echo $cliente['Nombre']; ?>
         </option>
     <?php endforeach; ?>
 </select>
+
         
     <button type="submit" name="envioViajeTaximetrista">Guardar</button>
     </form>    
@@ -130,7 +118,7 @@ session_start();
     <div id="formContainer3" class="hidden">
     <form action="home-Taximetrista.php" method="post" class="formulario">
         <p>Km final</p>
-        <input type="number" name="KmFinalTaximetrista" id="KmFinalTaximetrista" placeholder="Ingresa el Km final de la jornada">
+        <input type="number" name="KmFinalTaximetrista" id="KmFinalTaximetrista" placeholder="Ingresa el Km final de la jornada" required>
         <button type="submit" name="envioFinalizarJornadaTaximetrista">Guardar</button>
     </form>    
     </div>

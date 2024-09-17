@@ -36,10 +36,17 @@ function FormJornadaUserTaxis($con, $KmInicialTaximetrista, $NumeroDeCocheTaxime
 
 
 
-
 function FormInciarViajeUserTaxis($con, $CostoViajeTaximetrista, $MetodoDePagoTaximetrista, $ClienteViajeTaximetrista, $NumeroDeCocheTaximetrista) {
-    $ClienteViajeTaximetrista = obtenerClientesRegistrados($con);
-    // Recuperar el nombre de usuario, el numero de coche de taximetrista y la id de la jornada desde la sesión
+    // verifica si el taximetrista puso un cliente, si no lo puso iguala la variable en null
+    if (empty($ClienteViajeTaximetrista)) {
+        $ClienteViajeTaximetrista = "NULL";  
+    } else {
+        // se usa esto para limpiar cualquier parametro por seguridad y asi prevenir inyeccion sql
+        $ClienteViajeTaximetrista = "'" . mysqli_real_escape_string($con, $ClienteViajeTaximetrista) . "'";
+
+    }
+
+    // Recuperar el nombre de usuario, el número de coche del taximetrista y la ID de la jornada desde la sesión
     $userTaxi = $_SESSION['userTaxi'];
     $NumeroDeCocheTaximetrista = $_SESSION['NumeroDeCocheTaximetrista'];
     $id_jornada = $_SESSION['id_jornada'];
@@ -48,26 +55,25 @@ function FormInciarViajeUserTaxis($con, $CostoViajeTaximetrista, $MetodoDePagoTa
     $consulta_obtener_id_taximetrista = "SELECT ID FROM taximetrista WHERE Usuario = '$userTaxi'";
     $resultado = mysqli_query($con, $consulta_obtener_id_taximetrista);
 
-
     if (mysqli_num_rows($resultado) > 0) {
         $fila = mysqli_fetch_assoc($resultado);
         $id_taximetrista = $fila['ID']; // El ID del taximetrista
-            
-            // Consulta para insertar el viaje en la tabla 'viaje'
-            $consulta_insertar_viaje_Taximetrista = "INSERT INTO `viaje` (`ID`, `Tarifa`, `Método de pago`, `Fecha`, `Fk_Taximetrista`, `Fk_Cliente_Registrado`, `Fk_Taxi`, `Fk_Jornada`, `Fk_Turno`) 
-            VALUES (NULL, '$CostoViajeTaximetrista', '$MetodoDePagoTaximetrista', current_timestamp(), '$id_taximetrista', '$ClienteViajeTaximetrista', '$NumeroDeCocheTaximetrista', '$id_jornada', NULL)";
-    
-            if (mysqli_query($con, $consulta_insertar_viaje_Taximetrista)) {
-                echo "<h4 class='text'>anduvo</h4>";
-            } else {
-                echo "Error al insertar datos: " . mysqli_error($con) . "<br>";
-                echo "Consulta: " . $consulta_insertar_viaje_Taximetrista . "<br>";
-            }
+
+        // Insertar el viaje en la tabla 'viaje'
+        $consulta_insertar_viaje_Taximetrista = "INSERT INTO `viaje` (`ID`, `Tarifa`, `Método de pago`, `Fecha`, `Fk_Taximetrista`, `Fk_Cliente_Registrado`, `Fk_Taxi`, `Fk_Jornada`, `Fk_Turno`) 
+            VALUES (NULL, '$CostoViajeTaximetrista', '$MetodoDePagoTaximetrista', current_timestamp(), '$id_taximetrista', $ClienteViajeTaximetrista, '$NumeroDeCocheTaximetrista', '$id_jornada', NULL)";
+        
+        if (mysqli_query($con, $consulta_insertar_viaje_Taximetrista)) {
+            echo "<h4 class='text'>El viaje fue registrado exitosamente.</h4>";
         } else {
-            echo "Error uno: No se encontró el taxi con el identificador '$NumeroDeCocheTaximetrista'.";
+            echo "Error al insertar datos: " . mysqli_error($con) . "<br>";
+            echo "Consulta: " . $consulta_insertar_viaje_Taximetrista . "<br>";
         }
-  
+    } else {
+        echo "Error: No se encontró el taximetrista con el usuario '$userTaxi'.";
     }
+}
+
 
 
 
@@ -176,20 +182,20 @@ function obtenerMatrículasTaxis($con) {
 
 
 function obtenerClientesRegistrados($con) {
-    // Consulta SQL para obtener los nombres y los IDs de los clientes registrados
-    $consulta = "SELECT cliente_registrado.ID AS ClienteID, persona.Nombre 
+    // Consulta SQL para obtener el ID del cliente registrado y su nombre
+    $sql = "SELECT cliente_registrado.ID AS ClienteID, persona.Nombre 
             FROM cliente_registrado
             JOIN persona ON cliente_registrado.Fk_Persona = persona.ID";
     
-    $result = mysqli_query($con, $consulta);
+    $result = mysqli_query($con, $sql);
 
     if ($result && mysqli_num_rows($result) > 0) {
         // Crear un array para almacenar los resultados
         $clientes = [];
 
         // Obtener cada fila y guardarla en el array
-        while ($fila_clientes = mysqli_fetch_assoc($result)) {
-            $clientes[] = $fila_clientes;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $clientes[] = $row;
         }
 
         return $clientes;

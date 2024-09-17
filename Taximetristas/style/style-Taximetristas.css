@@ -102,11 +102,15 @@
 
 /* Estilos existentes */
 .selectButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     background-color: var(--amarillo);
     background-color: #FFA500;
     border-color: #FFA500;
     border-radius: 5px;
+    margin-bottom: 10px ;
 }
 
 .hidden {
@@ -120,6 +124,8 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 10px; /* Padding general para todo el formulario */
+    margin-top: -10px;
+
 }
 
 /* Aplica padding específicamente a los elementos p e input */
@@ -199,5 +205,17 @@ p{
 /* HEADER - TAXIMETRISTA*/
 
 header{
+    margin: 0;
+    padding: 0;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button{
+        margin: 0;
+        padding: 0;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
 }
