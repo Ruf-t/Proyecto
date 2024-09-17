@@ -1,3 +1,10 @@
+<?php
+session_start();
+    if (!isset($_SESSION['user'])) {
+        header("Location: ../Register-Login/index.php");
+        exit;
+    }
+?>
 <html lang="es">
 <link rel="stylesheet" href="../resources/style.css">
 

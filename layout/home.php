@@ -1,11 +1,18 @@
+<?php
+session_start();
+    if (!isset($_SESSION['user'])) {
+        header("Location: ../Register-Login/index.php");
+        exit;
+    }
+?>
 <html>
 <link rel="stylesheet" href="../resources/style.css">
 <body id="body-home">   
     <main>
         <?php
         include '../header.php';
-        require_once 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
-        // $datos_viaje = datos_tabla_viaje($con);
+        include 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
+        $datos_viaje = datos_tabla_viaje($con);
         ?>
         <div class="div-panel-administracion">
             <h3>Panel de administracion</h3>
@@ -47,6 +54,7 @@
                         <th>Taximetrista</th>
                         <th>Número de coche</th>
                         <th>Fecha Viaje</th>
+                        <th>Metodo de pago</th>
                         <th>Ingreso</th>
                     </tr>
                 </thead>
@@ -54,8 +62,9 @@
                     <?php foreach ($datos_viaje as $fila) { ?>
                         <tr>
                             <td><?php echo $fila['Nombre']; ?></td>    
-                            <td><?php echo $fila['numero_taxi']; ?></td>    
+                            <td><?php echo $fila['matricula']; ?></td>    
                             <td><?php echo $fila['Fecha']; ?></td>    
+                            <td><?php echo $fila['Método_de_pago']; ?></td>    
                             <td><?php echo $fila['Tarifa']; ?></td>
                         </tr>
                     <?php } ?>

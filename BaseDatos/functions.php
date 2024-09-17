@@ -92,12 +92,6 @@ if (mysqli_query($con, $consulta_insertar_viaje_Taximetrista)) {
 //     $text = "<h4 class='text'>Cliente agregado con exito!</h4>";
 //     $consulta_insertar_jornada_Taximetrista = "INSERT INTO jornada (ID, Km_Inicio, Km_Final, Fecha, FK-Taxi) VALUES 
 //     ('', '$KmInicialTaximetrista', Null, current_timestamp(), '$NumeroDeCocheTaximetrista');";
-
-
-
-
-
-
 // if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
 //     echo $text;
 //     // Mostrar los datos
@@ -106,6 +100,8 @@ if (mysqli_query($con, $consulta_insertar_viaje_Taximetrista)) {
 //     echo "Error al insertar datos: " . mysqli_error($con) . "<br>";
 //     echo "Consulta: " . $consulta_insertar_jornada_Taximetrista . "<br>";
 // }
+
+
 
 //función mostrar clientes
 function mostrar_datos_cliente($con) {
@@ -145,7 +141,35 @@ function  eliminar_taxis($con, $id_taxis) {
             echo "Error al eliminar taxis: " . mysqli_error($con) . "<br>";
             echo "Consulta: " . $consulta_eliminar_taxis . "<br>";
             }
-            }
+}
+
+
+// funcion mostrar viajes
+function datos_tabla_viaje($con) {
+    $consulta_datos_viaje = "SELECT viaje.*, taxi.matricula, persona.Nombre, viaje.Método_de_pago
+                            FROM viaje
+                            INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID
+                            INNER JOIN cliente_registrado ON viaje.Fk_Cliente_Registrado = cliente_registrado.ID
+                            INNER JOIN persona ON cliente_registrado.Fk_Persona = persona.ID";
+
+    $resultado = mysqli_query($con, $consulta_datos_viaje);
+
+    // Verificar si la consulta fue exitosa
+    if ($resultado === false) {
+        echo "Error en la consulta: " . mysqli_error($con);
+        return [];
+    }
+
+    $datos = array();
+    while ($fila = mysqli_fetch_array($resultado)) {
+        $datos[] = $fila;
+    }
+
+    return $datos;
+}
+
+
+
 
 
 // //Funcion 2 para mostrar clientes
@@ -214,35 +238,18 @@ function  eliminar_taxis($con, $id_taxis) {
 
 
 // // funcion mostrar taxistas
-// function mostrar_datos_taxistas($con) {
-//     $consulta_datos_taxistas = "SELECT * FROM taximetrista";
+function mostrar_datos_taxistas($con) {
+    $consulta_datos_taxistas = "SELECT * FROM taximetrista";
 
-//     $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);
+    $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);
 
-//     $datos_taxistas = array();
-//     while ($fila = mysqli_fetch_array($resultado_taxistas)) {
-//         $datos_taxistas[] = $fila;
-//     }
-
-//     return $datos_taxistas;
-// }
-
-// funcion mostrar viajes
-function datos_tabla_viaje($con) {
-    $consulta_datos_viaje = "SELECT viaje.*, taxi.numero_taxi, persona.Nombre
-                             FROM viaje
-                             INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID
-                             INNER JOIN cliente_registrado ON cliente_registrado.Fk_Persona = cliente_registrado.Fk_Persona
-                             INNER JOIN persona ON cliente_registrado.Fk_Persona = persona.ID";
-
-    $resultado = mysqli_query($con, $consulta_datos_viaje);
-
-    $datos = array();
-    while ($fila = mysqli_fetch_array($resultado)) {
-        $datos[] = $fila;
+    $datos_taxistas = array();
+    while ($fila = mysqli_fetch_array($resultado_taxistas)) {
+        $datos_taxistas[] = $fila;
     }
 
-    return $datos;
+    return $datos_taxistas;
 }
+
 
 

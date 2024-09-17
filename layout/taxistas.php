@@ -1,3 +1,10 @@
+<?php
+session_start();
+    if (!isset($_SESSION['user'])) {
+        header("Location: ../Register-Login/index.php");
+        exit;
+    }
+?>
 <link rel="stylesheet" href="../resources/style.css">
 
 <body id="body-home">
@@ -5,7 +12,7 @@
         <?php
         include '../header.php';
         require_once 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
-        // $datos_taxista = mostrar_datos_taxistas($con);
+        $datos_taxista = mostrar_datos_taxistas($con);
         ?>
         <div class="div-addCliente">
             <h1>Lista de Taximetristas</h1>
@@ -29,7 +36,10 @@
                         <tr>
                             <td><?php echo $fila['ID']; ?></td>    
                             <td><?php echo $fila['Fecha_Expiracion_Licencia']; ?></td>    
-                            <td><?php echo $fila['Fecha_Nacimiento']; ?></td>    
+                            <td><?php echo $fila['Fecha_Nacimiento']; ?></td>   
+                            <td></td>
+                            <td></td>
+                            <td></td> 
                             <td><img src="../resources/img/Iconos-SVG/icons-others/edit.svg"></td>
                         </tr>
                     <?php } ?>

@@ -1,3 +1,10 @@
+<?php
+session_start();
+    if (!isset($_SESSION['user'])) {
+        header("Location: ../Register-Login/index.php");
+        exit;
+    }
+?>
 <link rel="stylesheet" href="../resources/style.css">
 
 <body id="body-home">
@@ -5,7 +12,7 @@
         <?php
         include '../header.php';
         require_once 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
-        // $datos_viaje = datos_tabla_viaje($con);
+        $datos_viaje = datos_tabla_viaje($con);
         ?>
 
         <div class="btn-select-turno-fecha">
@@ -40,7 +47,7 @@
                  <?php foreach ($datos_viaje as $fila) { ?>
                 <tr>
                     <td><?php echo $fila['Nombre']; ?></td>    
-                    <td><?php echo $fila['numero_taxi']; ?></td>    
+                    <td><?php echo $fila['matricula']; ?></td>    
                     <td><?php echo $fila['Fecha']; ?></td>    
                     <td><?php echo $fila['Tarifa']; ?></td>
                 </tr>
