@@ -4,6 +4,8 @@
     <main>
         <?php
         include '../header.php';
+        require_once 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
+        $datos_taxis = mostrar_datos_taxis($con);
         ?>
         <div class="div-addTaxi">
             <h1>Lista de Taxis</h1>
@@ -11,7 +13,7 @@
         </div>
         <div class="tabla-Taxis">
             <table>
-                <thead>
+                <thead> 
                     <tr class="columnas-tabla-Taxis">
                         <th>N° Taxi</th>
                         <th>Kilometros</th>
@@ -23,51 +25,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>3000</td>
-                    <td>225.000</td>
-                    <td>2017</td>
-                    <td>Nissan Sentra</td>
-                    <td>Activo</td>
-                    <td>6/02/2023</td>
-                    <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
-                </tr>
-                <tr>
-                <td>3000</td>
-                    <td>225.000</td>
-                    <td>2017</td>
-                    <td>Nissan Sentra</td>
-                    <td>Activo</td>
-                    <td>6/02/2023</td>
-                    <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
-                </tr>
-                <tr>
-                <td>3000</td>
-                    <td>225.000</td>
-                    <td>2017</td>
-                    <td>Nissan Sentra</td>
-                    <td>Activo</td>
-                    <td>6/02/2023</td>
-                    <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
-                </tr>
-                <tr>
-                <td>3000</td>
-                    <td>225.000</td>
-                    <td>2017</td>
-                    <td>Nissan Sentra</td>
-                    <td>Activo</td>
-                    <td>6/02/2023</td>
-                    <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
-                </tr>
-                <tr>
-                <td>3000</td>
-                    <td>225.000</td>
-                    <td>2017</td>
-                    <td>Nissan Sentra</td>
-                    <td>Activo</td>
-                    <td>6/02/2023</td>
-                    <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
-                </tr>
+                <?php foreach ($datos_taxis as $fila) { ?>
+                        <tr>
+                            <td><?php echo $fila['ID']; ?></td>
+                            <td><?php echo $fila['Matricula']; ?></td>
+                            <td><?php echo $fila['Modelo']; ?></td>
+                            <td><?php echo $fila['Año']; ?></td>
+                            <td><?php echo $fila['Estado']; ?></td>
+                            <td></td>
+                            <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera" onclick="eliminarTaxi(<?php echo $fila['ID']; ?>)"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
             <div class="div-cantidad-Taxis">

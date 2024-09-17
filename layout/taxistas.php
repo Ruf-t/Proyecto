@@ -5,7 +5,7 @@
         <?php
         include '../header.php';
         require_once 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
-        $datos_taxista = mostrar_datos_taxistas($con);
+        // $datos_taxista = mostrar_datos_taxistas($con);
         ?>
         <div class="div-addCliente">
             <h1>Lista de Taximetristas</h1>

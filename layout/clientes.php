@@ -49,11 +49,13 @@
                             <td><?php echo $fila['Nombre']; ?></td>
                             <td><?php echo $fila['Telefono']; ?></td>
                             <td><?php echo $fila['Direccion']; ?></td>
+                            <td></td>
                             <!-- <td><?php echo $fila['Deuda']; ?></td> -->
-                            <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
+                            <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera" onclick="eliminarCliente(<?php echo $fila['ID']; ?>)"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
                         </tr>
                     <?php } ?>
                 </tbody>
+
             </table>
             <div class="div-cantidad-clientes">
                 <h3 class="total-clientes">Total de clientes: $5</h3>

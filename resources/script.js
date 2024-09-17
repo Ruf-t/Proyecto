@@ -110,3 +110,54 @@ formulario.addEventListener('submit', (event) => {
     });
 });
 
+//ELIMINAR CLIENTE
+// function eliminarCliente(id) {
+//     if (confirm('¿Estás seguro de que deseas eliminar este cliente?')) {
+//         fetch('../BaseDatos/eliminar_cliente.php', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/x-www-form-urlencoded',
+//             },
+//             body: `id_cliente=${id}`
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.success) {
+//                 alert('Cliente eliminado con éxito');
+//                 location.reload(); // Recargar la página para reflejar los cambios
+//             } else {
+//                 alert('Error al eliminar el cliente');
+//             }
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//             alert('Error al eliminar el cliente');
+//         });
+//     }
+// }
+
+function eliminarTaxi(id) {
+    if (confirm('¿Estás seguro de que quieres eliminar este taxi?')) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'eliminar_taxi.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    alert('Taxi eliminado exitosamente.');
+                    // Aquí puedes agregar el código para eliminar la fila de la tabla, si es necesario
+                    // Ejemplo:
+                    document.querySelector('tr[data-id="' + id + '"]').remove();
+                } else {
+                    alert('Error al eliminar el taxi: ' + response.message);
+                }
+            }
+        };
+        xhr.send('id=' + id);
+    }
+}
+
+
+
+

@@ -5,7 +5,7 @@
         <?php
         include '../header.php';
         require_once 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
-        $datos_viaje = datos_tabla_viaje($con);
+        // $datos_viaje = datos_tabla_viaje($con);
         ?>
         <div class="div-panel-administracion">
             <h3>Panel de administracion</h3>
