@@ -51,6 +51,8 @@ buttons.forEach(button => {
 
 
 
+
+
 // --------Botones para cambiar páginas-----------
 function cambioColorBoton(button) {
     // Selecciona solo los botones con texto 1 y 2

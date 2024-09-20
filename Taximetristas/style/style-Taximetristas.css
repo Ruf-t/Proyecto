@@ -19,7 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: #f4f4f4; */
+    
 }
 
 .container-login {
@@ -53,7 +53,7 @@
     }
 }
 
-/* Background image for mobile devices */
+
 @media only screen and (max-width: 600px) {
     .body-login {
         margin-top:5rem;
@@ -70,7 +70,6 @@
         border-radius: 10px;
         height: 50px;
         width: 335px;
-        /* margin-top: 20px; */
         margin-bottom: 10px;
         border: 1px solid rgb(255, 255, 255);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -93,14 +92,7 @@
 
 }
 
-/* Simple style for larger screens */
-/* @media only screen and (min-width: 601px) {
-    .body-login {
-         background-color: #f4f4f4;
-    }
-} */
 
-/* Estilos existentes */
 .selectButton {
     display: flex;
     align-items: center;
@@ -110,12 +102,14 @@
     background-color: #FFA500;
     border-color: #FFA500;
     border-radius: 5px;
-    margin-bottom: 10px ;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .hidden {
     display: none;
     padding-right: 9px;
+    
 }
 
 .formulario {
@@ -123,15 +117,16 @@
     border: 1px solid var(--amarillo2);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    padding: 10px; /* Padding general para todo el formulario */
+    padding: 10px; 
     margin-top: -10px;
+    margin-bottom: 10px;
 
 }
 
-/* Aplica padding específicamente a los elementos p e input */
+
 .formulario p, 
 .formulario input {
-    padding: 10px; /* Ajusta el valor según tus necesidades */
+    padding: 10px; 
 }
 
 #flecha{
@@ -139,7 +134,9 @@
 }
 
 
-/* Estilos Register */
+
+
+/* -----------------------REGISTER'S STYLE----------------------- */
 
 .body-register {
     margin-top:5rem;
@@ -200,9 +197,31 @@ p{
 }
 }
 
+.respuestaAJAX{
+    display: none;
+    margin-top: 0;
 
+    
+    p{
+        margin: 0;
+        display: inline-block;
+        background-color: #DFDED4;
+        border: 1px solid #DFDED4;
+        padding: 10px;
+        border-radius: 9px;
+        padding-left: 10px;
+    }
 
-/* HEADER - TAXIMETRISTA*/
+}
+
+.success-message{
+    color: rgb(0, 255, 0);
+}
+.error-message{
+    color: rgb(255, 0, 0);
+}
+
+/* -----------------------HEADER - TAXIMETRISTA-----------------------*/
 
 header{
     margin: 0;
