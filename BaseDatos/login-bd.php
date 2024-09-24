@@ -1,4 +1,8 @@
 <?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require("conexionBD.php");
 
 $con = conectar_bd();
@@ -13,6 +17,34 @@ if (isset($_POST["envio"])) {
     // Llamada a la función login
     logear($con, $user, $contrasenia);
 }
+
+
+
+
+if (
+    isset($_POST['envioLogearTaximetrista'])
+    ) {
+        var_dump($_POST);
+        // Obtener datos del formulario
+        $userTaxi = $_POST["userTaxi"];
+        $contraseniaTaxi = $_POST["contraseniaTaxi"];
+        
+        // Llamar a la función para agregar usuario
+        logearTaxi($con, $userTaxi, $contraseniaTaxi);
+    }
+    
+
+    if (isset($_POST["cerrarSesionTaximetrista"])) {
+        // Llamada a la función login
+        cerrarSesionTaximetrista();
+    }
+
+
+
+
+
+
+
 
 function cerrarSesion(){
     if (!isset($_SESSION['user'])) {
@@ -59,8 +91,10 @@ function logear($con, $user, $contrasenia) {
 }
 
 
-function logearTaxi($con, $user, $contrasenia) {
-    $consulta_login = "SELECT * FROM taximetrista WHERE Usuario = '$user'";
+
+
+function logearTaxi($con, $userTaxi, $contrasenia) {
+    $consulta_login = "SELECT * FROM taximetrista WHERE Usuario = '$userTaxi'";
     $resultado_login = mysqli_query($con, $consulta_login);
 
     if (mysqli_num_rows($resultado_login) > 0) {
@@ -74,13 +108,33 @@ function logearTaxi($con, $user, $contrasenia) {
         // Uso de la función password_verify para comparar lo que ingresa el usuario con lo que tengo en la BD
         if (password_verify($contrasenia, $contrasenia_bd)) {
             // Si todo es correcto, inicio la sesión y redirijo a la página del usuario logueado
-            $_SESSION["Usuario"] = $user;
-            header("Location: ../home.php");
+            $_SESSION["userTaxi"] = $userTaxi;
+            header("Location: ../Taximetristas/layout/home-Taximetrista.php");
             exit();
         } else {
             echo "Contraseña incorrecta.<br>";
         }
     } else {
         echo "Usuario no encontrado.<br>";
+    }
+}
+
+
+
+function cerrarSesionTaximetrista(){
+    if (!isset($_SESSION['userTaxi'])) {
+        header("Location: ../Taximetristas/layout/index-Taximetrista.php");
+        exit;
+    }
+    if (isset($_POST['cerrarSesionTaximetrista'])) {    
+        // Destruir todas las variables de sesión
+        session_unset();
+    
+        // Destruir la sesión
+        session_destroy();
+    
+        // Redirigir al usuario al inicio de sesión
+        header("Location: ../Taximetristas/layout/index-Taximetrista.php");
+        exit;
     }
 }

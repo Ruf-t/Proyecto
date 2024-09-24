@@ -1,4 +1,7 @@
+<?php
+include("/xampp/htdocs/Proyecto/BaseDatos/login-bd.php");
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,9 +25,9 @@
                 <input type="text" id="userTaxi" name="userTaxi" placeholder="Usuario">
                 <!-- <label for="contrasenia">Contraseña</label> -->
                 <input type="password" id="contraseniaTaxi" name="contraseniaTaxi" placeholder="Contraseña">
-                <button type="submit" name="envio" class="button-login-TXs">Iniciar Sesión</button>
+                <button type="submit" name="envioLogearTaximetrista" class="button-login-TXs">Iniciar Sesión</button>
             </form>
-            <p class="p-log-reg">No tengo cuenta <a href="register.php">Registrarme</a></p>
+            <p class="p-log-reg">No tengo cuenta <a href="register-Taximetrista.php">Registrarme</a></p>
         </div>
     </div>
     

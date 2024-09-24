@@ -10,6 +10,7 @@
     
 }
 
+
 /* General styles */
 .body-login {
     margin: 0;
@@ -18,7 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: #f4f4f4; */
+    
 }
 
 .container-login {
@@ -52,7 +53,7 @@
     }
 }
 
-/* Background image for mobile devices */
+
 @media only screen and (max-width: 600px) {
     .body-login {
         margin-top:5rem;
@@ -69,7 +70,6 @@
         border-radius: 10px;
         height: 50px;
         width: 335px;
-        /* margin-top: 20px; */
         margin-bottom: 10px;
         border: 1px solid rgb(255, 255, 255);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -92,25 +92,24 @@
 
 }
 
-/* Simple style for larger screens */
-/* @media only screen and (min-width: 601px) {
-    .body-login {
-         background-color: #f4f4f4;
-    }
-} */
 
-/* Estilos existentes */
 .selectButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     background-color: var(--amarillo);
     background-color: #FFA500;
     border-color: #FFA500;
     border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .hidden {
     display: none;
     padding-right: 9px;
+    
 }
 
 .formulario {
@@ -118,21 +117,79 @@
     border: 1px solid var(--amarillo2);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    padding: 10px; /* Padding general para todo el formulario */
+    padding: 10px; 
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    
+    button{
+        align-self: center;
+    }
+
 }
 
-/* Aplica padding específicamente a los elementos p e input */
+
 .formulario p, 
 .formulario input {
-    padding: 10px; /* Ajusta el valor según tus necesidades */
+    /* padding: 10px;  */
+    margin: 0;
 }
 
 #flecha{
     transform: rotate(90deg);
 }
+select {
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 55%;
+    
+}
+
+select:focus {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    outline: none;
+
+}
+
+option {
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 16px;
+    padding: 10px; 
+}
+
+select option:checked {
+    background-color: #333;
+    color: white;
+  
+}
+input[type="text"],
+input[type="number"] {
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 50%;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
 
 
-/* Estilos Register */
+
+/* -----------------------REGISTER'S STYLE----------------------- */
 
 .body-register {
     margin-top:5rem;
@@ -191,4 +248,61 @@ p{
     grid-column: 1/3;
     grid-row: 5/6;
 }
+}
+
+/*----------------ESTILOS DE AJAX HOME----------------- */
+.respuestaAJAX{
+    display: none;
+    margin-top: 0;
+
+    
+    p{
+        margin: 0;
+        display: inline-block;
+        background-color: #DFDED4;
+        border: 1px solid #DFDED4;
+        padding: 10px;
+        border-radius: 9px;
+        padding-left: 10px;
+    }
+
+}
+
+.success-message{
+    color: #34C759;
+}
+.error-message{
+    color: #E74C3C;
+}
+
+.btn-activado{
+    cursor: pointer;
+    background-color:  #FFA500;
+    color: black;
+    border: 1px solid  #FFA500;
+}
+.btn-desactivado{
+    cursor: not-allowed;
+    background-color: #797B7E;
+    color: #616265;
+    border: 1px solid #797B7E;
+}
+
+
+/* -----------------------HEADER - TAXIMETRISTA-----------------------*/
+
+header{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button{
+        margin: 0;
+        padding: 0;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
 }

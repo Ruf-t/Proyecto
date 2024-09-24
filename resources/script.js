@@ -34,7 +34,7 @@ alinks.forEach(link => {
 });
 
 // ------HOME TAXIMETRISTA--------
-// Obtener todos los botones con la clase selectButton
+// // Obtener todos los botones con la clase selectButton
 const buttons = document.querySelectorAll('.selectButton');
 
 // Añadir un evento click a cada botón
@@ -48,6 +48,8 @@ buttons.forEach(button => {
         container.classList.toggle('hidden');
     });
 });
+
+
 
 
 

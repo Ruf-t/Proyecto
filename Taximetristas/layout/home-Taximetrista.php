@@ -1,29 +1,14 @@
 <?php
 include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
 
-session_start();
-    if (!isset($_SESSION['user'])) {
+// session_start();
+    if (!isset($_SESSION['userTaxi'])) {
         header("Location: index-Taximetrista.php");
         exit;
     }
-if (isset($_SESSION['usuario'])) {
-    echo "Bienvenido, " . $_SESSION['usuario'];
-} else {
-    // Si no hay sesión iniciada, redirigir al login
-    header("Location: login.php");
-}
+    $userTaxi = $_SESSION['userTaxi'];
 
-if (isset($_POST['KmInicialTaximetrista']) && isset($_POST['NumeroDeCocheTaximetrista'])) {
-    // Obtener datos del formulario
-    $KmInicialTaximetrista = $_POST["KmInicialTaximetrista"];
-    $NumeroDeCocheTaximetrista = $_POST["NumeroDeCocheTaximetrista"];   
-
-    // echo '<div class="container">'; 
-    FormJornadaUserTaxis($con,$KmInicialTaximetrista,$NumeroDeCocheTaximetrista);  
-     // echo '<br>' . '<button class="form-button" id="back"><a href="index.php">Volver a la página principal</a></button>';
-    // echo"</div>";
-    // Llamar a la función para agregar usuario
-}
+ 
 ?>
 
 
@@ -36,59 +21,89 @@ if (isset($_POST['KmInicialTaximetrista']) && isset($_POST['NumeroDeCocheTaximet
     <title>Panel</title>
     <link rel="icon" href="../../resources/img/Others/Favicon-Ruft.png" type="image/png">
     <link rel="stylesheet" href="../style/style-Taximetristas.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>
-    <h3>Jornada</h3>
-    <!-- Botón select -->
-    <button class="selectButton" data-target="formContainer1">Iniciar Jornada <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
-    <!-- Contenedor de Iniciar Jornada -->
-    <div id="formContainer1" class="hidden">
-    <form action="home-Taximetrista.php" method="post" class="formulario">
-        <p>Km inicial</p>
-        <input type="number" name="KmInicialTaximetrista" id="KmInicialTaximetrista" placeholder="">
-        <!-- <p>Fecha</p>
-        <input type="date" placeholder=""> -->
-        <p>Número de coche</p>
-        <input type="text" name="NumeroDeCocheTaximetrista" id="NumeroDeCocheTaximetrista"  placeholder="">
-        <button>Guardar</button>
-    </form>    
-    </div>
+<div class="respuestaAJAX">
+    <p class="mensajeAJAX"></p>
+</div>
 
 
-    <button class="selectButton" data-target="formContainer2">Iniciar viaje <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
-    <!-- Contenedor de Iniciar Viaje -->
-    <div id="formContainer2" class="hidden">
-    <form action="home-Taximetrista.php" method="post" class="formulario">
-        <p>Costo</p>
-        <input type="number" name="CostoViajeTaximetrista" id="CostoViajeTaximetrista" placeholder="">
-        <p>Metodo de pago</p>
-        <select name="MetodoDePagoTaximetrista" id="MetodoDePagoTaximetrista">
-        <option value="">Seleccione un método de pago</option>
-        <option value="efectivo">Efectivo</option>
-        <option value="tarjeta">Tarjeta</option>
-        <option value="transferencia">Transferencia bancaria</option>
-        <option value="otros">Otros</option>
-    </select>
-    <p>Ingresa el nombre del cliente (Si es que esta registrado)</p>
-    <input type="text" name="ClienteViajeTaximetrista" id="ClienteViajeTaximetrista" placeholder="">
-        <button>Guardar</button>
-    </form>    
-    </div>
+    <?php include 'header-Taximetrista.php'; ?>
 
+  <!-- Botón select -->
+<button class="selectButton" id="btnIniciarJornada" data-target="formContainer1">Iniciar Turno <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
 
-    <button class="selectButton" data-target="formContainer3">Finalizar Jornada <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
+<!-- Contenedor de Iniciar Jornada -->
+<div id="formContainer1" class="hidden">
+  <form id="formIniciarJornada" method="post" class="formulario">
+      <p>Km inicial</p>
+      <input type="number" name="KmInicialTaximetrista" id="KmInicialTaximetrista" required  min="1">
+      
+      <p>Número de coche</p>
+      <!-- <label for="NumeroDeCocheTaximetrista">Selecciona la matrícula del taxi:</label> -->
+      <select name="NumeroDeCocheTaximetrista" id="NumeroDeCocheTaximetrista" required placeholder="selecciona una opcion">
+          <option value="">--Selecciona una matrícula--</option>
+         <?php 
+         // Este PHP debe obtener las matrículas del taxi desde la base de datos.
+         $matriculas = obtenerMatrículasTaxis($con);
+         foreach ($matriculas as $matricula): ?>
+                <option value="<?php echo $matricula['ID']; ?>">
+                    <?php echo $matricula['Matricula']; ?>
+                </option>
+            <?php endforeach; ?>
+      </select>
+      <button type="submit">Guardar</button>
+  </form>    
+</div>
 
-    <!-- Contenedor de Terminar Jornada -->
-    <div id="formContainer3" class="hidden">
-    <form action="home-Taximetrista.php" method="post" class="formulario">
-        <p>Km final</p>
-        <input type="number" name="KmFinalTaximetrista" id="KmFinalTaximetrista" placeholder="Ingresa el Km final de la jornada">
-        <button>Guardar</button>
-    </form>    
-    </div>
+<!-- Botón para iniciar viaje -->
+<button class="selectButton" id="btnIniciarViaje" data-target="formContainer2" disabled>Registrar Viaje <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
+<!-- Contenedor de Iniciar Viaje -->
+<div id="formContainer2" class="hidden">
+  <form id="formIniciarViaje" method="post" class="formulario">
+      <p>Costo</p>
+      <input type="number" name="CostoViajeTaximetrista" id="CostoViajeTaximetrista" placeholder="Coloca el importe" required  min="1">
+      <p>Metodo de pago</p>
+      <select name="MetodoDePagoTaximetrista" id="MetodoDePagoTaximetrista" required>
+          <option value="">Seleccione un método de pago</option>
+          <option value="efectivo">Efectivo</option>
+          <option value="tarjeta">Tarjeta</option>
+          <option value="transferencia">Transferencia bancaria</option>
+      </select>
+      <p>Ingresa el nombre del cliente (Si es que esta registrado)</p>
+    <select name="ClienteViajeTaximetrista" id="ClienteViajeTaximetrista">
+    <option value="">--Selecciona un cliente--</option>
+    
+    <?php $clientes = obtenerClientesRegistrados($con); 
+    foreach ($clientes as $cliente): ?>
+        <option value="<?php echo $cliente['ClienteID']; ?>">
+            <?php echo $cliente['Nombre']; ?>
+        </option>
+    <?php endforeach; ?>
+</select>
+      <button type="submit" name="envioViajeTaximetrista">Guardar</button>
+  </form>    
+</div>
+
+<!-- Botón para finalizar jornada -->
+<button class="selectButton" id="btnFinalizarJornada" data-target="formContainer3" disabled>Finalizar Turno <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
+
+<!-- Contenedor de Terminar Jornada -->
+<div id="formContainer3" class="hidden">
+  <form id="formFinalizarJornada" method="post" class="formulario">
+      <p>Km final</p>
+      <input type="number" name="KmFinalTaximetrista" id="KmFinalTaximetrista" placeholder="Ingresa el Km final de la jornada" required  min="1">
+      <button type="submit" name="envioFinalizarJornadaTaximetrista">Guardar</button>
+  </form>    
+</div>
+
 
     <script src="/proyecto/resources/script.js"></script>
-    </body>
-
+    <script src="../resources-Taximetristas/ajax-taximetrista.js"></script>
+    <!---- importacion de jquery---->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</body>
 </html>
