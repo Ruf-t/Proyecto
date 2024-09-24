@@ -34,17 +34,17 @@ include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
     <?php include 'header-Taximetrista.php'; ?>
 
   <!-- Botón select -->
-<button class="selectButton" data-target="formContainer1">Iniciar Turno <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
+<button class="selectButton" id="btnIniciarJornada" data-target="formContainer1">Iniciar Turno <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
 
 <!-- Contenedor de Iniciar Jornada -->
 <div id="formContainer1" class="hidden">
   <form id="formIniciarJornada" method="post" class="formulario">
       <p>Km inicial</p>
-      <input type="number" name="KmInicialTaximetrista" id="KmInicialTaximetrista" required>
+      <input type="number" name="KmInicialTaximetrista" id="KmInicialTaximetrista" required  min="1">
       
       <p>Número de coche</p>
-      <label for="NumeroDeCocheTaximetrista">Selecciona la matrícula del taxi:</label>
-      <select name="NumeroDeCocheTaximetrista" id="NumeroDeCocheTaximetrista" required>
+      <!-- <label for="NumeroDeCocheTaximetrista">Selecciona la matrícula del taxi:</label> -->
+      <select name="NumeroDeCocheTaximetrista" id="NumeroDeCocheTaximetrista" required placeholder="selecciona una opcion">
           <option value="">--Selecciona una matrícula--</option>
          <?php 
          // Este PHP debe obtener las matrículas del taxi desde la base de datos.
@@ -60,12 +60,12 @@ include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
 </div>
 
 <!-- Botón para iniciar viaje -->
-<button class="selectButton" id="btnIniciarViaje" data-target="formContainer2" >Registrar Viaje <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
+<button class="selectButton" id="btnIniciarViaje" data-target="formContainer2" disabled>Registrar Viaje <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
 <!-- Contenedor de Iniciar Viaje -->
 <div id="formContainer2" class="hidden">
   <form id="formIniciarViaje" method="post" class="formulario">
       <p>Costo</p>
-      <input type="number" name="CostoViajeTaximetrista" id="CostoViajeTaximetrista" placeholder="Coloca el importe" required>
+      <input type="number" name="CostoViajeTaximetrista" id="CostoViajeTaximetrista" placeholder="Coloca el importe" required  min="1">
       <p>Metodo de pago</p>
       <select name="MetodoDePagoTaximetrista" id="MetodoDePagoTaximetrista" required>
           <option value="">Seleccione un método de pago</option>
@@ -74,7 +74,7 @@ include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
           <option value="transferencia">Transferencia bancaria</option>
       </select>
       <p>Ingresa el nombre del cliente (Si es que esta registrado)</p>
-    <select name="ClienteViajeTaximetrista" id="ClienteViajeTaximetrista" >
+    <select name="ClienteViajeTaximetrista" id="ClienteViajeTaximetrista">
     <option value="">--Selecciona un cliente--</option>
     
     <?php $clientes = obtenerClientesRegistrados($con); 
@@ -89,13 +89,13 @@ include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
 </div>
 
 <!-- Botón para finalizar jornada -->
-<button class="selectButton" id="btnFinalizarJornada" data-target="formContainer3">Finalizar Turno <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
+<button class="selectButton" id="btnFinalizarJornada" data-target="formContainer3" disabled>Finalizar Turno <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
 
 <!-- Contenedor de Terminar Jornada -->
 <div id="formContainer3" class="hidden">
   <form id="formFinalizarJornada" method="post" class="formulario">
       <p>Km final</p>
-      <input type="number" name="KmFinalTaximetrista" id="KmFinalTaximetrista" placeholder="Ingresa el Km final de la jornada" required>
+      <input type="number" name="KmFinalTaximetrista" id="KmFinalTaximetrista" placeholder="Ingresa el Km final de la jornada" required  min="1">
       <button type="submit" name="envioFinalizarJornadaTaximetrista">Guardar</button>
   </form>    
 </div>
