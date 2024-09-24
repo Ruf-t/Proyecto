@@ -328,4 +328,52 @@ function mostrar_datos_taxistas($con) {
 }
 
 
+function obtenerMatrículasTaxis($con) {
+    // Consulta para obtener las matrículas de la tabla taxi
+    $consulta_obtener_matriculas = "SELECT ID, Matricula FROM taxi";
+    $resultado_matriculas = mysqli_query($con, $consulta_obtener_matriculas);
+
+    // Comprobar si la consulta se ejecutó correctamente
+    if (!$resultado_matriculas) {
+        echo "Error en la consulta de las matrículas: " . mysqli_error($con);
+        return [];
+    }
+
+    // Crear un array para almacenar las matrículas
+    $matriculas = [];
+
+    // Bucle para llenar el array con los resultados de la consulta
+    while ($fila_matricula = mysqli_fetch_assoc($resultado_matriculas)) {
+        $matriculas[] = [
+            'ID' => $fila_matricula['ID'],
+            'Matricula' => $fila_matricula['Matricula']
+        ];
+    }
+
+    return $matriculas;
+}
+
+
+function obtenerClientesRegistrados($con) {
+    // Consulta SQL para obtener el ID del cliente registrado y su nombre
+    $sql = "SELECT cliente_registrado.ID AS ClienteID, persona.Nombre 
+            FROM cliente_registrado
+            JOIN persona ON cliente_registrado.Fk_Persona = persona.ID";
+    
+    $result = mysqli_query($con, $sql);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        // Crear un array para almacenar los resultados
+        $clientes = [];
+
+        // Obtener cada fila y guardarla en el array
+        while ($row = mysqli_fetch_assoc($result)) {
+            $clientes[] = $row;
+        }
+
+        return $clientes;
+    } else {
+        return [];
+    }
+}
 
