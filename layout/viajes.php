@@ -1,9 +1,9 @@
 <?php
-session_start();
-    if (!isset($_SESSION['user'])) {
-        header("Location: ../Register-Login/index.php");
-        exit;
-    }
+// session_start();
+//     if (!isset($_SESSION['user'])) {
+//         header("Location: ../Register-Login/index.php");
+//         exit;
+//     }
 ?>
 <link rel="stylesheet" href="../resources/style.css">
 
@@ -11,7 +11,7 @@ session_start();
     <main>
         <?php
         include '../header.php';
-        require_once 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
+        require_once '..\BaseDatos\functions.php';
         $datos_viaje = datos_tabla_viaje($con);
         ?>
 

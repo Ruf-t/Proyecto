@@ -533,6 +533,8 @@ select{
   grid-column: 1/2;
   grid-row: 3/5;
   display: block;
+  overflow-x:auto;
+  overflow-y:auto;
 }
 #tabla-viajes {
   width: 100%;
@@ -583,6 +585,8 @@ select{
   justify-content: center;
   grid-column: 1/2;
   grid-row: 3/4;
+  overflow-x:auto;
+  overflow-y:auto;
 }
 .tabla-clientes table {
   border-collapse: collapse;
@@ -671,15 +675,16 @@ select{
 
 /*-----------ESTILOS MODAL-------*/
 /*ESTILOS DEL MODAL*/
-#modal::backdrop {
+.modal::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-#modal{
+.modal{
   max-width: 50%;
   border: none;
   border-radius: 10px;
   height: 70%;
+  padding: 2rem;
 
   position: absolute;
   top: 50%;

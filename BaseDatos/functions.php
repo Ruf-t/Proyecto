@@ -248,24 +248,6 @@ function datos_tabla_viaje($con) {
 
 
 
-// //Funcion 2 para mostrar clientes
-// $id=$_GET['ID'];
-
-// $sql="delete from taxis where ID='".$id."'";
-// $resultado=mysqli_query($con,$sql);
-
-// if($resultado) {
-//     echo "<script languaje='JavaScript'>
-//         alert('Los datos se eliminaron correctamente de la BD');
-//         location.assign('index.php');
-//     </script>";
-//     } else {
-//         echo "<script languaje='JavaScript'>
-//             alert('Los datos NO se eliminaron de la BD');
-//             location.assign('index.php');
-//         </script>";
-
-// }
 
 
 
@@ -314,18 +296,38 @@ function datos_tabla_viaje($con) {
 
 
 // // funcion mostrar taxistas
+// function mostrar_datos_taxistas($con) {
+//     $consulta_datos_taxistas = "SELECT * FROM taximetrista";
+
+//     $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);
+
+//     $datos_taxistas = array();
+//     while ($fila = mysqli_fetch_array($resultado_taxistas)) {
+//         $datos_taxistas[] = $fila;
+//     }
+
+//     return $datos_taxistas;
+// }
+
 function mostrar_datos_taxistas($con) {
-    $consulta_datos_taxistas = "SELECT * FROM taximetrista";
+    // Consulta para unir las tablas taximetrista y persona
+    $consulta_datos_taxistas = "
+        SELECT t.*, p.Nombre, p.Apellido, p.Telefono, p.Direccion 
+        FROM taximetrista t
+        INNER JOIN persona p ON t.ID = p.ID
+    ";
 
     $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);
 
     $datos_taxistas = array();
-    while ($fila = mysqli_fetch_array($resultado_taxistas)) {
+    while ($fila = mysqli_fetch_assoc($resultado_taxistas)) {
         $datos_taxistas[] = $fila;
     }
 
     return $datos_taxistas;
 }
+
+
 
 
 function obtenerMatrículasTaxis($con) {
@@ -377,3 +379,30 @@ function obtenerClientesRegistrados($con) {
     }
 }
 
+
+function agregar_taxi($con, $matricula, $modelo, $año, $estado) {
+
+    // Consulta SQL de inserción
+    $sql = "INSERT INTO taxi (Matricula, Modelo, Año, Estado) 
+            VALUES ('$matricula', '$modelo', $año, $estado)";
+
+    // Ejecutar la consulta y devolver el resultado
+    if (mysqli_query($con, $sql)) {
+        // Obtener el ID del taxi recién insertado
+        $id_taxi = mysqli_insert_id($con);
+        
+        // Devolver una respuesta de éxito con más detalles
+        return [
+            'success' => true,
+            'message' => 'Taxi añadido correctamente.',
+            'id_taxi' => $id_taxi,
+            'matricula' => $matricula
+        ];
+    } else {
+        // Devolver una respuesta de error
+        return [
+            'success' => false,
+            'message' => 'Error al añadir el taxi: ' . mysqli_error($con)
+        ];
+    }
+}

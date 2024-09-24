@@ -1,23 +1,40 @@
 <?php
-session_start();
-    if (!isset($_SESSION['user'])) {
-        header("Location: ../Register-Login/index.php");
-        exit;
-    }
+// session_start();
+//     if (!isset($_SESSION['user'])) {
+//         header("Location: ../Register-Login/index.php");
+//         exit;
+//     }
 ?>
-<link rel="stylesheet" href="../resources/style.css">
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel</title>
+    <!-- <link rel="icon" href="../../resources/img/Others/Favicon-Ruft.png" type="image/png"> -->
+    <link rel="stylesheet" href="../resources/style.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../resources/ajax.js"></script>
+
+</head>
 
 <body id="body-home">
     <main>
+    <div id="resultado"></div>
         <?php
         include '../header.php';
-        require_once 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
+        require_once '..\BaseDatos\functions.php';
         $datos_taxis = mostrar_datos_taxis($con);
         ?>
+
         <div class="div-addTaxi">
             <h1>Lista de Taxis</h1>
-            <button class="boton-add-Taxi">Añadir Taxi</button>
+            <button class="btn-abrir-modal  boton-add-Taxi">Añadir Taxi</button>
         </div>
+
         <div class="tabla-Taxis">
             <table>
                 <thead> 
@@ -82,6 +99,27 @@ session_start();
         </div>
     </div>
     
-    <script src="../resources/script.js"></script>
+    <dialog class="modal">
+            <div>
+                <h2>Agregar Nuevo Taxi</h2>
+            </div>
+            <form id="form-add-taxi" class="formulario" method="post">
+                <label>Matricula<input type="text" name="matricula" id="matricula"></label>
+                <label>Modelo<input type="text" name="modelo" id="modelo"></label>
+                <label>Año<input type="number" name="anio" id="anio"></label>
+                <label>Estado (Activo o Pasivo)</label>
+                    <select name="estadoNuevoTaxi" id="estadoNuevoTaxi">
+                    <option value="">Selecciona un estado</option>
+                    <option value="1">Disponible</option>
+                    <option value="0">Indisponible</option>
+                </select>
+                <button type="submit">Añadir</button>
+            </form>
+            <button class="btn-cerrar-modal" type="button">Cerrar modal</button>
+        </dialog>
+    
+     <!---- importacion de jquery---->
+     <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
+     <script src="../resources/script.js"></script>
 </body>
 </html>

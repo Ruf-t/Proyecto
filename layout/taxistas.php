@@ -1,9 +1,9 @@
 <?php
-session_start();
-    if (!isset($_SESSION['user'])) {
-        header("Location: ../Register-Login/index.php");
-        exit;
-    }
+// session_start();
+//     if (!isset($_SESSION['user'])) {
+//         header("Location: ../Register-Login/index.php");
+//         exit;
+//     }
 ?>
 <link rel="stylesheet" href="../resources/style.css">
 
@@ -11,7 +11,7 @@ session_start();
     <main>
         <?php
         include '../header.php';
-        require_once 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
+        require_once '..\BaseDatos\functions.php';
         $datos_taxista = mostrar_datos_taxistas($con);
         ?>
         <div class="div-addCliente">
@@ -25,8 +25,8 @@ session_start();
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Nacimiento</th>
+                        <th>Direccion</th>
                         <th>Fecha de vencimiento libreta</th>
-                        <th>Turno</th>
                         <th>Teléfono</th>
                         <th>Info Taxista</th>
                     </tr>
@@ -34,12 +34,12 @@ session_start();
                 <tbody>
                 <?php foreach ($datos_taxista as $fila) { ?>
                         <tr>
-                            <td><?php echo $fila['ID']; ?></td>    
-                            <td><?php echo $fila['Fecha_Expiracion_Licencia']; ?></td>    
-                            <td><?php echo $fila['Fecha_Nacimiento']; ?></td>   
-                            <td></td>
-                            <td></td>
-                            <td></td> 
+                            <td><?php echo $fila['Nombre'];?></td>    
+                            <td><?php echo $fila['Apellido'];?></td>    
+                            <td><?php echo $fila['Fecha_Nacimiento'];?></td>  
+                            <td><?php echo $fila['Direccion'];?></td>  
+                            <td><?php echo $fila['Fecha_Expiracion_Licencia']; ?></td>
+                            <td><?php echo $fila['Telefono']; ?></td> 
                             <td><img src="../resources/img/Iconos-SVG/icons-others/edit.svg"></td>
                         </tr>
                     <?php } ?>

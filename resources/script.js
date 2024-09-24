@@ -76,41 +76,48 @@ function activarBoton(numero) {
 }
 
 
+
 // --------DESPLEGAR MODAL-----------
 
-const btnAbrirModal = document.getElementById('btn-abrir-modal');
-const btnCerrarModal = document.getElementById('btn-cerrar-modal');
-const modal = document.getElementById('modal');
-const formulario = document.getElementById('formulario');
+const btnsAbrirModal = document.querySelectorAll('.btn-abrir-modal');
+const btnsCerrarModal = document.querySelectorAll('.btn-cerrar-modal');
+const modals = document.querySelectorAll('.modal');
 
-btnAbrirModal.addEventListener('click', () => {
-    modal.showModal();
-});
-
-btnCerrarModal.addEventListener('click', () => {
-    modal.close();
-});
-
-// Prevenir que el modal se cierre automáticamente y hacer el POST manualmente
-formulario.addEventListener('submit', (event) => {
-    event.preventDefault(); // Evita el cierre automático
-
-    const formData = new FormData(formulario);
-
-    // Puedes realizar la lógica para enviar los datos aquí, por ejemplo, usando fetch
-    fetch('ruta_a_tu_archivo.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data);
-        modal.close(); // Cerrar modal manualmente después de enviar
-    })
-    .catch(error => {
-        console.error('Error:', error);
+// Agregar eventos a todos los botones de abrir modal
+btnsAbrirModal.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        modals[index].showModal();
     });
 });
+
+// Agregar eventos a todos los botones de cerrar modal
+btnsCerrarModal.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        modals[index].close();
+    });
+});
+
+
+// Prevenir que el modal se cierre automáticamente y hacer el POST manualmente
+// formulario.addEventListener('submit', (event) => {
+//     event.preventDefault(); // Evita el cierre automático
+
+//     const formData = new FormData(formulario);
+
+//     // Puedes realizar la lógica para enviar los datos aquí, por ejemplo, usando fetch
+//     fetch('ruta_a_tu_archivo.php', {
+//         method: 'POST',
+//         body: formData
+//     })
+//     .then(response => response.text())
+//     .then(data => {
+//         console.log(data);
+//         modal.close(); // Cerrar modal manualmente después de enviar
+//     })
+//     .catch(error => {
+//         console.error('Error:', error);
+//     });
+// });
 
 //ELIMINAR CLIENTE
 // function eliminarCliente(id) {

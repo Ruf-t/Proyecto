@@ -1,9 +1,9 @@
 <?php
-session_start();
-    if (!isset($_SESSION['user'])) {
-        header("Location: ../Register-Login/index.php");
-        exit;
-    }
+// session_start();
+//     if (!isset($_SESSION['user'])) {
+//         header("Location: ../Register-Login/index.php");
+//         exit;
+//     }
 ?>
 <html lang="es">
 <link rel="stylesheet" href="../resources/style.css">
@@ -12,38 +12,35 @@ session_start();
     <main>
         <?php
         include '../header.php';
-        require_once 'C:\xampp\htdocs\Proyecto\BaseDatos\functions.php';
+        require_once '..\BaseDatos\functions.php';
         $datos_clientes = mostrar_datos_cliente($con);
         ?>
 
         <div class="div-addCliente">
-            <h1>Clientes</h1>
-            <button id="btn-abrir-modal" class="boton-add-cliente">Añadir cliente</button>
-        </div>
-        
-        
-        <dialog id="modal">
-            <div>
-                <h2>Agregar Nuevo Cliente</h2>
-            </div>
-            <form id="formulario" method="post">
-                <label>Tu nombre<input type="text" name="nombre"></label>
+    <h1>Clientes</h1>
+    <button class="btn-abrir-modal boton-add-cliente">Añadir cliente</button>
+</div>
 
-                <label>Tu correo<input type="email" name="correo"></label>
+<dialog class="modal">
+    <div>
+        <h2>Agregar Nuevo Cliente</h2>
+    </div>
+    <form class="formulario" method="post">
+        <label>Tu nombre<input type="text" name="nombre"></label>
+        <label>Tu correo<input type="email" name="correo"></label>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quasi incidunt ratione natus nostrum? Natus quas distinctio impedit voluptates numquam hic quia odit, veritatis tempora nostrum dicta laborum, et maiores!</p>
+        <button type="submit">Enviar</button>
+        <button class="btn-cerrar-modal" type="button">Cerrar modal</button>
+    </form>
+</dialog>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quasi incidunt ratione natus nostrum? Natus quas distinctio impedit voluptates numquam hic quia odit, veritatis tempora nostrum dicta laborum, et maiores!</p>
-
-                <button type="submit">Enviar</button>
-                <button id="btn-cerrar-modal" type="button">Cerrar modal</button>
-            </form>
-        </dialog>
-        
 
         <div class="tabla-clientes">
             <table>
                 <thead>
                     <tr class="columnas-tabla-clientes">
                         <th>Nombre</th>
+                        <th>Apellido</th>
                         <th>Teléfono</th>
                         <th>Dirección</th>
                         <th>Deuda</th>
@@ -54,6 +51,7 @@ session_start();
                     <?php foreach ($datos_clientes as $fila) { ?>
                         <tr>
                             <td><?php echo $fila['Nombre']; ?></td>
+                            <td><?php echo $fila['Apellido']; ?></td>
                             <td><?php echo $fila['Telefono']; ?></td>
                             <td><?php echo $fila['Direccion']; ?></td>
                             <td></td>
