@@ -1,10 +1,3 @@
-<?php
-// session_start();
-//     if (!isset($_SESSION['user'])) {
-//         header("Location: ../Register-Login/index.php");
-//         exit;
-//     }
-?>
 <link rel="stylesheet" href="../resources/style.css">
 
 <body id="body-home">
@@ -16,8 +9,33 @@
         ?>
         <div class="div-addCliente">
             <h1>Lista de Taximetristas</h1>
-            <button class="boton-add-cliente">Añadir Taximetrista</button>
+            <button id="btn-abrir-modal" class="boton-add-cliente">Añadir Taximetrista</button>
         </div>
+
+        <dialog id="modal">
+            <div class="div-titulo-modal">
+                <h2>Agregar Nuevo Taximetrista</h2> 
+            </div>
+            <form id="formulario" method="post">
+                <div class="div-labels-forms">
+                    <label>Nombre:<input type="text" name="Nombre"></label>
+    
+                    <label>Apellido:<input type="text" name="Apellido"></label> 
+                </div>  
+                <div class="div-labels-forms">
+                    <label>Fecha de Nacimiento:<input type="date" name="Fecha de Nacimiento"></label>
+
+                    <label>Fecha vencimiento de libreta de conducir:<input type="date" name="Fecha vencimiento de libreta de conducir"></label>
+                </div>              
+                <div class="div-labels-forms">
+                    <label class="label-direccion">Dirección:<input type="text" name="Dirección"></label>
+                </div>
+                <div class="div-labels-forms">
+                    <button type="submit" class="boton-enviar-modal">Enviar</button>
+                </div>
+            </form>
+        </dialog>
+        
         <div class="tabla-clientes">
             <table>
                 <thead>

@@ -7,7 +7,6 @@
 ?>
 <html lang="es">
 <link rel="stylesheet" href="../resources/style.css">
-
 <body id="body-home">
     <main>
         <?php

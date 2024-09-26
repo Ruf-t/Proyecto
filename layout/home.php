@@ -1,12 +1,6 @@
-<?php
-// session_start();
-//     if (!isset($_SESSION['user'])) {
-//         header("Location: ../Register-Login/index.php");
-//         exit;
-//     }
-?>
-<html>
+
 <link rel="stylesheet" href="../resources/style.css">
+
 <body id="body-home">   
     <main>
         <?php
@@ -14,6 +8,7 @@
         include '../BaseDatos/functions.php';
         $datos_viaje = datos_tabla_viaje($con);
         ?>
+        
         <div class="div-panel-administracion">
             <h3>Panel de administracion</h3>
             <div class="div-botones-administracion">
@@ -46,28 +41,32 @@
                 </div>
             </div>
         </section>
+
+
         <div class="div-tabla-panel">
             <table id="table-panel">
 
                 <thead>
                     <tr>
                         <th>Taximetrista</th>
-                        <th>Número de coche</th>
+                        <th>Cliente</th>
+                        <th>Matricula Coche</th>
                         <th>Fecha Viaje</th>
                         <th>Metodo de pago</th>
                         <th>Ingreso</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($datos_viaje as $fila) { ?>
-                        <tr>
-                            <td><?php echo $fila['Nombre']; ?></td>    
-                            <td><?php echo $fila['matricula']; ?></td>    
-                            <td><?php echo $fila['Fecha']; ?></td>    
-                            <td><?php echo $fila['Método_de_pago']; ?></td>    
-                            <td><?php echo $fila['Tarifa']; ?></td>
-                        </tr>
-                    <?php } ?>
+                <?php foreach ($datos_viaje as $fila) { ?>
+                    <tr>
+                        <td><?php echo $fila['Nombre_Taxista']; ?></td>
+                        <td><?php echo $fila['Nombre_Cliente'];?></td> 
+                        <td><?php echo $fila['matricula']; ?></td>    
+                        <td><?php echo $fila['Fecha']; ?></td>    
+                        <td><?php echo $fila['Método_de_pago']; ?></td>    
+                        <td><?php echo $fila['Tarifa']; ?></td>
+                    </tr>
+                <?php } ?>
                 </tbody>
             </table>
         </div>

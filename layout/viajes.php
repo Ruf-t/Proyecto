@@ -33,8 +33,11 @@
                 </select>
             </div>
         </div>
-        <div class="div-tabla-viajes">
-            <table id="tabla-viajes">
+
+        <div class="div-tabla-panel">
+            <table id="table-panel">
+        <div class="div-tabla-panel">
+            <table id="tabla-panel">
                 <thead>
                     <tr>
                         <th>Cliente</th>
@@ -44,13 +47,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                 <?php foreach ($datos_viaje as $fila) { ?>
-                <tr>
-                    <td><?php echo $fila['Nombre']; ?></td>    
-                    <td><?php echo $fila['matricula']; ?></td>    
-                    <td><?php echo $fila['Fecha']; ?></td>    
-                    <td><?php echo $fila['Tarifa']; ?></td>
-                </tr>
+                <?php foreach ($datos_viaje as $fila) { ?>
+                    <tr>
+                        <td><?php echo $fila['Nombre_Taxista']; ?></td>
+                        <td><?php echo $fila['Nombre_Cliente'];?></td> 
+                        <td><?php echo $fila['matricula']; ?></td>    
+                        <td><?php echo $fila['Fecha']; ?></td>    
+                        <td><?php echo $fila['Método_de_pago']; ?></td>    
+                        <td><?php echo $fila['Tarifa']; ?></td>
+                    </tr>
                 <?php } ?>
                 </tr> 
                 </tbody>

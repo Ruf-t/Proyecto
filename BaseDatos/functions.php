@@ -13,29 +13,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start(); // Iniciar la sesión solo si no está activa
 }
 
-
-
-// function FormJornadaUserTaxis($con, $KmInicialTaximetrista, $NumeroDeCocheTaximetrista) {
-//     // Insertar la nueva jornada en la base de datos
-//     $consulta_insertar_jornada_Taximetrista = "INSERT INTO `jornada` (`Km_Inicio`, `Km_Final`, `Fecha`, `FK-Taxi`) 
-//     VALUES ('$KmInicialTaximetrista', NULL, current_timestamp(), '$NumeroDeCocheTaximetrista')";
-
-//     if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
-//         // Obtener el ID de la jornada recién insertada
-//         $id_jornada = mysqli_insert_id($con);
-        
-//         // Guardar el ID de la jornada en la sesión del usuario
-//         $_SESSION['id_jornada'] = $id_jornada;
-//         $_SESSION['NumeroDeCocheTaximetrista'] = $NumeroDeCocheTaximetrista;
-//         $_SESSION['KmInicialTaximetrista'] = $KmInicialTaximetrista;
-        
-//         echo "<h4 class='text'>Jornada iniciada con éxito! $id_jornada</h4>";
-//     } else {
-//         echo "Error al iniciar la jornada: " . mysqli_error($con) . "<br>";
-//         echo "Consulta: " . $consulta_insertar_jornada_Taximetrista . "<br>";
-//     }
-// }
-
 // En functions.php
 function FormJornadaUserTaxis($con, $KmInicialTaximetrista, $NumeroDeCocheTaximetrista) {
     $consulta_insertar_jornada_Taximetrista = "INSERT INTO `jornada` (`Km_Inicio`, `Km_Final`, `Fecha`, `FK-Taxi`) 
@@ -222,11 +199,25 @@ function  eliminar_taxis($con, $id_taxis) {
 
 // funcion mostrar viajes
 function datos_tabla_viaje($con) {
-    $consulta_datos_viaje = "SELECT viaje.*, taxi.matricula, persona.Nombre, viaje.Método_de_pago
-                            FROM viaje
-                            INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID
-                            INNER JOIN cliente_registrado ON viaje.Fk_Cliente_Registrado = cliente_registrado.ID
-                            INNER JOIN persona ON cliente_registrado.Fk_Persona = persona.ID";
+    $consulta_datos_viaje = "SELECT 
+                                    p_taxista.Nombre AS Nombre_Taxista, 
+                                    p_cliente.Nombre AS Nombre_Cliente,
+                                    viaje.*,
+                                    taxi.matricula,
+                                    viaje.Método_de_pago   
+                                    FROM 
+                                        taximetrista t
+                                    JOIN
+                                        persona p_taxista ON t.`FK-Persona` = p_taxista.ID
+                                    JOIN 
+                                        viaje ON viaje.Fk_Taximetrista = t.ID
+                                    JOIN 
+                                        cliente_registrado c ON viaje.Fk_Cliente_Registrado = c.ID
+                                    JOIN 
+                                        persona p_cliente ON c.Fk_Persona = p_cliente.ID
+                                    INNER JOIN 
+                                        taxi ON viaje.Fk_Taxi = taxi.ID";
+
 
     $resultado = mysqli_query($con, $consulta_datos_viaje);
 
@@ -247,51 +238,23 @@ function datos_tabla_viaje($con) {
 
 
 
+// //Funcion 2 para mostrar clientes
+// $id=$_GET['ID'];
 
+// $sql="delete from taxis where ID='".$id."'";
+// $resultado=mysqli_query($con,$sql);
 
-
-
-
-
-
-//funcion para eliminar cliente
-// function eliminar_cliente($con, $id_cliente) { 
-//     // Obtener el ID de la persona asociada al cliente
-//     $consulta_fk_persona = "SELECT Fk_Persona FROM cliente_registrado WHERE ID = ?";
-//     $stmt = mysqli_prepare($con, $consulta_fk_persona);
-//     mysqli_stmt_bind_param($stmt, 'i', $id_cliente);
-//     mysqli_stmt_execute($stmt);
-//     $resultado = mysqli_stmt_get_result($stmt);
-//     $fila = mysqli_fetch_assoc($resultado);
-
-//     if ($fila) {
-//         $fk_persona = $fila['Fk_Persona'];
-
-//         // Eliminar primero el registro de la tabla cliente_registrado
-//         $eliminar_cliente = "DELETE FROM cliente_registrado WHERE ID = ?";
-//         $stmt_cliente = mysqli_prepare($con, $eliminar_cliente);
-//         mysqli_stmt_bind_param($stmt_cliente, 'i', $id_cliente);
-//         $resultado_cliente = mysqli_stmt_execute($stmt_cliente);
-
-//         // Luego eliminar el registro de la tabla persona
-//         if ($resultado_cliente) {
-//             $eliminar_persona = "DELETE FROM persona WHERE ID = ?";
-//             $stmt_persona = mysqli_prepare($con, $eliminar_persona);
-//             mysqli_stmt_bind_param($stmt_persona, 'i', $fk_persona);
-//             $resultado_persona = mysqli_stmt_execute($stmt_persona);
-
-//             // Verificar si ambas eliminaciones fueron exitosas
-//             if ($resultado_persona) {
-//                 return true; 
-//             } else {
-//                 return false; // Error al eliminar en persona
-//             }
-//         } else {
-//             return false; // Error al eliminar en cliente_registrado
-//         }
+// if($resultado) {
+//     echo "<script languaje='JavaScript'>
+//         alert('Los datos se eliminaron correctamente de la BD');
+//         location.assign('index.php');
+//     </script>";
 //     } else {
-//         return false; // No se encontró la persona asociada
-//     }
+//         echo "<script languaje='JavaScript'>
+//             alert('Los datos NO se eliminaron de la BD');
+//             location.assign('index.php');
+//         </script>";
+
 // }
 
 

@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" href="../resources/style.css">
 <?php
 // session_start();
 //     if (!isset($_SESSION['user'])) {
@@ -35,8 +37,28 @@
 
         <div class="div-addTaxi">
             <h1>Lista de Taxis</h1>
-            <button class="btn-abrir-modal  boton-add-Taxi">Añadir Taxi</button>
+            <button id="btn-abrir-modal" class="boton-add-Taxi">Añadir Taxi</button>
         </div>
+
+        <dialog id="modal">
+            <div>
+                <h2>Agregar Nuevo Taxi</h2>
+            </div>
+            <form id="formulario" method="post">
+                <label>Modelo:<input type="text" name="nombre"></label>
+
+                <label>Kilometros:<input type="text" name="Kilometros"></label>
+
+                <label>Año:<input type="number" name="Año"></label>
+
+                <label>Proximo Servicio:<input type="date" name="Proximo Servicio"></label>
+
+                <label>Estado:<input type="select" name="Estado"></label>
+
+                <button type="submit">Enviar</button>
+                <button id="btn-cerrar-modal" type="button">Cerrar modal</button>
+            </form>
+        </dialog>
 
         <div class="tabla-Taxis">
             <table>
