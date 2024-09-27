@@ -13,26 +13,29 @@
         include '../header.php';
         require_once '..\BaseDatos\functions.php';
         $datos_clientes = mostrar_datos_cliente($con);
+        $cantidad_clientes = cantidad_clientes($con);
         ?>
 
         <div class="div-addCliente">
-    <h1>Clientes</h1>
-    <button class="btn-abrir-modal boton-add-cliente">Añadir cliente</button>
-</div>
+            <h1>Clientes</h1>
+            <div class="div-cantidad-clientes">
+                <button class="btn-abrir-modal boton-add-cliente">Añadir cliente</button>
+                <h3 class="total-clientes">Total de clientes: <?php echo $cantidad_clientes; ?></h3>
+            </div>
+        </div>
 
-<dialog class="modal">
-    <div>
-        <h2>Agregar Nuevo Cliente</h2>
-    </div>
-    <form class="formulario" method="post">
-        <label>Tu nombre<input type="text" name="nombre"></label>
-        <label>Tu correo<input type="email" name="correo"></label>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quasi incidunt ratione natus nostrum? Natus quas distinctio impedit voluptates numquam hic quia odit, veritatis tempora nostrum dicta laborum, et maiores!</p>
-        <button type="submit">Enviar</button>
-        <button class="btn-cerrar-modal" type="button">Cerrar modal</button>
-    </form>
-</dialog>
-
+        <dialog class="modal">
+            <div>
+                <h2>Agregar Nuevo Cliente</h2>
+            </div>
+            <form class="formulario" method="post">
+                <label>Tu nombre<input type="text" name="nombre"></label>
+                <label>Tu correo<input type="email" name="correo"></label>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quasi incidunt ratione natus nostrum? Natus quas distinctio impedit voluptates numquam hic quia odit, veritatis tempora nostrum dicta laborum, et maiores!</p>
+                <button type="submit">Enviar</button>
+                <button class="btn-cerrar-modal" type="button">Cerrar modal</button>
+            </form>
+        </dialog>
 
         <div class="tabla-clientes">
             <table>
@@ -59,20 +62,9 @@
                         </tr>
                     <?php } ?>
                 </tbody>
-
             </table>
-            <div class="div-cantidad-clientes">
-                <h3 class="total-clientes">Total de clientes: $5</h3>
-                <div class="div-paginas">
-                    <button class="pasar-paginas" onclick="activarBoton('1')"><img
-                            src="../resources/img/Iconos-SVG/icons-others/flecha-menorque.svg"></button>
-                    <button class="paginas active" onclick="cambioColorBoton(this)">1</button>
-                    <button class="paginas">2</button>
-                    <button class="pasar-paginas" onclick="activarBoton('2')"><img
-                            src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                </div>
-            </div>
         </div>
+        
     </main>
 
     <div class="sidebar-container">

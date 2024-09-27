@@ -33,16 +33,15 @@
                 </select>
             </div>
         </div>
-
-        <div class="div-tabla-panel">
-            <table id="table-panel">
-        <div class="div-tabla-panel">
-            <table id="tabla-panel">
+        <div class="div-tabla-viaje">
+            <table id="tabla-viaje">
                 <thead>
                     <tr>
+                        <th>Taximetrista</th>
                         <th>Cliente</th>
-                        <th>Número de coche</th>
+                        <th>Matricula Coche</th>
                         <th>Fecha Viaje</th>
+                        <th>Metodo de pago</th>
                         <th>Ingreso</th>
                     </tr>
                 </thead>

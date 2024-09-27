@@ -362,7 +362,7 @@ button:hover {
   border: none;
   width: 150px;
   height: 50px;
-  margin-right: 15px;
+  /* margin-right: 15px; */
   background-color: var(--colorAmarillo);
 }
 .boton-add-cliente:hover{
@@ -546,56 +546,42 @@ select{
 }
 
 /*? TABLA VIAJES */
-.div-tabla-viajes{
-  width: 100%;
-  min-width: 1000px;
-  height: 100%;
-  grid-column: 1/2;
+.div-tabla-viaje {
+  overflow-x: auto;
+  overflow-y: auto; 
+  margin-right: 1rem;
+  display: grid;
   grid-row: 3/5;
-  display: block;
-  overflow-x:auto;
-  overflow-y:auto;
+  grid-column: 1/3;
 }
-#tabla-viajes {
+#tabla-viaje{
   table-layout: auto;
   border-collapse: collapse;
   font-size: 1rem;
   text-align: center;
 }
-
-#tabla-viajes th, td {
-  padding: 15px;
-  border-bottom: 1px solid #ddd;
+#tabla-viaje th, td {
+  padding: 2px;
 }
-#tabla-viajesth button{
-  border-collapse: collapse;
+#tabla-viaje tr {
+  padding: 2px;
+}
+#tabla-viaje th{
   font-size: 1rem;
-  text-align: left;
+  text-align: center;
   padding: 1rem 0 1rem 0;
 }
-#tabla-viajes th{
+#tabla-viaje th{
   position: sticky;
   top: 0;
   z-index: 1; 
   padding: 1rem 0;
-}
-#tabla-viajes th,  button{
   background-color: #f4f4f4;
   border-radius: .2rem;
   box-sizing: border-box;
 }
-#tabla-viajes th:nth-child(3), #tabla-viajes td:nth-child(3) {
-    width: 10rem;
-}
-#tabla-viajes th:nth-child(4), #tabla-viajes td:nth-child(4) {
-  width: 10rem;
-}
-#tabla-viajes th:nth-child(5), #tabla-viajes td:nth-child(5) {
-  width: 10rem;
-}
-.income {
-  color: #28a745;
-  font-weight: bold;
+#tabla-viaje, #tabla-viaje th, #tabla-viaje td {
+  border: none;
 }
 
 /*? TABLA CLIENTES*/
@@ -603,21 +589,25 @@ select{
 
 } */
 .tabla-clientes {
-  width: 100%;
-  min-width: 1000px;
-  height: 100%;
-  min-height: 400px;
-  grid-column: 1/2;
-  grid-row: 3/4;
+  grid-column: 1/3;
+  grid-row: 3/5;
   overflow-x:auto;
   overflow-y:auto;
 }
 .tabla-clientes table {
   border-collapse: collapse;
-  margin: 1rem 0;
   font-size: 1rem;
   text-align: center;
   width: 100%;
+}
+.tabla-clientes table th{
+  position: sticky;
+  top: 0;
+  z-index: 1; 
+  padding: 1rem 0;
+  background-color: #f4f4f4;
+  border-radius: .2rem;
+  box-sizing: border-box;
 }
 .tabla-clientes table th {
   z-index: 1;
@@ -674,9 +664,13 @@ select{
 }
 
 .div-cantidad-clientes{
-  display: flex;
   justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  align-items: center ;
+  flex-direction: column;
+  display: flex;
+  grid-row: 2/3;
 }
 .div-paginas{
   display: flex;

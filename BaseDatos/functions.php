@@ -157,7 +157,7 @@ function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista){
 
 
 //función mostrar clientes
-function mostrar_datos_cliente($con) {
+function mostrar_datos_cliente($con) { 
     $consulta_datos_cliente = "SELECT * FROM persona 
                                JOIN cliente_registrado  ON persona.ID = cliente_registrado.Fk_Persona";
 
@@ -274,10 +274,8 @@ function datos_tabla_viaje($con) {
 
 function mostrar_datos_taxistas($con) {
     // Consulta para unir las tablas taximetrista y persona
-    $consulta_datos_taxistas = "
-        SELECT t.*, p.Nombre, p.Apellido, p.Telefono, p.Direccion 
-        FROM taximetrista t
-        INNER JOIN persona p ON t.ID = p.ID
+    $consulta_datos_taxistas = "SELECT * FROM taximetrista 
+                                INNER JOIN persona  ON taximetrista.ID = persona.ID
     ";
 
     $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);
@@ -365,4 +363,18 @@ function agregar_taxi($con, $matricula, $modelo, $año, $estado) {
             'message' => 'Error al añadir el taxi: ' . mysqli_error($con)
         ];
     }
+}
+
+
+
+function cantidad_clientes($con) {
+    $consulta_cant_clientes = "SELECT COUNT(DISTINCT persona.ID) AS cantidad_clientes
+                               FROM persona 
+                               JOIN cliente_registrado ON persona.ID = cliente_registrado.Fk_Persona";
+    
+    $resultado = mysqli_query($con, $consulta_cant_clientes);
+
+    $fila = mysqli_fetch_assoc($resultado); 
+
+    return $fila['cantidad_clientes']; 
 }

@@ -45,7 +45,6 @@
 
         <div class="div-tabla-panel">
             <table id="table-panel">
-
                 <thead>
                     <tr>
                         <th>Taximetrista</th>
@@ -57,16 +56,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($datos_viaje as $fila) { ?>
-                    <tr>
-                        <td><?php echo $fila['Nombre_Taxista']; ?></td>
-                        <td><?php echo $fila['Nombre_Cliente'];?></td> 
-                        <td><?php echo $fila['matricula']; ?></td>    
-                        <td><?php echo $fila['Fecha']; ?></td>    
-                        <td><?php echo $fila['Método_de_pago']; ?></td>    
-                        <td><?php echo $fila['Tarifa']; ?></td>
-                    </tr>
-                <?php } ?>
+                    <?php foreach ($datos_viaje as $fila) { ?>
+                        <tr>
+                            <td><?php echo $fila['Nombre_Taxista']; ?></td>
+                            <td><?php echo $fila['Nombre_Cliente'];?></td> 
+                            <td><?php echo $fila['matricula']; ?></td>    
+                            <td><?php echo $fila['Fecha']; ?></td>    
+                            <td><?php echo $fila['Método_de_pago']; ?></td>    
+                            <td><?php echo $fila['Tarifa']; ?></td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
