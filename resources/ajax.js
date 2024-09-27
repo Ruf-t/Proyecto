@@ -8,23 +8,26 @@ $(document).ready(function() {
 
         // Enviar la petición AJAX
         $.ajax({
-            url: '../BaseDatos/peticiones-ajax.php',
             type: 'POST',
+            url: '../BaseDatos/peticiones-ajax.php',
             data: formData,
-            // dataType: 'json',  // Asegurarse de que se espera una respuesta en JSON
+            dataType: 'json',  // Asegurarse de que se espera una respuesta en JSON
             success: function(response) {
-                let respuesta = JSON.parse(response);
-                if (respuesta.success) {
+                console.log("Respuesta del servidor:", response);
+                if (response.success) {
                     // Si la operación fue exitosa
-                    $('#resultado').html(`<p class="success">${respuesta.message}</p>`);
+                    $('.mensajeResult').text(response.message); // Corrección en el nombre de 'message'
                 } else {
                     // Si hubo algún error
-                    $('#resultado').html(`<p class="error">${respuesta.message}</p>`);
+                    $('.mensajeResult').text(response.message); // Corrección en el nombre de 'message'
                 }
             },
-            error: function() {
-                $('#resultado').html('Ocurrió un error inesperado.');
-            }
+            error: function(xhr, status, error) {
+                console.log('Error:', error);
+                console.log('XHR:', xhr);
+                console.log('Status:', status);
+                $('.mensajeResult').text('Ocurrió un error inesperado.');
+              }
         });
     });
 });

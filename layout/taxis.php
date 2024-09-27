@@ -15,7 +15,7 @@
     <title>Panel</title>
     <!-- <link rel="icon" href="../../resources/img/Others/Favicon-Ruft.png" type="image/png"> -->
     <link rel="stylesheet" href="../resources/style.css">
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="../resources/ajax.js"></script>
 
@@ -23,7 +23,10 @@
 
 <body id="body-home">
     <main>
-    <div id="resultado"></div>
+    <div class="resultado">
+    <p class="mensajeResult"></p>
+</div>
+
         <?php
         include '../header.php';
         require_once '..\BaseDatos\functions.php';
@@ -108,7 +111,7 @@
                 <label>Modelo<input type="text" name="modelo" id="modelo"></label>
                 <label>Año<input type="number" name="anio" id="anio"></label>
                 <label>Estado (Activo o Pasivo)</label>
-                    <select name="estadoNuevoTaxi" id="estadoNuevoTaxi">
+                    <select name="estado" id="estado">
                     <option value="">Selecciona un estado</option>
                     <option value="1">Disponible</option>
                     <option value="0">Indisponible</option>

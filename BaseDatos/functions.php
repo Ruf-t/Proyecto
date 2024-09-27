@@ -383,8 +383,7 @@ function obtenerClientesRegistrados($con) {
 function agregar_taxi($con, $matricula, $modelo, $año, $estado) {
 
     // Consulta SQL de inserción
-    $sql = "INSERT INTO taxi (Matricula, Modelo, Año, Estado) 
-            VALUES ('$matricula', '$modelo', $año, $estado)";
+    $sql = "INSERT INTO taxi (Matricula, Modelo, Año, Estado) VALUES ('$matricula', '$modelo', $año, $estado)";
 
     // Ejecutar la consulta y devolver el resultado
     if (mysqli_query($con, $sql)) {
@@ -395,10 +394,8 @@ function agregar_taxi($con, $matricula, $modelo, $año, $estado) {
         return [
             'success' => true,
             'message' => 'Taxi añadido correctamente.',
-            'id_taxi' => $id_taxi,
-            'matricula' => $matricula
         ];
-    } else {
+    } else{
         // Devolver una respuesta de error
         return [
             'success' => false,
