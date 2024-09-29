@@ -20,7 +20,7 @@
             <h1>Clientes</h1>
             <div class="div-cantidad-clientes">
                 <button class="btn-abrir-modal boton-add-cliente">Añadir cliente</button>
-                <h3 class="total-clientes">Total de clientes: <?php echo $cantidad_clientes; ?></h3>
+                <!-- <h3 class="total-clientes">Total de clientes: <?php echo $cantidad_clientes; ?></h3> -->
             </div>
         </div>
 

@@ -6,7 +6,6 @@
 //     }
 ?>
 <link rel="stylesheet" href="../resources/style.css">
-
 <body id="body-home">
     <main>
         <?php
@@ -45,7 +44,7 @@
                         <th>Ingreso</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="viajes-body">
                 <?php foreach ($datos_viaje as $fila) { ?>
                     <tr>
                         <td><?php echo $fila['Nombre_Taxista']; ?></td>
@@ -55,10 +54,10 @@
                         <td><?php echo $fila['Método_de_pago']; ?></td>    
                         <td><?php echo $fila['Tarifa']; ?></td>
                     </tr>
-                <?php } ?>
-                </tr> 
+                <?php } ?> 
                 </tbody>
             </table>
+            <button id="recargar-tabla">Recargar tabla</button>
         </div>
     </main>
 
@@ -90,5 +89,7 @@
     </div>
     
     <script src="../resources/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../resources/ajax.js"></script>
 </body>
 </html>
