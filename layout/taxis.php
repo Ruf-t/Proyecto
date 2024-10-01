@@ -37,10 +37,10 @@
 
         <div class="div-addTaxi">
             <h1>Lista de Taxis</h1>
-            <button id="btn-abrir-modal" class="boton-add-Taxi">Añadir Taxi</button>
+            <button class="btn-abrir-modal boton-add-Taxi">Añadir Taxi</button>
         </div>
 
-        <dialog id="modal">
+        <dialog class="modal">
             <div>
                 <h2>Agregar Nuevo Taxi</h2>
             </div>
@@ -56,7 +56,7 @@
                 <label>Estado:<input type="select" name="Estado"></label>
 
                 <button type="submit">Enviar</button>
-                <button id="btn-cerrar-modal" type="button">Cerrar modal</button>
+                <button class="btn-cerrar-modal" type="button">Cerrar modal</button>
             </form>
         </dialog>
 

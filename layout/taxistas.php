@@ -9,10 +9,10 @@
         ?>
         <div class="div-addCliente">
             <h1>Lista de Taximetristas</h1>
-            <button id="btn-abrir-modal" class="boton-add-cliente">Añadir Taximetrista</button>
+            <button class="btn-abrir-modal boton-add-cliente">Añadir Taximetrista</button>
         </div>
 
-        <dialog id="modal">
+        <dialog class="modal">
             <div class="div-titulo-modal">
                 <h2>Agregar Nuevo Taximetrista</h2> 
             </div>
@@ -44,7 +44,7 @@
                         <th>Apellido</th>
                         <th>Nacimiento</th>
                         <th>Direccion</th>
-                        <th>Fecha de vencimiento libreta</th>
+                        <th>Fecha de vencimiento libreta</th> 
                         <th>Teléfono</th>
                         <th>Info Taxista</th>
                     </tr>
