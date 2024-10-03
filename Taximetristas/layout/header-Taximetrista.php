@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="../style/style-Taximetristas.css">
 <header>
-   <button>
+   <!-- <button>
        <img src="../../resources/img/Iconos-SVG/icons-others/menu-icon-taximetrista.svg" alt="">
-   </button> 
+   </button>  -->
 <h3>Hola, <?php echo $userTaxi; ?>!</h3>
 
 <form method="post" action="../../BaseDatos/login-bd.php">

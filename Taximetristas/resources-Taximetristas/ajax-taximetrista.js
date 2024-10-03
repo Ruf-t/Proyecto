@@ -6,6 +6,43 @@ $.ajax({
     $('<style>').html(css).appendTo('head');
   });
   
+
+  $(document).ready(function() {
+    $('#form-inicioS-taximetrista').on('submit', function(event) {
+        event.preventDefault();  // Evita la recarga de la página
+        var formData = $(this).serialize(); 
+        $.ajax({
+            url: '../resources-Taximetristas/Peticiones/procesar-taximetrista.php',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            success: function(response) {
+                console.log(response);  // Imprime la respuesta para ver si llega correctamente
+                if (response.status === "success") {
+                    window.location.href = '../layout/home-taximetrista.php';
+                } else {
+                    $('.mensajeAJAX').text(response.message).addClass('error-message');
+                    $('.respuestaAJAX').slideDown();
+                    setTimeout(function() {
+                        $('.respuestaAJAX').slideUp();
+                    }, 5000);
+                }
+            },
+            
+            error: function(error) {
+                $('.mensajeAJAX').text('Ocurrió un error inesperado.');
+                $('.respuestaAJAX').slideDown();
+
+                setTimeout(function() {
+                    $('.respuestaAJAX').slideUp();
+                }, 5000);
+            }
+        });
+    });
+});
+
+
+
   
   // funcion para enviar los datos del formulario iniciar jornada
   $(document).ready(function() {

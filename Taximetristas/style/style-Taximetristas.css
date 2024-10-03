@@ -65,14 +65,16 @@
     .title-login{
         color:white;
     }
-    #user, #contrasenia{
+    #userTaxi, #contraseniaTaxi{
         background-color: white;
         border-radius: 10px;
         height: 50px;
-        width: 335px;
+        width: 75%;
         margin-bottom: 10px;
         border: 1px solid rgb(255, 255, 255);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        padding-left: 10px;
     }
     #user::placeholder, #contrasenia::placeholder{
        color: #000;
@@ -82,12 +84,12 @@
     .button-login-TXs{
         inset:all;
         background-color:var(--amarillo);
-        width: 330px;
+        width: 80%;
         height: 50px;
         color: black;
         border-radius:5px ;
         border: none;
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
 }
@@ -197,10 +199,20 @@ input[type="number"]:focus {
     background-size: cover;
 }
 
+/* #userTaxi, #contraseniaTaxi{
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 50%;
+    color: var(--white);
+} */
+
 
 .register-card form{
 display: grid;
-
 grid-template-columns: 1fr 1fr;
 grid-row: 1fr 1fr 1fr 1fr 1fr;
 gap: 5px;
@@ -253,8 +265,7 @@ p{
 /*----------------ESTILOS DE AJAX HOME----------------- */
 .respuestaAJAX{
     display: none;
-    margin-top: 0;
-
+    margin-top: 10px;
     
     p{
         margin: 0;
@@ -274,6 +285,8 @@ p{
 .error-message{
     color: #E74C3C;
 }
+
+
 
 .btn-activado{
     cursor: pointer;
