@@ -40,49 +40,27 @@
             <button class="btn-abrir-modal boton-add-Taxi">Añadir Taxi</button>
         </div>
 
-        <dialog class="modal">
-            <div>
-                <h2>Agregar Nuevo Taxi</h2>
-            </div>
-            <form id="formulario" method="post">
-                <label>Modelo:<input type="text" name="nombre"></label>
-
-                <label>Kilometros:<input type="text" name="Kilometros"></label>
-
-                <label>Año:<input type="number" name="Año"></label>
-
-                <label>Proximo Servicio:<input type="date" name="Proximo Servicio"></label>
-
-                <label>Estado:<input type="select" name="Estado"></label>
-
-                <button type="submit">Enviar</button>
-                <button class="btn-cerrar-modal" type="button">Cerrar modal</button>
-            </form>
-        </dialog>
 
         <div class="tabla-Taxis">
             <table>
                 <thead> 
-                    <tr class="columnas-tabla-Taxis">
-                        <th>N° Taxi</th>
-                        <th>Kilometros</th>
+                    <tr class="columnas-tabla-Taxis">   
+                        <th>Matricula</th>
                         <th>Año</th>
                         <th>Modelo</th>
                         <th>Estado</th>
-                        <th>Proximo Servicio</th>
                         <th></th>
-                    </tr>
+                        </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($datos_taxis as $fila) { ?>
                         <tr>
-                            <td><?php echo $fila['ID']; ?></td>
                             <td><?php echo $fila['Matricula']; ?></td>
-                            <td><?php echo $fila['Modelo']; ?></td>
                             <td><?php echo $fila['Año']; ?></td>
+                            <td><?php echo $fila['Modelo']; ?></td>
                             <td><?php echo $fila['Estado']; ?></td>
-                            <td></td>
                             <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera" onclick="eliminarTaxi(<?php echo $fila['ID']; ?>)"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
+                            <!-- <td></td> -->
                         </tr>
                     <?php } ?>
                 </tbody>
