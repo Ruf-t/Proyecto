@@ -32,4 +32,32 @@ $(document).ready(function() {
     });
 });
 
+//ACTUALIZAR DATOS TABLA VIAJE
+$(document).ready(function() {
+    // setInterval(function() {
+    //     cargarTablaViajes();
+    // }, 5000);
+
+    // Actualizar datos de la tabla al hacer clic en el botón
+    // $('#recargar-tabla').click(function() {
+    //     cargarTablaViajes();
+    // });
+
+    // Función para cargar los datos de la tabla de viajes
+    function cargarTablaViajes() {
+        $.ajax({
+            url: '../BaseDatos/peticiones-ajax.php', // Asegúrate de que esta ruta sea correcta
+            type: 'GET',
+            data: { cargar_viajes: true }, // Indicador para cargar los viajes
+            dataType: 'html',
+            success: function(data) {
+                console.log('Datos de respuesta:', data); // Para depurar
+                $('#viajes-body').html(data); // Actualizar el cuerpo de la tabla
+            },
+            error: function(xhr, status, error) {
+                console.error("Error al cargar los datos: " + error);
+            }
+        });
+    }
+});
 

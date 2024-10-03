@@ -169,4 +169,32 @@ function eliminarTaxi(id) {
 
 
 
+//----------------------------------------------CAMBIAR IDIOMA-----------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+    const h3_opcionesElement = document.getElementById('h3_opciones');
+    const texto_btnElement = document.getElementById('switch_idioma');
+    const switchIdioma = document.getElementById('switch_idioma');
+    let currentLanguage = 'es';
 
+    const loadContent = (language) => {
+        fetch('../resources/idiomas.json')
+            .then(response => response.json())
+            .then(data => {
+                h3_opcionesElement.textContent = data[language].h3_opciones;
+                texto_btnElement.textContent = data[language].texto_btn;
+            })
+            .catch(error => console.log(error));
+    };
+
+    switchIdioma.addEventListener('click', () => {
+        if (currentLanguage === 'es') {
+            currentLanguage = 'en';
+        } else {
+            currentLanguage = 'es';
+        }
+        loadContent(currentLanguage);
+    });
+
+    // carga inicial
+    loadContent(currentLanguage);
+});
