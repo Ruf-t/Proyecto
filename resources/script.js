@@ -171,10 +171,9 @@ function eliminarTaxi(id) {
 
 //----------------------------------------------CAMBIAR IDIOMA-----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-    //HEADER
+    // HEADER
     const titulo_headerElement = document.getElementById('titulo_header');
-    //-----------------------------------------------------------------------  
-    //SLIDEBAR
+    // SLIDEBAR
     const home_menuElement = document.getElementById('home_menu');
     const viajes_menuElement = document.getElementById('viajes_menu');
     const clientes_menuElement = document.getElementById('clientes_menu');
@@ -182,23 +181,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const ingresos_menuElement = document.getElementById('ingresos_menu');
     const taxis_menuElement = document.getElementById('taxis_menu');
     const config_menuElement = document.getElementById('config_menu');
-    //----------------------------------------------------------------------
-    
-    //CONFIGURACIÓN
+    // PANEL
+    const h3_panelElement = document.getElementById('h3_panel');
+    const span_ordenes_panelElement = document.getElementById('span_ordenes_panel');
+    const span_ganancias_panelElement = document.getElementById('span_ganancias_panel');
+    const span_taxis_panelElement = document.getElementById('span_taxis_panel');
+    const h3_taxistas_mesElement = document.getElementById('h3_taxistas_mes');
+    const th_taxistaElement = document.getElementById('th_taxista');
+    const th_clienteElement = document.getElementById('th_cliente');
+    const th_matriculaElement = document.getElementById('th_matricula');
+    const th_fechaElement = document.getElementById('th_fecha');
+    const th_metodo_pagoElement = document.getElementById('th_metodo_pago');
+    const th_ingresoElement = document.getElementById('th_ingreso');
+    // CONFIGURACIÓN
     const h3_opcionesElement = document.getElementById('h3_opciones');
     const texto_btnElement = document.getElementById('switch_idioma');
-    //-----------------------------------------------------------------------
+    
     const switchIdioma = document.getElementById('switch_idioma');
     let currentLanguage = 'es';
+
+    // Cargar idioma desde localStorage
+    const storedLanguage = localStorage.getItem('language');
+    if (storedLanguage) {
+        currentLanguage = storedLanguage;
+    }
 
     const loadContent = (language) => {
         fetch('../resources/idiomas.json')
             .then(response => response.json())
             .then(data => {
-                //HEADER
+                // HEADER
                 titulo_headerElement.textContent = data[language].titulo_header;
-                //-------------------------------------------------------------
-                //SLIDEBAR
+                // SLIDEBAR
                 home_menuElement.textContent = data[language].home_menu;
                 viajes_menuElement.textContent = data[language].viajes_menu;
                 clientes_menuElement.textContent = data[language].clientes_menu;
@@ -206,24 +220,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 ingresos_menuElement.textContent = data[language].ingresos_menu;
                 taxis_menuElement.textContent = data[language].taxis_menu;
                 config_menuElement.textContent = data[language].config_menu;
-                //-------------------------------------------------------------
-                
-                //CONFIGURACIÓN
+                // PANEL
+                h3_panelElement.textContent = data[language].h3_panel;
+                span_ordenes_panelElement.textContent = data[language].span_ordenes_panel;
+                span_ganancias_panelElement.textContent = data[language].span_ganancias_panel;
+                span_taxis_panelElement.textContent = data[language].span_taxis_panel;
+                h3_taxistas_mesElement.textContent = data[language].h3_taxistas_mes;
+                th_taxistaElement.textContent = data[language].th_taxista;
+                th_clienteElement.textContent = data[language].th_cliente;
+                th_matriculaElement.textContent = data[language].th_matricula;
+                th_fechaElement.textContent = data[language].th_fecha;
+                th_metodo_pagoElement.textContent = data[language].th_metodo_pago;
+                th_ingresoElement.textContent = data[language].th_ingreso;
+                // CONFIGURACIÓN
                 h3_opcionesElement.textContent = data[language].h3_opciones;
-                texto_btnElement.textContent = data[language].texto_btn;
+                texto_btnElement.textContent = data[language].switch_idioma;
             })
             .catch(error => console.log(error));
     };
 
     switchIdioma.addEventListener('click', () => {
-        if (currentLanguage === 'es') {
-            currentLanguage = 'en';
-        } else {
-            currentLanguage = 'es';
-        }
+        currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+        localStorage.setItem('language', currentLanguage); // Guarda el idioma
         loadContent(currentLanguage);
     });
 
-    // carga inicial
+    // Carga inicial
     loadContent(currentLanguage);
 });

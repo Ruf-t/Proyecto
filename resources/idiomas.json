@@ -12,6 +12,20 @@
         "taxis_menu":"Taxis",
         "config_menu":"Settings",
 
+        "PANEL":"----------------------------------------",
+        "h3_panel": "Administration Panel",
+        "span_ordenes_panel": "Orders",
+        "span_ganancias_panel": "Earnings",
+        "span_taxis_panel": "Taxis",
+        "h3_taxistas_mes": "Drivers of the Month",
+        "th_taxista": "Driver",
+        "th_cliente": "Client",
+        "th_matricula": "License Plate",
+        "th_fecha": "Date",
+        "th_metodo_pago": "Payment Method",
+        "th_ingreso": "Income",
+
+
         "CONFIG":"-----------------------------------------",
         "h3_opciones":"Options",
         "texto_btn":"Change language"
@@ -29,6 +43,19 @@
         "ingresos_menu":"Ingresos",
         "taxis_menu":"Taxis",
         "config_menu":"Configuración",
+
+        "PANEL":"----------------------------------------",
+        "h3_panel": "Panel de Administración",
+        "span_ordenes_panel": "Órdenes",
+        "span_ganancias_panel": "Ganancias",
+        "span_taxis_panel": "Taxis",
+        "h3_taxistas_mes": "Taxistas del Mes",
+        "th_taxista": "Taxista",
+        "th_cliente": "Cliente",
+        "th_matricula": "Matrícula",
+        "th_fecha": "Fecha",
+        "th_metodo_pago": "Método de Pago",
+        "th_ingreso": "Ingreso",
 
         "CONFIG":"-----------------------------------------",
         "h3_opciones":"Opciones",

@@ -10,15 +10,15 @@
         ?>
         
         <div class="div-panel-administracion">
-            <h3>Panel de administracion</h3>
+            <h3 id="h3_panel"></h3>
             <div class="div-botones-administracion">
-                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-blue.svg">Ordenes Totales<img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-red.svg">Ganancias Totales<img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-orange.svg">Taxis<img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-blue.svg"><span id="span_ordenes_panel"></span><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-red.svg"><span id="span_ganancias_panel"></span><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-orange.svg"><span id="span_taxis_panel"></span><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
             </div>
         </div>
         <section class="div-taxistas-mes">
-            <h3>Taximetristas del mes<img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></h3>
+            <h3 id="h3_taxistas_mes"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></h3>
             <div>
                 <img src="../resources/img/Logos-PNG/Avatar/A2.png">
                 <div>    
@@ -47,12 +47,12 @@
             <table id="table-panel">
                 <thead>
                     <tr>
-                        <th>Taximetrista</th>
-                        <th>Cliente</th>
-                        <th>Matricula Coche</th>
-                        <th>Fecha Viaje</th>
-                        <th>Metodo de pago</th>
-                        <th>Ingreso</th>
+                        <th id="th_taxista"></th>
+                        <th id="th_cliente"></th>
+                        <th id="th_matricula"></th>
+                        <th id="th_fecha"></th>
+                        <th id="th_metodo_pago"></th>
+                        <th id="th_ingreso"></th>
                     </tr>
                 </thead>
                 <tbody>
