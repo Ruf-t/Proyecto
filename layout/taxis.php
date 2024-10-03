@@ -25,9 +25,9 @@
 
 <body id="body-home">
     <main>
-    <div class="resultado">
-    <p class="mensajeResult"></p>
-</div>
+    <div class="respuestaAJAX">
+        <p class="mensajeResult"></p>
+    </div>
 
         <?php
         include '../header.php';
@@ -46,8 +46,8 @@
                 <thead> 
                     <tr class="columnas-tabla-Taxis">   
                         <th>Matricula</th>
-                        <th>Año</th>
                         <th>Modelo</th>
+                        <th>Año</th>
                         <th>Estado</th>
                         <th></th>
                         </tr>
@@ -56,24 +56,14 @@
                 <?php foreach ($datos_taxis as $fila) { ?>
                         <tr>
                             <td><?php echo $fila['Matricula']; ?></td>
-                            <td><?php echo $fila['Año']; ?></td>
                             <td><?php echo $fila['Modelo']; ?></td>
+                            <td><?php echo $fila['Año']; ?></td>
                             <td><?php echo $fila['Estado']; ?></td>
-                            <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera" onclick="eliminarTaxi(<?php echo $fila['ID']; ?>)"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
-                            <!-- <td></td> -->
+                            <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera" onclick="eliminarTaxi(<?php echo $fila['ID']; ?>)"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td> 
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
-            <div class="div-cantidad-Taxis">
-                <h3 class="total-Taxis">Total de Taxis: $5</h3>
-                <div class="div-paginas">
-                    <button class="pasar-paginas" onclick="activarBoton('1')"><img src="../resources/img/Iconos-SVG/icons-others/flecha-menorque.svg"></button>
-                    <button class="paginas active" onclick="cambioColorBoton(this)">1</button>
-                    <button class="paginas" >2</button>
-                    <button class="pasar-paginas" onclick="activarBoton('2')"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                </div>
-            </div>
         </div>  
     </main>
 

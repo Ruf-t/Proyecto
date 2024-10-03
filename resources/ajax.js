@@ -6,7 +6,7 @@ $.ajax({
     $('<style>').html(css).appendTo('head');
   });
 
-
+// AÑADIR TAXI
 $(document).ready(function() {
     // Capturar el evento de envío del formulario
     $('#form-add-taxi').on('submit', function(e) {
@@ -25,10 +25,16 @@ $(document).ready(function() {
                 console.log("Respuesta del servidor:", response);
                 if (response.success) {
                     // Si la operación fue exitosa
-                    $('.mensajeResult').text(response.message); 
+                    $('.mensajeResult').text(response.message).addClass('success-message'); 
+                    $('.respuestaAJAX').slideDown();
                 } else {
                     // Si hubo algún error
-                    $('.mensajeResult').text(response.message); 
+                    $('.mensajeResult').text(response.message).addClass('error-message'); 
+                    $('.respuestaAJAX').slideDown();
+  
+                    setTimeout(function() {
+                        $('.respuestaAJAX').slideUp();
+                    }, 5000)
                 }
             },
             error: function(xhr, status, error) {
@@ -68,45 +74,6 @@ $(document).ready(function() {
     }
 });
 
-// $(document).ready(function() {
-//     $('#form-inicioS-admin').submit(function(e) {
-//         e.preventDefault(); // Evita la recarga de la página
-
-//         var user = $('#user').val();
-//         var contrasenia = $('#contrasenia').val();
-
-//         $.ajax({
-//             url: '../BaseDatos/peticiones-ajax.php',  
-//             type: 'POST',
-//             dataType: 'json',
-//             data: {
-//                 user: user,
-//                 contrasenia: contrasenia
-//             },
-//             success: function(response) {
-//             if (response.status === "success") {
-//                 window.location.href = '../layout/home.php';
-//                 } else {
-//                     $('.mensajeAJAX').text(response.message);
-//                     $('.respuestaAJAX').slideDown().addClass('success-message').attr('id', 'respuestaAJAX-index'); 
-//                 }
-//                   // Ocultar después de 5 segundos
-//               setTimeout(function() {
-//                 $('.respuestaAJAX').slideUp();
-//             }, 5000); // 5000 milisegundos = 5 segundos
-//             },
-//             error: function(error) {
-//                 $('.mensajeAJAX').text('Ocurrió un error inesperado.').addClass('error-message');
-
-//                   $('.respuestaAJAX').slideDown();
-  
-//                   setTimeout(function() {
-//                       $('.respuestaAJAX').slideUp();
-//                   }, 5000);
-//             }
-//         });        
-//     });
-// });
 
 $(document).ready(function() {
     $('#form-inicioS-admin').submit(function(e) {
