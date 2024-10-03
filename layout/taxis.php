@@ -92,16 +92,11 @@
                 <a href="taxistas.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/driver.svg">Taximetristas</a>
                 <a href="ingresos.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/ingresos.svg">Ingresos</a>
                 <a href="taxis.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/taxi.svg">Taxis</a>
-            </nav>
-        </div>
-        <div class="config-container">
-            <nav>
-                <a href="configuracion.php" class="a-menu">
-                    <img src="../resources/img/Iconos-SVG/white/setting.svg">Configuracion</a>
+                <a href="configuracion.php" class="a-menu btn-config"><img src="../resources/img/Iconos-SVG/white/setting.svg">Configuracion</a>
             </nav>
         </div>
     </div>
-    
+       
     <dialog class="modal">
             <div>
                 <h2>Agregar Nuevo Taxi</h2>

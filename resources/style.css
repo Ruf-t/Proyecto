@@ -442,7 +442,7 @@ button:hover {
 }
 
 .menu-container nav {
-  padding-top: 2rem;
+  /* padding-top: 1rem; */
 }
 
 .menu-container nav a {
@@ -461,7 +461,7 @@ button:hover {
   margin-right: .5rem;
 }
 
-.menu-container nav a:hover {
+.menu-container nav a:hover  {
   color: #fcc652;
 }
 
@@ -484,16 +484,21 @@ button:hover {
   color: #fcc652;
 }
 
+.btn-config{
+  margin-top: 3rem;
+}
+
 .a-menu{
   font-weight: 600;
 }
-.a-menu.active {
+.a-menu.active  {
   background-color: #fff;
   color: #ffae00;
   border-bottom-left-radius: 2rem;
   border-top-left-radius: 2rem;
   font-weight: 600;
 }
+
 
 .above-active {
   border-bottom-right-radius: 5px;
@@ -1007,4 +1012,13 @@ body.modal-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* CONFIGURACIÓN */
+.div-configuracion{
+  display: grid;
+  grid-column: 1 / 3;
+  grid-row: 2/3;
+  width: 95%;
+  text-align: center;
 }
