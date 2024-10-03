@@ -16,20 +16,22 @@
 
         <div class="btn-select-turno-fecha">
             <div class="selects">
-                <select>
-                    <option value="" selected disabled>Selecciona un turno</option>
-                    <option>Turno 1</option>
-                    <option>Turno 2</option>
+                <select id="turno">
+                    <option value="">Selecciona un turno</option>
+                    <option value="Turno 1">Turno 1</option>
+                    <option value="Turno 2">Turno 2</option>
                 </select>
-                <select>
-                    <option value="" selected disabled>Selección de fechas</option>
-                    <option>Hoy</option>
-                    <option>Hace un dia</option>
-                    <option>Esta semana</option>
-                    <option>Este mes</option>
-                    <option>Ultimos 6 meses</option>
-                    <option>Fecha personalizada</option>
+
+                <select id="fecha">
+                    <option value="">Selección de fechas</option>
+                    <option value="hoy">Hoy</option>
+                    <option value="un_dia">Hace un día</option>
+                    <option value="semana">Esta semana</option>
+                    <option value="mes">Este mes</option>
+                    <option value="seis_meses">Últimos 6 meses</option>
+                    <option value="personalizada">Fecha personalizada</option>
                 </select>
+                <button id="recargar-tabla"><img src="../resources/img/Iconos-SVG/icons-others/refresh.svg"></button>
             </div>
         </div>
         <div class="div-tabla-viaje">
@@ -57,7 +59,6 @@
                 <?php } ?> 
                 </tbody>
             </table>
-            <button id="recargar-tabla">Recargar tabla</button>
         </div>
     </main>
 

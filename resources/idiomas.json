@@ -1,9 +1,36 @@
 {
     "en":{
+        "HEADER":"-----------------------------------------",
+        "titulo_header":"Hello,",
+
+        "SLIDEBAR":"------------------------------------------",
+        "home_menu":"Panel",
+        "viajes_menu":"Trips",
+        "clientes_menu":"Customers",
+        "taxistas_menu":"Taxi Drivers",
+        "ingresos_menu":"Incomes",
+        "taxis_menu":"Taxis",
+        "config_menu":"Settings",
+
+        "CONFIG":"-----------------------------------------",
         "h3_opciones":"Options",
-        "texto_btn":"Change idiom"
+        "texto_btn":"Change language"
     },
+
     "es":{
+        "HEADER":"-----------------------------------------",
+        "titulo_header":"Hola,",
+
+        "SLIDEBAR":"------------------------------------------",
+        "home_menu":"Panel",
+        "viajes_menu":"Viajes",
+        "clientes_menu":"Clientes",
+        "taxistas_menu":"Taxistas",
+        "ingresos_menu":"Ingresos",
+        "taxis_menu":"Taxis",
+        "config_menu":"Configuración",
+
+        "CONFIG":"-----------------------------------------",
         "h3_opciones":"Opciones",
         "texto_btn":"Cambiar idioma"
     }

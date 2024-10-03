@@ -171,8 +171,23 @@ function eliminarTaxi(id) {
 
 //----------------------------------------------CAMBIAR IDIOMA-----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
+    //HEADER
+    const titulo_headerElement = document.getElementById('titulo_header');
+    //-----------------------------------------------------------------------  
+    //SLIDEBAR
+    const home_menuElement = document.getElementById('home_menu');
+    const viajes_menuElement = document.getElementById('viajes_menu');
+    const clientes_menuElement = document.getElementById('clientes_menu');
+    const taxistas_menuElement = document.getElementById('taxistas_menu');
+    const ingresos_menuElement = document.getElementById('ingresos_menu');
+    const taxis_menuElement = document.getElementById('taxis_menu');
+    const config_menuElement = document.getElementById('config_menu');
+    //----------------------------------------------------------------------
+    
+    //CONFIGURACIÓN
     const h3_opcionesElement = document.getElementById('h3_opciones');
     const texto_btnElement = document.getElementById('switch_idioma');
+    //-----------------------------------------------------------------------
     const switchIdioma = document.getElementById('switch_idioma');
     let currentLanguage = 'es';
 
@@ -180,6 +195,20 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('../resources/idiomas.json')
             .then(response => response.json())
             .then(data => {
+                //HEADER
+                titulo_headerElement.textContent = data[language].titulo_header;
+                //-------------------------------------------------------------
+                //SLIDEBAR
+                home_menuElement.textContent = data[language].home_menu;
+                viajes_menuElement.textContent = data[language].viajes_menu;
+                clientes_menuElement.textContent = data[language].clientes_menu;
+                taxistas_menuElement.textContent = data[language].taxistas_menu;
+                ingresos_menuElement.textContent = data[language].ingresos_menu;
+                taxis_menuElement.textContent = data[language].taxis_menu;
+                config_menuElement.textContent = data[language].config_menu;
+                //-------------------------------------------------------------
+                
+                //CONFIGURACIÓN
                 h3_opcionesElement.textContent = data[language].h3_opciones;
                 texto_btnElement.textContent = data[language].texto_btn;
             })

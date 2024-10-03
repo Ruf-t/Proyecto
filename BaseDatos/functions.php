@@ -235,6 +235,41 @@ function datos_tabla_viaje($con) {
     return $datos;
 }
 
+//FUNCION APLICAR FILTROS 
+function filtrar_viajes_por_turno_y_fecha($con, $turno, $fecha) {
+    // Iniciar la consulta base para aplicar los filtros posteriormente
+    $consulta = " WHERE 1=1";  // Condición inicial que siempre es verdadera para concatenar los filtros
+
+    // Aplicar filtro de turno
+    if (!empty($turno)) {
+        $consulta .= " AND t.turno = '" . mysqli_real_escape_string($con, $turno) . "'";
+    }
+
+    // Aplicar filtro de fecha
+    switch ($fecha) {
+        case 'hoy':
+            $consulta .= " AND DATE(viaje.fecha_viaje) = CURDATE()";
+            break;
+        case 'un_dia':
+            $consulta .= " AND DATE(viaje.fecha_viaje) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
+            break;
+        case 'semana':
+            $consulta .= " AND WEEK(viaje.fecha_viaje) = WEEK(CURDATE())";
+            break;
+        case 'mes':
+            $consulta .= " AND MONTH(viaje.fecha_viaje) = MONTH(CURDATE())";
+            break;
+        case 'seis_meses':
+            $consulta .= " AND viaje.fecha_viaje >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)";
+            break;
+        case 'personalizada':
+            // Lógica para la fecha personalizada si aplica
+            break;
+    }
+
+    return $consulta;  // Devolver solo los filtros concatenados para agregar a la consulta principal
+}
+
 
 
 

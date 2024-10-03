@@ -25,15 +25,22 @@
         </div>
 
         <dialog class="modal">
-            <div>
-                <h2>Agregar Nuevo Cliente</h2>
+            <div class="div-titulo-modal">
+                <h2>Agregar Nuevo Cliente</h2> 
+                <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
-            <form class="formulario" method="post">
-                <label>Tu nombre<input type="text" name="nombre"></label>
-                <label>Tu correo<input type="email" name="correo"></label>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quasi incidunt ratione natus nostrum? Natus quas distinctio impedit voluptates numquam hic quia odit, veritatis tempora nostrum dicta laborum, et maiores!</p>
-                <button type="submit">Enviar</button>
-                <button class="btn-cerrar-modal" type="button">Cerrar modal</button>
+            <form id="formulario" method="post">
+                    <label>Nombre:<input type="text" name="Nombre"></label>
+    
+                    <label>Apellido:<input type="text" name="Apellido"></label> 
+                <div class="div-labels-forms">
+                    <label>Dirección:<input type="text" name="Fecha de Nacimiento"></label>
+
+                    <label>Deuda:<input type="number" name="Fecha vencimiento de libreta de conducir"></label>
+                </div>              
+                <div class="div-labels-forms">
+                    <button type="submit" class="boton-enviar-modal">Enviar</button>
+                </div>
             </form>
         </dialog>
 

@@ -40,32 +40,34 @@
             <button class="btn-abrir-modal boton-add-Taxi">Añadir Taxi</button>
         </div>
 
-
         <div class="tabla-Taxis">
             <table>
                 <thead> 
-                    <tr class="columnas-tabla-Taxis">   
-                        <th>Matricula</th>
+                    <tr class="columnas-tabla-Taxis">
+                        <th>N° Taxi</th>
+                        <th>Kilometros</th>
                         <th>Año</th>
                         <th>Modelo</th>
                         <th>Estado</th>
+                        <th>Proximo Servicio</th>
                         <th></th>
-                        </tr>
+                    </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($datos_taxis as $fila) { ?>
                         <tr>
+                            <td><?php echo $fila['ID']; ?></td>
                             <td><?php echo $fila['Matricula']; ?></td>
-                            <td><?php echo $fila['Año']; ?></td>
                             <td><?php echo $fila['Modelo']; ?></td>
+                            <td><?php echo $fila['Año']; ?></td>
                             <td><?php echo $fila['Estado']; ?></td>
+                            <td></td>
                             <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera" onclick="eliminarTaxi(<?php echo $fila['ID']; ?>)"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
-                            <!-- <td></td> -->
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
-            <div class="div-cantidad-Taxis">
+            <!-- <div class="div-cantidad-Taxis">
                 <h3 class="total-Taxis">Total de Taxis: $5</h3>
                 <div class="div-paginas">
                     <button class="pasar-paginas" onclick="activarBoton('1')"><img src="../resources/img/Iconos-SVG/icons-others/flecha-menorque.svg"></button>
@@ -73,7 +75,7 @@
                     <button class="paginas" >2</button>
                     <button class="pasar-paginas" onclick="activarBoton('2')"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
                 </div>
-            </div>
+            </div> -->
         </div>  
     </main>
 
@@ -84,9 +86,7 @@
         </div>
         <div class="menu-container">
             <nav>
-                <a href="home.php" class="a-menu">
-                    <img src="../resources/img/Iconos-SVG/white/home.svg">Panel
-                </a>
+                <a href="home.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/home.svg">Panel</a>
                 <a href="viajes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/bookmark.svg">Viajes</a>
                 <a href="clientes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/cliente.svg">Clientes</a>
                 <a href="taxistas.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/driver.svg">Taximetristas</a>
@@ -98,22 +98,29 @@
     </div>
        
     <dialog class="modal">
-            <div>
+            <div class="div-titulo-modal">
                 <h2>Agregar Nuevo Taxi</h2>
+                <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
             <form id="form-add-taxi" class="formulario" method="post">
+            <div class="div-labels-forms">
                 <label>Matricula<input type="text" name="matricula" id="matricula"></label>
                 <label>Modelo<input type="text" name="modelo" id="modelo"></label>
+            </div>
+            <div class="div-labels-forms">
                 <label>Año<input type="number" name="anio" id="anio"></label>
-                <label>Estado (Activo o Pasivo)</label>
-                    <select name="estado" id="estado">
+                <label>Estado (Activo o Inactivo)
+                    <select name="estado" id="estado" class="select-estado">
                     <option value="">Selecciona un estado</option>
                     <option value="1">Disponible</option>
                     <option value="0">Indisponible</option>
-                </select>
-                <button type="submit">Añadir</button>
+                    </select>
+                    </label>
+            </div>
+            <div class="div-labels-forms">
+                <button type="submit" class="boton-enviar-modal-taxis">Añadir</button>
+            </div>
             </form>
-            <button class="btn-cerrar-modal" type="button">Cerrar modal</button>
         </dialog>
     
      <!---- importacion de jquery---->

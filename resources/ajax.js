@@ -68,6 +68,44 @@ $(document).ready(function() {
     }
 });
 
+
+//APLICAR FILTROS 
+$(document).ready(function() {
+    // Capturamos los selectores de turno y fecha
+    const $turnoSelect = $("#turno");
+    const $fechaSelect = $("#fecha");
+
+    // Función para enviar los filtros a través de AJAX
+    function aplicarFiltros() {
+        const turno = $turnoSelect.val();
+        const fecha = $fechaSelect.val();
+
+        // Enviar los datos por AJAX
+        $.ajax({
+            type: "POST",
+            url: "../BaseDatos/peticiones-ajax.php",
+            data: {
+                turno: turno,
+                fecha: fecha
+            },
+            success: function(response) {
+                // Insertar la respuesta en la tabla de viajes
+                $("#tabla-viajes tbody").html(response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la petición AJAX:", error);
+            }
+        });
+    }
+
+    // Escuchar cambios en los selectores y aplicar los filtros
+    $turnoSelect.change(aplicarFiltros);
+    $fechaSelect.change(aplicarFiltros);
+});
+
+
+
+
 // $(document).ready(function() {
 //     $('#form-inicioS-admin').submit(function(e) {
 //         e.preventDefault(); // Evita la recarga de la página

@@ -390,7 +390,7 @@ button:hover {
   width: 150px;
   height: 50px;
   margin-right: 1rem;
-  background-color: var(--colorAmarillo);
+  background-color: var(--colorAmarillo5);
 }
 .boton-add-cliente:hover{
   background-color: var(--colorAmarillo3);
@@ -414,7 +414,7 @@ button:hover {
   width: 150px;
   height: 50px;
   margin-right: 15px;
-  background-color: var(--colorAmarillo);
+  background-color: var(--colorAmarillo5);
 }
 .boton-add-Taxi:hover{
   background-color: var(--colorAmarillo3);
@@ -570,8 +570,10 @@ select{
   flex-direction: row;
   justify-content:start;
   width: 100%;
-  height: 40px;
+  height: 50px;
   grid-row: 2/3;
+  grid-column: 1/2;
+  margin-top: 1.5rem;
 }
 .selects{
   display: flex;
@@ -774,7 +776,20 @@ body.modal-open {
 
 .div-titulo-modal{
   padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  .btn-cerrar-modal{
+    width: 31px;
+    height: 31px;
+    background-color: white;
+    cursor: pointer;
+  }
+  .btn-cerrar-modal:hover{
+    background-color: #ccc;
+  }
 }
+
 .boton-enviar-modal {
   width: 50%;
   padding: 10px;
@@ -783,10 +798,27 @@ body.modal-open {
   cursor: pointer;
   font-size: 16px;
   transition: ease-in-out 230ms;
+  background-color: var(--colorAmarillo5);
 }
 
 .boton-enviar-modal:hover {
-  background-color: var(--colorAmarillo4);
+  background-color: var(--colorAmarillo3);
+}
+
+.boton-enviar-modal-taxis{
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: ease-in-out 230ms;
+  margin-top: 1rem;
+  background-color: var(--colorAmarillo5);
+}
+
+.boton-enviar-modal-taxis:hover{
+  background-color: var(--colorAmarillo3);
 }
 
 
@@ -1012,6 +1044,9 @@ body.modal-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.select-estado{
+  width: 100%;
 }
 
 /* CONFIGURACIÓN */

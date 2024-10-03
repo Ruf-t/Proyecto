@@ -16,6 +16,7 @@
         <dialog class="modal">
             <div class="div-titulo-modal">
                 <h2>Agregar Nuevo Taximetrista</h2> 
+                <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
             <form id="formulario" method="post">
                 <div class="div-labels-forms">
@@ -83,9 +84,7 @@
         </div>
         <div class="menu-container">
             <nav>
-                <a href="home.php" class="a-menu">
-                    <img src="../resources/img/Iconos-SVG/white/home.svg">Panel
-                </a>
+                <a href="home.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/home.svg">Panel</a>
                 <a href="viajes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/bookmark.svg">Viajes</a>
                 <a href="clientes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/cliente.svg">Clientes</a>
                 <a href="taxistas.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/driver.svg">Taximetristas</a>
