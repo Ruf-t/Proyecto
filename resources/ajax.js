@@ -46,9 +46,9 @@ $(document).ready(function() {
     // }, 5000);
 
     // Actualizar datos de la tabla al hacer clic en el botón
-    // $('#recargar-tabla').click(function() {
-    //     cargarTablaViajes();
-    // });
+    $('#recargar-tabla').click(function() {
+        cargarTablaViajes();
+    });
 
     // Función para cargar los datos de la tabla de viajes
     function cargarTablaViajes() {

@@ -77,7 +77,7 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="div-total-turnos">
+            <!-- <div class="div-total-turnos">
                 <h3 class="total-turnos">Total de turnos: $5</h3>
                 <div class="div-paginas">
                     <button class="pasar-paginas" onclick="activarBoton('1')"><img src="../resources/img/Iconos-SVG/icons-others/flecha-menorque.svg"></button>
@@ -85,7 +85,7 @@
                     <button class="paginas">2</button>
                     <button class="pasar-paginas" onclick="activarBoton('2')"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
                 </div>
-            </div>
+            </div> -->
         </div>
     </main>
 
