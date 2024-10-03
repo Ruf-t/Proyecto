@@ -368,26 +368,26 @@ function agregar_taxi($con, $matricula, $modelo, $año, $estado) {
 
 //--------------------------------------AGREGAR TAXISTA----------------------------------------------------
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recoger los datos del formulario
-    $nombre = $_POST['nombre'];
-    $telefono = $_POST['telefono'];
-    $apellido = $_POST['apellido'];
-    $direccion = $_POST['direccion'];
-    $fechaNacimiento = $_POST['fechaNacimiento'];
-    $fechaVencLicencia = $_POST['fechaVencLicencia'];
-    $usuario = $_POST['usuario'];
-    $contrasena = $_POST['contrasena'];
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     // Recoger los datos del formulario
+//     $nombre = $_POST['nombre'];
+//     $telefono = $_POST['telefono'];
+//     $apellido = $_POST['apellido'];
+//     $direccion = $_POST['direccion'];
+//     $fechaNacimiento = $_POST['fechaNacimiento'];
+//     $fechaVencLicencia = $_POST['fechaVencLicencia'];
+//     $usuario = $_POST['usuario'];
+//     $contrasena = $_POST['contrasena'];
 
-    // Llamar a la función para agregar taximetrista
-    $resultado = agregar_taximetrista($con, $nombre, $telefono, $apellido, $direccion, $fechaNacimiento, $fechaVencLicencia, $usuario, $contrasena);
+//     // Llamar a la función para agregar taximetrista
+//     $resultado = agregar_taximetrista($con, $nombre, $telefono, $apellido, $direccion, $fechaNacimiento, $fechaVencLicencia, $usuario, $contrasena);
 
-    if ($resultado['success']) {
-        echo "Taximetrista agregado exitosamente con ID de persona: " . $resultado['persona_id'];
-    } else {
-        echo "Error: " . $resultado['message'];
-    }
-}
+//     if ($resultado['success']) {
+//         echo "Taximetrista agregado exitosamente con ID de persona: " . $resultado['persona_id'];
+//     } else {
+//         echo "Error: " . $resultado['message'];
+//     }
+// }
 
 /**
  * Función para agregar un taximetrista

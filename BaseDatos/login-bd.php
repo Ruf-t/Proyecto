@@ -1,38 +1,14 @@
 <?php 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
-require("conexionBD.php");
+// require("conexionBD.php");s
 
-$con = conectar_bd();
+// $con = conectar_bd();
 
-session_start();
+// session_start();
 
-if (isset($_POST["envio"])) {
-
-    $user = $_POST["user"];
-    $contrasenia = $_POST["contrasenia"];
-
-    // Llamada a la función login
-    logear($con, $user, $contrasenia);
-}
-
-
-
-
-if (
-    isset($_POST['envioLogearTaximetrista'])
-    ) {
-        var_dump($_POST);
-        // Obtener datos del formulario
-        $userTaxi = $_POST["userTaxi"];
-        $contraseniaTaxi = $_POST["contraseniaTaxi"];
-        
-        // Llamar a la función para agregar usuario
-        logearTaxi($con, $userTaxi, $contraseniaTaxi);
-    }
-    
 
     if (isset($_POST["cerrarSesionTaximetrista"])) {
         // Llamada a la función login
@@ -64,32 +40,6 @@ function cerrarSesion(){
     }
 }
 
-// function logear($con, $user, $contrasenia) {
-//     $consulta_login = "SELECT * FROM administrador WHERE Usuario = '$user'";
-//     $resultado_login = mysqli_query($con, $consulta_login);
-
-//     if (mysqli_num_rows($resultado_login) > 0) {
-
-//         // Se crea una variable con el objeto fetch_assoc para acceder a las columnas que necesite
-//         $fila = mysqli_fetch_assoc($resultado_login);
-
-//         // Asignar en una variable el campo "Contraseña" de la BD
-//         $contrasenia_bd = $fila["Contraseña"];
-
-//         // Uso de la función password_verify para comparar lo que ingresa el usuario con lo que tengo en la BD
-//         if (password_verify($contrasenia, $contrasenia_bd)) {
-//             // Si todo es correcto, inicio la sesión y redirijo a la página del usuario logueado
-//             $_SESSION["Usuario"] = $user;
-//             header("Location: ../layout/home.php");
-//             exit();
-//         } else {
-//             echo "Contraseña incorrecta.<br>";
-//         }
-//     } else {
-//         echo "Usuario no encontrado.<br>";
-//     }
-// }
-
 
 function logear($con, $user, $contrasenia) {
     // Preparar la consulta SQL para evitar inyección SQL
@@ -107,24 +57,30 @@ function logear($con, $user, $contrasenia) {
 
     // Verificar si se encontró un usuario
     if (mysqli_num_rows($resultado_login) > 0) {
-        // Se crea una variable con el objeto fetch_assoc para acceder a las columnas que necesite
         $fila = mysqli_fetch_assoc($resultado_login);
-
-        // Asignar en una variable el campo "Contraseña" de la BD
         $contrasenia_bd = $fila["Contraseña"];
 
-        // Uso de la función password_verify para comparar lo que ingresa el usuario con lo que tengo en la BD
         if (password_verify($contrasenia, $contrasenia_bd)) {
-            // Si todo es correcto, inicio la sesión y redirijo a la página del usuario logueado
-            session_start();
             $_SESSION["Usuario"] = $user;
-            header("Location: ../layout/home.php");
-            exit();
+
+            // Respuesta exitosa en formato JSON
+            echo json_encode(array(
+                "status" => "success",
+                "message" => ""
+            ));
         } else {
-            echo "Contraseña incorrecta.<br>";
+            // Contraseña incorrecta
+            echo json_encode(array(
+                "status" => "error",
+                "message" => "Contraseña incorrecta. Intentelo de nuevo"
+            ));
         }
     } else {
-        echo "Usuario no encontrado.<br>";
+        // Usuario no encontrado
+        echo json_encode(array(
+            "status" => "error",
+            "message" => "Usuario no encontrado. Revise sus credenciales"
+        ));
     }
 
     // Cerrar la sentencia
@@ -132,32 +88,86 @@ function logear($con, $user, $contrasenia) {
 }
 
 
+// function logearTaxi($con, $userTaxi, $contrasenia) {
+//     $consulta_login = "SELECT * FROM taximetrista WHERE Usuario = '$userTaxi'";
+//     $resultado_login = mysqli_query($con, $consulta_login);
+
+//     if (mysqli_num_rows($resultado_login) > 0) {
+
+//         // Se crea una variable con el objeto fetch_assoc para acceder a las columnas que necesite
+//         $fila = mysqli_fetch_assoc($resultado_login);
+
+//         // Asignar en una variable el campo "Contraseña" de la BD
+//         $contrasenia_bd = $fila["Contraseña"];
+
+//         // Uso de la función password_verify para comparar lo que ingresa el usuario con lo que tengo en la BD
+//         if (password_verify($contrasenia, $contrasenia_bd)) {
+//             // Si todo es correcto, inicio la sesión y redirijo a la página del usuario logueado
+//             $_SESSION["userTaxi"] = $userTaxi;
+//             header("Location: ../Taximetristas/layout/home-Taximetrista.php");
+//             exit();
+//         } else {
+//             echo "Contraseña incorrecta.<br>";
+//         }
+//     } else {
+//         echo "Usuario no encontrado.<br>";
+//     }
+// }
 function logearTaxi($con, $userTaxi, $contrasenia) {
-    $consulta_login = "SELECT * FROM taximetrista WHERE Usuario = '$userTaxi'";
-    $resultado_login = mysqli_query($con, $consulta_login);
+    // Preparar la consulta SQL para evitar inyección SQL
+    $consulta_login = "SELECT * FROM taximetrista WHERE Usuario = ?";
+    $stmt = mysqli_prepare($con, $consulta_login);
 
+    if (!$stmt) {
+        // Manejo de error en la preparación de la consulta
+        echo json_encode(array(
+            "status" => "error",
+            "message" => "Error en la consulta SQL"
+        ));
+        return;
+    }
+
+    // Enlazar el parámetro (el usuario ingresado) a la consulta
+    mysqli_stmt_bind_param($stmt, "s", $userTaxi);
+
+    // Ejecutar la consulta
+    mysqli_stmt_execute($stmt);
+
+    // Obtener el resultado
+    $resultado_login = mysqli_stmt_get_result($stmt);
+
+    // Verificar si se encontró un usuario
     if (mysqli_num_rows($resultado_login) > 0) {
-
-        // Se crea una variable con el objeto fetch_assoc para acceder a las columnas que necesite
         $fila = mysqli_fetch_assoc($resultado_login);
-
-        // Asignar en una variable el campo "Contraseña" de la BD
         $contrasenia_bd = $fila["Contraseña"];
 
-        // Uso de la función password_verify para comparar lo que ingresa el usuario con lo que tengo en la BD
+        // Verificar si la contraseña ingresada coincide con la almacenada (hash)
         if (password_verify($contrasenia, $contrasenia_bd)) {
-            // Si todo es correcto, inicio la sesión y redirijo a la página del usuario logueado
-            $_SESSION["userTaxi"] = $userTaxi;
-            header("Location: ../Taximetristas/layout/home-Taximetrista.php");
-            exit();
+            $_SESSION["userTaxi"] = $userTaxi;  // Guardar el usuario en la sesión
+
+            // Respuesta exitosa en formato JSON
+            echo json_encode(array(
+                "status" => "success",
+                "message" => ""
+            ));
         } else {
-            echo "Contraseña incorrecta.<br>";
+            // Contraseña incorrecta
+            echo json_encode(array(
+                "status" => "error",
+                "message" => "Contraseña incorrecta. Intentelo de nuevo"
+            ));
         }
     } else {
-        echo "Usuario no encontrado.<br>";
+        // Usuario no encontrado
+        echo json_encode(array(
+            "status" => "error",
+            "message" => "Usuario no encontrado. Revise sus credenciales"
+        ));
     }
-}
 
+    // Cerrar la sentencia
+    mysqli_stmt_close($stmt);
+}
 
 
 function cerrarSesionTaximetrista(){

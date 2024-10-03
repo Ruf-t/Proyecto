@@ -1,5 +1,19 @@
 <?php
-include '../../../BaseDatos/functions.php'; // se llama al archivo de funciones 
+include '../../../BaseDatos/functions.php';
+include '../../../BaseDatos/login-bd.php';
+
+
+if (isset($_POST['userTaxi']) && isset($_POST['contraseniaTaxi'])) {
+        // Obtener datos del formulario
+        $userTaxi = $_POST["userTaxi"];
+        $contraseniaTaxi = $_POST["contraseniaTaxi"];
+        
+        // Llamar a la función para agregar usuario
+        logearTaxi($con, $userTaxi, $contraseniaTaxi);
+        exit();
+    }
+    
+
 
 // verifica si se envio los datos del formulario de iniciar jornada
 if (isset($_POST['KmInicialTaximetrista']) && isset($_POST['NumeroDeCocheTaximetrista'])) {

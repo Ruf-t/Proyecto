@@ -69,6 +69,36 @@ main{
   }
 }
 
+ .respuestaAJAX{
+  display: none;
+  z-index: 9999;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  
+  p{
+      margin: 0;
+      display: inline-block;
+      background-color: #DFDED4;
+      border: 1px solid #DFDED4;
+      padding: 10px;
+      border-radius: 9px;
+      padding-left: 10px;
+  }
+}
+
+
+
+
+.success-message{
+  color: #34C759;
+}
+.error-message{
+  color: #E74C3C;
+}
+
 /** LOGIN **/
 .login-box {
   display: flex;
@@ -161,9 +191,6 @@ p {
   margin-bottom: 20px;
 }
 
-form {
-  display: flex;
-}
 
 .div-labels-forms {
   display: flex;
@@ -708,7 +735,7 @@ select{
   border: none;
   border-radius: 10px;
   height: 65%;
-
+  padding: 15px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -719,13 +746,21 @@ select{
       display: flex;
       flex-direction: column;
 
-      input{ 
+      label{ 
           padding: 5px;
           margin-bottom: 10px;
           width: 100%;
+          input{
+            margin-bottom: 0;
+          }
       }
   }
 }
+
+body.modal-open {
+  overflow-y: hidden;
+}
+
 .div-titulo-modal{
   padding: 1rem;
 }

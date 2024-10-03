@@ -1,3 +1,12 @@
+// se importa el archivo de css con Jquery para que no se recargue la pagina 
+$.ajax({
+    url: '../style.css',
+    dataType: 'css'
+  }).done(function(css) {
+    $('<style>').html(css).appendTo('head');
+  });
+
+
 $(document).ready(function() {
     // Capturar el evento de envío del formulario
     $('#form-add-taxi').on('submit', function(e) {
@@ -16,16 +25,14 @@ $(document).ready(function() {
                 console.log("Respuesta del servidor:", response);
                 if (response.success) {
                     // Si la operación fue exitosa
-                    $('.mensajeResult').text(response.message); // Corrección en el nombre de 'message'
+                    $('.mensajeResult').text(response.message); 
                 } else {
                     // Si hubo algún error
-                    $('.mensajeResult').text(response.message); // Corrección en el nombre de 'message'
+                    $('.mensajeResult').text(response.message); 
                 }
             },
             error: function(xhr, status, error) {
-                console.log('Error:', error);
-                console.log('XHR:', xhr);
-                console.log('Status:', status);
+
                 $('.mensajeResult').text('Ocurrió un error inesperado.');
               }
         });
@@ -60,4 +67,84 @@ $(document).ready(function() {
         });
     }
 });
+
+// $(document).ready(function() {
+//     $('#form-inicioS-admin').submit(function(e) {
+//         e.preventDefault(); // Evita la recarga de la página
+
+//         var user = $('#user').val();
+//         var contrasenia = $('#contrasenia').val();
+
+//         $.ajax({
+//             url: '../BaseDatos/peticiones-ajax.php',  
+//             type: 'POST',
+//             dataType: 'json',
+//             data: {
+//                 user: user,
+//                 contrasenia: contrasenia
+//             },
+//             success: function(response) {
+//             if (response.status === "success") {
+//                 window.location.href = '../layout/home.php';
+//                 } else {
+//                     $('.mensajeAJAX').text(response.message);
+//                     $('.respuestaAJAX').slideDown().addClass('success-message').attr('id', 'respuestaAJAX-index'); 
+//                 }
+//                   // Ocultar después de 5 segundos
+//               setTimeout(function() {
+//                 $('.respuestaAJAX').slideUp();
+//             }, 5000); // 5000 milisegundos = 5 segundos
+//             },
+//             error: function(error) {
+//                 $('.mensajeAJAX').text('Ocurrió un error inesperado.').addClass('error-message');
+
+//                   $('.respuestaAJAX').slideDown();
+  
+//                   setTimeout(function() {
+//                       $('.respuestaAJAX').slideUp();
+//                   }, 5000);
+//             }
+//         });        
+//     });
+// });
+
+$(document).ready(function() {
+    $('#form-inicioS-admin').submit(function(e) {
+        e.preventDefault(); // Evita la recarga de la página
+
+        var user = $('#user').val();
+        var contrasenia = $('#contrasenia').val();
+
+        $.ajax({
+            url: '../BaseDatos/peticiones-ajax.php',  
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                user: user,
+                contrasenia: contrasenia
+            },
+            success: function(response) {
+                if (response.status === "success") {
+                    window.location.href = '../layout/home.php';
+                } else {
+                    $('.mensajeAJAX').text(response.message).addClass('error-message');
+                    $('.respuestaAJAX').slideDown(); 
+                }
+                // Ocultar después de 5 segundos
+                setTimeout(function() {
+                    $('.respuestaAJAX').slideUp();
+                }, 5000);
+            },
+            error: function(error) {
+                $('.mensajeAJAX').text('Ocurrió un error inesperado.').addClass('error-message');
+                $('.respuestaAJAX').slideDown();
+  
+                setTimeout(function() {
+                    $('.respuestaAJAX').slideUp();
+                }, 5000);
+            }
+        });        
+    });
+});
+
 

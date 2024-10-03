@@ -9,7 +9,8 @@
         ?>
         <div class="div-addCliente">
             <h1>Lista de Taximetristas</h1>
-            <button class="btn-abrir-modal boton-add-cliente">Añadir Taximetrista</button>
+            <!-- <button class="btn-abrir-modal boton-add-cliente">Añadir Taximetrista</button> -->
+            <button id="btn-abrir-modal" class="btn-abrir-modal boton-add-cliente">Añadir Taximetrista</button>
         </div>
 
         <dialog class="modal">

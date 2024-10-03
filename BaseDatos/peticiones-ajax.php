@@ -1,5 +1,6 @@
 <?php
 include 'functions.php';
+include 'login-bd.php';
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -19,6 +20,21 @@ if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio'
     echo json_encode($respuesta);
     exit(); // asegura que no ejecute las peticiones por debajo
 }
+
+
+if (isset($_POST["user"]) && isset($_POST["contrasenia"])){
+
+    $user = $_POST["user"];
+    $contrasenia = $_POST["contrasenia"];
+
+    header('Content-Type: application/json');
+
+    logear($con, $user, $contrasenia);
+
+    // echo json_encode($logear);
+    // exit();
+}
+
 
 if (isset($_GET['cargar_viajes'])) {
     $datos_viaje = datos_tabla_viaje($con);
