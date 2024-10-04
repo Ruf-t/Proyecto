@@ -204,6 +204,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const th_nacimientoElement = document.getElementById('th_nacimiento');
     const th_fecha_vencElement = document.getElementById('th_fecha_venc');
     const th_info_taxistaElement = document.getElementById('th_info_taxista');
+    //INGRESOS
+    const h1_ingresosElement = document.getElementById('h1_ingresos');
+    const p_ingresosElement = document.getElementById('p_ingresos');
+    const btn_aplicar_filtroElement = document.getElementById('btn_aplicar_filtro');
+    const th_numero_taxiElement = document.getElementById('th_numero_taxi');
+    const th_turnosElement = document.getElementById('th_turnos');
+    //TAXIS
+    const h1_taxiElement = document.getElementById('h1_taxi');
+    const btn_abrir_modal_taxiElement = document.getElementById('btn_abrir_modal_taxi');
+    const th_kilometrosElement = document.getElementById('th_kilometros');
+    const th_anioElement = document.getElementById('th_anio');
+    const th_modeloElement = document.getElementById('th_modelo');
+    const th_estadoElement = document.getElementById('th_estado');
+    const th_proximo_servicioElement = document.getElementById('th_proximo_servicio');
+    const h2_agregar_taxiElement =  document.getElementById('h2_agregar_taxi');
+    const label_matriculaElement = document.getElementById('label_matricula');
+    const label_modeloElement = document.getElementById('label_modelo');
+    const label_anioElement = document.getElementById('label_anio');
+    const label_estadoElement = document.getElementById('label_estado');
+    const option_select_estadoElement = document.getElementById('option_select_estado');
+    const option_select_estado1Element = document.getElementById('option_select_estado1');
+    const option_select_estado2Element = document.getElementById('option_select_estado2');
+    const btn_add_taxiElement = document.getElementById('btn_add_taxi');
     // CONFIGURACIÓN
     const h3_opcionesElement = document.getElementById('h3_opciones');
     const texto_btnElement = document.getElementById('switch_idioma');
@@ -278,6 +301,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (th_nacimientoElement) th_nacimientoElement.textContent = data[language].th_nacimiento;
                 if (th_fecha_vencElement) th_fecha_vencElement.textContent = data[language].th_fecha_venc;
                 if (th_info_taxistaElement) th_info_taxistaElement.textContent = data[language].th_info_taxista;                
+                //INGRESOS
+                if (h1_ingresosElement) h1_ingresosElement.textContent = data[language].h1_ingresos;
+                if (p_ingresosElement) p_ingresosElement.textContent = data[language].p_ingresos;
+                if (btn_aplicar_filtroElement) btn_aplicar_filtroElement.textContent = data[language].btn_aplicar_filtro;
+                if (th_numero_taxiElement) th_numero_taxiElement.textContent = data[language].th_numero_taxi;
+                if (th_turnosElement) th_turnosElement.textContent = data[language].th_turnos;
+                //TAXIS
+                if (h1_taxiElement) h1_taxiElement.textContent = data[language].h1_taxi;
+                if (btn_abrir_modal_taxiElement) btn_abrir_modal_taxiElement.textContent = data[language].btn_abrir_modal_taxi;
+                if (th_kilometrosElement) th_kilometrosElement.textContent = data[language].th_kilometros;
+                if (th_anioElement) th_anioElement.textContent = data[language].th_anio;
+                if (th_modeloElement) th_modeloElement.textContent = data[language].th_modelo;
+                if (th_estadoElement) th_estadoElement.textContent = data[language].th_estado;
+                if (th_proximo_servicioElement) th_proximo_servicioElement.textContent = data[language].th_proximo_servicio;
+                if (h2_agregar_taxiElement) h2_agregar_taxiElement.textContent = data[language].h2_agregar_taxi;
+                if (label_matriculaElement) label_matriculaElement.textContent = data[language].label_matricula;
+                if (label_modeloElement) label_modeloElement.textContent = data[language].label_modelo;
+                if (label_anioElement) label_anioElement.textContent = data[language].label_anio;
+                if (label_estadoElement) label_estadoElement.textContent = data[language].label_estado;
+                if (option_select_estadoElement) option_select_estadoElement.textContent = data[language].option_select_estado;
+                if (option_select_estado1Element) option_select_estado1Element.textContent = data[language].option_select_estado1;
+                if (option_select_estado2Element) option_select_estado2Element.textContent = data[language].option_select_estado2;
+                if (btn_add_taxiElement) btn_add_taxiElement.textContent = data[language].btn_add_taxi;
                 // CONFIGURACIÓN
                 if (h3_opcionesElement) h3_opcionesElement.textContent = data[language].h3_opciones;
                 if (texto_btnElement) texto_btnElement.textContent = data[language].switch_idioma;

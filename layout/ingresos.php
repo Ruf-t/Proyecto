@@ -13,30 +13,35 @@
         include '../header.php';
         ?>
         <div class="btn-select-filtro">
-            <p>Filtro</p>
+            <h1 id="h1_ingresos"></h1>
+            <p id="p_ingresos"></p>
             <div class="selects">
-            <select>
-                <option value="" selected disabled>Fecha</option>
-                <option>Turno 1</option>
-                <option>Turno 2</option>
-            </select>
-            <select>
-                <option value="" selected disabled>Turno</option>
-                <option>Turno 1</option>
-                <option>Turno 2</option>
-            </select>
-            <button class="btn-aplicar-filtro">Aplicar filtro</button>
+            <select id="fecha">
+                    <option value="" id="option_select_fecha"></option>
+                    <option value="hoy" id="option_select_fecha_hoy"></option>
+                    <option value="un_dia" id="option_select_fecha_1dia"></option>
+                    <option value="semana" id="option_select_fecha_semana"></option>
+                    <option value="mes" id="option_select_fecha_mes"></option>
+                    <option value="seis_meses" id="option_select_fecha_6meses"></option>
+                    <option value="personalizada" id="option_select_fecha_personalizada"></option>
+                </select>
+                <select id="turno">
+                    <option value="" id="option_select_turno"></option>
+                    <option value="Turno 1" id="option_select_turno1"></option>
+                    <option value="Turno 2" id="option_select_turno2"></option>
+                </select>
+            <button class="btn-aplicar-filtro" id="btn_aplicar_filtro"></button>
             </div>
         </div>
         <div class="div-tabla-ingresos">
             <table id="tabla-ingresos">
                 <thead>
                     <tr>
-                        <th>N° Taxi</th>
-                        <th>Taxista</th>
-                        <th>Turnos</th>
-                        <th>Fecha</th>
-                        <th>Ingresos</th>
+                        <th id="th_numero_taxi"></th>
+                        <th id="th_taxista"></th>
+                        <th id="th_turnos"></th>
+                        <th id="th_fecha"></th>
+                        <th id="th_ingreso"></th>
                     </tr>
                 </thead>
                 <tbody>

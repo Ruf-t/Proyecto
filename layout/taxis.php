@@ -14,7 +14,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel</title>
     <!-- <link rel="icon" href="../../resources/img/Others/Favicon-Ruft.png" type="image/png"> -->
     <link rel="stylesheet" href="../resources/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -36,20 +35,20 @@
         ?>
 
         <div class="div-addTaxi">
-            <h1>Lista de Taxis</h1>
-            <button class="btn-abrir-modal boton-add-Taxi">Añadir Taxi</button>
+            <h1 id="h1_taxi"></h1>
+            <button class="btn-abrir-modal boton-add-Taxi" id="btn_abrir_modal_taxi"></button>
         </div>
 
         <div class="tabla-Taxis">
             <table>
                 <thead> 
                     <tr class="columnas-tabla-Taxis">
-                        <th>N° Taxi</th>
-                        <th>Kilometros</th>
-                        <th>Año</th>
-                        <th>Modelo</th>
-                        <th>Estado</th>
-                        <th>Proximo Servicio</th>
+                        <th id="th_numero_taxi"></th>
+                        <th id="th_kilometros"></th>
+                        <th id="th_anio"></th>
+                        <th id="th_modelo"></th>
+                        <th id="th_estado"></th>
+                        <th id="th_proximo_servicio"></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -99,26 +98,26 @@
        
     <dialog class="modal">
             <div class="div-titulo-modal">
-                <h2>Agregar Nuevo Taxi</h2>
+                <h2 id="h2_agregar_taxi"></h2>
                 <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
             <form id="form-add-taxi" class="formulario" method="post">
             <div class="div-labels-forms">
-                <label>Matricula<input type="text" name="matricula" id="matricula"></label>
-                <label>Modelo<input type="text" name="modelo" id="modelo"></label>
+                <label><span id="label_matricula"></span><input type="text" name="matricula" id="matricula"></label>
+                <label><span id="label_modelo"></span><input type="text" name="modelo" id="modelo"></label>
             </div>
             <div class="div-labels-forms">
-                <label>Año<input type="number" name="anio" id="anio"></label>
-                <label>Estado (Activo o Inactivo)
+                <label><span id="label_anio"></span><input type="number" name="anio" id="anio"></label>
+                <label id="label_estado">
                     <select name="estado" id="estado" class="select-estado">
-                    <option value="">Selecciona un estado</option>
-                    <option value="1">Disponible</option>
-                    <option value="0">Indisponible</option>
+                    <option value="" id="option_select_estado">Selecciona un estado</option>
+                    <option value="1" id="option_select_estado1">Disponible</option>
+                    <option value="0" id="option_select_estado2">Ocupado</option>
                     </select>
                     </label>
             </div>
             <div class="div-labels-forms">
-                <button type="submit" class="boton-enviar-modal-taxis">Añadir</button>
+                <button type="submit" class="boton-enviar-modal-taxis" id="btn_add_taxi"></button>
             </div>
             </form>
         </dialog>
