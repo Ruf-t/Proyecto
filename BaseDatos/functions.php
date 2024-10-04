@@ -367,72 +367,51 @@ function agregar_taxi($con, $matricula, $modelo, $año, $estado) {
 
 
 //--------------------------------------AGREGAR TAXISTA----------------------------------------------------
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     // Recoger los datos del formulario
-//     $nombre = $_POST['nombre'];
-//     $telefono = $_POST['telefono'];
-//     $apellido = $_POST['apellido'];
-//     $direccion = $_POST['direccion'];
-//     $fechaNacimiento = $_POST['fechaNacimiento'];
-//     $fechaVencLicencia = $_POST['fechaVencLicencia'];
-//     $usuario = $_POST['usuario'];
-//     $contrasena = $_POST['contrasena'];
-
-//     // Llamar a la función para agregar taximetrista
-//     $resultado = agregar_taximetrista($con, $nombre, $telefono, $apellido, $direccion, $fechaNacimiento, $fechaVencLicencia, $usuario, $contrasena);
-
-//     if ($resultado['success']) {
-//         echo "Taximetrista agregado exitosamente con ID de persona: " . $resultado['persona_id'];
-//     } else {
-//         echo "Error: " . $resultado['message'];
-//     }
-// }
-
-/**
- * Función para agregar un taximetrista
- */
-function agregar_taximetrista($con, $nombre, $telefono, $apellido, $direccion, $fechaNacimiento, $fechaVencLicencia, $usuario, $contrasena) {
-    // Comenzar una transacción para asegurar integridad de los datos
+function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_Nuevo_Taxista, $Fecha_venc_librCond_Nuevo_Taxista, $Direccion_Nuevo_Taxista, $Telefono_Nuevo_Taxista, $UserNuevo_Taxista, $ContrNuevo_Taxista){
+    // Comenzar una transacción para asegurar la integridad de los datos
     mysqli_begin_transaction($con);
 
-    try {
-        // Insertar en la tabla persona
-        $consulta_insertar_persona = "INSERT INTO persona (Nombre, Telefono, Apellido, Direccion) 
-                                      VALUES ('$nombre', '$telefono', '$apellido', '$direccion')";
+    
 
-        if (!mysqli_query($con, $consulta_insertar_persona)) {
-            throw new Exception('Error al insertar en la tabla persona: ' . mysqli_error($con));
-        }
+    // Insertar en la tabla persona
+    $consulta_insertar_persona = "INSERT INTO persona (Nombre, Telefono, Apellido, Direccion) 
+                                  VALUES ('$Nombre', '$Telefono_Nuevo_Taxista', '$Apellido_Nuevo_Taxista', '$Direccion_Nuevo_Taxista')";
 
-        // Obtener el ID de la persona recién insertada
-        $persona_id = mysqli_insert_id($con);
-
-        // Insertar en la tabla taximetrista
-        $consulta_insertar_taximetrista = "INSERT INTO taximetrista (Fecha_Expiracion_Licencia, Fecha_nacimiento, Usuario, Contrasena, FK_Persona) 
-                                           VALUES ('$fechaVencLicencia', '$fechaNacimiento', '$usuario', '$contrasena', '$persona_id')";
-
-        if (!mysqli_query($con, $consulta_insertar_taximetrista)) {
-            throw new Exception('Error al insertar en la tabla taximetrista: ' . mysqli_error($con));
-        }
-
-        // Confirmar la transacción
-        mysqli_commit($con);
-
-        // Devolver respuesta exitosa
-        return [
-            'success' => true,
-            'message' => 'Taximetrista añadido correctamente.',
-            'persona_id' => $persona_id
-        ];
-    } catch (Exception $e) {
+    if (!mysqli_query($con, $consulta_insertar_persona)) {
         // Revertir la transacción en caso de error
         mysqli_rollback($con);
         return [
             'success' => false,
-            'message' => $e->getMessage()
+            'message' => 'Error al insertar en la tabla persona: ' . mysqli_error($con)
         ];
     }
+
+    // Obtener el ID de la persona recién insertada
+    $persona_id = mysqli_insert_id($con);
+
+    $hashed_password = password_hash($ContrNuevo_Taxista, PASSWORD_DEFAULT);
+
+    // Insertar en la tabla taximetrista
+    $consulta_insertar_taximetrista = "INSERT INTO `taximetrista`(`Fecha_Expiracion_Licencia`, `Fecha_Nacimiento`, `Usuario`, `Contrasenia`,  `FK-Persona`) VALUES ('$Fecha_venc_librCond_Nuevo_Taxista', '$FechaNac_Nuevo_Taxista', '$UserNuevo_Taxista', '$hashed_password', '$persona_id')";
+
+    if (!mysqli_query($con, $consulta_insertar_taximetrista)) {
+        // Revertir la transacción en caso de error
+        mysqli_rollback($con);
+        return [
+            'success' => false,
+            'message' => 'Error al insertar en la tabla taximetrista: ' . mysqli_error($con)
+        ];
+    }
+
+    // Confirmar la transacción
+    mysqli_commit($con);
+
+    // Devolver respuesta exitosa
+    return [
+        'success' => true,
+        'message' => 'Taximetrista añadido correctamente.',
+        'persona_id' => $persona_id
+    ];
 }
 
 
