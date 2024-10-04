@@ -17,19 +17,19 @@
         <div class="btn-select-turno-fecha">
             <div class="selects">
                 <select id="turno">
-                    <option value="">Selecciona un turno</option>
-                    <option value="Turno 1">Turno 1</option>
-                    <option value="Turno 2">Turno 2</option>
+                    <option value="" id="option_select_turno"></option>
+                    <option value="Turno 1" id="option_select_turno1"></option>
+                    <option value="Turno 2" id="option_select_turno2"></option>
                 </select>
 
                 <select id="fecha">
-                    <option value="">Selección de fechas</option>
-                    <option value="hoy">Hoy</option>
-                    <option value="un_dia">Hace un día</option>
-                    <option value="semana">Esta semana</option>
-                    <option value="mes">Este mes</option>
-                    <option value="seis_meses">Últimos 6 meses</option>
-                    <option value="personalizada">Fecha personalizada</option>
+                    <option value="" id="option_select_fecha"></option>
+                    <option value="hoy" id="option_select_fecha_hoy"></option>
+                    <option value="un_dia" id="option_select_fecha_1dia"></option>
+                    <option value="semana" id="option_select_fecha_semana"></option>
+                    <option value="mes" id="option_select_fecha_mes"></option>
+                    <option value="seis_meses" id="option_select_fecha_6meses"></option>
+                    <option value="personalizada" id="option_select_fecha_personalizada"></option>
                 </select>
                 <button id="recargar-tabla"><img src="../resources/img/Iconos-SVG/icons-others/refresh.svg"></button>
             </div>
@@ -38,12 +38,12 @@
             <table id="tabla-viaje">
                 <thead>
                     <tr>
-                        <th>Taximetrista</th>
-                        <th>Cliente</th>
-                        <th>Matricula Coche</th>
-                        <th>Fecha Viaje</th>
-                        <th>Metodo de pago</th>
-                        <th>Ingreso</th>
+                        <th id="th_taxista"></th>
+                        <th id="th_cliente"></th>
+                        <th id="th_matricula"></th>
+                        <th id="th_fecha"></th>
+                        <th id="th_metodo_pago"></th>
+                        <th id="th_ingreso"></th>
                     </tr>
                 </thead>
                 <tbody id="viajes-body">
@@ -67,17 +67,15 @@
             <h1 class="user-name">Usuario</h1>
             <p class="user-num">+598 92112906</p>
         </div>
-        <div class="menu-container">
+        <div class="menu-container"> 
             <nav>
-                <a href="home.php" class="a-menu">
-                    <img src="../resources/img/Iconos-SVG/white/home.svg">Panel
-                </a>
-                <a href="viajes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/bookmark.svg">Viajes</a>
-                <a href="clientes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/cliente.svg">Clientes</a>
-                <a href="taxistas.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/driver.svg">Taximetristas</a>
-                <a href="ingresos.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/ingresos.svg">Ingresos</a>
-                <a href="taxis.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/taxi.svg">Taxis</a>
-                <a href="configuracion.php" class="a-menu btn-config"><img src="../resources/img/Iconos-SVG/white/setting.svg">Configuracion</a>
+                <a href="home.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/home.svg"><span id="home_menu">Panel</span></a>
+                <a href="viajes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/bookmark.svg"><span id="viajes_menu">Viajes</span></a>
+                <a href="clientes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/cliente.svg"><span id="clientes_menu">Clientes</span></a>
+                <a href="taxistas.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/driver.svg"><span id="taxistas_menu">Taxistas</span></a>
+                <a href="ingresos.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/ingresos.svg"><span id="ingresos_menu">Ingresos</span></a>
+                <a href="taxis.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/taxi.svg"><span id="taxis_menu">Taxis</span></a>
+                <a href="configuracion.php" class="a-menu btn-config"><img src="../resources/img/Iconos-SVG/white/setting.svg"><span id="config_menu">Configuracion</span></a>
             </nav>
         </div>
     </div>

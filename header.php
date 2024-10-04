@@ -12,9 +12,9 @@
     <div class="nombre-usuario">
         <h1 id="titulo_header">Hola, </span> <img src="resources/img/Iconos-SVG/icons-others/hand.svg" alt=""></h1>
     </div>
-    <div class="exit-img">
+    <!-- <div class="exit-img">
         <img src="../resources/img/Iconos-SVG/icons-others/exit-icon.svg">
-    </div>
+    </div> -->
 </div>
 
 

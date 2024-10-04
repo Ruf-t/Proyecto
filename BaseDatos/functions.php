@@ -236,38 +236,44 @@ function datos_tabla_viaje($con) {
 }
 
 //FUNCION APLICAR FILTROS 
-function filtrar_viajes_por_turno_y_fecha($con, $turno, $fecha) {
-    // Iniciar la consulta base para aplicar los filtros posteriormente
-    $consulta = " WHERE 1=1";  // Condición inicial que siempre es verdadera para concatenar los filtros
+function obtenerViajesFiltrados($turno, $fecha, $con) {
+    // Conexión a la base de datos
+    // $conexion = new mysqli('localhost', 'usuario', 'contraseña', 'nombre_bd');
 
-    // Aplicar filtro de turno
+    // Consulta base
+    $query = "SELECT p_taxista.Nombre AS Nombre_Taxista, p_cliente.Nombre AS Nombre_Cliente, viaje.*, taxi.matricula,viaje.Método_de_pago   
+                FROM taximetrista t JOIN persona p_taxista ON t.`FK-Persona` = p_taxista.ID JOIN viaje ON viaje.Fk_Taximetrista = t.ID
+                JOIN cliente_registrado c ON viaje.Fk_Cliente_Registrado = c.ID JOIN persona p_cliente ON c.Fk_Persona = p_cliente.ID
+                INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID WHERE 1=1";
+
+    // Filtrar por turno si está seleccionado
     if (!empty($turno)) {
-        $consulta .= " AND t.turno = '" . mysqli_real_escape_string($con, $turno) . "'";
+        $query .= " AND Turno = '$turno'";
     }
 
-    // Aplicar filtro de fecha
-    switch ($fecha) {
-        case 'hoy':
-            $consulta .= " AND DATE(viaje.fecha_viaje) = CURDATE()";
-            break;
-        case 'un_dia':
-            $consulta .= " AND DATE(viaje.fecha_viaje) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
-            break;
-        case 'semana':
-            $consulta .= " AND WEEK(viaje.fecha_viaje) = WEEK(CURDATE())";
-            break;
-        case 'mes':
-            $consulta .= " AND MONTH(viaje.fecha_viaje) = MONTH(CURDATE())";
-            break;
-        case 'seis_meses':
-            $consulta .= " AND viaje.fecha_viaje >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)";
-            break;
-        case 'personalizada':
-            // Lógica para la fecha personalizada si aplica
-            break;
+    // Filtrar por fecha según el rango seleccionado
+    if ($fecha == 'hoy') {
+        $query .= " AND DATE(Fecha) = CURDATE() ORDER BY Fecha DESC";
+    } elseif ($fecha == 'un_dia') {
+        $query .= " AND DATE(Fecha) = CURDATE() - INTERVAL 1 DAY ORDER BY Fecha DESC";
+    } elseif ($fecha == 'semana') {
+        $query .= " AND WEEK(Fecha) = WEEK(CURDATE()) ORDER BY Fecha DESC";
+    } elseif ($fecha == 'mes') {
+        $query .= " AND MONTH(Fecha) = MONTH(CURDATE()) ORDER BY Fecha DESC";
+    } elseif ($fecha == 'seis_meses') {
+        $query .= " AND Fecha >= CURDATE() - INTERVAL 6 MONTH ORDER BY Fecha DESC";
+    }
+    
+
+    $resultado = $con->query($query);
+    $viajes = [];
+    
+    // Guardar los resultados en un array
+    while ($fila = $resultado->fetch_assoc()) {
+        $viajes[] = $fila;
     }
 
-    return $consulta;  // Devolver solo los filtros concatenados para agregar a la consulta principal
+    return $viajes;
 }
 
 

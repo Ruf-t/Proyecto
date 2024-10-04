@@ -17,29 +17,29 @@
         ?>
 
         <div class="div-addCliente">
-            <h1>Clientes</h1>
+            <h1 id="h1_clientes"></h1>
             <div class="div-cantidad-clientes">
-                <button class="btn-abrir-modal boton-add-cliente">Añadir cliente</button>
+                <button class="btn-abrir-modal boton-add-cliente" id="btn_abrir_modal_cliente"></button>
                 <!-- <h3 class="total-clientes">Total de clientes: <?php echo $cantidad_clientes; ?></h3> -->
             </div>
         </div>
 
         <dialog class="modal">
             <div class="div-titulo-modal">
-                <h2>Agregar Nuevo Cliente</h2> 
+                <h2 id="h2_agregar_cliente"></h2> 
                 <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
             <form id="formulario" method="post">
-                    <label>Nombre:<input type="text" name="Nombre"></label>
+                    <label><span id="label_nombre"></span><input type="text" name="Nombre"></label>
     
-                    <label>Apellido:<input type="text" name="Apellido"></label> 
+                    <label><span id="label_apellido"></span><input type="text" name="Apellido"></label> 
                 <div class="div-labels-forms">
-                    <label>Dirección:<input type="text" name="Fecha de Nacimiento"></label>
+                    <label><span id="label_direccion"></span><input type="text" name="Fecha de Nacimiento"></label>
 
-                    <label>Deuda:<input type="number" name="Fecha vencimiento de libreta de conducir"></label>
+                    <label><span id="label_deuda"></span><input type="number" name="Fecha vencimiento de libreta de conducir"></label>
                 </div>              
                 <div class="div-labels-forms">
-                    <button type="submit" class="boton-enviar-modal">Enviar</button>
+                    <button type="submit" class="boton-enviar-modal" id="btn_enviar_cliente"></button>
                 </div>
             </form>
         </dialog>
@@ -48,11 +48,11 @@
             <table>
                 <thead>
                     <tr class="columnas-tabla-clientes">
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Teléfono</th>
-                        <th>Dirección</th>
-                        <th>Deuda</th>
+                        <th id="th_nombre"></th>
+                        <th id="th_apellido"></th>
+                        <th id="th_telefono"></th>
+                        <th id="th_direccion"></th>
+                        <th id="th_deuda"></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -80,16 +80,14 @@
             <p class="user-num">+598 92112906</p>
         </div>
         <div class="menu-container">
-            <nav>
-                <a href="home.php" class="a-menu">
-                    <img src="../resources/img/Iconos-SVG/white/home.svg">Panel
-                </a>
-                <a href="viajes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/bookmark.svg">Viajes</a>
-                <a href="clientes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/cliente.svg">Clientes</a>
-                <a href="taxistas.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/driver.svg">Taximetristas</a>
-                <a href="ingresos.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/ingresos.svg">Ingresos</a>
-                <a href="taxis.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/taxi.svg">Taxis</a>
-                <a href="configuracion.php" class="a-menu btn-config"><img src="../resources/img/Iconos-SVG/white/setting.svg">Configuracion</a>
+            <nav><span>
+                <a href="home.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/home.svg"><span id="home_menu">Panel</span></a>
+                <a href="viajes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/bookmark.svg"><span id="viajes_menu">Viajes</span></a>
+                <a href="clientes.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/cliente.svg"><span id="clientes_menu">Clientes</span></a>
+                <a href="taxistas.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/driver.svg"><span id="taxistas_menu">Taxistas</span></a>
+                <a href="ingresos.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/ingresos.svg"><span id="ingresos_menu">Ingresos</span></a>
+                <a href="taxis.php" class="a-menu"><img src="../resources/img/Iconos-SVG/white/taxi.svg"><span id="taxis_menu">Taxis</span></a>
+                <a href="configuracion.php" class="a-menu btn-config"><img src="../resources/img/Iconos-SVG/white/setting.svg"><span id="config_menu">Configuracion</span></a>
             </nav>
         </div>
     </div>

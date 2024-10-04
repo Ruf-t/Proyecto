@@ -119,31 +119,7 @@ btnsCerrarModal.forEach((btn, index) => {
 //     });
 // });
 
-//ELIMINAR CLIENTE
-// function eliminarCliente(id) {
-//     if (confirm('¿Estás seguro de que deseas eliminar este cliente?')) {
-//         fetch('../BaseDatos/eliminar_cliente.php', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/x-www-form-urlencoded',
-//             },
-//             body: `id_cliente=${id}`
-//         })
-//         .then(response => response.json())
-//         .then(data => {
-//             if (data.success) {
-//                 alert('Cliente eliminado con éxito');
-//                 location.reload(); // Recargar la página para reflejar los cambios
-//             } else {
-//                 alert('Error al eliminar el cliente');
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//             alert('Error al eliminar el cliente');
-//         });
-//     }
-// }
+
 
 function eliminarTaxi(id) {
     if (confirm('¿Estás seguro de que quieres eliminar este taxi?')) {
@@ -193,6 +169,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const th_fechaElement = document.getElementById('th_fecha');
     const th_metodo_pagoElement = document.getElementById('th_metodo_pago');
     const th_ingresoElement = document.getElementById('th_ingreso');
+    //VIAJES
+    const option_select_turnoElement = document.getElementById('option_select_turno');
+    const option_select_turno1Element = document.getElementById('option_select_turno1');
+    const option_select_turno2Element = document.getElementById('option_select_turno2');
+    const option_select_fechaElement = document.getElementById('option_select_fecha');
+    const option_select_fecha_hoyElement = document.getElementById('option_select_fecha_hoy');
+    const option_select_fecha_1diaElement = document.getElementById('option_select_fecha_1dia');
+    const option_select_fecha_semanaElement = document.getElementById('option_select_fecha_semana');
+    const option_select_fecha_mesElement = document.getElementById('option_select_fecha_mes');
+    const option_select_fecha_6mesesElement = document.getElementById('option_select_fecha_6meses');
+    const option_select_fecha_personalizadaElement = document.getElementById('option_select_fecha_personalizada');
+    //CLIENTES
+    const h1_clientesElement = document.getElementById('h1_clientes');
+    const btn_abrir_modal_clienteElement = document.getElementById('btn_abrir_modal_cliente');
+    const h2_agregar_clienteElement = document.getElementById('h2_agregar_cliente');
+    const label_nombreElement = document.getElementById('label_nombre');
+    const label_apellidoElement = document.getElementById('label_apellido');
+    const label_direccionElement = document.getElementById('label_direccion');
+    const label_deudaElement = document.getElementById('label_deuda');
+    const btn_enviar_clienteElement = document.getElementById('btn_enviar_cliente');
+    const th_nombreElement = document.getElementById('th_nombre');
+    const th_apellidoElement = document.getElementById('th_apellido');
+    const th_telefonoElement = document.getElementById('th_telefono');
+    const th_direccionElement = document.getElementById('th_direccion');
+    const th_deudaElement = document.getElementById('th_deuda');
+    //TAXISTAS
+    const h1_taxistasElement = document.getElementById('h1_taxistas');
+    const btn_abrir_modal_taxistasElement= document.getElementById('btn_abrir_modal_taxistas');
+    const h2_agregar_taxistaElement = document.getElementById('h2_agregar_taxista');
+    const label_fecha_nacElement = document.getElementById('label_fecha_nac');
+    const label_fecha_vencElement = document.getElementById('label_fecha_venc');
+    const btn_enviar_taxistaElement = document.getElementById('btn_enviar_taxista');
+    const th_nacimientoElement = document.getElementById('th_nacimiento');
+    const th_fecha_vencElement = document.getElementById('th_fecha_venc');
+    const th_info_taxistaElement = document.getElementById('th_info_taxista');
     // CONFIGURACIÓN
     const h3_opcionesElement = document.getElementById('h3_opciones');
     const texto_btnElement = document.getElementById('switch_idioma');
@@ -211,40 +222,79 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 // HEADER
-                titulo_headerElement.textContent = data[language].titulo_header;
+                if (titulo_headerElement) titulo_headerElement.textContent = data[language].titulo_header;
                 // SLIDEBAR
-                home_menuElement.textContent = data[language].home_menu;
-                viajes_menuElement.textContent = data[language].viajes_menu;
-                clientes_menuElement.textContent = data[language].clientes_menu;
-                taxistas_menuElement.textContent = data[language].taxistas_menu;
-                ingresos_menuElement.textContent = data[language].ingresos_menu;
-                taxis_menuElement.textContent = data[language].taxis_menu;
-                config_menuElement.textContent = data[language].config_menu;
+                if (home_menuElement) home_menuElement.textContent = data[language].home_menu;
+                if (viajes_menuElement) viajes_menuElement.textContent = data[language].viajes_menu;
+                if (clientes_menuElement) clientes_menuElement.textContent = data[language].clientes_menu;
+                if (taxistas_menuElement) taxistas_menuElement.textContent = data[language].taxistas_menu;
+                if (ingresos_menuElement) ingresos_menuElement.textContent = data[language].ingresos_menu;
+                if (taxis_menuElement) taxis_menuElement.textContent = data[language].taxis_menu;
+                if (config_menuElement) config_menuElement.textContent = data[language].config_menu;
                 // PANEL
-                h3_panelElement.textContent = data[language].h3_panel;
-                span_ordenes_panelElement.textContent = data[language].span_ordenes_panel;
-                span_ganancias_panelElement.textContent = data[language].span_ganancias_panel;
-                span_taxis_panelElement.textContent = data[language].span_taxis_panel;
-                h3_taxistas_mesElement.textContent = data[language].h3_taxistas_mes;
-                th_taxistaElement.textContent = data[language].th_taxista;
-                th_clienteElement.textContent = data[language].th_cliente;
-                th_matriculaElement.textContent = data[language].th_matricula;
-                th_fechaElement.textContent = data[language].th_fecha;
-                th_metodo_pagoElement.textContent = data[language].th_metodo_pago;
-                th_ingresoElement.textContent = data[language].th_ingreso;
+                if (h3_panelElement) h3_panelElement.textContent = data[language].h3_panel;
+                if (span_ordenes_panelElement) span_ordenes_panelElement.textContent = data[language].span_ordenes_panel;
+                if (span_ganancias_panelElement) span_ganancias_panelElement.textContent = data[language].span_ganancias_panel;
+                if (span_taxis_panelElement) span_taxis_panelElement.textContent = data[language].span_taxis_panel;
+                if (h3_taxistas_mesElement) h3_taxistas_mesElement.textContent = data[language].h3_taxistas_mes;
+                if (th_taxistaElement) th_taxistaElement.textContent = data[language].th_taxista;
+                if (th_clienteElement) th_clienteElement.textContent = data[language].th_cliente;
+                if (th_matriculaElement) th_matriculaElement.textContent = data[language].th_matricula;
+                if (th_fechaElement) th_fechaElement.textContent = data[language].th_fecha;
+                if (th_metodo_pagoElement) th_metodo_pagoElement.textContent = data[language].th_metodo_pago;
+                if (th_ingresoElement) th_ingresoElement.textContent = data[language].th_ingreso;
+                //VIAJES
+                if (option_select_turnoElement) option_select_turnoElement.textContent = data[language].option_select_turno;
+                if (option_select_turno1Element) option_select_turno1Element.textContent = data[language].option_select_turno1;
+                if (option_select_turno2Element) option_select_turno2Element.textContent = data[language].option_select_turno2;
+                if (option_select_fechaElement) option_select_fechaElement.textContent = data[language].option_select_fecha;                
+                if (option_select_fecha_hoyElement) option_select_fecha_hoyElement.textContent = data[language].option_select_fecha_hoy;                
+                if (option_select_fecha_1diaElement) option_select_fecha_1diaElement.textContent = data[language].option_select_fecha_1dia;                
+                if (option_select_fecha_semanaElement) option_select_fecha_semanaElement.textContent = data[language].option_select_fecha_semana;                
+                if (option_select_fecha_mesElement) option_select_fecha_mesElement.textContent = data[language].option_select_fecha_mes;                
+                if (option_select_fecha_6mesesElement) option_select_fecha_6mesesElement.textContent = data[language].option_select_fecha_6meses;                
+                if (option_select_fecha_personalizadaElement) option_select_fecha_personalizadaElement.textContent = data[language].option_select_fecha_personalizada;                
+                //CLIENTES
+                if (h1_clientesElement) h1_clientesElement.textContent = data[language].h1_clientes;
+                if (btn_abrir_modal_clienteElement) btn_abrir_modal_clienteElement.textContent = data[language].btn_abrir_modal_cliente;
+                if (h2_agregar_clienteElement) h2_agregar_clienteElement.textContent = data[language].h2_agregar_cliente;
+                if (label_nombreElement) label_nombreElement.textContent = data[language].label_nombre;
+                if (label_apellidoElement) label_apellidoElement.textContent = data[language].label_apellido;
+                if (label_direccionElement) label_direccionElement.textContent = data[language].label_direccion;
+                if (label_deudaElement) label_deudaElement.textContent = data[language].label_deuda;
+                if (btn_enviar_clienteElement) btn_enviar_clienteElement.textContent = data[language].btn_enviar_cliente;
+                if (th_nombreElement) th_nombreElement.textContent = data[language].th_nombre;
+                if (th_apellidoElement) th_apellidoElement.textContent = data[language].th_apellido;
+                if (th_telefonoElement) th_telefonoElement.textContent = data[language].th_telefono;
+                if (th_direccionElement) th_direccionElement.textContent = data[language].th_direccion;
+                if (th_deudaElement) th_deudaElement.textContent = data[language].th_deuda;
+                //TAXISTAS
+                if (h1_taxistasElement) h1_taxistasElement.textContent = data[language].h1_taxistas;
+                if (btn_abrir_modal_taxistasElement) btn_abrir_modal_taxistasElement.textContent = data[language].btn_abrir_modal_taxistas;
+                if (h2_agregar_taxistaElement) h2_agregar_taxistaElement.textContent = data[language].h2_agregar_taxista;
+                if (label_fecha_nacElement) label_fecha_nacElement.textContent = data[language].label_fecha_nac;
+                if (label_fecha_vencElement) label_fecha_vencElement.textContent = data[language].label_fecha_venc;
+                if (btn_enviar_taxistaElement) btn_enviar_taxistaElement.textContent = data[language].btn_enviar_taxista;
+                if (th_nacimientoElement) th_nacimientoElement.textContent = data[language].th_nacimiento;
+                if (th_fecha_vencElement) th_fecha_vencElement.textContent = data[language].th_fecha_venc;
+                if (th_info_taxistaElement) th_info_taxistaElement.textContent = data[language].th_info_taxista;                
                 // CONFIGURACIÓN
-                h3_opcionesElement.textContent = data[language].h3_opciones;
-                texto_btnElement.textContent = data[language].switch_idioma;
+                if (h3_opcionesElement) h3_opcionesElement.textContent = data[language].h3_opciones;
+                if (texto_btnElement) texto_btnElement.textContent = data[language].switch_idioma;
             })
             .catch(error => console.log(error));
     };
 
-    switchIdioma.addEventListener('click', () => {
-        currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
-        localStorage.setItem('language', currentLanguage); // Guarda el idioma
-        loadContent(currentLanguage);
-    });
+    // Si existe el botón de cambiar idioma, agregamos el listener
+    if (switchIdioma) {
+        switchIdioma.addEventListener('click', () => {
+            currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+            localStorage.setItem('language', currentLanguage); // Guarda el idioma
+            loadContent(currentLanguage);
+        });
+    }
 
-    // Carga inicial
+    // Carga inicial: cargar idioma al abrir cualquier página
     loadContent(currentLanguage);
 });
+
