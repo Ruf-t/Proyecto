@@ -80,3 +80,33 @@ if (isset($_POST['Nombre']) &&
     echo json_encode($respuesta);
     exit(); // asegura que no ejecute las peticiones por debajo
 }
+
+// AÑADIR CLIENTE  
+if (isset($_POST['NombreNuevo_Cliente']) && 
+    isset($_POST['ApellidoNuevo_Cliente']) && 
+    isset($_POST['TelefonoNuevo_Cliente']) && 
+    isset($_POST['DireccionNuevo_Cliente']) && 
+    isset($_POST['DeudaNuevo_Cliente'])){
+
+    $NombreNuevo_Cliente = $_POST['NombreNuevo_Cliente'];
+    $ApellidoNuevo_Cliente = $_POST['ApellidoNuevo_Cliente'];
+    $TelefonoNuevo_Cliente = $_POST['TelefonoNuevo_Cliente'];
+    $DireccionNuevo_Cliente = $_POST['DireccionNuevo_Cliente'];
+    $DeudaNuevo_Cliente = $_POST['DeudaNuevo_Cliente'];
+
+    // guarda la llamada de la función en la variable respuesta
+    $respuesta = agregar_nuevo_cliente($con, $NombreNuevo_Cliente, $ApellidoNuevo_Cliente, $TelefonoNuevo_Cliente, $DireccionNuevo_Cliente, $DeudaNuevo_Cliente);
+   
+    header('Content-Type: application/json');
+    // devuelve la respuesta en formato JSON
+    echo json_encode($respuesta);
+    exit(); // asegura que no ejecute las peticiones por debajo
+}
+
+// MOSTRAR CLIENTES
+if (isset($_POST['accion']) && $_POST['accion'] == 'mostrar_clientes') {
+    $datos_clientes = mostrar_datos_cliente($con); // Llama a la función que obtiene los datos de clientes
+    header('Content-Type: application/json');
+    echo json_encode($datos_clientes); // Devuelve los datos en formato JSON
+    exit();
+}
