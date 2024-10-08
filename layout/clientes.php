@@ -7,8 +7,14 @@
 ?>
 <html lang="es">
 <link rel="stylesheet" href="../resources/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="../resources/ajax.js"></script>
 <body id="body-home">
     <main>
+    <div class="respuestaAJAX">
+        <p class="mensajeResult"></p>
+    </div>
         <?php
         include '../header.php';
         require_once '..\BaseDatos\functions.php';
@@ -29,18 +35,20 @@
                 <h2 id="h2_agregar_cliente"></h2> 
                 <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
-            <form id="formulario" method="post">
-                    <label><span id="label_nombre"></span><input type="text" name="Nombre"></label>
-    
-                    <label><span id="label_apellido"></span><input type="text" name="Apellido"></label> 
-                <div class="div-labels-forms">
-                    <label><span id="label_direccion"></span><input type="text" name="Fecha de Nacimiento"></label>
-
-                    <label><span id="label_deuda"></span><input type="number" name="Fecha vencimiento de libreta de conducir"></label>
-                </div>              
-                <div class="div-labels-forms">
-                    <button type="submit" class="boton-enviar-modal" id="btn_enviar_cliente"></button>
-                </div>
+            <form id="form-add-cliente" class="formulario" method="post">
+            <div class="div-labels-forms">
+                <label>Nombre<input type="text" name="NombreNuevo_Cliente" id="NombreNuevo_Cliente"></label>
+                <label>Apellido<input type="text" name="ApellidoNuevo_Cliente" id="ApellidoNuevo_Cliente"></label>
+            </div>
+            <div class="div-labels-forms">    
+                <label>Telefono<input type="number" name="TelefonoNuevo_Cliente" id="TelefonoNuevo_Cliente"></label>
+                <label>Direccion<input type="text" name="DireccionNuevo_Cliente" id="DireccionNuevo_Cliente"></label>
+            </div>    
+            <div class="div-labels-forms">
+                <label>Deuda<input type="number" name="DeudaNuevo_Cliente" id="DeudaNuevo_Cliente"></label>
+                <button type="submit">Enviar</button>
+            </div>    
+                <button class="btn-cerrar-modal" type="button">Cerrar modal</button>
             </form>
         </dialog>
 
@@ -63,8 +71,7 @@
                             <td><?php echo $fila['Apellido']; ?></td>
                             <td><?php echo $fila['Telefono']; ?></td>
                             <td><?php echo $fila['Direccion']; ?></td>
-                            <td></td>
-                            <!-- <td><?php echo $fila['Deuda']; ?></td> -->
+                            <td><?php echo $fila['Deuda']; ?></td>
                             <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera" onclick="eliminarCliente(<?php echo $fila['ID']; ?>)"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
                         </tr>
                     <?php } ?>

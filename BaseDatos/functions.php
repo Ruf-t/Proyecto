@@ -157,18 +157,36 @@ function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista){
 
 
 //función mostrar clientes
-function mostrar_datos_cliente($con) { 
-    $consulta_datos_cliente = "SELECT * FROM persona 
-                               JOIN cliente_registrado  ON persona.ID = cliente_registrado.Fk_Persona";
+// function mostrar_datos_cliente($con) { 
+//     $consulta_datos_cliente = "SELECT * FROM persona 
+//                                JOIN cliente_registrado  ON persona.ID = cliente_registrado.Fk_Persona";
 
+//     $resultado_cliente = mysqli_query($con, $consulta_datos_cliente);
+
+//     $datos_cliente = array();
+//     while ($fila = mysqli_fetch_array($resultado_cliente)) {
+//         $datos_cliente[] = $fila;
+//     }
+
+//     return $datos_cliente;
+// }
+
+function mostrar_datos_cliente($con) {
+    $consulta_datos_cliente = "SELECT * FROM persona 
+                               JOIN cliente_registrado ON persona.ID = cliente_registrado.Fk_Persona";
+    
     $resultado_cliente = mysqli_query($con, $consulta_datos_cliente);
 
-    $datos_cliente = array();
-    while ($fila = mysqli_fetch_array($resultado_cliente)) {
-        $datos_cliente[] = $fila;
+    if (!$resultado_cliente) {
+        return null; // En caso de error, devolvemos null
     }
 
-    return $datos_cliente;
+    $datos_cliente = array();
+    while ($fila = mysqli_fetch_assoc($resultado_cliente)) {
+        $datos_cliente[] = $fila; // Guardamos cada fila en el array
+    }
+
+    return $datos_cliente; // Devolvemos los datos
 }
 
 //función mostrar taxis
@@ -205,18 +223,19 @@ function datos_tabla_viaje($con) {
                                     viaje.*,
                                     taxi.matricula,
                                     viaje.Método_de_pago   
-                                    FROM 
-                                        taximetrista t
-                                    JOIN
-                                        persona p_taxista ON t.`FK-Persona` = p_taxista.ID
-                                    JOIN 
-                                        viaje ON viaje.Fk_Taximetrista = t.ID
-                                    JOIN 
-                                        cliente_registrado c ON viaje.Fk_Cliente_Registrado = c.ID
-                                    JOIN 
-                                        persona p_cliente ON c.Fk_Persona = p_cliente.ID
-                                    INNER JOIN 
-                                        taxi ON viaje.Fk_Taxi = taxi.ID";
+                             FROM 
+                                    taximetrista t
+                             JOIN
+                                    persona p_taxista ON t.`FK-Persona` = p_taxista.ID
+                             JOIN 
+                                    viaje ON viaje.Fk_Taximetrista = t.ID
+                             JOIN 
+                                    cliente_registrado c ON viaje.Fk_Cliente_Registrado = c.ID
+                             JOIN 
+                                    persona p_cliente ON c.Fk_Persona = p_cliente.ID
+                             INNER JOIN 
+                                    taxi ON viaje.Fk_Taxi = taxi.ID
+                             ORDER BY viaje.Fecha DESC";
 
 
     $resultado = mysqli_query($con, $consulta_datos_viaje);
@@ -277,49 +296,18 @@ function obtenerViajesFiltrados($turno, $fecha, $con) {
 }
 
 
-
-
-// //Funcion 2 para mostrar clientes
-// $id=$_GET['ID'];
-
-// $sql="delete from taxis where ID='".$id."'";
-// $resultado=mysqli_query($con,$sql);
-
-// if($resultado) {
-//     echo "<script languaje='JavaScript'>
-//         alert('Los datos se eliminaron correctamente de la BD');
-//         location.assign('index.php');
-//     </script>";
-//     } else {
-//         echo "<script languaje='JavaScript'>
-//             alert('Los datos NO se eliminaron de la BD');
-//             location.assign('index.php');
-//         </script>";
-
-// }
-
-
-// // funcion mostrar taxistas
-// function mostrar_datos_taxistas($con) {
-//     $consulta_datos_taxistas = "SELECT * FROM taximetrista";
-
-//     $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);
-
-//     $datos_taxistas = array();
-//     while ($fila = mysqli_fetch_array($resultado_taxistas)) {
-//         $datos_taxistas[] = $fila;
-//     }
-
-//     return $datos_taxistas;
-// }
-
 function mostrar_datos_taxistas($con) {
-    // Consulta para unir las tablas taximetrista y persona
     $consulta_datos_taxistas = "SELECT * FROM taximetrista 
-                                INNER JOIN persona  ON taximetrista.ID = persona.ID
-    ";
+                                INNER JOIN persona ON taximetrista.`FK-Persona` = persona.ID
+                                ORDER BY persona.Nombre ASC"; 
 
     $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);
+
+    // Verificar si la consulta fue exitosa
+    if ($resultado_taxistas === false) {
+        echo "Error en la consulta: " . mysqli_error($con);
+        return [];
+    }
 
     $datos_taxistas = array();
     while ($fila = mysqli_fetch_assoc($resultado_taxistas)) {
@@ -408,74 +396,97 @@ function agregar_taxi($con, $matricula, $modelo, $año, $estado) {
 
 
 //--------------------------------------AGREGAR TAXISTA----------------------------------------------------
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     // Recoger los datos del formulario
-//     $nombre = $_POST['nombre'];
-//     $telefono = $_POST['telefono'];
-//     $apellido = $_POST['apellido'];
-//     $direccion = $_POST['direccion'];
-//     $fechaNacimiento = $_POST['fechaNacimiento'];
-//     $fechaVencLicencia = $_POST['fechaVencLicencia'];
-//     $usuario = $_POST['usuario'];
-//     $contrasena = $_POST['contrasena'];
-
-//     // Llamar a la función para agregar taximetrista
-//     $resultado = agregar_taximetrista($con, $nombre, $telefono, $apellido, $direccion, $fechaNacimiento, $fechaVencLicencia, $usuario, $contrasena);
-
-//     if ($resultado['success']) {
-//         echo "Taximetrista agregado exitosamente con ID de persona: " . $resultado['persona_id'];
-//     } else {
-//         echo "Error: " . $resultado['message'];
-//     }
-// }
-
-/**
- * Función para agregar un taximetrista
- */
-function agregar_taximetrista($con, $nombre, $telefono, $apellido, $direccion, $fechaNacimiento, $fechaVencLicencia, $usuario, $contrasena) {
-    // Comenzar una transacción para asegurar integridad de los datos
+function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_Nuevo_Taxista, $Fecha_venc_librCond_Nuevo_Taxista, $Direccion_Nuevo_Taxista, $Telefono_Nuevo_Taxista, $UserNuevo_Taxista, $ContrNuevo_Taxista){
+    // Comenzar una transacción para asegurar la integridad de los datos
     mysqli_begin_transaction($con);
 
-    try {
-        // Insertar en la tabla persona
-        $consulta_insertar_persona = "INSERT INTO persona (Nombre, Telefono, Apellido, Direccion) 
-                                      VALUES ('$nombre', '$telefono', '$apellido', '$direccion')";
+    
 
-        if (!mysqli_query($con, $consulta_insertar_persona)) {
-            throw new Exception('Error al insertar en la tabla persona: ' . mysqli_error($con));
-        }
+    // Insertar en la tabla persona
+    $consulta_insertar_persona = "INSERT INTO persona (Nombre, Telefono, Apellido, Direccion) 
+                                  VALUES ('$Nombre', '$Telefono_Nuevo_Taxista', '$Apellido_Nuevo_Taxista', '$Direccion_Nuevo_Taxista')";
 
-        // Obtener el ID de la persona recién insertada
-        $persona_id = mysqli_insert_id($con);
-
-        // Insertar en la tabla taximetrista
-        $consulta_insertar_taximetrista = "INSERT INTO taximetrista (Fecha_Expiracion_Licencia, Fecha_nacimiento, Usuario, Contrasena, FK_Persona) 
-                                           VALUES ('$fechaVencLicencia', '$fechaNacimiento', '$usuario', '$contrasena', '$persona_id')";
-
-        if (!mysqli_query($con, $consulta_insertar_taximetrista)) {
-            throw new Exception('Error al insertar en la tabla taximetrista: ' . mysqli_error($con));
-        }
-
-        // Confirmar la transacción
-        mysqli_commit($con);
-
-        // Devolver respuesta exitosa
-        return [
-            'success' => true,
-            'message' => 'Taximetrista añadido correctamente.',
-            'persona_id' => $persona_id
-        ];
-    } catch (Exception $e) {
+    if (!mysqli_query($con, $consulta_insertar_persona)) {
         // Revertir la transacción en caso de error
         mysqli_rollback($con);
         return [
             'success' => false,
-            'message' => $e->getMessage()
+            'message' => 'Error al insertar en la tabla persona: ' . mysqli_error($con)
         ];
     }
+
+    // Obtener el ID de la persona recién insertada
+    $persona_id = mysqli_insert_id($con);
+
+    $hashed_password = password_hash($ContrNuevo_Taxista, PASSWORD_DEFAULT);
+
+    // Insertar en la tabla taximetrista
+    $consulta_insertar_taximetrista = "INSERT INTO `taximetrista`(`Fecha_Expiracion_Licencia`, `Fecha_Nacimiento`, `Usuario`, `Contrasenia`,  `FK-Persona`) VALUES ('$Fecha_venc_librCond_Nuevo_Taxista', '$FechaNac_Nuevo_Taxista', '$UserNuevo_Taxista', '$hashed_password', '$persona_id')";
+
+    if (!mysqli_query($con, $consulta_insertar_taximetrista)) {
+        // Revertir la transacción en caso de error
+        mysqli_rollback($con);
+        return [
+            'success' => false,
+            'message' => 'Error al insertar en la tabla taximetrista: ' . mysqli_error($con)
+        ];
+    }
+
+    // Confirmar la transacción
+    mysqli_commit($con);
+
+    // Devolver respuesta exitosa
+    return [
+        'success' => true,
+        'message' => 'Taximetrista añadido correctamente.',
+        'persona_id' => $persona_id
+    ];
 }
 
+
+function agregar_nuevo_cliente($con, $NombreNuevo_Cliente, $ApellidoNuevo_Cliente, $TelefonoNuevo_Cliente, $DireccionNuevo_Cliente, $DeudaNuevo_Cliente) {
+    // Iniciar la transacción
+    mysqli_begin_transaction($con);
+
+    // Insertar los datos en la tabla persona
+    $consulta_insertar_persona = "INSERT INTO persona (Nombre, Telefono, Apellido, Direccion) 
+                                  VALUES ('$NombreNuevo_Cliente', '$TelefonoNuevo_Cliente', '$ApellidoNuevo_Cliente', '$DireccionNuevo_Cliente')";
+
+    if (!mysqli_query($con, $consulta_insertar_persona)) {
+        // Revertir la transacción en caso de error
+        mysqli_rollback($con);
+        return [
+            'success' => false,
+            'message' => 'Error al insertar en la tabla persona: ' . mysqli_error($con)
+        ];
+    }
+
+    // Obtener el ID de la persona recién insertada
+    $persona_id = mysqli_insert_id($con);
+
+    // Insertar los datos en la tabla cliente_registrado
+    $consulta_insertar_cliente = "INSERT INTO cliente_registrado (Deuda, Fk_Persona) 
+                                  VALUES ('$DeudaNuevo_Cliente', '$persona_id')";
+
+    if (!mysqli_query($con, $consulta_insertar_cliente)) {
+        // Revertir la transacción en caso de error
+        mysqli_rollback($con);
+        return [
+            'success' => false,
+            'message' => 'Error al insertar en la tabla cliente_registrado: ' . mysqli_error($con)
+        ];
+    }
+
+    // Confirmar la transacción si todo fue exitoso
+    mysqli_commit($con);
+
+    // Devolver respuesta exitosa
+    return [
+        'success' => true,
+        'message' => 'Cliente añadido correctamente.',
+        'persona_id' => $persona_id
+    ];
+}
 
 
 

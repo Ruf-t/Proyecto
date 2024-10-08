@@ -1,12 +1,19 @@
 <link rel="stylesheet" href="../resources/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../resources/ajax.js"></script>
 
 <body id="body-home">
     <main>
+    <div class="respuestaAJAX">
+        <p class="mensajeResult"></p>
+    </div>
         <?php
         include '../header.php';
         require_once '..\BaseDatos\functions.php';
         $datos_taxista = mostrar_datos_taxistas($con);
         ?>
+
         <div class="div-addCliente">
             <h1 id="h1_taxistas"></h1>
             <!-- <button class="btn-abrir-modal boton-add-cliente">Añadir Taximetrista</button> -->
@@ -14,30 +21,50 @@
         </div>
 
         <dialog class="modal">
-            <div class="div-titulo-modal">
-                <h2 id="h2_agregar_taxista"></h2> 
-                <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
-            </div>
-            <form id="formulario" method="post">
-                <div class="div-labels-forms">
-                    <label><span id="label_nombre"></span><input type="text" name="Nombre"></label>
-    
-                    <label><span id="label_apellido"></span><input type="text" name="Apellido"></label> 
-                </div>  
-                <div class="div-labels-forms">
-                    <label><span id="label_fecha_nac"></span><input type="date" name="Fecha de Nacimiento"></label>
+    <div class="div-titulo-modal">
+        <h2>Agregar Nuevo Taximetrista</h2> 
+    </div>
+    <form id="form-add-taxistas" method="post">
+        <div class="div-labels-forms">
+            <label>Nombre:
+                <input type="text" name="Nombre" id="Nombre-Nuevo-Taxista">
+            </label>
 
-                    <label><span id="label_fecha_venc"></span><input type="date" name="Fecha vencimiento de libreta de conducir"></label>
-                </div>              
-                <div class="div-labels-forms">
-                    <label class="label-direccion"><span id="label_direccion"></span><input type="text" name="Dirección"></label>
-                </div>
-                <div class="div-labels-forms">
-                    <button type="submit" class="boton-enviar-modal" id="btn_enviar_taxista"></button>
-                </div>
-            </form>
-        </dialog>
-        
+            <label>Apellido:
+                <input type="text" name="Apellido-Nuevo-Taxista">
+            </label> 
+        </div>  
+        <div class="div-labels-forms">
+            <label>Fecha de Nacimiento:
+                <input type="date" name="FechaNac-Nuevo-Taxista">
+            </label>
+
+            <label>Fecha venc. de libreta de conducir:
+                <input type="date" name="Fecha-venc-librCond-Nuevo-Taxista">
+            </label>
+        </div>              
+        <div class="div-labels-forms">
+            <label class="label-direccion">Dirección:
+                <input type="text" name="Direccion-Nuevo-Taxista" id="Direccion-Nuevo-Taxista">
+            </label>
+            <label class="label-direccion">Telefono:
+                <input type="text" name="Telefono-Nuevo-Taxista" id="Telefono-Nuevo-Taxista">
+            </label>
+        </div>
+        <div class="div-labels-forms">
+            <label class="label-direccion">Usuario:
+                <input type="text" name="UserNuevo-Taxista" id="UserNuevo-Taxista">
+            </label>
+            <label class="label-direccion">Contraseña:
+                <input type="password" name="ContrNuevo-Taxista" id="ContrNuevo-Taxista">
+            </label>
+        </div>
+        <div class="div-labels-forms">
+            <button type="submit" class="boton-enviar-modal">Enviar</button>
+        </div>
+    </form>
+</dialog>
+
         <div class="tabla-clientes">
             <table>
                 <thead>
@@ -65,6 +92,7 @@
                     <?php } ?>
                 </tbody>
             </table>
+
             </div>
         </div>  
     </main>

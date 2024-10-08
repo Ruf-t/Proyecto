@@ -24,9 +24,9 @@
 
 <body id="body-home">
     <main>
-    <div class="resultado">
-    <p class="mensajeResult"></p>
-</div>
+    <div class="respuestaAJAX">
+        <p class="mensajeResult"></p>
+    </div>
 
         <?php
         include '../header.php';
@@ -66,15 +66,6 @@
                     <?php } ?>
                 </tbody>
             </table>
-            <!-- <div class="div-cantidad-Taxis">
-                <h3 class="total-Taxis">Total de Taxis: $5</h3>
-                <div class="div-paginas">
-                    <button class="pasar-paginas" onclick="activarBoton('1')"><img src="../resources/img/Iconos-SVG/icons-others/flecha-menorque.svg"></button>
-                    <button class="paginas active" onclick="cambioColorBoton(this)">1</button>
-                    <button class="paginas" >2</button>
-                    <button class="pasar-paginas" onclick="activarBoton('2')"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                </div>
-            </div> -->
         </div>  
     </main>
 

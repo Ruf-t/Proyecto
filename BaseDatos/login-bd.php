@@ -139,7 +139,7 @@ function logearTaxi($con, $userTaxi, $contrasenia) {
     // Verificar si se encontró un usuario
     if (mysqli_num_rows($resultado_login) > 0) {
         $fila = mysqli_fetch_assoc($resultado_login);
-        $contrasenia_bd = $fila["Contraseña"];
+        $contrasenia_bd = $fila["Contrasenia"];
 
         // Verificar si la contraseña ingresada coincide con la almacenada (hash)
         if (password_verify($contrasenia, $contrasenia_bd)) {
