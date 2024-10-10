@@ -49,7 +49,7 @@
                         <th id="th_modelo"></th>
                         <th id="th_estado"></th>
                         <th id="th_proximo_servicio"></th>
-                        <th></th>
+                        <th id="th_modificar_eliminar"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -98,13 +98,13 @@
             </div>
             <div class="div-labels-forms">
                 <label><span id="label_anio"></span><input type="number" name="anio" id="anio"></label>
-                <label id="label_estado">
+                <label><span id="label_estado"></span>
                     <select name="estado" id="estado" class="select-estado">
-                    <option value="" id="option_select_estado">Selecciona un estado</option>
-                    <option value="1" id="option_select_estado1">Disponible</option>
-                    <option value="0" id="option_select_estado2">Ocupado</option>
+                    <option value="" id="option_select_estado"></option>
+                    <option value="1" id="option_select_estado1"></option>
+                    <option value="0" id="option_select_estado2"></option>
                     </select>
-                    </label>
+                </label>
             </div>
             <div class="div-labels-forms">
                 <button type="submit" class="boton-enviar-modal-taxis" id="btn_add_taxi"></button>

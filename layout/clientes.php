@@ -36,19 +36,20 @@
                 <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
             <form id="form-add-cliente" class="formulario" method="post">
-            <div class="div-labels-forms">
-                <label>Nombre<input type="text" name="NombreNuevo_Cliente" id="NombreNuevo_Cliente"></label>
-                <label>Apellido<input type="text" name="ApellidoNuevo_Cliente" id="ApellidoNuevo_Cliente"></label>
+            <div class="div-labels-forms">    
+                <label><span id="label_nombre"></span><input type="text" name="NombreNuevo_Cliente" id="NombreNuevo_Cliente"></label>
+                <label><span id="label_apellido"></span><input type="text" name="ApellidoNuevo_Cliente" id="ApellidoNuevo_Cliente"></label>
             </div>
             <div class="div-labels-forms">    
-                <label>Telefono<input type="number" name="TelefonoNuevo_Cliente" id="TelefonoNuevo_Cliente"></label>
-                <label>Direccion<input type="text" name="DireccionNuevo_Cliente" id="DireccionNuevo_Cliente"></label>
+                <label><span id="label_telefono"></span><input type="number" name="TelefonoNuevo_Cliente" id="TelefonoNuevo_Cliente"></label>
+                <label><span id="label_deuda"></span><input type="number" name="DeudaNuevo_Cliente" id="DeudaNuevo_Cliente"></label>
             </div>    
             <div class="div-labels-forms">
-                <label>Deuda<input type="number" name="DeudaNuevo_Cliente" id="DeudaNuevo_Cliente"></label>
-                <button type="submit">Enviar</button>
-            </div>    
-                <button class="btn-cerrar-modal" type="button">Cerrar modal</button>
+                <label><span id="label_direccion"></span><input type="text" name="DireccionNuevo_Cliente" id="DireccionNuevo_Cliente"></label>
+            </div>  
+            <div class="div-labels-forms">  
+                <button type="submit" id="btn_enviar_cliente"></button>
+            </div>
             </form>
         </dialog>
 
