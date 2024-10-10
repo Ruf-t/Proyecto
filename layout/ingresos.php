@@ -14,22 +14,21 @@
         ?>
         <div class="btn-select-filtro">
             <h1 id="h1_ingresos"></h1>
-            <p id="p_ingresos"></p>
             <div class="selects">
-            <select id="fecha">
-                    <option value="" id="option_select_fecha"></option>
-                    <option value="hoy" id="option_select_fecha_hoy"></option>
-                    <option value="un_dia" id="option_select_fecha_1dia"></option>
-                    <option value="semana" id="option_select_fecha_semana"></option>
-                    <option value="mes" id="option_select_fecha_mes"></option>
-                    <option value="seis_meses" id="option_select_fecha_6meses"></option>
-                    <option value="personalizada" id="option_select_fecha_personalizada"></option>
-                </select>
                 <select id="turno">
                     <option value="" id="option_select_turno"></option>
                     <option value="Turno 1" id="option_select_turno1"></option>
                     <option value="Turno 2" id="option_select_turno2"></option>
                 </select>
+                <select id="fecha">
+                        <option value="" id="option_select_fecha"></option>
+                        <option value="hoy" id="option_select_fecha_hoy"></option>
+                        <option value="un_dia" id="option_select_fecha_1dia"></option>
+                        <option value="semana" id="option_select_fecha_semana"></option>
+                        <option value="mes" id="option_select_fecha_mes"></option>
+                        <option value="seis_meses" id="option_select_fecha_6meses"></option>
+                        <option value="personalizada" id="option_select_fecha_personalizada"></option>
+                    </select>
             <button class="btn-aplicar-filtro" id="btn_aplicar_filtro"></button>
             </div>
         </div>

@@ -267,7 +267,7 @@ function obtenerViajesFiltrados($turno, $fecha, $con) {
 
     // Filtrar por turno si está seleccionado
     if (!empty($turno)) {
-        $query .= " AND Turno = '$turno'";
+        $query .= " AND Fk_Turno = '$turno'";
     }
 
     // Filtrar por fecha según el rango seleccionado

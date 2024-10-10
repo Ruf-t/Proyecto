@@ -47,10 +47,10 @@
             </form>
         </dialog>
 
-        <div class="tabla-clientes">
+        <div class="tabla-taxistas">
             <table>
                 <thead>
-                    <tr class="columnas-tabla-clientes">
+                    <tr class="columnas-tabla-taxistas">
                         <th id="th_nombre"></th>
                         <th id="th_apellido"></th>
                         <th id="th_nacimiento"></th>

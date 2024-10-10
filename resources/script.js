@@ -209,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const th_info_taxistaElement = document.getElementById('th_info_taxista');
     //INGRESOS
     const h1_ingresosElement = document.getElementById('h1_ingresos');
-    const p_ingresosElement = document.getElementById('p_ingresos');
     const btn_aplicar_filtroElement = document.getElementById('btn_aplicar_filtro');
     const th_numero_taxiElement = document.getElementById('th_numero_taxi');
     const th_turnosElement = document.getElementById('th_turnos');
@@ -310,7 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (th_info_taxistaElement) th_info_taxistaElement.textContent = data[language].th_info_taxista;                
                 //INGRESOS
                 if (h1_ingresosElement) h1_ingresosElement.textContent = data[language].h1_ingresos;
-                if (p_ingresosElement) p_ingresosElement.textContent = data[language].p_ingresos;
                 if (btn_aplicar_filtroElement) btn_aplicar_filtroElement.textContent = data[language].btn_aplicar_filtro;
                 if (th_numero_taxiElement) th_numero_taxiElement.textContent = data[language].th_numero_taxi;
                 if (th_turnosElement) th_turnosElement.textContent = data[language].th_turnos;

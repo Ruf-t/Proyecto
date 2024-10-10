@@ -100,8 +100,13 @@ include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
   </form>    
 </div>
 
+<div class="div-cambiar-idioma-taxistas">
+    <button id="switch_idioma">cambiar idioma</button>
+</div>
+
 
     <script src="/proyecto/resources/script.js"></script>
+    <script src="../resources-Taximetristas/script-idioma.js"></script>
     <script src="../resources-Taximetristas/ajax-taximetrista.js"></script>
     <!---- importacion de jquery---->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

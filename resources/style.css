@@ -594,7 +594,7 @@ select{
   display: grid;
   grid-row: 3/5;
   grid-column: 1/3;
-  height: 400px;
+  height: 380px;
 }
 #tabla-viaje{
   table-layout: auto;
@@ -631,7 +631,8 @@ select{
 .tabla-clientes {
   margin-right: 1rem;
   grid-column: 1/3;
-  grid-row: 3/5;
+  grid-row: 3/4;
+  height: 380px;
   overflow-x:auto;
   overflow-y:auto;
 }
@@ -792,32 +793,6 @@ body.modal-open {
   }
 }
 
-.estado{
-
-}
-
-#p_estado{
-  font-weight: bold;
-  font-size: 14px;
-  
-}
-
-.div-labels-forms-taxis {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.label-anio{
-  font-size: 14px;
-  color: var(--colorGris3);
-  margin-bottom: 5px;
-  width: 10%;
-  padding: 0.5rem;
-  font-weight: bold;
-}
-
 .boton-enviar-modal {
   width: 50%;
   padding: 10px;
@@ -851,31 +826,42 @@ body.modal-open {
 
 
 /*Tabla Taximetristas*/
-.tabla-taximetristas {
-  width: 100%;
-  min-width: 1000px;
-  height: 100%;
-  min-height: 400px;
-  align-items: center;
-  justify-content: center;
-  grid-column: 1/2;
+.tabla-taxistas {
+  margin-right: 1rem;
+  grid-column: 1/3;
   grid-row: 3/4;
+  height: 380px;
+  overflow-x:auto;
+  overflow-y:auto;
 }
-.tabla-taximetristas table {
+.tabla-taxistas table {
   border-collapse: collapse;
-  margin: 1rem 0;
   font-size: 1rem;
   text-align: center;
   width: 100%;
 }
-.columnas-tabla-taximetristas{
+.tabla-taxistas table th{
+  position: sticky;
+  top: 0;
+  z-index: 1; 
+  padding: 1rem 0;
+  background-color: #f4f4f4;
+  border-radius: .2rem;
+  box-sizing: border-box;
+}
+.tabla-taxistas table th {
+  z-index: 1;
+  position: sticky;
+}
+
+.columnas-tabla-taxistas{
   background-color: #f4f4f4;
   height: 40px;
 }
-.tabla-taximetristas th:last-child, .tabla-taximetristas td:last-child {
+.tabla-taxistas th:last-child, .tabla-taxistas td:last-child {
   border-right: none;
 }
-.tabla-taximetristas th button {
+.tabla-taxistas th button {
   border-collapse: collapse;
   font-size: 1rem;
   text-align: center;
@@ -884,21 +870,21 @@ body.modal-open {
   border-radius: .2rem;
   box-sizing: border-box;
 }
-.tabla-taximetristas th:nth-child(3), .tabla-taximetristas td:nth-child(3) {
+.tabla-taxistas th:nth-child(3), .tabla-taxistas td:nth-child(3) {
   width: 10rem;
 }
-.tabla-taximetristas th:nth-child(4), .tabla-taximetristas td:nth-child(4) {
+.tabla-taxistas th:nth-child(4), .tabla-taxistas td:nth-child(4) {
   width: 10rem;
 }
-.tabla-taximetristas th:nth-child(5), .tabla-taximetristas td:nth-child(5) {
+.tabla-taxistas th:nth-child(5), .tabla-taxistas td:nth-child(5) {
   width: 10rem;
 }
-.tabla-taximetristas .income {
+.tabla-taxistas .income {
   color: #28a745;
   font-weight: bold;
 }
 
-.tabla-taximetristas, .tabla-taximetristas th, .tabla-taximetristas td {
+.tabla-taxistas, .tabla-taxistas th, .tabla-taxistas td {
   border: none;
 }
 .boton-info{
@@ -1010,7 +996,7 @@ body.modal-open {
   margin-right: 2rem;
   overflow-y: auto;
   overflow-x: auto;
-  height: 400px;
+  height: 380px;
   grid-column: 1/3;
   grid-row: 3/5;
 }

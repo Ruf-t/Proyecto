@@ -18,8 +18,8 @@
             <div class="selects">
                 <select id="turno">
                     <option value="" id="option_select_turno"></option>
-                    <option value="Turno 1" id="option_select_turno1"></option>
-                    <option value="Turno 2" id="option_select_turno2"></option>
+                    <option value="1" id="option_select_turno1"></option>
+                    <option value="2" id="option_select_turno2"></option>
                 </select>
 
                 <select id="fecha">

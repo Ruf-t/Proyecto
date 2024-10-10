@@ -209,37 +209,6 @@ $(document).ready(function() {
 
 
 
-
-
-//APLICAR FILTROS 
-$(document).ready(function() {
-    $('#turno, #fecha').on('change', function() {
-        // Obtener los valores de los selectores
-        var turno = $('#turno').val();
-        var fecha = $('#fecha').val();
-        
-        // Realizar la petición AJAX
-        $.ajax({
-            url: '../BaseDatos/peticiones-ajax.php',
-            type: 'POST',
-            data: {
-                turno: turno,
-                fecha: fecha
-            },
-            success: function(response) {
-                // Actualizar el cuerpo de la tabla con los nuevos datos
-                $('#viajes-body').html(response);
-            }
-        });
-    });
-});
-
-
-
-
-
-
-
 // CARGAR DATOS TABLA CLIENTES
 $(document).ready(function() {
     // setInterval(function() {

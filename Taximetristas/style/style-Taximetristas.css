@@ -319,3 +319,26 @@ header{
         cursor: pointer;
     }
 }
+
+.div-cambiar-idioma-taxistas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#switch_idioma{
+    width: 8rem;
+    height: 2.5rem;
+    border-radius:7px;
+    border: none;
+    background-color: #333;
+    color: white;
+    bottom: 1rem;
+    position: fixed;
+}
+
+#switch_idioma:hover{
+    background-color: var(--amarillo);
+    color: black;
+}
+
