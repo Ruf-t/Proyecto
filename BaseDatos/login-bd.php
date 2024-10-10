@@ -41,6 +41,52 @@ function cerrarSesion(){
 }
 
 
+// function logear($con, $user, $contrasenia) {
+//     // Preparar la consulta SQL para evitar inyección SQL
+//     $consulta_login = "SELECT * FROM administrador WHERE Usuario = ?";
+//     $stmt = mysqli_prepare($con, $consulta_login);
+
+//     // Enlazar el parámetro (el usuario ingresado) a la consulta
+//     mysqli_stmt_bind_param($stmt, "s", $user);
+
+//     // Ejecutar la consulta
+//     mysqli_stmt_execute($stmt);
+
+//     // Obtener el resultado
+//     $resultado_login = mysqli_stmt_get_result($stmt);
+
+//     // Verificar si se encontró un usuario
+//     if (mysqli_num_rows($resultado_login) > 0) {
+//         $fila = mysqli_fetch_assoc($resultado_login);
+//         $contrasenia_bd = $fila["Contraseña"];
+
+//         if (password_verify($contrasenia, $contrasenia_bd)) {
+//             $_SESSION["Usuario"] = $user;
+
+//             // Respuesta exitosa en formato JSON
+//             echo json_encode(array(
+//                 "status" => "success",
+//                 "message" => ""
+//             ));
+//         } else {
+//             // Contraseña incorrecta
+//             echo json_encode(array(
+//                 "status" => "error",
+//                 "message" => "Contraseña incorrecta. Intentelo de nuevo"
+//             ));
+//         }
+//     } else {
+//         // Usuario no encontrado
+//         echo json_encode(array(
+//             "status" => "error",
+//             "message" => "Usuario no encontrado. Revise sus credenciales"
+//         ));
+//     }
+
+//     // Cerrar la sentencia
+//     mysqli_stmt_close($stmt);
+// }
+
 function logear($con, $user, $contrasenia) {
     // Preparar la consulta SQL para evitar inyección SQL
     $consulta_login = "SELECT * FROM administrador WHERE Usuario = ?";
@@ -61,6 +107,7 @@ function logear($con, $user, $contrasenia) {
         $contrasenia_bd = $fila["Contraseña"];
 
         if (password_verify($contrasenia, $contrasenia_bd)) {
+            // Guardar el nombre de usuario en la sesión
             $_SESSION["Usuario"] = $user;
 
             // Respuesta exitosa en formato JSON

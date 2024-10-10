@@ -180,7 +180,7 @@
         "label_estado":"Estado (Activo o Inactivo)",
         "option_select_estado":"Selecciona un estado",
         "option_select_estado1":"Disponible",
-        "option_select_estado2":"Indisponible",
+        "option_select_estado2":"No Disponible",
         "btn_add_taxi":"Añadir",
 
         "CONFIG":"--------------------------------------------",

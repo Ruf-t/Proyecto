@@ -24,9 +24,7 @@
 
 <body id="body-home">
     <main>
-    <div class="respuestaAJAX">
-        <p class="mensajeResult"></p>
-    </div>
+
 
         <?php
         include '../header.php';
@@ -44,23 +42,19 @@
                 <thead> 
                     <tr class="columnas-tabla-Taxis">
                         <th id="th_numero_taxi"></th>
-                        <th id="th_kilometros"></th>
-                        <th id="th_anio"></th>
                         <th id="th_modelo"></th>
+                        <th id="th_anio"></th>
                         <th id="th_estado"></th>
-                        <th id="th_proximo_servicio"></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($datos_taxis as $fila) { ?>
                         <tr>
-                            <td><?php echo $fila['ID']; ?></td>
                             <td><?php echo $fila['Matricula']; ?></td>
                             <td><?php echo $fila['Modelo']; ?></td>
                             <td><?php echo $fila['Año']; ?></td>
                             <td><?php echo $fila['Estado']; ?></td>
-                            <td></td>
                             <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera" onclick="eliminarTaxi(<?php echo $fila['ID']; ?>)"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
                         </tr>
                     <?php } ?>
@@ -88,6 +82,7 @@
     </div>
        
     <dialog class="modal">
+    
             <div class="div-titulo-modal">
                 <h2 id="h2_agregar_taxi"></h2>
                 <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
@@ -99,18 +94,21 @@
             </div>
             <div class="div-labels-forms">
                 <label><span id="label_anio"></span><input type="number" name="anio" id="anio"></label>
-                <label id="label_estado">
+             
                     <select name="estado" id="estado" class="select-estado">
                     <option value="" id="option_select_estado">Selecciona un estado</option>
-                    <option value="1" id="option_select_estado1">Disponible</option>
-                    <option value="0" id="option_select_estado2">Ocupado</option>
+                    <option value="Disponible" id="option_select_estado1">Disponible</option>
+                    <option value="No Disponible" id="option_select_estado2">No Disponible</option>
                     </select>
-                    </label>
+                    
             </div>
             <div class="div-labels-forms">
                 <button type="submit" class="boton-enviar-modal-taxis" id="btn_add_taxi"></button>
             </div>
             </form>
+            <div class="respuestaAJAX">
+                <p class="mensajeResult"></p>
+            </div>
         </dialog>
     
      <!---- importacion de jquery---->

@@ -373,13 +373,10 @@ function obtenerClientesRegistrados($con) {
 function agregar_taxi($con, $matricula, $modelo, $año, $estado) {
 
     // Consulta SQL de inserción
-    $sql = "INSERT INTO taxi (Matricula, Modelo, Año, Estado) VALUES ('$matricula', '$modelo', $año, $estado)";
+    $sql = "INSERT INTO taxi (Matricula, Modelo, Año, Estado) VALUES ('$matricula', '$modelo', $año, '$estado')";
 
     // Ejecutar la consulta y devolver el resultado
     if (mysqli_query($con, $sql)) {
-        // Obtener el ID del taxi recién insertado
-        $id_taxi = mysqli_insert_id($con);
-        
         // Devolver una respuesta de éxito con más detalles
         return [
             'success' => true,
