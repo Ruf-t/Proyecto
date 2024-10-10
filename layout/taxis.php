@@ -45,7 +45,7 @@
                         <th id="th_modelo"></th>
                         <th id="th_anio"></th>
                         <th id="th_estado"></th>
-                        <th></th>
+                        <th id="th_modificar_eliminar"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,8 +65,7 @@
 
     <div class="sidebar-container">
         <div class="div-usuario">
-            <h1 class="user-name">Usuario</h1>
-            <p class="user-num">+598 92112906</p>
+            <img src="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-7B.svg">
         </div>
         <div class="menu-container">
             <nav><span>
@@ -94,13 +93,13 @@
             </div>
             <div class="div-labels-forms">
                 <label><span id="label_anio"></span><input type="number" name="anio" id="anio"></label>
-             
+                <label><span id="label_estado"></span>
                     <select name="estado" id="estado" class="select-estado">
-                    <option value="" id="option_select_estado">Selecciona un estado</option>
-                    <option value="Disponible" id="option_select_estado1">Disponible</option>
-                    <option value="No Disponible" id="option_select_estado2">No Disponible</option>
+                    <option value="" id="option_select_estado"></option>
+                    <option value="Disponible" id="option_select_estado1"></option>
+                    <option value="No Disponible" id="option_select_estado2"></option>
                     </select>
-                    
+                </label>
             </div>
             <div class="div-labels-forms">
                 <button type="submit" class="boton-enviar-modal-taxis" id="btn_add_taxi"></button>

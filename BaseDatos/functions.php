@@ -486,7 +486,7 @@ function agregar_nuevo_cliente($con, $NombreNuevo_Cliente, $ApellidoNuevo_Client
 }
 
 
-
+    
 function cantidad_clientes($con) {
     $consulta_cant_clientes = "SELECT COUNT(DISTINCT persona.ID) AS cantidad_clientes
                                FROM persona 

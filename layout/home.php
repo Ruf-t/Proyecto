@@ -77,8 +77,7 @@ session_start();
 
     <div class="sidebar-container">
         <div class="div-usuario">
-            <h1 class="user-name">Usuario</h1>
-            <p class="user-num">+598 92112906</p>
+            <img src="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-7B.svg">
         </div>
         <div class="menu-container">
             <nav><span>
