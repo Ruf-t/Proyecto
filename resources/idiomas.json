@@ -93,7 +93,26 @@
 
         "CONFIG":"-----------------------------------------",
         "h3_opciones":"Options",
-        "switch_idioma":"Change language"
+        "switch_idioma":"Change language",
+
+
+        "HOME":"-----------------------------------------",
+        "btn_iniciar_turno": "Start Shift",
+        "title_panel": "Panel",
+        "p_km_inicial": "Initial Km",
+        "p_numero_coche": "Car Number",
+        "seleccionar_matricula": "--Select a license plate--",
+        "btn_submit": "Save",
+        "btn_registrar_viaje": "Register Trip",
+        "p_costo_viaje": "Cost",
+        "p_metodo_pago_viaje": "Payment Method",
+        "select_metodo_pago": "Select a payment method",
+        "select_efectivo": "Cash",
+        "select_tarjeta": "Card",
+        "select_trasferencia": "Bank Transfer",
+        "p_nombre_cliente": "Enter the customer's name (If registered)",
+        "option_select_cliente": "--Select a client--",
+        "p_km_final": "Final Km"
     },
 
     "es":{
@@ -190,6 +209,28 @@
 
         "CONFIG":"--------------------------------------------",
         "h3_opciones":"Opciones",
-        "switch_idioma":"Cambiar idioma"
+        "switch_idioma":"Cambiar idioma",
+
+
+
+
+        "HOME":"-----------------------------------------",
+        "btn_iniciar_turno":"Iniciar Turno",
+        "title_panel":"Panel",
+        "p_km_inicial":"Km inicial",
+        "p_numero_coche":"Número de coche",
+        "seleccionar_matricula":"--Selecciona una matrícula--",
+        "btn_submit":"Guardar",
+        "btn_registrar_viaje":"Registrar Viaje",
+        "p_costo_viaje":"Costo",
+        "p_metodo_pago_viaje":"Metodo de pago",
+        "select_metodo_pago":"Seleccione un método de pago",
+        "select_efectivo":"Efectivo",
+        "select_tarjeta":"Tarjeta",
+        "select_trasferencia":"Transferencia bancaria",
+        "p_nombre_cliente":"Ingresa el nombre del cliente (Si es que esta registrado)",
+        "option_select_cliente":"--Selecciona un cliente--",
+        "p_km_final":"Km final"
+        
     }
 }
