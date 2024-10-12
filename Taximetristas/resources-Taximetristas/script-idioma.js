@@ -1,3 +1,19 @@
+// ------HOME TAXIMETRISTA--------
+// // Obtener todos los botones con la clase selectButton
+const buttons = document.querySelectorAll('.selectButton');
+
+// Añadir un evento click a cada botón
+buttons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Obtener el id del contenedor objetivo desde el atributo data-target
+        const targetId = button.getAttribute('data-target');
+        const container = document.getElementById(targetId);
+        
+        // Alternar la visibilidad del contenedor
+        container.classList.toggle('hidden');
+    });
+});
+
 //----------------------------------------------CAMBIAR IDIOMA-----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
     // HOME
@@ -16,7 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const select_transferenciaElement = document.getElementById('select_transferencia');
     const p_nombre_clienteElement = document.getElementById('p_nombre_cliente');
     const option_select_clienteElement = document.getElementById('option_select_cliente');
+    const btn_finalizar_jornadaElement = document.getElementById('btn_finalizar_jornada');
+    // const KmFinalTaximetristaElement = document.getElementById('KmFinalTaximetrista');
     const p_km_finalElement = document.getElementById('p_km_final');
+    const texto_btnElement = document.getElementById('switch_idioma');
     
 
     const switchIdioma = document.getElementById('switch_idioma');
@@ -33,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 // HOME
-                if (titulo_headerElement) titulo_headerElement.textContent = data[language].titulo_header;
                 if (btn_iniciar_turnoElement) btn_iniciar_turnoElement.textContent = data[language].btn_iniciar_turno;
                 if (title_panelElement) title_panelElement.textContent = data[language].title_panel;
                 if (p_km_inicialElement) p_km_inicialElement.textContent = data[language].p_km_inicial;
@@ -49,8 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (select_transferenciaElement) select_transferenciaElement.textContent = data[language].select_transferencia;
                 if (p_nombre_clienteElement) p_nombre_clienteElement.textContent = data[language].p_nombre_cliente;
                 if (option_select_clienteElement) option_select_clienteElement.textContent = data[language].option_select_cliente;
+                if (btn_finalizar_jornadaElement) btn_finalizar_jornadaElement.textContent = data[language].btn_finalizar_jornada;
                 if (p_km_finalElement) p_km_finalElement.textContent = data[language].p_km_final;
+                // if (KmFinalTaximetristaElement) KmFinalTaximetristaElement.textContent = data[language].KmFinalTaximetrista;
+                if (texto_btnElement) texto_btnElement.textContent = data[language].switch_idioma;
 
+            
                 
             })
             .catch(error => console.log(error));

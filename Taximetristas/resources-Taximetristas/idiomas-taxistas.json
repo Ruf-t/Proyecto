@@ -16,7 +16,9 @@
         "select_trasferencia": "Bank Transfer",
         "p_nombre_cliente": "Enter the customer's name (If registered)",
         "option_select_cliente": "--Select a client--",
+        "btn_finalizar_jornada":"Finish Shift",
         "p_km_final": "Final Km",
+        "KmFinalTaximetrista":"Enter final Km",
         "switch_idioma": "Change Language"
     },
 
@@ -36,8 +38,10 @@
         "select_tarjeta":"Tarjeta",
         "select_trasferencia":"Transferencia bancaria",
         "p_nombre_cliente":"Ingresa el nombre del cliente (Si es que esta registrado)",
+        "btn_finalizar_jornada":"Finalizar Turno",
         "option_select_cliente":"--Selecciona un cliente--",
         "p_km_final":"Km final",
+        "KmFinalTaximetrista":"Ingresa el Km final", 
         "switch_idioma":"cambiar idioma"
     }
 }

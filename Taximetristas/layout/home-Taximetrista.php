@@ -22,7 +22,6 @@ include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
     <link rel="icon" href="../../resources/img/Others/Favicon-Ruft.png" type="image/png">
     <link rel="stylesheet" href="../style/style-Taximetristas.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 </head>
 
 <body>
@@ -30,16 +29,15 @@ include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
     <p class="mensajeAJAX"></p>
 </div>
 
-
     <?php include 'header-Taximetrista.php'; ?>
 
   <!-- Botón select -->
-<button class="selectButton" id="btnIniciarJornada" data-target="formContainer1"><img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
+<button class="selectButton" id="btnIniciarJornada" data-target="formContainer1"><span id="btn_iniciar_turno"></span><img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
 
 <!-- Contenedor de Iniciar Jornada -->
 <div id="formContainer1" class="hidden">
   <form id="formIniciarJornada" method="post" class="formulario">
-      <p id="p_km_inicial_"></p>
+      <p id="p_km_inicial"></p>
       <input type="number" name="KmInicialTaximetrista" id="KmInicialTaximetrista" required  min="1">
       
       <p id="p_numero_coche"></p>
@@ -55,12 +53,12 @@ include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
                 </option>
             <?php endforeach; ?>
       </select>
-      <button type="submit" id="btn_submit"></button>
+      <button type="submit"><span id="btn_submit"></span></button>
   </form>    
 </div>
 
 <!-- Botón para iniciar viaje -->
-<button class="selectButton" id="btnIniciarViaje " data-target="formContainer2" disabled><img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
+<button class="selectButton" id="btnIniciarViaje" data-target="formContainer2" disabled><span id="btn_registrar_viaje"></span><img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
 <!-- Contenedor de Iniciar Viaje -->
 <div id="formContainer2" class="hidden">
   <form id="formIniciarViaje" method="post" class="formulario">
@@ -84,19 +82,19 @@ include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
         </option>
     <?php endforeach; ?>
 </select>
-      <button type="submit" name="envioViajeTaximetrista" id="btn_submit"></button>
+      <button type="submit" name="envioViajeTaximetrista"><span id="btn_submit"></span></button>
   </form>    
 </div>
 
 <!-- Botón para finalizar jornada -->
-<button class="selectButton" id="btnFinalizarJornada " data-target="formContainer3" disabled>Finalizar Turno <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
+<button class="selectButton" id="btnFinalizarJornada" data-target="formContainer3" disabled><span id="btn_finalizar_jornada"></span> <img src="../../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg" alt="" id="flecha"></button>
 
 <!-- Contenedor de Terminar Jornada -->
 <div id="formContainer3" class="hidden">
   <form id="formFinalizarJornada" method="post" class="formulario">
       <p id="p_km_final"></p>
       <input type="number" name="KmFinalTaximetrista" id="KmFinalTaximetrista" placeholder="Ingresa el Km final de la jornada" required  min="1">
-      <button type="submit" name="envioFinalizarJornadaTaximetrista" id="btn_submit">Guardar</button>
+      <button type="submit" name="envioFinalizarJornadaTaximetrista" id="btn_submit"></button>
   </form>    
 </div>
 
@@ -105,8 +103,8 @@ include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
 </div>
 
 
-    <script src="/proyecto/resources/script.js"></script>
-    <!-- <script src="../resources-Taximetristas/script-idioma.js"></script> -->
+    <!-- <script src="/proyecto/resources/script.js"></script> -->
+    <script src="../resources-Taximetristas/script-idioma.js"></script>
     <script src="../resources-Taximetristas/ajax-taximetrista.js"></script>
     <!---- importacion de jquery---->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

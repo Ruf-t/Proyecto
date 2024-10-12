@@ -53,6 +53,32 @@ if (isset($_GET['cargar_viajes'])) {
     exit();
 }
 
+//APLICAR FILTROS TABLA VIAJES
+// Verificar si se recibieron los parámetros de turno y fecha
+$turno = isset($_POST['turno']) ? $_POST['turno'] : '';
+$fecha = isset($_POST['fecha']) ? $_POST['fecha'] : '';
+
+$viajes = obtenerViajesFiltrados($turno, $fecha, $con);
+
+if (!empty($viajes)) {
+    foreach ($viajes as $viaje) {
+        echo "<tr>";
+        echo "<td>{$viaje['Nombre_Taxista']}</td>";
+        echo "<td>{$viaje['Nombre_Cliente']}</td>";
+        echo "<td>{$viaje['matricula']}</td>";
+        echo "<td>{$viaje['Fecha']}</td>";
+        echo "<td>{$viaje['Método_de_pago']}</td>";
+        echo "<td>{$viaje['Tarifa']}</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='6'>No se encontraron viajes.</td></tr>";
+}
+
+
+
+
+
 // AÑADIR TAXISTA 
 if (isset($_POST['Nombre']) && 
     isset($_POST['Apellido-Nuevo-Taxista']) && 
@@ -110,25 +136,3 @@ if (isset($_POST['accion']) && $_POST['accion'] == 'mostrar_clientes') {
     echo json_encode($datos_clientes); // Devuelve los datos en formato JSON
     exit();
 }
-
-
-//APLICAR FILTROS TABLA VIAJES
-// Obtener los valores de los selectores
-$turno = $_POST['turno'] ?? '';
-$fecha = $_POST['fecha'] ?? '';
-
-// Función personalizada para obtener los viajes filtrados
-$viajesFiltrados = obtenerViajesFiltrados($turno, $fecha, $con);
-
-// Devolver las filas actualizadas
-foreach ($viajesFiltrados as $fila) {
-    echo "<tr>
-            <td>{$fila['Nombre_Taxista']}</td>
-            <td>{$fila['Nombre_Cliente']}</td>
-            <td>{$fila['matricula']}</td>
-            <td>{$fila['Fecha']}</td>
-            <td>{$fila['Método_de_pago']}</td>
-            <td>{$fila['Tarifa']}</td>
-          </tr>";
-}
-

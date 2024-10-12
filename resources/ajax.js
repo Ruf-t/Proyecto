@@ -154,16 +154,13 @@ $(document).ready(function() {
 
 //ACTUALIZAR DATOS TABLA VIAJE
 $(document).ready(function() {
-    // setInterval(function() {
-    //     cargarTablaViajes();
-    // }, 5000);
 
     // Actualizar datos de la tabla al hacer clic en el botón
     $('#recargar-tabla').click(function() {
         cargarTablaViajes();
     });
 
-    // Función para cargar los datos de la tabla de viajes
+//     // Función para cargar los datos de la tabla de viajes
     function cargarTablaViajes() {
         $.ajax({
             url: '../BaseDatos/peticiones-ajax.php', // Asegúrate de que esta ruta sea correcta
@@ -180,7 +177,6 @@ $(document).ready(function() {
         });
     }
 });
-
 
 //APLICAR FILTROS 
 $(document).ready(function() {
