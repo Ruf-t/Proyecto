@@ -24,6 +24,7 @@
         "th_fecha": "Date",
         "th_metodo_pago": "Payment Method",
         "th_ingreso": "Income",
+        "h3_tabla_viaje_panel": "Trip Table",
 
         "VIAJES":"------------------------------------------",
         "option_select_turno":"Select a shift",
@@ -140,6 +141,7 @@
         "th_fecha": "Fecha",
         "th_metodo_pago": "Método de Pago",
         "th_ingreso": "Ingreso",
+        "h3_tabla_viaje_panel": "Tabla Viajes",
 
         "VIAJES":"------------------------------------------",
         "option_select_turno":"Selecciona un turno",

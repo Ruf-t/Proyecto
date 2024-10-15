@@ -13,32 +13,17 @@ session_start();
         $datos_viaje = datos_tabla_viaje($con);
         ?>
         
-        <div class="div-panel-administracion">
-            <h3 id="h3_panel"></h3>
-            <div class="div-botones-administracion">
-                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-blue.svg"><span id="span_ordenes_panel"></span><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-red.svg"><span id="span_ganancias_panel"></span><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-orange.svg"><span id="span_taxis_panel"></span><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-            </div>
-        </div>
         <section class="div-taxistas-mes">
             <h3 id="h3_taxistas_mes"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></h3>
             <div>
-                <img src="../resources/img/Logos-PNG/Avatar/A2.png">
                 <div>    
                     <p class="nombre-taxistas-mes">Maharrm Hasanli</p>
                     <p class="num-taxistas-mes">+598 92112906</p>
                 </div>
-            </div>
-            <div>
-                <img src="../resources/img/Logos-PNG/Avatar/A4.png">
                 <div>
                     <p class="nombre-taxistas-mes">Gina Garza</p>
                     <p class="num-taxistas-mes">+598 92112906</p>
                 </div>
-            </div>
-            <div>
-                <img src="../resources/img/Logos-PNG/Avatar/A5.png">
                 <div>
                     <p class="nombre-taxistas-mes">Brian Reed</p>
                     <p class="num-taxistas-mes">+598 92112906</p>
@@ -46,7 +31,10 @@ session_start();
             </div>
         </section>
 
-
+        
+        <div class="div-h3-panel">
+            <h3 id="h3_tabla_viaje_panel"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></h3>
+        </div>
         <div class="div-tabla-panel">
             <table id="table-panel">
                 <thead>
@@ -73,8 +61,16 @@ session_start();
                 </tbody>
             </table>
         </div>
+        <!-- <div class="div-panel-administracion">
+            <h3 id="h3_panel"></h3>
+            <div class="div-botones-administracion">
+                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-blue.svg"><span id="span_ordenes_panel"></span><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-red.svg"><span id="span_ganancias_panel"></span><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-orange.svg"><span id="span_taxis_panel"></span><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
+            </div>
+        </div> -->
     </main>
-
+    
     <div class="sidebar-container">
         <div class="div-usuario">
             <img src="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-7B.svg">
