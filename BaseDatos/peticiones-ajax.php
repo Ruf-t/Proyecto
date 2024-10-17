@@ -36,46 +36,32 @@ if (isset($_POST["user"]) && isset($_POST["contrasenia"])){
     // exit();
 }
 
-// RECARGAR VIAJES
-if (isset($_GET['cargar_viajes'])) {
-    $datos_viaje = datos_tabla_viaje($con);
-    var_dump($datos_viaje);
-    foreach ($datos_viaje as $fila) {
-        echo "<tr>";
-        echo "<td>" . $fila['Nombre_Taxista'] . "</td>";
-        echo "<td>" . $fila['Nombre_Cliente'] . "</td>";
-        echo "<td>" . $fila['matricula'] . "</td>";
-        echo "<td>" . $fila['Fecha'] . "</td>";
-        echo "<td>" . $fila['Método_de_pago'] . "</td>";
-        echo "<td>" . $fila['Tarifa'] . "</td>";
-        echo "</tr>";
+
+// RECARGAR VIAJES (ACTUALIZADO)
+if (isset($_POST['turno']) || isset($_POST['fecha'])) {
+    // Verificar si se enviaron filtros
+    $turno = isset($_POST['turno']) ? $_POST['turno'] : '';
+    $fecha = isset($_POST['fecha']) ? $_POST['fecha'] : '';
+
+    // Llamar a la función que obtiene los viajes filtrados
+    $datos_viaje = obtenerViajesFiltrados($turno, $fecha, $con);
+
+    if (!empty($datos_viaje)) {
+        foreach ($datos_viaje as $fila) {
+            echo "<tr>";
+            echo "<td>" . $fila['Nombre_Taxista'] . "</td>";
+            echo "<td>" . $fila['Nombre_Cliente'] . "</td>";
+            echo "<td>" . $fila['matricula'] . "</td>";
+            echo "<td>" . $fila['Fecha'] . "</td>";
+            echo "<td>" . $fila['Método_de_pago'] . "</td>";
+            echo "<td>" . $fila['Tarifa'] . "</td>";
+            echo "</tr>";
+        }
+    } else {
+        echo "<tr><td colspan='6'>No se encontraron viajes.</td></tr>";
     }
     exit();
 }
-
-//APLICAR FILTROS TABLA VIAJES
-// Verificar si se recibieron los parámetros de turno y fecha
-$turno = isset($_POST['turno']) ? $_POST['turno'] : '';
-$fecha = isset($_POST['fecha']) ? $_POST['fecha'] : '';
-
-$viajes = obtenerViajesFiltrados($turno, $fecha, $con);
-
-if (!empty($viajes)) {
-    foreach ($viajes as $viaje) {
-        echo "<tr>";
-        echo "<td>{$viaje['Nombre_Taxista']}</td>";
-        echo "<td>{$viaje['Nombre_Cliente']}</td>";
-        echo "<td>{$viaje['matricula']}</td>";
-        echo "<td>{$viaje['Fecha']}</td>";
-        echo "<td>{$viaje['Método_de_pago']}</td>";
-        echo "<td>{$viaje['Tarifa']}</td>";
-        echo "</tr>";
-    }
-} else {
-    echo "<tr><td colspan='6'>No se encontraron viajes.</td></tr>";
-}
-
-
 
 
 

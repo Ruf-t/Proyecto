@@ -36,32 +36,6 @@ alinks.forEach(link => {
 
 
 
-
-
-// --------Botones para cambiar páginas-----------
-function cambioColorBoton(button) {
-    // Selecciona solo los botones con texto 1 y 2
-    const buttons = document.querySelectorAll('.paginas');
-    
-    // Remueve la clase 'active' solo de los botones 1 y 2
-    buttons.forEach(btn => {
-        if (btn.textContent === '1' || btn.textContent === '2') {
-            btn.classList.remove('active');
-        }   
-    });
-    
-    // Añade la clase 'active' al botón presionado
-    button.classList.add('active');
-}
-
-function activarBoton(numero) {
-    // Encuentra el botón correspondiente y activa su color
-    const button = document.querySelector(`.paginas:nth-of-type(${parseInt(numero) + 1})`);
-    cambioColorBoton(button);
-}
-
-
-
 // --------DESPLEGAR MODAL-----------
 
 const btnsAbrirModal = document.querySelectorAll('.btn-abrir-modal');
@@ -79,6 +53,43 @@ btnsCerrarModal.forEach((btn, index) => {
         modals[index].close();
     });
 });
+
+//---------------ABRIR MODAL MODIFICAR------------------
+const btnsAbrirModalModificar = document.querySelectorAll('.btn-abrir-modal-modificar');
+const modalModificar = document.querySelector('.modal');  // Solo hay un modal
+const btnCerrarModalModificar = document.querySelector('.btn-cerrar-modal-modificar');  // Botón de cerrar
+
+// Añadir el evento a todos los botones para abrir el mismo modal
+btnsAbrirModalModificar.forEach(btn => {
+    btn.addEventListener('click', () => {
+        modalModificar.showModal();  // Abre el mismo modal para todos los botones
+    });
+});
+
+
+//---------------ABRIR MODAL ELIMINAR------------------
+const btnsAbrirModalEliminar = document.querySelectorAll('.btn-abrir-modal-eliminar');
+const modalEliminar = document.querySelector('.modal-eliminar');
+const btnCerrarModalEliminar = document.querySelector('.btn-cerrar-modal-eliminar');
+
+btnsAbrirModalEliminar.forEach(btn => {
+    btn.addEventListener('click', () => {
+        modalEliminar.showModal(); 
+    });
+});
+
+// btnCerrarModalEliminar.addEventListener('click', () => {
+//     modalEliminar.close();
+// });
+
+// btnCerrarModalEliminar.forEach((btn, index) => {
+//     btn.addEventListener('click', () => {
+//         modalEliminar[index].close();
+//     });
+// });
+
+
+
 
 
 // const btnsAbrirModal = document.querySelectorAll('.btn-abrir-modal');
@@ -158,6 +169,27 @@ function eliminarTaxi(id) {
 
 //----------------------------------------------CAMBIAR IDIOMA-----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
+    //LOGIN & REGISTER
+    const h2_inicio_sesionElement = document.getElementById('h2_inicio_sesion');
+    const p_inicio_sesionElement = document.getElementById('p_inicio_sesion');
+    const label_usuarioElement = document.getElementById('label_usuario');
+    const label_contraseniaElement = document.getElementById('label_contrasenia');
+    const userElement = document.getElementById('user');
+    const contraseniaElement = document.getElementById('contrasenia');
+    const btn_iniciar_sesionElement = document.getElementById('btn_iniciar_sesion');
+    const p_no_cuentaElement = document.getElementById('p_no_cuenta');
+    const a_registrarmeElement = document.getElementById('a_registrarme');
+
+    const h2_registerElement = document.getElementById('h2_register');
+    const p_registerElement = document.getElementById('p_register');
+    const label_nombre1Element = document.getElementById('label_nombre1');
+    const label_apellido1Element = document.getElementById('label_apellido1');
+    const label_usuario1Element = document.getElementById('label_usuario1');
+    const nombreElement = document.getElementById('nombre');
+    const apellidoElement = document.getElementById('apellido');
+    const user1Element = document.getElementById('user1');
+    const contrasenia1Element = document.getElementById('contrasenia1');
+    const btn_registrarseElement = document.getElementById('btn_registrarse');
     // HEADER
     const titulo_headerElement = document.getElementById('titulo_header');
     // SLIDEBAR
@@ -219,6 +251,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const th_nacimientoElement = document.getElementById('th_nacimiento');
     const th_fecha_vencElement = document.getElementById('th_fecha_venc');
     const th_info_taxistaElement = document.getElementById('th_info_taxista');
+    const h2_eliminar_taxistaElement = document.getElementById('h2_eliminar_taxista');
+    const eliminar_aceptarElement = document.getElementById('eliminar_aceptar');
+    const eliminar_cancelarElement = document.getElementById('eliminar_cancelar');
     //INGRESOS
     const h1_ingresosElement = document.getElementById('h1_ingresos');
     const btn_aplicar_filtroElement = document.getElementById('btn_aplicar_filtro');
@@ -259,6 +294,28 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('../resources/idiomas.json')
             .then(response => response.json())
             .then(data => {
+                //LOGIN & REGISTER
+                if (h2_inicio_sesionElement) h2_inicio_sesionElement.textContent = data[language].h2_inicio_sesion;    
+                if (p_inicio_sesionElement) p_inicio_sesionElement.textContent = data[language].p_inicio_sesion;
+                if (label_usuarioElement) label_usuarioElement.textContent = data[language].label_usuario;
+                if (label_contraseniaElement) label_contraseniaElement.textContent = data[language].label_contrasenia;
+                if (userElement) userElement.textContent = data[language].user;
+                if (contraseniaElement) contraseniaElement.textContent = data[language].contrasenia;
+                if (btn_iniciar_sesionElement) btn_iniciar_sesionElement.textContent = data[language].btn_iniciar_sesion;
+                if (p_no_cuentaElement) p_no_cuentaElement.textContent = data[language].p_no_cuenta;
+                if (a_registrarmeElement) a_registrarmeElement.textContent = data[language].a_registrarme;
+
+                if (h2_registerElement) h2_registerElement.textContent = data[language].h2_register;
+                if (p_registerElement) p_registerElement.textContent = data[language].p_register;
+                if (label_nombre1Element) label_nombre1Element.textContent = data[language].label_nombre1;
+                if (label_apellido1Element) label_apellido1Element.textContent = data[language].label_apellido1;
+                if (label_usuario1Element) label_usuario1Element.textContent = data[language].label_usuario1;
+                if (nombreElement) nombreElement.textContent = data[language].nombre;
+                if (apellidoElement) apellidoElement.textContent = data[language].apellido;
+                if (user1Element) user1Element.textContent = data[language].user1;
+                if (contrasenia1Element) contrasenia1Element.textContent = data[language].contrasenia1;
+                if (btn_registrarseElement) btn_registrarseElement.textContent = data[language].btn_registrarse;
+                
                 // HEADER
                 if (titulo_headerElement) titulo_headerElement.textContent = data[language].titulo_header;
                 // SLIDEBAR
@@ -319,7 +376,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (btn_enviar_taxistaElement) btn_enviar_taxistaElement.textContent = data[language].btn_enviar_taxista;
                 if (th_nacimientoElement) th_nacimientoElement.textContent = data[language].th_nacimiento;
                 if (th_fecha_vencElement) th_fecha_vencElement.textContent = data[language].th_fecha_venc;
-                if (th_info_taxistaElement) th_info_taxistaElement.textContent = data[language].th_info_taxista;                
+                if (th_info_taxistaElement) th_info_taxistaElement.textContent = data[language].th_info_taxista;
+                if (h2_eliminar_taxistaElement) h2_eliminar_taxistaElement.textContent = data[language].h2_eliminar_taxista;                
+                if (eliminar_aceptarElement) eliminar_aceptarElement.textContent = data[language].eliminar_aceptar;                
+                if (eliminar_cancelarElement) eliminar_cancelarElement.textContent = data[language].eliminar_cancelar;                                
                 //INGRESOS
                 if (h1_ingresosElement) h1_ingresosElement.textContent = data[language].h1_ingresos;
                 if (btn_aplicar_filtroElement) btn_aplicar_filtroElement.textContent = data[language].btn_aplicar_filtro;

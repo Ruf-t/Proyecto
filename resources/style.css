@@ -794,6 +794,102 @@ body.modal-open {
   }
 }
 
+/* MODAL MODIFICAR */
+
+.modal-modificar::backdrop {
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.226);
+  pointer-events: none;
+}
+
+.modal-modificar{
+  max-width: 50%;
+  border: none;
+  border-radius: 10px;
+  height: 65%;
+  padding: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-30%, -50%);
+  width: 50%;
+  z-index: 3;
+
+  form{
+      display: flex;
+      flex-direction: column;
+      label{ 
+          padding: 5px;
+          margin-bottom: 10px;
+          width: 100%;
+          input{
+            margin-bottom: 0;
+          }
+      }
+  }
+}
+
+body.modal-modificar-open {
+  overflow-y: hidden;
+}
+
+.div-titulo-modal-modificar{
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  .btn-cerrar-modal-modificar{
+    width: 31px;
+    height: 31px;
+    background-color: white;
+    cursor: pointer;
+  }
+  .btn-cerrar-modal-modificar:hover{
+    background-color: #ccc;
+  }
+}
+
+/* MODAL ELIMINAR */
+.modal-eliminar::backdrop{
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.226);
+  pointer-events: none;
+}
+
+.modal-eliminar{
+  max-width: 35%;
+  border: none;
+  border-radius: 10px;
+  height: 28%;
+  padding: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-30%, -50%);
+  width: 50%;
+  z-index: 3;
+}
+
+.btns-aceptar-cancelar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+    
+    #eliminar_aceptar{
+      width: 49%;
+    }
+    #eliminar_cancelar{
+      width: 49%;
+    }
+}
+
+.div-titulo-modal-eliminar{
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* CSS GENERAL DE LOS MODALS */
 .boton-enviar-modal {
   width: 50%;
   padding: 10px;
@@ -823,7 +919,24 @@ body.modal-open {
 
 .boton-enviar-modal-taxis:hover{
   background-color: var(--colorAmarillo3);
+  cursor: pointer;
 }
+.boton-enviar-modal-editar{
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: ease-in-out 230ms;
+  margin-top: 1rem;
+  background-color: var(--colorAmarillo5);
+ }
+ 
+.boton-enviar-modal-editar:hover{
+  background-color: var(--colorAmarillo3);
+  cursor: pointer;
+ }
 
 
 /*Tabla Taximetristas*/

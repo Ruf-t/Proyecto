@@ -1,5 +1,28 @@
 {
     "en":{
+        "LOGIN/REGISTER":"-----------------------------------------",
+        "h2_inicio_sesion":"Admin Login",
+        "p_inicio_sesion":"Enter your username and password",
+        "label_usuario":"User",
+        "label_contrasenia":"Password",
+        "user":"Enter your user",
+        "contrasenia":"Enter your password",
+        "btn_iniciar_sesion":"Login",
+        "p_no_cuenta":"I don't have an account",
+        "a_registrarme":"Sign up",
+
+        "h2_register":"Register as Admin",
+        "p_register":"Enter your e-mail and password",
+        "label_nombre1":"Name",
+        "label_apellido1":"Lastname",
+        "label_usuario1":"User",
+        "label_contrasenia1":"Password",
+        "nombre":"Enter your name",
+        "apellido":"Enter your lastname",
+        "user1":"Enter your username",
+        "contrasenia1":"Enter a password",
+        "btn_registrarse":"Sign up",
+
         "HEADER":"-----------------------------------------",
         "titulo_header":"Hello,",
 
@@ -57,7 +80,7 @@
         "TAXISTAS":"------------------------------------------",
         "h1_taxistas":"Drivers List",
         "btn_abrir_modal_taxistas":"Add Driver",
-        "h2_agregar_taxista":"Add New Driver",
+        "h2_agregar_taxista":"Add Driver",
         "label_fecha_nac":"Birthdate:",
         "label_fecha_venc":"Driver's License Expiration Date:",
         "label_user":"User:",
@@ -66,6 +89,9 @@
         "th_nacimiento":"Birth",
         "th_fecha_venc":"Driver's License Expiration Date",
         "th_info_taxista":"Driver Info",
+        "h2_eliminar_taxista":"Do you want to delete driver?",
+        "eliminar_aceptar":"Allow",
+        "eliminar_cancelar":"Cancel",
 
         "INGRESOS":"------------------------------------------",
         "h1_ingresos":"Incomes",
@@ -84,7 +110,7 @@
         "th_modificar_eliminar":"Modify-Delete",
         "h2_agregar_taxi":"Add new Taxi",
         "label_matricula":"Number Plate",        
-        "label_modelo":"Model",
+        "label_modelo":"Brant and Model",
         "label_anio":"Year",
         "label_estado":"State (Active or Inactive)",
         "option_select_estado":"Slect State",
@@ -117,6 +143,29 @@
     },
 
     "es":{
+        "LOGIN/REGISTER":"-----------------------------------------",
+        "h2_inicio_sesion":"Inicio sesión Administrador",
+        "p_inicio_sesion":"Ingresa tu usuario y contraseña",
+        "label_usuario":"Usuario",
+        "label_contrasenia":"Contraseña",
+        "placeholder_user":"Ingresa tu usuario",
+        "placeholder_contrasenia":"Ingresa tu contraseña",
+        "btn_iniciar_sesion":"Iniciar Sesión",
+        "p_no_cuenta":"No tengo cuenta",
+        "a_registrarme":"Registrarme",
+
+        "h2_register":"Registrarse como administrador",
+        "p_register":"Ingresa tu email y contraseña",
+        "label_nombre1":"Nombre",
+        "label_apellido1":"Apellido",
+        "label_usuario1":"Usuario",
+        "label_contrasenia1":"Contraseña",
+        "nombre":"Ingresa tu nombre",
+        "apellido":"Ingresa tu apellido",
+        "user1":"Ingresa tu nombre de usuario",
+        "contrasenia1":"Ingresa una contraseña",
+        "btn_registrarse":"Registrarse",
+
         "HEADER":"-----------------------------------------",
         "titulo_header":"Hola,",
 
@@ -174,7 +223,7 @@
         "TAXISTAS":"------------------------------------------",
         "h1_taxistas":"Lista de Taximetristas",
         "btn_abrir_modal_taxistas":"Añadir Taximetrista",
-        "h2_agregar_taxista":"Agregar Nuevo Taximetrista",
+        "h2_agregar_taxista":"Agregar Taximetrista",
         "label_fecha_nac":"Fecha de Nacimiento:",
         "label_fecha_venc":"Fecha venc. Licencia de Conducir:",
         "label_user":"Usuario:",
@@ -183,6 +232,9 @@
         "th_nacimiento":"Nacimiento",
         "th_fecha_venc":"Fecha de vencimiento libreta",
         "th_info_taxista":"Info Taxista",
+        "h2_eliminar_taxista":"¿Deseas eliminar el taxista?",
+        "eliminar_aceptar":"Aceptar",
+        "eliminar_cancelar":"Cancelar",
 
         "INGRESOS":"------------------------------------------",
         "h1_ingresos":"Ingresos",
@@ -201,7 +253,7 @@
         "th_modificar_eliminar":"Modificar-Eliminar",
         "h2_agregar_taxi":"Agregar Nuevo Taxi",
         "label_matricula":"Matricula",        
-        "label_modelo":"Modelo",
+        "label_modelo":"Marca y Modelo",
         "label_anio":"Año",
         "label_estado":"Estado (Activo o Inactivo)",
         "option_select_estado":"Selecciona un estado",
@@ -233,6 +285,5 @@
         "p_nombre_cliente":"Ingresa el nombre del cliente (Si es que esta registrado)",
         "option_select_cliente":"--Selecciona un cliente--",
         "p_km_final":"Km final"
-        
     }
 }

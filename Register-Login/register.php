@@ -6,43 +6,38 @@
     <title>Registro de sesión</title>
     <link rel="stylesheet" href="../resources/style.css">
     <link rel="stylesheet" href="../resources/style-register-login.css">
+    <link rel="icon" type="image/png" href="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3B.svg">
 </head>
-
 <body>
-<div class="login-box">
-<div class="login-container">
-        <div class="left-panel">
-            <img src="../resources/img/Others/foto-taxi.jpg" alt="Fondo">
-        </div>
-        <div class="right-panel">
-            <div class="logo">
-                <img src="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3A.svg" alt="Logo">
+    <div class="login-box">
+    <div class="login-container">
+            <div class="left-panel">
+                <img src="../resources/img/Others/foto-taxi.jpg" alt="Fondo">
             </div>
-            <h2>Registrarse como administrador</h2>
-            <p>Ingresa tu email y contraseña</p>
-            <form id="form-register"  action="../BaseDatos/register-BD.php" method="post">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
-                    <label for="apellido">Apellido</label>
-                    <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido">
-                    <label for="user">Usuario</label>
-                    <input type="text" id="user" name="user" placeholder="Ingresa tu nombre de usuario">
-                    <label for="contrasenia">Contraseña</label>
-                    <input type="password" id="contrasenia" name="contrasenia" placeholder="Ingresa una contraseña">
-                    <button type="submit" name="envio">Iniciar Sesión</button>
-            </form>
+            <div class="right-panel">
+                <div class="logo">
+                    <img src="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3A.svg" alt="Logo">
+                </div>
+                <h2 id="h2_register"></h2>
+                <p id="p_register"></p>
+                <form id="form-register"  action="../BaseDatos/register-BD.php" method="post">
+                        <label for="nombre"><span id="label_nombre1"></span></label>
+                        <input type="text" id="nombre" name="nombre">
+                        <label for="apellido"><span id="label_apellido1"></span></label>
+                        <input type="text" id="apellido" name="apellido">
+                        <label for="user"><span id="label_usuario1"></span></label>
+                        <input type="text" id="user1" name="user">
+                        <label for="contrasenia"><span id="label_contrasenia1"></span></label>
+                        <input type="password" id="contrasenia1" name="contrasenia">
+                        <button type="submit" name="envio" id="btn_registrarse"></button>
+                </form>
+            </div>
         </div>
-    </div>
+    </div>    
 
-
-</div>    
-
-    <script src="resources/script.js"></script>
+    <script src="../resources/script.js"></script>
 </body>
-
 </html>
-
-
 
 <!-- LOS TAXIMETRISTAS VAN A SER REGISTRADOS POR LOS ADMSINITRADOS, POR LO TANTO
  SOLO LOS ADMINISTRADORES VAN A TENER 

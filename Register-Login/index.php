@@ -20,20 +20,20 @@
             <div class="left-panel">
                 <img src="../resources/img/Others/foto-taxi.jpg" alt="Fondo">
             </div>
-            <div class="right-panel">
+            <div class="right-panel"> 
                 <div class="logo">
                     <img src="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3A.svg" alt="Logo">
                 </div>
-                <h2>Inicio sesión Administrador</h2>
-                <p>Ingresa tu usuario y contraseña</p>
+                <h2 id="h2_inicio_sesion"></h2>
+                <p id="p_inicio_sesion"></p>
                 <form id="form-inicioS-admin" method="post">
-                    <label for="user">Usuario</label>
-                    <input type="text" id="user" name="user" placeholder="Ingresa tu usuario">
-                    <label for="contrasenia">Contraseña</label>
-                    <input type="password" id="contrasenia" name="contrasenia" placeholder="Ingresa tu contraseña">
-                    <button type="submit">Iniciar Sesión</button>
+                    <label for="user"><span id="label_usuario"></span></label>
+                    <input type="text" id="user" name="user">
+                    <label for="contrasenia"><span id="label_contrasenia"></span></label>
+                    <input type="password" id="contrasenia" name="contrasenia">
+                    <button type="submit" id="btn_iniciar_sesion"></button>
                 </form>
-                <p class="p-log-reg">No tengo cuenta <a href="register.php">Registrarme</a></p>
+                <p id="p_no_cuenta" class="p-log-reg"><a id="a_registrarme" href="register.php"></a></p>
                 
             </div>
 

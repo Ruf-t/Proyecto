@@ -178,13 +178,13 @@ $(document).ready(function() {
     }
 });
 
-//APLICAR FILTROS 
+//FUNCION CARGAR Y ACTUALIZAR TABLA VIAJES
 $(document).ready(function() {
+    // Función para aplicar filtros
     $('#turno, #fecha').on('change', function() {
-        // Obtener los valores de los selectores
         var turno = $('#turno').val();
         var fecha = $('#fecha').val();
-        
+
         // Realizar la petición AJAX
         $.ajax({
             url: '../BaseDatos/peticiones-ajax.php',
@@ -193,46 +193,50 @@ $(document).ready(function() {
                 turno: turno,
                 fecha: fecha
             },
-            success: function(response) {
-                // Actualizar el cuerpo de la tabla con los nuevos datos
+            success: function(response) {º
+                // Actualizar el cuerpo de la tabla con los nuevos datos filtrados
                 $('#viajes-body').html(response);
-            }
-        });
-    });
-});
-
-
-
-
-
-// CARGAR DATOS TABLA CLIENTES
-$(document).ready(function() {
-    // setInterval(function() {
-    //     cargarTablaViajes();
-    // }, 5000);
-
-    // Actualizar datos de la tabla al hacer clic en el botón
-    $('#recargar-tabla').click(function() {
-        // ();
-    });
-
-    // Función para cargar los datos de la tabla de viajes
-    function cargarTablaViajes() {
-        $.ajax({
-            url: '../BaseDatos/peticiones-ajax.php', // Asegúrate de que esta ruta sea correcta
-            type: 'GET',
-            data: { cargar_viajes: true }, // Indicador para cargar los viajes
-            dataType: 'html',
-            success: function(data) {
-                console.log('Datos de respuesta:', data); // Para depurar
-                $('#viajes-body').html(data); // Actualizar el cuerpo de la tabla
             },
             error: function(xhr, status, error) {
-                console.error("Error al cargar los datos: " + error);
+                console.error("Error en la petición AJAX:", status, error);
             }
         });
-    }
+    });
+
+    // Función para actualizar la tabla
+    $('#recargar-tabla').click(function() {
+        // Obtener los valores actuales de los selectores
+        var turno = $('#turno').val();
+        var fecha = $('#fecha').val();
+
+        // Realizar la petición AJAX para recargar la tabla
+        $.ajax({
+            url: '../BaseDatos/peticiones-ajax.php',
+            type: 'POST',
+            data: {
+                turno: turno,
+                fecha: fecha // Enviamos los filtros actuales
+            },
+            success: function(response) {
+                // Actualizar el cuerpo de la tabla con los nuevos datos filtrados
+                $('#viajes-body').html(response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error al recargar la tabla:", status, error);
+            }
+        });
+    });
 });
+
+
+
+
+
+
+
+
+
+
 
 $(document).ready(function() {
     $('#form-inicioS-admin').submit(function(e) {
