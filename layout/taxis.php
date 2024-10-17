@@ -80,8 +80,7 @@
         </div>
     </div>
        
-    <dialog class="modal">
-    
+    <dialog class="modal">    
             <div class="div-titulo-modal">
                 <h2 id="h2_agregar_taxi"></h2>
                 <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
@@ -89,7 +88,7 @@
             <form id="form-add-taxi" class="formulario" method="post">
             <div class="div-labels-forms">
                 <label><span id="label_matricula"></span><input type="text" name="matricula" id="matricula"></label>
-                <label><span id="label_modelo"></span><input type="text" name="modelo" id="modelo"></label>
+                <label><span id="label_modelo"></span><input type="text" name="modelo" id="modelo" ></label>
             </div>
             <div class="div-labels-forms">
                 <label><span id="label_anio"></span><input type="number" name="anio" id="anio"></label>
@@ -105,8 +104,9 @@
                 <button type="submit" class="boton-enviar-modal-taxis" id="btn_add_taxi"></button>
             </div>
             </form>
-            <div class="respuestaAJAX">
-                <p class="mensajeResult"></p>
+
+            <div class="respuestaAJAX-Modal">
+                <p class="mensajeResultModal"></p>
             </div>
         </dialog>
     

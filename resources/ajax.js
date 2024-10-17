@@ -6,16 +6,97 @@ $.ajax({
     $('<style>').html(css).appendTo('head');
   });
 
+// // AÑADIR TAXI
+// $(document).ready(function() {
+//     // Capturar el evento de envío del formulario
+//     $('#form-add-taxi').on('submit', function(e) {
+//         e.preventDefault();  // Evitar que se recargue la página
+
+//         // Obtener los datos del formulario
+//         var formData = $(this).serialize(); 
+
+//         // Enviar la petición AJAX
+//         $.ajax({
+//             type: 'POST',
+//             url: '../BaseDatos/peticiones-ajax.php',
+//             data: formData,
+//             dataType: 'json',  // Asegurarse de que se espera una respuesta en JSON
+//             success: function(response) {
+//                 console.log("Respuesta del servidor:", response);
+//                 if (response.success) {
+//                     // Si la operación fue exitosa
+//                     $('.mensajeResult').text(response.message).addClass('success-message'); 
+//                     $('.respuestaAJAX').slideDown();
+//                 } else {
+//                     // Si hubo algún error
+//                     $('.mensajeResult').text(response.message).addClass('error-message'); 
+//                     $('.respuestaAJAX').slideDown();
+  
+//                     setTimeout(function() {
+//                         $('.respuestaAJAX').slideUp();
+//                     }, 5000)
+//                 }
+//             },
+//             error: function(xhr, status, error) {
+
+//                 $('.mensajeResult').text('Ocurrió un error inesperado.');
+//               }
+//         });
+//     });
+// });
+
 // AÑADIR TAXI
 $(document).ready(function() {
     // Capturar el evento de envío del formulario
     $('#form-add-taxi').on('submit', function(e) {
         e.preventDefault();  // Evitar que se recargue la página
 
-        // Obtener los datos del formulario
-        var formData = $(this).serialize(); 
+        // Limpiar mensajes anteriores
+        $('.mensajeResultModal').removeClass('success-message error-message').text('');
 
-        // Enviar la petición AJAX
+        // Validar los campos antes de enviar
+        var matricula = $('#matricula').val().trim();
+        var modelo = $('#modelo').val().trim();
+        var anio = $('#anio').val().trim();
+        var estado = $('#estado').val();
+        var error = false;
+        var errorMessage = '';
+
+       // Obtener el año actual
+       var currentYear = new Date().getFullYear();
+       var maxYear = currentYear + 2;
+
+       // Verificar si algún campo está vacío
+       if (matricula === '' || modelo === '' || anio === '' || estado === '') {
+           errorMessage = 'Debe completar todos los campos.';
+       } else {
+           if (matricula.length < 7 || matricula.length > 8) {
+               errorMessage = 'La matrícula debe tener entre 7 y 8 caracteres.';
+           } else if (modelo.length < 3 || modelo.length > 20) {
+               errorMessage = 'El modelo debe tener entre 3 y 20 caracteres.';
+           } else if (!/^\d{4}$/.test(anio)) {
+               errorMessage = 'El año debe ser un número de 4 dígitos.';
+           } else {
+               // Validar el rango del año
+               if (anio < 1990 || anio > maxYear) {
+                   errorMessage = 'El año debe ser un número entre 1990 y ' + maxYear + '.';
+               }
+           }
+       }
+
+        // Si hay errores, mostrar el mensaje
+        if (errorMessage) {
+            $('.mensajeResultModal').html(errorMessage).addClass('error-message'); 
+            $('.respuestaAJAX-Modal').slideDown();
+            setTimeout(function() {
+                $('.respuestaAJAX-Modal').slideUp();
+            }, 5000); // Ocultar el mensaje después de 5 segundos
+            return false;  // Detener el envío del formulario
+        }
+
+        // Si todo está bien, enviar la petición AJAX
+        var formData = $(this).serialize();  // Obtener los datos del formulario
+
         $.ajax({
             type: 'POST',
             url: '../BaseDatos/peticiones-ajax.php',
@@ -25,25 +106,27 @@ $(document).ready(function() {
                 console.log("Respuesta del servidor:", response);
                 if (response.success) {
                     // Si la operación fue exitosa
-                    $('.mensajeResult').text(response.message).addClass('success-message'); 
-                    $('.respuestaAJAX').slideDown();
+                    $('.mensajeResultModal').html(response.message).addClass('success-message'); 
+                    $('.respuestaAJAX-Modal').slideUp();
                 } else {
-                    // Si hubo algún error
-                    $('.mensajeResult').text(response.message).addClass('error-message'); 
-                    $('.respuestaAJAX').slideDown();
+                    // Si hubo algún error en la respuesta del servidor
+                    $('.mensajeResultModal').html(response.message).addClass('error-message'); 
+                    $('.respuestaAJAX-Modal').slideUp();
   
                     setTimeout(function() {
-                        $('.respuestaAJAX').slideUp();
-                    }, 5000)
+                        $('.respuestaAJAX-Modal').slideDown();
+                    }, 5000);
                 }
             },
             error: function(xhr, status, error) {
-
-                $('.mensajeResult').text('Ocurrió un error inesperado.');
-              }
+                // Si ocurre un error inesperado en la solicitud AJAX
+                $('.mensajeResultModal').html('Ocurrió un error inesperado.').addClass('error-message');
+                $('.respuestaAJAX-Modal').slideDown();
+            }
         });
     });
 });
+
 
 // AÑADIR TAXIMETRISTA
 $(document).ready(function() {
@@ -309,3 +392,71 @@ $(document).ready(function() {
 });
 
 
+// Archivo ajax.js
+
+// $(document).ready(function() {
+//     // Llamada AJAX para obtener los datos
+//     $.ajax({
+//         url: '../BaseDatos/peticiones-ajax.php', // Cambia por la ruta correcta
+//         method: 'GET',
+//         success: function(response) {
+//             // Asegúrate de que la respuesta sea un array de objetos JSON
+//             const data = JSON.parse(response);
+            
+//             // Limpiar el contenido actual del tbody (si es necesario)
+//             $("#tabla-ingresos tbody").empty();
+            
+//             // Iterar sobre los datos y agregar las filas correspondientes
+//             data.forEach(function(item) {
+//                 const row = `
+//                     <tr>
+//                         <td>${item.numero_taxi}</td>
+//                         <td>${item.taxista}</td>
+//                         <td>${item.turnos}</td>
+//                         <td>${item.fecha}</td>
+//                         <td>${item.ingreso}</td>
+//                     </tr>
+//                 `;
+//                 // Agregar la fila al tbody de la tabla
+//                 $("#tabla-ingresos tbody").append(row);
+//             });
+//         },
+//         error: function(error) {
+//             console.error("Error al obtener los datos:", error);
+//         }
+//     });
+// });
+
+// $(document).ready(function() {
+//     function obtenerTotalTarifasPorTodasJornadas() {
+//         $.ajax({
+//             url: '../BaseDatos/peticiones-ajax.php', // Ruta a tu archivo PHP
+//             type: 'POST',
+//             data: {
+//                 action: 'obtener_tarifas' // Solo envía la acción, ya no el ID de la jornada
+//             },
+//             dataType: 'json',
+//             success: function(response) {
+//                 if (response.length > 0) {
+//                     // Limpiar el contenido anterior
+//                     $('#resultado').empty();
+
+//                     // Recorrer los resultados y mostrarlos
+//                     response.forEach(function(jornada) {
+//                         $('#resultado').append(
+//                             '<p>Jornada ID: ' + jornada.id_jornada + ' - Total de tarifas: ' + jornada.total_tarifas + '</p>'
+//                         );
+//                     });
+//                 } else {
+//                     $('#resultado').text('No se encontraron tarifas para las jornadas.');
+//                 }
+//             },
+//             error: function() {
+//                 $('#resultado').text('Error al obtener las tarifas.');
+//             }
+//         });
+//     }
+
+//     // Llamada a la función para obtener las tarifas de todas las jornadas
+//     obtenerTotalTarifasPorTodasJornadas();
+// });
