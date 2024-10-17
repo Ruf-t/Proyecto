@@ -33,8 +33,9 @@
                     <input type="password" id="contrasenia" name="contrasenia">
                     <button type="submit" id="btn_iniciar_sesion"></button>
                 </form>
-                <p id="p_no_cuenta" class="p-log-reg"><a id="a_registrarme" href="register.php"></a></p>
-                
+                <div class="no-tengo-cuenta">
+                    <p id="p_no_cuenta" class="p-log-reg"></p><a id="a_registrarme" href="register.php"></a>
+                </div>
             </div>
 
         </div>

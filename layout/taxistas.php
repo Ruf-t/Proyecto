@@ -20,7 +20,7 @@
             <button class="btn-abrir-modal boton-add-cliente" id="btn_abrir_modal_taxistas"></button>
         </div>
 
-        <!-- ------------------------------------MODAL ADD CLIENTES--------------------------------------------->
+        <!-- ------------------------------------MODAL AÑADIR--------------------------------------------->
         <dialog class="modal">
             <div class="div-titulo-modal">
                 <h2 id="h2_agregar_taxista"></h2>   

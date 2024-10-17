@@ -21,15 +21,20 @@
                 <h2 id="h2_register"></h2>
                 <p id="p_register"></p>
                 <form id="form-register"  action="../BaseDatos/register-BD.php" method="post">
-                        <label for="nombre"><span id="label_nombre1"></span></label>
+                    <div class="div-labels-register">
+                        <label for="nombre"><span id="label_nombre"></span></label>
+                        <label for="apellido"><span id="label_apellido"></span></label>
+                        <label for="user"><span id="label_usuario"></span></label>
+                        <label for="contrasenia"><span id="label_contrasenia"></span></label>
+                        <a id="a_inicio_sesion" href="index.php">
+                    </div>
+                    <div class="div-inputs-register">
                         <input type="text" id="nombre" name="nombre">
-                        <label for="apellido"><span id="label_apellido1"></span></label>
                         <input type="text" id="apellido" name="apellido">
-                        <label for="user"><span id="label_usuario1"></span></label>
                         <input type="text" id="user1" name="user">
-                        <label for="contrasenia"><span id="label_contrasenia1"></span></label>
                         <input type="password" id="contrasenia1" name="contrasenia">
                         <button type="submit" name="envio" id="btn_registrarse"></button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -78,9 +78,15 @@ btnsAbrirModalEliminar.forEach(btn => {
     });
 });
 
-// btnCerrarModalEliminar.addEventListener('click', () => {
-//     modalEliminar.close();
-// });
+document.addEventListener('DOMContentLoaded', () => {
+    const btnCerrarModalEliminar = document.querySelector('.btn-cerrar-modal-eliminar');
+    if (btnCerrarModalEliminar) {
+        btnCerrarModalEliminar.addEventListener('click', () => {
+            modalEliminar.close();
+        });
+    }
+});
+
 
 // btnCerrarModalEliminar.forEach((btn, index) => {
 //     btn.addEventListener('click', () => {
@@ -169,7 +175,7 @@ function eliminarTaxi(id) {
 
 //----------------------------------------------CAMBIAR IDIOMA-----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-    //LOGIN & REGISTER
+    //LOGIN
     const h2_inicio_sesionElement = document.getElementById('h2_inicio_sesion');
     const p_inicio_sesionElement = document.getElementById('p_inicio_sesion');
     const label_usuarioElement = document.getElementById('label_usuario');
@@ -179,17 +185,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn_iniciar_sesionElement = document.getElementById('btn_iniciar_sesion');
     const p_no_cuentaElement = document.getElementById('p_no_cuenta');
     const a_registrarmeElement = document.getElementById('a_registrarme');
-
+    //REGISTER
     const h2_registerElement = document.getElementById('h2_register');
     const p_registerElement = document.getElementById('p_register');
-    const label_nombre1Element = document.getElementById('label_nombre1');
-    const label_apellido1Element = document.getElementById('label_apellido1');
-    const label_usuario1Element = document.getElementById('label_usuario1');
     const nombreElement = document.getElementById('nombre');
     const apellidoElement = document.getElementById('apellido');
-    const user1Element = document.getElementById('user1');
     const contrasenia1Element = document.getElementById('contrasenia1');
     const btn_registrarseElement = document.getElementById('btn_registrarse');
+    const a_inicio_sesionElement = document.getElementById('a_inicio_sesion');
     // HEADER
     const titulo_headerElement = document.getElementById('titulo_header');
     // SLIDEBAR
@@ -239,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const th_telefonoElement = document.getElementById('th_telefono');
     const th_direccionElement = document.getElementById('th_direccion');
     const th_deudaElement = document.getElementById('th_deuda');
+    const h2_eliminar_clienteElement = document.getElementById('h2_eliminar_cliente');
     //TAXISTAS
     const h1_taxistasElement = document.getElementById('h1_taxistas');
     const btn_abrir_modal_taxistasElement= document.getElementById('btn_abrir_modal_taxistas');
@@ -277,6 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const option_select_estado1Element = document.getElementById('option_select_estado1');
     const option_select_estado2Element = document.getElementById('option_select_estado2');
     const btn_add_taxiElement = document.getElementById('btn_add_taxi');
+    const h2_eliminar_taxiElement = document.getElementById('h2_eliminar_taxi');
     // CONFIGURACIÓN
     const h3_opcionesElement = document.getElementById('h3_opciones');
     const texto_btnElement = document.getElementById('switch_idioma');
@@ -294,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('../resources/idiomas.json')
             .then(response => response.json())
             .then(data => {
-                //LOGIN & REGISTER
+                //LOGIN
                 if (h2_inicio_sesionElement) h2_inicio_sesionElement.textContent = data[language].h2_inicio_sesion;    
                 if (p_inicio_sesionElement) p_inicio_sesionElement.textContent = data[language].p_inicio_sesion;
                 if (label_usuarioElement) label_usuarioElement.textContent = data[language].label_usuario;
@@ -304,18 +309,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (btn_iniciar_sesionElement) btn_iniciar_sesionElement.textContent = data[language].btn_iniciar_sesion;
                 if (p_no_cuentaElement) p_no_cuentaElement.textContent = data[language].p_no_cuenta;
                 if (a_registrarmeElement) a_registrarmeElement.textContent = data[language].a_registrarme;
-
+                //REGISTER
                 if (h2_registerElement) h2_registerElement.textContent = data[language].h2_register;
                 if (p_registerElement) p_registerElement.textContent = data[language].p_register;
-                if (label_nombre1Element) label_nombre1Element.textContent = data[language].label_nombre1;
-                if (label_apellido1Element) label_apellido1Element.textContent = data[language].label_apellido1;
-                if (label_usuario1Element) label_usuario1Element.textContent = data[language].label_usuario1;
                 if (nombreElement) nombreElement.textContent = data[language].nombre;
                 if (apellidoElement) apellidoElement.textContent = data[language].apellido;
-                if (user1Element) user1Element.textContent = data[language].user1;
                 if (contrasenia1Element) contrasenia1Element.textContent = data[language].contrasenia1;
                 if (btn_registrarseElement) btn_registrarseElement.textContent = data[language].btn_registrarse;
-                
+                if (a_inicio_sesionElement) a_inicio_sesionElement.textContent = data[language].a_inicio_sesion;
                 // HEADER
                 if (titulo_headerElement) titulo_headerElement.textContent = data[language].titulo_header;
                 // SLIDEBAR
@@ -365,6 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (th_telefonoElement) th_telefonoElement.textContent = data[language].th_telefono;
                 if (th_direccionElement) th_direccionElement.textContent = data[language].th_direccion;
                 if (th_deudaElement) th_deudaElement.textContent = data[language].th_deuda;
+                if (h2_eliminar_clienteElement) h2_eliminar_clienteElement.textContent = data[language].h2_eliminar_cliente;                
                 //TAXISTAS
                 if (h1_taxistasElement) h1_taxistasElement.textContent = data[language].h1_taxistas;
                 if (btn_abrir_modal_taxistasElement) btn_abrir_modal_taxistasElement.textContent = data[language].btn_abrir_modal_taxistas;
@@ -403,6 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (option_select_estado1Element) option_select_estado1Element.textContent = data[language].option_select_estado1;
                 if (option_select_estado2Element) option_select_estado2Element.textContent = data[language].option_select_estado2;
                 if (btn_add_taxiElement) btn_add_taxiElement.textContent = data[language].btn_add_taxi;
+                if (h2_eliminar_taxiElement) h2_eliminar_taxiElement.textContent = data[language].h2_eliminar_taxi;                
                 // CONFIGURACIÓN
                 if (h3_opcionesElement) h3_opcionesElement.textContent = data[language].h3_opciones;
                 if (texto_btnElement) texto_btnElement.textContent = data[language].switch_idioma;

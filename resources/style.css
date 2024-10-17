@@ -142,8 +142,30 @@ main{
   justify-content: center;
 }
 
+.btn-inicioSesion{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-labels-register{
+  display: flex;
+  flex-direction: column;
+    label{
+      margin-bottom: 1.5rem;
+    }
+}
+
+.div-inputs-register{
+  input{
+    height: 40px;
+    margin-bottom: 1rem;
+  }
+  
+}
 .p-log-reg{
   margin-top: 15px;
+  margin-right: 1rem;
 
   & a{
     text-decoration: none;

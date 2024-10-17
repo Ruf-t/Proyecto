@@ -1,6 +1,6 @@
 {
     "en":{
-        "LOGIN/REGISTER":"-----------------------------------------",
+        "LOGIN":"-----------------------------------------",
         "h2_inicio_sesion":"Admin Login",
         "p_inicio_sesion":"Enter your username and password",
         "label_usuario":"User",
@@ -11,17 +11,14 @@
         "p_no_cuenta":"I don't have an account",
         "a_registrarme":"Sign up",
 
+        "REGISTER":"-----------------------------------------",
         "h2_register":"Register as Admin",
         "p_register":"Enter your e-mail and password",
-        "label_nombre1":"Name",
-        "label_apellido1":"Lastname",
-        "label_usuario1":"User",
-        "label_contrasenia1":"Password",
         "nombre":"Enter your name",
         "apellido":"Enter your lastname",
-        "user1":"Enter your username",
         "contrasenia1":"Enter a password",
         "btn_registrarse":"Sign up",
+        "a_inicio_sesion":"Login",
 
         "HEADER":"-----------------------------------------",
         "titulo_header":"Hello,",
@@ -76,6 +73,8 @@
         "th_telefono":"Phone Number",
         "th_direccion":"Address",
         "th_deuda":"Debt",
+        "h2_eliminar_cliente":"Do you want to delete Customer?",
+
 
         "TAXISTAS":"------------------------------------------",
         "h1_taxistas":"Drivers List",
@@ -117,6 +116,8 @@
         "option_select_estado1":"Available",
         "option_select_estado2":"Occupied",
         "btn_add_taxi":"Add",
+        "h2_eliminar_taxi":"Do you want to delete Taxi?",
+
 
         "CONFIG":"-----------------------------------------",
         "h3_opciones":"Options",
@@ -143,7 +144,7 @@
     },
 
     "es":{
-        "LOGIN/REGISTER":"-----------------------------------------",
+        "LOGIN":"-----------------------------------------",
         "h2_inicio_sesion":"Inicio sesión Administrador",
         "p_inicio_sesion":"Ingresa tu usuario y contraseña",
         "label_usuario":"Usuario",
@@ -154,17 +155,14 @@
         "p_no_cuenta":"No tengo cuenta",
         "a_registrarme":"Registrarme",
 
+        "REGISTER":"-----------------------------------------",
         "h2_register":"Registrarse como administrador",
         "p_register":"Ingresa tu email y contraseña",
-        "label_nombre1":"Nombre",
-        "label_apellido1":"Apellido",
-        "label_usuario1":"Usuario",
-        "label_contrasenia1":"Contraseña",
         "nombre":"Ingresa tu nombre",
         "apellido":"Ingresa tu apellido",
-        "user1":"Ingresa tu nombre de usuario",
         "contrasenia1":"Ingresa una contraseña",
         "btn_registrarse":"Registrarse",
+        "a_inicio_sesion":"Iniciar sesión",
 
         "HEADER":"-----------------------------------------",
         "titulo_header":"Hola,",
@@ -207,7 +205,7 @@
         "CLIENTES":"-----------------------------------------",
         "h1_clientes":"Clientes",
         "btn_abrir_modal_cliente":"Añadir cliente",
-        "h2_agregar_cliente":"Agregar Nuevo Cliente",
+        "h2_agregar_cliente":"Agregar Cliente",
         "label_nombre":"Nombre:",
         "label_apellido":"Apellido:",
         "label_direccion":"Dirección:",
@@ -219,6 +217,7 @@
         "th_telefono":"Teléfono",
         "th_direccion":"Dirección",
         "th_deuda":"Deuda",
+        "h2_eliminar_cliente":"¿Deseas eliminar el Cliente?",
 
         "TAXISTAS":"------------------------------------------",
         "h1_taxistas":"Lista de Taximetristas",
@@ -251,7 +250,7 @@
         "th_estado":"Estado",
         "th_proximo_servicio":"Proximo Servicio",
         "th_modificar_eliminar":"Modificar-Eliminar",
-        "h2_agregar_taxi":"Agregar Nuevo Taxi",
+        "h2_agregar_taxi":"Agregar Taxi",
         "label_matricula":"Matricula",        
         "label_modelo":"Marca y Modelo",
         "label_anio":"Año",
@@ -260,6 +259,8 @@
         "option_select_estado1":"Disponible",
         "option_select_estado2":"No Disponible",
         "btn_add_taxi":"Añadir",
+        "h2_eliminar_taxi":"¿Deseas eliminar el Taxi?",
+
 
         "CONFIG":"--------------------------------------------",
         "h3_opciones":"Opciones",
