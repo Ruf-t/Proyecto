@@ -1,0 +1,224 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #f1f1f1;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Barra de navegación */
+header {
+    background-color: #000;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    animation: slideInDown 1s ease;
+}
+
+@keyframes slideInDown {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s, transform 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #f1b92e;
+    transform: translateY(-3px);
+}
+
+/* Ajustes para la página de inicio (index) */
+.index-captura {
+    max-width: 800px;
+    width: 100%;
+    margin-top: 120px; /* Se ajustó el margen para que no se superponga */
+    border-radius: 10px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.index-client-logo {
+    width: 150px;
+    margin: 20px auto;
+    transition: transform 0.3s ease;
+}
+
+.index-client-logo:hover {
+    transform: scale(1.1);
+}
+
+/* Separar secciones */
+.section {
+    margin-top: 100px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilo para la página de clientes */
+.client-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.client-item {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.client-item:hover {
+    transform: scale(1.05);
+}
+
+/* Botón de WhatsApp */
+.btn-primary {
+    background-color: #25D366;
+    color: #fff;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #1DA851;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+footer p {
+    font-size: 1rem;
+}
+/* Ajustes para la página de inicio (index) */
+.about-index {
+    margin-top: 150px; /* Aumentamos el margen superior */
+}
+
+.index-captura {
+    max-width: 800px;
+    width: 100%;
+    margin-top: 40px; /* Mantiene espacio entre la imagen y el texto */
+    border-radius: 10px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Sección de información de Carmisol */
+.about {
+    background-color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.about p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 30px; /* Agregamos margen para separar del botón */
+}
+
+/* Botón de WhatsApp */
+.btn-primary {
+    background-color: #25D366;
+    color: #fff;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px; /* Asegura que haya espacio entre el botón y el texto */
+}
+
+.btn-primary:hover {
+    background-color: #1DA851;
+    transform: scale(1.05);
+}
+/* Estilo para centrar y ajustar el tamaño de la imagen del taxi */
+.image-container {
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
+    margin-top: 20px; /* Agrega espacio superior */
+    margin-bottom: 30px; /* Agrega espacio inferior */
+}
+
+.taxi-img {
+    max-width: 1000px; /* Ajustamos el tamaño máximo de la imagen */
+    width: 100%; /* Mantiene la imagen responsive */
+    border-radius: 10px; /* Le damos bordes redondeados para mejorar la estética */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave para más estilo */
+}
