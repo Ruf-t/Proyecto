@@ -10,11 +10,14 @@
 </head>
 <body>
     <div class="login-box">
-    <div class="login-container">
+        <div class="login-container">
             <div class="left-panel">
                 <img src="../resources/img/Others/foto-taxi.jpg" alt="Fondo">
             </div>
             <div class="right-panel">
+                <!-- <div class="div-btn-idioma">
+                    <button id="btn-idioma-login"><img src="../resources/img/Iconos-SVG/icons-others/EN.svg"></button>
+                </div> -->
                 <div class="logo">
                     <img src="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3A.svg" alt="Logo">
                 </div>

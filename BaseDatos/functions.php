@@ -393,11 +393,32 @@ function agregar_taxi($con, $matricula, $modelo, $año, $estado) {
 
 
 //--------------------------------------AGREGAR TAXISTA----------------------------------------------------
+//AGREGAR TAXISTA Y CONTROL DE ERROR EN LICENCIA
 function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_Nuevo_Taxista, $Fecha_venc_librCond_Nuevo_Taxista, $Direccion_Nuevo_Taxista, $Telefono_Nuevo_Taxista, $UserNuevo_Taxista, $ContrNuevo_Taxista){
     // Comenzar una transacción para asegurar la integridad de los datos
     mysqli_begin_transaction($con);
 
-    
+    // Convertir la fecha de vencimiento de la licencia en un objeto de fecha
+    $fecha_actual = new DateTime(); // Fecha actual
+    $fecha_expiracion = new DateTime($Fecha_venc_librCond_Nuevo_Taxista); // Fecha de expiración ingresada
+
+    // Verificar si la licencia está vencida
+    if ($fecha_expiracion < $fecha_actual) {
+        // Revertir la transacción
+        mysqli_rollback($con);
+        return [
+            'success' => false,
+            'message' => 'Error: La licencia de conducir está vencida.'
+        ];
+    }
+
+    // Verificar si faltan 15 días o menos para la expiración
+    $diferencia_dias = $fecha_actual->diff($fecha_expiracion)->days;
+    $notificacion = '';
+
+    if ($diferencia_dias <= 15) {
+        $notificacion = 'Advertencia: La licencia de conducir está próxima a vencer en ' . $diferencia_dias . ' días.';
+    }
 
     // Insertar en la tabla persona
     $consulta_insertar_persona = "INSERT INTO persona (Nombre, Telefono, Apellido, Direccion) 
@@ -418,7 +439,8 @@ function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_
     $hashed_password = password_hash($ContrNuevo_Taxista, PASSWORD_DEFAULT);
 
     // Insertar en la tabla taximetrista
-    $consulta_insertar_taximetrista = "INSERT INTO `taximetrista`(`Fecha_Expiracion_Licencia`, `Fecha_Nacimiento`, `Usuario`, `Contrasenia`,  `FK-Persona`) VALUES ('$Fecha_venc_librCond_Nuevo_Taxista', '$FechaNac_Nuevo_Taxista', '$UserNuevo_Taxista', '$hashed_password', '$persona_id')";
+    $consulta_insertar_taximetrista = "INSERT INTO `taximetrista`(`Fecha_Expiracion_Licencia`, `Fecha_Nacimiento`, `Usuario`, `Contrasenia`,  `FK-Persona`) 
+                                       VALUES ('$Fecha_venc_librCond_Nuevo_Taxista', '$FechaNac_Nuevo_Taxista', '$UserNuevo_Taxista', '$hashed_password', '$persona_id')";
 
     if (!mysqli_query($con, $consulta_insertar_taximetrista)) {
         // Revertir la transacción en caso de error
@@ -432,13 +454,14 @@ function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_
     // Confirmar la transacción
     mysqli_commit($con);
 
-    // Devolver respuesta exitosa
+    // Devolver respuesta exitosa junto con la advertencia si existe
     return [
         'success' => true,
-        'message' => 'Taximetrista añadido correctamente.',
+        'message' => 'Taximetrista añadido correctamente.' . ($notificacion ? ' ' . $notificacion : ''),
         'persona_id' => $persona_id
     ];
 }
+
 
 
 function agregar_nuevo_cliente($con, $NombreNuevo_Cliente, $ApellidoNuevo_Cliente, $TelefonoNuevo_Cliente, $DireccionNuevo_Cliente, $DeudaNuevo_Cliente) {
