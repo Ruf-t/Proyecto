@@ -36,7 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const option_select_clienteElement = document.getElementById('option_select_cliente');
     const btn_finalizar_jornadaElement = document.getElementById('btn_finalizar_jornada');
     const p_km_finalElement = document.getElementById('p_km_final');
-    const texto_btnElement = document.getElementById('switch_idioma');    
+    const texto_btnElement = document.getElementById('switch_idioma');  
+    
+    // INDEX
+    const h1_loginElement = document.getElementById('h1_login');
+    const h3_userElement = document.getElementById('h3_user');
+    const h3_contraElement = document.getElementById('h3_contra');
+    const btn_loginElement = document.getElementById('btn_login');
+
 
     const switchIdioma = document.getElementById('switch_idioma');
     let currentLanguage = 'es';
@@ -74,7 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // if (KmFinalTaximetristaElement) KmFinalTaximetristaElement.textContent = data[language].KmFinalTaximetrista;
                 if (texto_btnElement) texto_btnElement.textContent = data[language].switch_idioma;
 
-            
+                //INDEX
+                if (h1_loginElement) h1_loginElement.textContent = data[language].h1_login;
+                if (h3_userElement) h3_userElement.textContent = data[language].h3_user;
+                if (h3_contraElement) h3_contraElement.textContent = data[language].h3_contra;
+                if (btn_loginElement) btn_loginElement.textContent = data[language].btn_login;
                 
             })
             .catch(error => console.log(error));

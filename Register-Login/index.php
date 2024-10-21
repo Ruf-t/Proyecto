@@ -37,7 +37,7 @@
                     <p id="p_no_cuenta" class="p-log-reg"></p><a id="a_registrarme" href="register.php"></a>
                 </div>
             </div>
-
+            <button class="switch_idioma_index" id="switch_idioma"></button>
         </div>
     </div>
 

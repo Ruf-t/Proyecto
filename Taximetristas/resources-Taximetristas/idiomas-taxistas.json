@@ -21,7 +21,13 @@
         "btn_finalizar_jornada":"Finish Shift",
         "p_km_final": "Final Km",
         "KmFinalTaximetrista":"Enter final Km",
-        "switch_idioma": "Change Language"
+        "switch_idioma": "Change Language",
+
+        "INDEX":"-----------------------------------------",
+        "h1_login":"Log in",
+        "h3_user":"User",
+        "h3_contra":"Password",
+        "btn_login":"Log in"
     },
 
     "es":{
@@ -46,6 +52,12 @@
         "option_select_cliente":"--Selecciona un cliente--",
         "p_km_final":"Km final",
         "KmFinalTaximetrista":"Ingresa el Km final", 
-        "switch_idioma":"cambiar idioma"
+        "switch_idioma":"cambiar idioma",
+
+        "INDEX":"-----------------------------------------",
+        "h1_login":"Iniciar sesión",
+        "h3_user":"Usuario",
+        "h3_contra":"Contraseña",
+        "btn_login":"Iniciar sesión"
     }
 }

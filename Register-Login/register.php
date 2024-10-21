@@ -41,6 +41,7 @@
                 </form>
             </div>
         </div>
+        <button class="switch_idioma_index" id="switch_idioma"></button>
     </div>    
 
     <script src="../resources/script.js"></script>

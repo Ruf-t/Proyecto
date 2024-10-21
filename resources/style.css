@@ -148,6 +148,12 @@ main{
   align-items: center;
 }
 
+.no-tengo-cuenta{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
 .div-labels-register{
   display: flex;
   flex-direction: column;
@@ -171,6 +177,23 @@ main{
     text-decoration: none;
     color: var(--colorAmarillo);
   }
+}
+
+.switch_idioma_index{
+  width: 8rem;
+  height: 4rem;
+  border-radius:7px;
+  border: none;
+  background-color: var(--colorAmarillo5);
+  color: white;
+  top: 1rem;
+  right: 1rem;
+  position: fixed;
+}
+
+.switch_idioma_index:hover{
+  background-color: var(--colorAmarillo3);
+  color: black;
 }
 
 @media (max-width: 800px) {
