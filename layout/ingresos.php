@@ -6,11 +6,23 @@
 //     }
 ?>
 <link rel="stylesheet" href="../resources/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../resources/ajax.js"></script>
 
 <body id="body-home">
     <main>
         <?php
         include '../header.php';
+        require_once '..\BaseDatos\functions.php';
+        // $jsonDatos = obtener_total_tarifas_por_todas_jornadas($con);
+        // // Decodificamos el JSON para convertirlo en un array asociativo
+        // $datos_res_jornada = json_decode($jsonDatos, true);
+
+        $jsonDatosJornadas = obtener_informacion_jornadas($con);
+        $datos_res_jornada = json_decode($jsonDatosJornadas, true); // true para obtener un array asociativo
+
+
         ?>
         <div class="btn-select-filtro">
             <h1 id="h1_ingresos"></h1>
@@ -32,65 +44,42 @@
             <button class="btn-aplicar-filtro" id="btn_aplicar_filtro"></button>
             </div>
         </div>
+        <div id="resultado"></div>
         <div class="div-tabla-ingresos">
             <table id="tabla-ingresos">
                 <thead>
                     <tr>
                         <th id="th_numero_taxi"></th>
                         <th id="th_taxista"></th>
-                        <th id="th_turnos"></th>
                         <th id="th_fecha"></th>
                         <th id="th_ingreso"></th>
+                        <th ></th>
+                        <!-- <th id="th_turnos"></th> -->
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Pepe</td>
-                    <td>Hoy</td>
-                    <td>9/05/2024</td>
-                    <td class="income">$420</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Pepe</td>
-                    <td>Hoy</td>
-                    <td>9/05/2024</td>
-                    <td class="income">$420</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Pepe</td>
-                    <td>Hoy</td>
-                    <td>9/05/2024</td>
-                    <td class="income">$420</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Pepe</td>
-                    <td>Hoy</td>
-                    <td>9/05/2024</td>
-                    <td class="income">$420</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Pepe</td>
-                    <td>Hoy</td>
-                    <td>9/05/2024</td>
-                    <td class="income">$420</td>
-                </tr>
+                <?php foreach ($datos_res_jornada as $fila) { ?>
+                            <tr>
+                                <td><?php echo $fila['taxi_numero']; ?></td> <!-- Número de taxi -->
+                                <td><?php echo $fila['taxista_nombre']; ?></td> <!-- Nombre del taxista -->
+                                <td><?php echo $fila['fecha']; ?></td> <!-- Fecha de la jornada -->
+                                <td><?php echo $fila['total_tarifas']; ?></td> <!-- Suma de tarifas -->
+                                <td>
+                                    <button class="boton-editar">
+                                        <img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar">
+                                    </button>
+                                    <button class="boton-papelera" onclick="eliminarCliente(<?php echo $fila['id_jornada']; ?>)">
+                                        <img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera">
+                                    </button>
+                                    <!-- <td><?php //echo $fila['turno']; ?></td> Turno (mañana, tarde, noche, etc.) -->
+                                </td>
+                            </tr>
+                    <?php } ?>
                 </tbody>
             </table>
-            <!-- <div class="div-total-turnos">
-                <h3 class="total-turnos">Total de turnos: $5</h3>
-                <div class="div-paginas">
-                    <button class="pasar-paginas" onclick="activarBoton('1')"><img src="../resources/img/Iconos-SVG/icons-others/flecha-menorque.svg"></button>
-                    <button class="paginas active" onclick="cambioColorBoton(this)">1</button>
-                    <button class="paginas">2</button>
-                    <button class="pasar-paginas" onclick="activarBoton('2')"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                </div>
-            </div> -->
         </div>
+        
+
     </main>
 
     <div class="sidebar-container">

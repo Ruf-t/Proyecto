@@ -15,7 +15,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // En functions.php
 function FormJornadaUserTaxis($con, $KmInicialTaximetrista, $NumeroDeCocheTaximetrista) {
-    $consulta_insertar_jornada_Taximetrista = "INSERT INTO `jornada` (`Km_Inicio`, `Km_Final`, `Fecha`, `FK-Taxi`) 
+    $consulta_insertar_jornada_Taximetrista = "INSERT INTO `jornada` (`Km_Inicio`, `Km_Final`, `Fecha`, `FK_Taxi`) 
     VALUES ('$KmInicialTaximetrista', NULL, current_timestamp(), '$NumeroDeCocheTaximetrista')";
 
     if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
@@ -91,7 +91,7 @@ function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista){
     
     // Insertar la nueva jornada en la base de datos
     $consulta_actualizar_jornada_Taximetrista = "UPDATE `jornada` SET `Km_Final`='$KmFinalTaximetrista', `Fecha`=current_timestamp() 
-    WHERE `ID`='$id_jornada' AND `FK-Taxi`='$NumeroDeCocheTaximetrista'";
+    WHERE `ID`='$id_jornada' AND `FK_Taxi`='$NumeroDeCocheTaximetrista'";
     
 
     if (mysqli_query($con, $consulta_actualizar_jornada_Taximetrista)) {    
@@ -226,7 +226,7 @@ function datos_tabla_viaje($con) {
                              FROM 
                                     taximetrista t
                              JOIN
-                                    persona p_taxista ON t.`FK-Persona` = p_taxista.ID
+                                    persona p_taxista ON t.`FK_Persona` = p_taxista.ID
                              JOIN 
                                     viaje ON viaje.Fk_Taximetrista = t.ID
                              JOIN 
@@ -256,12 +256,10 @@ function datos_tabla_viaje($con) {
 
 //FUNCION APLICAR FILTROS 
 function obtenerViajesFiltrados($turno, $fecha, $con) {
-    // Conexión a la base de datos
-    // $conexion = new mysqli('localhost', 'usuario', 'contraseña', 'nombre_bd');
 
     // Consulta base
     $query = "SELECT p_taxista.Nombre AS Nombre_Taxista, p_cliente.Nombre AS Nombre_Cliente, viaje.*, taxi.matricula,viaje.Método_de_pago   
-                FROM taximetrista t JOIN persona p_taxista ON t.`FK-Persona` = p_taxista.ID JOIN viaje ON viaje.Fk_Taximetrista = t.ID
+                FROM taximetrista t JOIN persona p_taxista ON t.`FK_Persona` = p_taxista.ID JOIN viaje ON viaje.Fk_Taximetrista = t.ID
                 JOIN cliente_registrado c ON viaje.Fk_Cliente_Registrado = c.ID JOIN persona p_cliente ON c.Fk_Persona = p_cliente.ID
                 INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID WHERE 1=1";
 
@@ -298,7 +296,7 @@ function obtenerViajesFiltrados($turno, $fecha, $con) {
 
 function mostrar_datos_taxistas($con) {
     $consulta_datos_taxistas = "SELECT * FROM taximetrista 
-                                INNER JOIN persona ON taximetrista.`FK-Persona` = persona.ID
+                                INNER JOIN persona ON taximetrista.`FK_Persona` = persona.ID
                                 ORDER BY persona.Nombre ASC"; 
 
     $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);
@@ -521,3 +519,109 @@ function cantidad_clientes($con) {
 
     return $fila['cantidad_clientes']; 
 }
+
+// function obtener_ingreso_jornada($con, $id_jornada) {
+//     $sql = "SELECT SUM(Tarifa) AS total_ingreso FROM viaje WHERE Fk_Jornada = ?";
+//     $stmt = mysqli_prepare($con, $sql);
+//     mysqli_stmt_bind_param($stmt, 'i', $id_jornada);
+//     mysqli_stmt_execute($stmt);
+//     $result = mysqli_stmt_get_result($stmt);
+
+//     if ($row = mysqli_fetch_assoc($result)) {
+//         return $row['total_ingreso'] ?: 0; // Si no hay viajes, devolver 0
+//     } else {
+//         return 0;
+//     }
+// }
+
+// function obtener_total_tarifas_por_jornada($con) {
+//     // Consulta corregida para sumar tarifas de la jornada con ID 239
+//     $query = "SELECT SUM(tarifa) AS total_tarifas FROM viaje WHERE FK_Jornada = 239";
+
+//     $result = $con->query($query);
+
+//     $tarifas = [];
+
+//     if ($result->num_rows > 0) {
+//         $row = $result->fetch_assoc();
+//         $tarifas[] = [
+//             'id_jornada' => 239, // Puedes cambiar el valor si es dinámico
+//             'total_tarifas' => $row['total_tarifas'] ?? 0 // Manejar el caso de SUM que puede ser NULL
+//         ];
+//     }
+
+//     echo json_encode($tarifas);
+// }
+
+// function obtener_total_tarifas_por_todas_jornadas($con) {
+//     // Paso 1: Obtener todos los IDs de jornada
+//     $queryJornadas = "SELECT DISTINCT FK_Jornada FROM viaje";
+//     $resultJornadas = $con->query($queryJornadas);
+    
+//     $tarifas = [];
+
+//     // Paso 2: Recorremos todas las jornadas
+//     if ($resultJornadas->num_rows > 0) {
+//         while ($rowJornada = $resultJornadas->fetch_assoc()) {
+//             $id_jornada = $rowJornada['FK_Jornada'];
+            
+//             // Paso 3: Consultamos la suma de tarifas para cada jornada
+//             $queryTarifas = "SELECT SUM(tarifa) AS total_tarifas FROM viaje WHERE FK_Jornada = ?";
+//             $stmt = $con->prepare($queryTarifas);
+//             $stmt->bind_param("i", $id_jornada);
+//             $stmt->execute();
+//             $result = $stmt->get_result();
+
+//             if ($result->num_rows > 0) {
+//                 $row = $result->fetch_assoc();
+//                 // Paso 4: Agregar la suma de tarifas por cada jornada al array
+//                 $tarifas[] = [
+//                     'id_jornada' => $id_jornada,
+//                     'total_tarifas' => $row['total_tarifas'] ?? 0 // Asegurar que no sea nulo
+//                 ];
+//             }
+//         }
+//     }
+
+//     // Paso 5: Enviamos todas las sumas en formato JSON
+//     return json_encode($tarifas);
+// }
+
+function obtener_informacion_jornadas($con) {
+    // Consulta ajustada para incluir jornada, taxi, taximetrista, persona y suma de tarifas
+    $query = "
+        SELECT 
+            j.ID AS id_jornada, 
+            j.fecha, 
+            SUM(v.tarifa) AS total_tarifas, 
+            t.matricula AS taxi_numero, 
+            p.Nombre AS taxista_nombre  
+        FROM viaje v
+        INNER JOIN jornada j ON v.FK_Jornada = j.ID
+        INNER JOIN taxi t ON j.FK_Taxi = t.ID
+        INNER JOIN taximetrista tx ON v.FK_Taximetrista = tx.ID
+        INNER JOIN persona p ON tx.FK_Persona = p.ID 
+        GROUP BY j.ID, j.fecha, t.matricula, p.Nombre
+    ";
+
+    $result = $con->query($query);
+    
+    $datos = [];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $datos[] = [
+                'id_jornada' => $row['id_jornada'],
+                'fecha' => $row['fecha'],
+                'total_tarifas' => $row['total_tarifas'] ?? 0,
+                'taxi_numero' => $row['taxi_numero'],
+                'taxista_nombre' => $row['taxista_nombre'] ?? 'Desconocido'
+            ];
+        }
+    }
+
+    // Retornamos el array como JSON para usarlo en el frontend
+    return json_encode($datos);
+}
+
+

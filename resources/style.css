@@ -92,6 +92,30 @@ main{
   }
 }
 
+
+.respuestaAJAX-Modal {
+  display: none;
+  z-index: 99999;
+  position: absolute;  
+  left: 50%;
+  transform: translateX(-50%);  
+  top: 80%; 
+  width: auto;
+  text-align: center;  
+}
+
+.respuestaAJAX-Modal p {
+  margin: 0;
+  background-color: #DFDED4;
+  border: 1px solid #DFDED4;
+  padding: 10px;
+  border-radius: 9px;
+}
+
+
+
+
+
 .success-message{
   color: #34C759;
   z-index: 99999;
@@ -840,7 +864,6 @@ body.modal-open {
 }
 
 /* MODAL MODIFICAR */
-
 .modal-modificar::backdrop {
   z-index: 4;
   background-color: rgba(0, 0, 0, 0.226);

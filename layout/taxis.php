@@ -90,7 +90,7 @@
         <form id="form-add-taxi" class="formulario" method="post">
             <div class="div-labels-forms">
                 <label><span id="label_matricula"></span><input type="text" name="matricula" id="matricula"></label>
-                <label><span id="label_modelo"></span><input type="text" name="modelo" id="modelo"></label>
+                <label><span id="label_modelo"></span><input type="text" name="modelo" id="modelo" ></label>
             </div>
             <div class="div-labels-forms">
                 <label><span id="label_anio"></span><input type="number" name="anio" id="anio"></label>
@@ -149,6 +149,9 @@
             <div class="btns-aceptar-cancelar">
                 <button id="eliminar_aceptar"></button>
                 <button id="eliminar_cancelar" class="btn-cerrar-modal-eliminar"></button>
+
+            <div class="respuestaAJAX-Modal">
+                <p class="mensajeResultModal"></p>
             </div>
         </dialog>
     
