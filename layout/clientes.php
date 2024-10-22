@@ -72,7 +72,7 @@
                             <td><?php echo $fila['Apellido']; ?></td>
                             <td><?php echo $fila['Telefono']; ?></td>
                             <td><?php echo $fila['Direccion']; ?></td>
-                            <td><?php echo $fila['Deuda']; ?></td>
+                            <td class="success-message">$<?php echo $fila['Deuda']; ?></td>
                             <td><button class="boton-editar"><img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar"></button><button class="boton-papelera" onclick="eliminarCliente(<?php echo $fila['ID']; ?>)"><img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera"></button></td>
                         </tr>
                     <?php } ?>
