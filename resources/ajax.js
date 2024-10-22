@@ -167,6 +167,22 @@ $(document).ready(function() {
     });
 });
 
+//ACTUALIZAR TABLA TAXIS
+$(document).ready(function() {
+    $('#recargar-tabla-taxista').click(function() {
+        $.ajax({
+            url: 'peticiones-ajax.php', // Cambia por la ruta real a tu script PHP
+            type: 'GET',
+            success: function(data) {
+                // Actualizar el cuerpo de la tabla con la respuesta
+                $('#tabla-taxistas').html(data);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al cargar los datos: ' + error);
+            }
+        });
+    });
+});
 
 // AÑADIR CLIENTE
 $(document).ready(function() {

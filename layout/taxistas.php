@@ -17,6 +17,7 @@
         <div class="div-addCliente">
             <h1 id="h1_taxistas"></h1>
             <!-- <button class="btn-abrir-modal boton-add-cliente">Añadir Taximetrista</button> -->
+            <button id="recargar-tabla-taxista"><img src="../resources/img/Iconos-SVG/icons-others/refresh.svg"></button>
             <button class="btn-abrir-modal boton-add-cliente" id="btn_abrir_modal_taxistas"></button>
         </div>
 
@@ -92,7 +93,7 @@
         </dialog>
 
         <div class="tabla-taxistas">
-            <table>
+            <table id="tabla-taxistas">
                 <thead>
                     <tr class="columnas-tabla-taxistas">
                         <th id="th_nombre"></th>
@@ -101,7 +102,7 @@
                         <th id="th_direccion"></th>
                         <th id="th_fecha_venc"></th>
                         <th id="th_telefono"></th>
-                        <th id="th_info_taxista"></th>
+                        <th id="th_modificar_eliminar"></th>
                     </tr>
                 </thead>
                 <tbody>

@@ -226,7 +226,7 @@ function datos_tabla_viaje($con) {
                              FROM 
                                     taximetrista t
                              JOIN
-                                    persona p_taxista ON t.`FK_Persona` = p_taxista.ID
+                                    persona p_taxista ON t.FK_Persona = p_taxista.ID
                              JOIN 
                                     viaje ON viaje.Fk_Taximetrista = t.ID
                              JOIN 
@@ -259,7 +259,7 @@ function obtenerViajesFiltrados($turno, $fecha, $con) {
 
     // Consulta base
     $query = "SELECT p_taxista.Nombre AS Nombre_Taxista, p_cliente.Nombre AS Nombre_Cliente, viaje.*, taxi.matricula,viaje.Método_de_pago   
-                FROM taximetrista t JOIN persona p_taxista ON t.`FK_Persona` = p_taxista.ID JOIN viaje ON viaje.Fk_Taximetrista = t.ID
+                FROM taximetrista t JOIN persona p_taxista ON t.`FK-Persona` = p_taxista.ID JOIN viaje ON viaje.Fk_Taximetrista = t.ID
                 JOIN cliente_registrado c ON viaje.Fk_Cliente_Registrado = c.ID JOIN persona p_cliente ON c.Fk_Persona = p_cliente.ID
                 INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID WHERE 1=1";
 
@@ -296,7 +296,7 @@ function obtenerViajesFiltrados($turno, $fecha, $con) {
 
 function mostrar_datos_taxistas($con) {
     $consulta_datos_taxistas = "SELECT * FROM taximetrista 
-                                INNER JOIN persona ON taximetrista.`FK_Persona` = persona.ID
+                                INNER JOIN persona ON taximetrista.FK_Persona = persona.ID
                                 ORDER BY persona.Nombre ASC"; 
 
     $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);
@@ -589,8 +589,7 @@ function cantidad_clientes($con) {
 
 function obtener_informacion_jornadas($con) {
     // Consulta ajustada para incluir jornada, taxi, taximetrista, persona y suma de tarifas
-    $query = "
-        SELECT 
+    $query = " SELECT 
             j.ID AS id_jornada, 
             j.fecha, 
             SUM(v.tarifa) AS total_tarifas, 
@@ -598,11 +597,11 @@ function obtener_informacion_jornadas($con) {
             p.Nombre AS taxista_nombre  
         FROM viaje v
         INNER JOIN jornada j ON v.FK_Jornada = j.ID
-        INNER JOIN taxi t ON j.FK_Taxi = t.ID
+        INNER JOIN taxi t ON j.`FK-Taxi` = t.ID
         INNER JOIN taximetrista tx ON v.FK_Taximetrista = tx.ID
-        INNER JOIN persona p ON tx.FK_Persona = p.ID 
+        INNER JOIN persona p ON tx.`FK-Persona` = p.ID 
         GROUP BY j.ID, j.fecha, t.matricula, p.Nombre
-    ";
+";
 
     $result = $con->query($query);
     

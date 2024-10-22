@@ -113,6 +113,23 @@ if (isset($_POST['turno']) || isset($_POST['fecha'])) {
     exit();
 }
 
+// ACTUALIZAR TABLA TAXISTA
+if (!empty($datos_taxista)) {
+    foreach ($datos_taxista as $fila) {
+        echo "<tr>";
+        echo "<td>" . $fila['Nombre'] . "</td>";
+        echo "<td>" . $fila['Apellido'] . "</td>";
+        echo "<td>" . $fila['Fecha_Nacimiento'] . "</td>";
+        echo "<td>" . $fila['Direccion'] . "</td>";
+        echo "<td>" . $fila['Fecha_Expiracion_Licencia'] . "</td>";
+        echo "<td>" . $fila['Telefono'] . "</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='6'>No se encontraron viajes.</td></tr>";
+}
+exit();
+
 
 
 // AÑADIR TAXISTA 

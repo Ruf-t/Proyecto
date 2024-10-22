@@ -416,6 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Si existe el botón de cambiar idioma, agregamos el listener
     if (switchIdioma) {
         switchIdioma.addEventListener('click', () => {
+            event.preventDefault();
             currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
             localStorage.setItem('language', currentLanguage); // Guarda el idioma
             loadContent(currentLanguage);

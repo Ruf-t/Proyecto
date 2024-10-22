@@ -53,7 +53,7 @@
                         <th id="th_taxista"></th>
                         <th id="th_fecha"></th>
                         <th id="th_ingreso"></th>
-                        <th ></th>
+                        <th id="th_modificar_eliminar"></th>
                         <!-- <th id="th_turnos"></th> -->
                     </tr>
                 </thead>

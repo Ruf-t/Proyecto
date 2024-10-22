@@ -26,12 +26,14 @@
                 </div>
                 <h2 id="h2_inicio_sesion"></h2>
                 <p id="p_inicio_sesion"></p>
-                <form id="form-inicioS-admin" method="post">
+                <form action="../layout/home.php">
                     <label for="user"><span id="label_usuario"></span></label>
                     <input type="text" id="user" name="user">
                     <label for="contrasenia"><span id="label_contrasenia"></span></label>
                     <input type="password" id="contrasenia" name="contrasenia">
-                    <button type="submit" id="btn_iniciar_sesion"></button>
+                    <a href="../layout/home.php">
+                        <button type="submit" id="btn_iniciar_sesion"></button>
+                    </a>
                 </form>
                 <div class="no-tengo-cuenta">
                     <p id="p_no_cuenta" class="p-log-reg"></p><a id="a_registrarme" href="register.php"></a>
@@ -40,7 +42,7 @@
             <button class="switch_idioma_index" id="switch_idioma"></button>
         </div>
     </div>
-
+<!-- id="form-inicioS-admin" method="post" action="../layout/home.php" -->
     
     <script src="../resources/script.js"></script>
 </body>
