@@ -273,8 +273,16 @@ p {
 .div-labels-forms {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
+
+    input{
+      width: 70%;
+      height: 1rem;
+    }
+}
+.btn-submit-register{
+  display: flex;
 }
 
 label {
@@ -1241,6 +1249,16 @@ body.modal-modificar-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.redirect-button{
+  width: 60px;
+  background-color: white;
+  top: 2rem;
+}
+
+.btn-redirect{
+  top: 1rem;
 }
 
 /* TABLA TAXIS*/

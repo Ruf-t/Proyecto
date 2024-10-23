@@ -49,6 +49,9 @@ margin: 0;
     & #btn-idioma-login{
         width: 100%;
         background: none;
-    }
-    
+    }   
+}
+
+.no-tengo-cuenta{
+    display: flex;
 }

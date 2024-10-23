@@ -15,6 +15,13 @@
                 <img src="../resources/img/Others/foto-taxi.jpg" alt="Fondo">
             </div>
             <div class="right-panel">
+                <!-- <div class="redirect-button">
+                    <a href="index.php">
+                        <button type="button" class="btn-redirect">
+                            <img src="../resources/img/Iconos-SVG/icons-others/exit-icon.svg" alt="Icono de salida">
+                        </button>
+                    </a>
+                </div> -->
                 <div class="logo">
                     <img src="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3A.svg" alt="Logo">
                 </div>
@@ -37,13 +44,17 @@
                         <label for="contrasenia"><span id="label_contrasenia"></span></label>
                         <input type="password" id="contrasenia1" name="contrasenia">
                     </div>
-                    <div class="">
-                        <a id="a_inicio_sesion" href="index.php">
-                    
-            
-
+                    <div class="div-labels-forms">
+                        <label for="telefono"><span id="label_telefono"></span></label>
+                        <input type="number" id="telefono" name="telefono">
                     </div>
-                    <button type="submit" name="envio" id="btn_registrarse"></button>
+                    <div class="div-labels-forms">
+                        <label for="direccion"><span id="label_direccion"></span></label>
+                        <input id="direccion" name="direccion">
+                    </div>
+                    <div class="btn-submit-register">
+                        <button type="submit" name="envio" id="btn_registrarse"></button>
+                    </div>
                 </form>
             </div>
             <button class="switch_idioma_index" id="switch_idioma"><img src="../resources/img/Iconos-SVG/icons-others/EN.svg"></button>
