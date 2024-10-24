@@ -19,7 +19,7 @@
                 <img src="../resources/img/Others/foto-taxi.jpg" alt="Fondo">
             </div>
             <div class="right-panel"> 
-                <div class="logo">
+                <div class="logo-login">
                     <img src="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3A.svg" alt="Logo">
                 </div>
                 <div id="message" class="message"></div>

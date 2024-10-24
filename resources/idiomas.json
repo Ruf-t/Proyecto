@@ -13,8 +13,6 @@
 
         "REGISTER":"-----------------------------------------",
         "h2_register":"Register as Admin",
-        "p_register":"If you have an acount ",
-        "a_register":"Return",
         "nombre":"Enter your name",
         "apellido":"Enter your lastname",
         "contrasenia1":"Enter a password",
@@ -156,8 +154,6 @@
 
         "REGISTER":"-----------------------------------------",
         "h2_register":"Registrarse como administrador",
-        "p_register":"Si ya tienes una cuenta ",
-        "a_register":"Volver",
         "nombre":"Ingresa tu nombre",
         "apellido":"Ingresa tu apellido",
         "contrasenia1":"Ingresa una contraseña",

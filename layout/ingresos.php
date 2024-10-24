@@ -52,7 +52,6 @@
                         <th id="th_taxista"></th>
                         <th id="th_fecha"></th>
                         <th id="th_ingreso"></th>
-                        <th id="th_modificar_eliminar"></th>
                         <!-- <th id="th_turnos"></th> -->
                     </tr>
                 </thead>
@@ -63,15 +62,6 @@
                                 <td><?php echo $fila['taxista_nombre']; ?></td> <!-- Nombre del taxista -->
                                 <td><?php echo $fila['fecha']; ?></td> <!-- Fecha de la jornada -->
                                 <td><?php echo $fila['total_tarifas']; ?></td> <!-- Suma de tarifas -->
-                                <td>
-                                    <button class="boton-editar">
-                                        <img src="../resources/img/Iconos-SVG/icons-others/edit.svg" class="editar">
-                                    </button>
-                                    <button class="boton-papelera" onclick="eliminarCliente(<?php echo $fila['id_jornada']; ?>)">
-                                        <img src="../resources/img/Iconos-SVG/icons-others/trash.svg" class="papelera">
-                                    </button>
-                                    <!-- <td><?php //echo $fila['turno']; ?></td> Turno (mañana, tarde, noche, etc.) -->
-                                </td>
                             </tr>
                     <?php } ?>
                 </tbody>

@@ -165,6 +165,10 @@ main{
   justify-content: center;
 }
 
+.btn_flecha_volver{
+  width: 50px;
+}
+
 .btn-inicioSesion{
   display: flex;
   justify-content: center;
@@ -239,6 +243,33 @@ main{
 }
 
 .logo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+  margin-bottom: 1.2rem;
+
+  img {
+    width: 100px;
+  }
+
+  .img_flecha{
+    width: 80px;
+  }
+
+  button{
+    margin-right: 6rem;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+  }
+
+  button:hover{
+    background-color: white;
+  }
+}
+
+.logo-login{
   display: flex;
   align-items: center;
   justify-content: center;

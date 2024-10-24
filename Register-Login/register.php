@@ -17,7 +17,9 @@
             </div>
             <div class="right-panel">
                 <div class="logo">
-                    <button ><img src="../resources/img/Iconos-SVG/icons-others/flecha-izq.svg"></button>
+                    <a href="login.php">
+                        <button><img class="img_flecha" src="../resources/img/Iconos-SVG/icons-others/flecha-izq.svg"></button>
+                    </a>
                     <img src="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3A.svg" alt="Logo">
                 </div>
                 <h2 id="h2_register"></h2>

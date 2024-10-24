@@ -206,8 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const a_registrarmeElement = document.getElementById('a_registrarme');
     //REGISTER
     const h2_registerElement = document.getElementById('h2_register');
-    const p_registerElement = document.getElementById('p_register');
-    const a_registerElement = document.getElementById('a_register');
     const nombreElement = document.getElementById('nombre');
     const apellidoElement = document.getElementById('apellido');
     const contrasenia1Element = document.getElementById('contrasenia1');
@@ -332,8 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (a_registrarmeElement) a_registrarmeElement.textContent = data[language].a_registrarme;
                 //REGISTER
                 if (h2_registerElement) h2_registerElement.textContent = data[language].h2_register;
-                if (p_registerElement) p_registerElement.textContent = data[language].p_register;
-                if (a_registerElement) a_registerElement.textContent = data[language].a_register;
                 if (nombreElement) nombreElement.textContent = data[language].nombre;
                 if (apellidoElement) apellidoElement.textContent = data[language].apellido;
                 if (contrasenia1Element) contrasenia1Element.textContent = data[language].contrasenia1;
@@ -471,6 +467,8 @@ document.getElementById('form-register').addEventListener('submit', function(eve
     // Textos de validación según el idioma
     const textos = {
         es: {
+            camposVacios: "Debe completar todos los campos.",
+            camposIncompletos: "Faltan campos por completar.",
             nombre: "El nombre debe empezar con mayúscula y tener un máximo de 12 letras, incluyendo acentos.",
             apellido: "El apellido debe empezar con mayúscula y tener un máximo de 15 letras, incluyendo acentos.",
             telefono: "El teléfono debe tener exactamente 9 números.",
@@ -480,6 +478,8 @@ document.getElementById('form-register').addEventListener('submit', function(eve
             exito: "Formulario enviado exitosamente."
         },
         en: {
+            camposVacios: "All fields must be completed.",
+            camposIncompletos: "Some fields are missing.",
             nombre: "The name must start with an uppercase letter and have a maximum of 12 letters, including accents.",
             apellido: "The last name must start with an uppercase letter and have a maximum of 15 letters, including accents.",
             telefono: "The phone number must be exactly 9 digits.",
@@ -491,8 +491,26 @@ document.getElementById('form-register').addEventListener('submit', function(eve
     };
 
     // Limpiar el mensaje anterior
-    message.className = 'message'; // Restablece la clase
-    message.style.display = 'none'; // Oculta el mensaje
+    message.className = 'message';
+    message.style.display = 'none';
+
+    // Verificación si todos los campos están vacíos
+    if (!nombre && !apellido && !telefono && !direccion && !user && !contrasenia) {
+        message.className = 'message error';
+        message.innerText = textos[idioma].camposVacios;
+        message.style.display = 'block';
+        setTimeout(() => { message.style.display = 'none'; }, 3000);
+        return;
+    }
+
+    // Verificación si faltan campos por completar
+    if (!nombre || !apellido || !telefono || !direccion || !user || !contrasenia) {
+        message.className = 'message error';
+        message.innerText = textos[idioma].camposIncompletos;
+        message.style.display = 'block';
+        setTimeout(() => { message.style.display = 'none'; }, 3000);
+        return;
+    }
 
     // Validación para el nombre
     if (!/^[A-ZÁÉÍÓÚ][a-záéíóú]{1,11}$/.test(nombre)) {
@@ -559,6 +577,7 @@ document.getElementById('form-register').addEventListener('submit', function(eve
         window.location.href = 'login.php'; // Redirige a la página de inicio de sesión
     }, 3000);
 });
+
 
 
 //---------------------CONTROL DE ERRORES INICIOSESION--------------------------------------
