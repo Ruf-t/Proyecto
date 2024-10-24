@@ -6,12 +6,18 @@
     <title>Registro de sesión</title>
     <link rel="stylesheet" href="../resources/style.css">
     <link rel="stylesheet" href="../resources/style-register-login.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../resources/ajax.js"></script>
 </head>
-
 <body>
+
 <div class="login-box">
 <div class="login-container">
-        <div class="left-panel">
+<div class="respuestaAJAX">
+        <p class="mensajeResult"></p>
+    </div>
+<div class="left-panel">
             <img src="../resources/img/Others/foto-taxi.jpg" alt="Fondo">
         </div>
         <div class="right-panel">

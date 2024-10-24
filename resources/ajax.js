@@ -6,6 +6,39 @@ $.ajax({
     $('<style>').html(css).appendTo('head');
   });
 
+
+// REGISTRO DE ADMINISTRADOR
+$(document).ready(function() {
+    $('#form-register').submit(function(e) {
+        e.preventDefault(); // Prevenir que el formulario se envíe por defecto
+
+        // Obtener los datos del formulario
+        var formData = $(this).serialize();
+
+        // Enviar el formulario por AJAX
+        $.ajax({
+            type: 'POST',
+            url: '../BaseDatos/register-BD.php', // Ruta al archivo PHP que maneja la inserción
+            data: formData,
+            dataType: 'json', // Especificar que esperamos una respuesta en JSON
+            success: function(response) {
+                if (response.success) {
+                    // Mostrar mensaje de éxito
+                    $('#message').html('<p style="color:green;">' + response.message + '</p>');
+                    $('#form-register')[0].reset(); // Reiniciar el formulario si se registró correctamente
+                } else {
+                    // Mostrar mensaje de error
+                    $('#message').html('<p style="color:red;">' + response.message + '</p>');
+                }
+            },
+            error: function(xhr, status, error) {
+                // Manejar errores del servidor o de la petición
+                $('#message').html('<p style="color:red;">Error: ' + error + '</p>');
+            }
+        });
+    });
+});  
+
 // AÑADIR TAXI
 $(document).ready(function() {
     // Capturar el evento de envío del formulario
