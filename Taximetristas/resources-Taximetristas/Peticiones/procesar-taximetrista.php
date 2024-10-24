@@ -1,6 +1,6 @@
 <?php
 include '../../../BaseDatos/functions.php';
-include '../../../BaseDatos/login-bd.php';
+// include '../../../BaseDatos/login-bd.php';
 
 
 if (isset($_POST['userTaxi']) && isset($_POST['contraseniaTaxi'])) {

@@ -188,16 +188,11 @@ main{
 #form-register{
   display: flex;
   flex-direction: column;
-  input{
-    height: 10px;
-  }
+  
 }
 
 .div-inputs-register{
-  input{
-    height: 40px;
-    margin-bottom: 1rem;
-  }
+ 
   
 }
 .p-log-reg{
@@ -275,12 +270,8 @@ p {
   flex-direction: row;
   align-items: baseline;
   justify-content: center;
-
-    input{
-      width: 70%;
-      height: 1rem;
-    }
 }
+
 .btn-submit-register{
   display: flex;
 }
@@ -877,6 +868,35 @@ select{
       }
   }
 }
+
+.modal-taxistas{
+  max-width: 50%;
+  border: none;
+  border-radius: 10px;
+  height: 75%;
+  padding: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-30%, -50%);
+  width: 50%;
+  z-index: 3;
+
+  form{
+      display: flex;
+      flex-direction: column;
+      label{ 
+          padding: 5px;
+          margin-bottom: 10px;
+          width: 100%;
+          input{
+            margin-bottom: 0;
+          }
+      }
+  }
+}
+
+
 
 body.modal-open {
   overflow-y: hidden;

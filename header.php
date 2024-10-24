@@ -5,7 +5,7 @@
 
 
 // Incluir archivos necesarios (ajusta la ruta según tu estructura de carpetas)
-include('BaseDatos/login-bd.php'); 
+// include('BaseDatos/login-bd.php'); 
 // include('BaseDatos/functions.php');
 
 // Recuperar el nombre del usuario de la sesión

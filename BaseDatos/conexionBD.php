@@ -1,7 +1,7 @@
 <?php
 function conectar_bd(){
 
-$servidor = "localhost:3307";
+$servidor = "localhost:3306";
 $bd = "proyecto";
 $usuario = "root";
 $pass = "";

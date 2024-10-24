@@ -1,7 +1,7 @@
 <?php
-require("conexionBD.php");
+require("functions.php");
 
-$con = conectar_bd();
+// $con = conectar_bd();
 
 if (isset($_POST["envio"])) {
 

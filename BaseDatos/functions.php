@@ -1,6 +1,6 @@
 <?php
 
-include('conexionBD.php');
+include_once('conexionBD.php');
 $con = conectar_bd();
 
 
@@ -13,7 +13,65 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start(); // Iniciar la sesión solo si no está activa
 }
 
-// En functions.php
+// LOGEAR TAXIMETRISTA
+function logearTaxi($con, $userTaxi, $contrasenia) {
+    // Preparar la consulta SQL para evitar inyección SQL
+    $consulta_login = "SELECT * FROM taximetrista WHERE Usuario = ?";
+    $stmt = mysqli_prepare($con, $consulta_login);
+
+    if (!$stmt) {
+        // Manejo de error en la preparación de la consulta
+        echo json_encode(array(
+            "status" => "error",
+            "message" => "Error en la consulta SQL"
+        ));
+        return;
+    }
+
+    // Enlazar el parámetro (el usuario ingresado) a la consulta
+    mysqli_stmt_bind_param($stmt, "s", $userTaxi);
+
+    // Ejecutar la consulta
+    mysqli_stmt_execute($stmt);
+
+    // Obtener el resultado
+    $resultado_login = mysqli_stmt_get_result($stmt);
+
+    // Verificar si se encontró un usuario
+    if (mysqli_num_rows($resultado_login) > 0) {
+        $fila = mysqli_fetch_assoc($resultado_login);
+        $contrasenia_bd = $fila["Contrasenia"];
+
+        // Verificar si la contraseña ingresada coincide con la almacenada (hash)
+        if (password_verify($contrasenia, $contrasenia_bd)) {
+            $_SESSION["userTaxi"] = $userTaxi;  // Guardar el usuario en la sesión
+
+            // Respuesta exitosa en formato JSON
+            echo json_encode(array(
+                "status" => "success",
+                "message" => ""
+            ));
+        } else {
+            // Contraseña incorrecta
+            echo json_encode(array(
+                "status" => "error",
+                "message" => "Contraseña incorrecta. Intentelo de nuevo"
+            ));
+        }
+    } else {
+        // Usuario no encontrado
+        echo json_encode(array(
+            "status" => "error",
+            "message" => "Usuario no encontrado. Revise sus credenciales"
+        ));
+    }
+
+    // Cerrar la sentencia
+    mysqli_stmt_close($stmt);
+}
+
+
+
 function FormJornadaUserTaxis($con, $KmInicialTaximetrista, $NumeroDeCocheTaximetrista) {
     $consulta_insertar_jornada_Taximetrista = "INSERT INTO `jornada` (`Km_Inicio`, `Km_Final`, `Fecha`, `FK_Taxi`) 
     VALUES ('$KmInicialTaximetrista', NULL, current_timestamp(), '$NumeroDeCocheTaximetrista')";
@@ -141,9 +199,9 @@ function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista){
 
 
 // funcion inciar jornada
-// function FormJornadaUserTaxis($con, $KmInicialTaximetrista,$NumeroDeCocheTaximetrista){
+// function ($con, $KmInicialTaximetrista,$NumeroDeCocheTaximetrista){
 //     $text = "<h4 class='text'>Cliente agregado con exito!</h4>";
-//     $consulta_insertar_jornada_Taximetrista = "INSERT INTO jornada (ID, Km_Inicio, Km_Final, Fecha, FK-Taxi) VALUES 
+//     $consulta_insertar_jornada_Taximetrista = "INSERT INTO jornada (ID, Km_Inicio, Km_Final, Fecha, FK_Taxi) VALUES 
 //     ('', '$KmInicialTaximetrista', Null, current_timestamp(), '$NumeroDeCocheTaximetrista');";
 // if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
 //     echo $text;
@@ -226,7 +284,7 @@ function datos_tabla_viaje($con) {
                              FROM 
                                     taximetrista t
                              JOIN
-                                    persona p_taxista ON t.`FK-Persona` = p_taxista.ID
+                                    persona p_taxista ON t.FK_Persona = p_taxista.ID
                              JOIN 
                                     viaje ON viaje.Fk_Taximetrista = t.ID
                              JOIN 
@@ -259,7 +317,7 @@ function obtenerViajesFiltrados($turno, $fecha, $con) {
 
     // Consulta base
     $query = "SELECT p_taxista.Nombre AS Nombre_Taxista, p_cliente.Nombre AS Nombre_Cliente, viaje.*, taxi.matricula,viaje.Método_de_pago   
-                FROM taximetrista t JOIN persona p_taxista ON t.`FK-Persona` = p_taxista.ID JOIN viaje ON viaje.Fk_Taximetrista = t.ID
+                FROM taximetrista t JOIN persona p_taxista ON t.`FK_Persona` = p_taxista.ID JOIN viaje ON viaje.Fk_Taximetrista = t.ID
                 JOIN cliente_registrado c ON viaje.Fk_Cliente_Registrado = c.ID JOIN persona p_cliente ON c.Fk_Persona = p_cliente.ID
                 INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID WHERE 1=1";
 
@@ -296,7 +354,7 @@ function obtenerViajesFiltrados($turno, $fecha, $con) {
 
 function mostrar_datos_taxistas($con) {
     $consulta_datos_taxistas = "SELECT * FROM taximetrista 
-                                INNER JOIN persona ON taximetrista.`FK-Persona` = persona.ID
+                                INNER JOIN persona ON taximetrista.`FK_Persona` = persona.ID
                                 ORDER BY persona.Nombre ASC"; 
 
     $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);
@@ -437,7 +495,7 @@ function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_
     $hashed_password = password_hash($ContrNuevo_Taxista, PASSWORD_DEFAULT);
 
     // Insertar en la tabla taximetrista
-    $consulta_insertar_taximetrista = "INSERT INTO `taximetrista`(`Fecha_Expiracion_Licencia`, `Fecha_Nacimiento`, `Usuario`, `Contrasenia`,  `FK-Persona`) 
+    $consulta_insertar_taximetrista = "INSERT INTO `taximetrista`(`Fecha_Expiracion_Licencia`, `Fecha_Nacimiento`, `Usuario`, `Contrasenia`,  `FK_Persona`) 
                                        VALUES ('$Fecha_venc_librCond_Nuevo_Taxista', '$FechaNac_Nuevo_Taxista', '$UserNuevo_Taxista', '$hashed_password', '$persona_id')";
 
     if (!mysqli_query($con, $consulta_insertar_taximetrista)) {
@@ -597,9 +655,9 @@ function obtener_informacion_jornadas($con) {
             p.Nombre AS taxista_nombre  
         FROM viaje v
         INNER JOIN jornada j ON v.FK_Jornada = j.ID
-        INNER JOIN taxi t ON j.`FK-Taxi` = t.ID
+        INNER JOIN taxi t ON j.`FK_Taxi` = t.ID
         INNER JOIN taximetrista tx ON v.FK_Taximetrista = tx.ID
-        INNER JOIN persona p ON tx.`FK-Persona` = p.ID 
+        INNER JOIN persona p ON tx.`FK_Persona` = p.ID 
         GROUP BY j.ID, j.fecha, t.matricula, p.Nombre
 ";
 

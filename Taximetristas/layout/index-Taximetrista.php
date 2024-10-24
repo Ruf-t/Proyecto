@@ -1,5 +1,5 @@
 <?php
-include("/xampp/htdocs/Proyecto/BaseDatos/login-bd.php");
+include_once("../../BaseDatos/functions.php");
 
 ?>
 
