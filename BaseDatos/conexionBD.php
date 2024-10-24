@@ -2,7 +2,7 @@
 function conectar_bd(){
 
 $servidor = "localhost";
-$bd = "proyectoo";
+$bd = "proyectooo";
 $usuario = "root";
 $pass = "";
 // Por default "", en computadora de Juan "root"

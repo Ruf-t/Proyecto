@@ -597,9 +597,9 @@ function obtener_informacion_jornadas($con) {
             p.Nombre AS taxista_nombre  
         FROM viaje v
         INNER JOIN jornada j ON v.FK_Jornada = j.ID
-        INNER JOIN taxi t ON j.`FK-Taxi` = t.ID
+        INNER JOIN taxi t ON j.`FK_Taxi` = t.ID
         INNER JOIN taximetrista tx ON v.FK_Taximetrista = tx.ID
-        INNER JOIN persona p ON tx.`FK-Persona` = p.ID 
+        INNER JOIN persona p ON tx.`FK_Persona` = p.ID 
         GROUP BY j.ID, j.fecha, t.matricula, p.Nombre
 ";
 

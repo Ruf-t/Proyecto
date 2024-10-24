@@ -163,6 +163,7 @@ main{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .btn-inicioSesion{
@@ -185,21 +186,6 @@ main{
     }
 }
 
-#form-register{
-  display: flex;
-  flex-direction: column;
-  input{
-    height: 10px;
-  }
-}
-
-.div-inputs-register{
-  input{
-    height: 40px;
-    margin-bottom: 1rem;
-  }
-  
-}
 .p-log-reg{
   margin-top: 15px;
   margin-right: 1rem;
@@ -275,6 +261,39 @@ p {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.div-labels-forms-register{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  
+  label{
+    padding: 0;
+  }
+  input{
+    width: 95%;
+  }
+}
+
+.btn_volver{
+  width: 65px;
+  top: 3rem;
+  left: 1rem;
+  bottom: 3rem;
+
+  
+}
+
+.btn_submit_register{
+  display: flex;
+
+  .btn_registrarse{
+    button{
+      width: 95%;
+    }
+  }
 }
 
 label {

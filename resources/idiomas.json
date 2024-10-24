@@ -18,7 +18,7 @@
         "apellido":"Enter your lastname",
         "contrasenia1":"Enter a password",
         "btn_registrarse":"Sign up",
-        "a_inicio_sesion":"Login",
+        "a_volver":"Return to Log In",
 
         "HEADER":"-----------------------------------------",
         "titulo_header":"Hello, Juan",
@@ -75,7 +75,6 @@
         "th_deuda":"Debt",
         "h2_eliminar_cliente":"Do you want to delete Customer?",
 
-
         "TAXISTAS":"------------------------------------------",
         "h1_taxistas":"Drivers List",
         "btn_abrir_modal_taxistas":"Add Driver",
@@ -118,11 +117,9 @@
         "btn_add_taxi":"Add",
         "h2_eliminar_taxi":"Do you want to delete Taxi?",
 
-
         "CONFIG":"-----------------------------------------",
         "h3_opciones":"Options",
         "switch_idioma":"Change language",
-
 
         "HOME":"-----------------------------------------",
         "btn_iniciar_turno": "Start Shift",
@@ -162,7 +159,7 @@
         "apellido":"Ingresa tu apellido",
         "contrasenia1":"Ingresa una contraseña",
         "btn_registrarse":"Registrarse",
-        "a_inicio_sesion":"Iniciar sesión",
+        "a_volver":"Volver a Inicio",
 
         "HEADER":"-----------------------------------------",
         "titulo_header":"Hola, Juan",

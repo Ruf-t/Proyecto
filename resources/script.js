@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const apellidoElement = document.getElementById('apellido');
     const contrasenia1Element = document.getElementById('contrasenia1');
     const btn_registrarseElement = document.getElementById('btn_registrarse');
-    const a_inicio_sesionElement = document.getElementById('a_inicio_sesion');
+    const a_volverElement = document.getElementById('a_volver');
     // HEADER
     const titulo_headerElement = document.getElementById('titulo_header');
     // SLIDEBAR
@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (apellidoElement) apellidoElement.textContent = data[language].apellido;
                 if (contrasenia1Element) contrasenia1Element.textContent = data[language].contrasenia1;
                 if (btn_registrarseElement) btn_registrarseElement.textContent = data[language].btn_registrarse;
-                if (a_inicio_sesionElement) a_inicio_sesionElement.textContent = data[language].a_inicio_sesion;
+                if (a_volverElement) a_volverElement.textContent = data[language].a_volver;
                 // HEADER
                 if (titulo_headerElement) titulo_headerElement.textContent = data[language].titulo_header;
                 // SLIDEBAR
