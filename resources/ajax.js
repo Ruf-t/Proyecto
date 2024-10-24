@@ -45,6 +45,40 @@ $.ajax({
 //     });
 // });
 
+//LOGIN ADMINISTRADOR 
+$(document).ready(function(){
+    $('#form-inicioS-admin').submit(function(event){
+        event.preventDefault(); // Evita el envío del formulario por defecto
+
+        // Capturamos los datos del formulario
+        let user = $('#user').val();
+        let contrasenia = $('#contrasenia').val();
+
+        $.ajax({
+            url: '../BaseDatos/login-bd.php', // Envía los datos a login-bd.php
+            type: 'POST',
+            data: {
+                user: user,
+                contrasenia: contrasenia
+            },
+            success: function(response){
+                let res = JSON.parse(response); // Convertimos la respuesta en JSON
+                if(res.status === "success"){
+                    window.location.href = "../layout/home.php"; // Redirige al usuario
+                } else {
+                    $('#respuestaAJAX-index .mensajeAJAX').text(res.message);
+                }
+            },
+            error: function(){
+                $('#respuestaAJAX-index .mensajeAJAX').text("Error en la solicitud. Intente nuevamente.");
+            }
+        });
+    });
+});
+
+
+
+
 
 //TAXIMETRISTAS DEL MES 
 

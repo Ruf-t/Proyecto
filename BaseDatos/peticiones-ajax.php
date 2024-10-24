@@ -1,9 +1,35 @@
 <?php
-include 'functions.php';
-include 'login-bd.php';
+include_once 'functions.php';
+// include_once 'login-bd.php';
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+//LOGIN ADMINISTRADOS
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // $con = conectar_bd(); // Función para conectar a la BD
+
+    $user = $_POST["user"];
+    $contrasenia = $_POST["contrasenia"];
+
+    // Llamar a la función para verificar las credenciales
+    logear($con, $user, $contrasenia);
+    exit();
+}
+
+//REGISTRAR ADMINISTRADOR
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $usuario = $_POST['user'];
+    
+    // Llamar a la función para verificar si el usuario ya está registrado
+    if (usuarioYaRegistrado($con, $usuario)) {
+        // Si el usuario ya existe
+        echo json_encode(['exists' => true]);
+    } else {
+        // Si el usuario no existe
+        echo json_encode(['exists' => false]);
+    }
+}
 
 // // AÑADIR TAXI
 // if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio']) && isset($_POST['estado']) ) {
@@ -73,18 +99,18 @@ if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio'
 }
 
 // LOGEAR
-if (isset($_POST["user"]) && isset($_POST["contrasenia"])){
+// if (isset($_POST["user"]) && isset($_POST["contrasenia"])){
 
-    $user = $_POST["user"];
-    $contrasenia = $_POST["contrasenia"];
+//     $user = $_POST["user"];
+//     $contrasenia = $_POST["contrasenia"];
 
-    header('Content-Type: application/json');
+//     header('Content-Type: application/json');
 
-    logear($con, $user, $contrasenia);
+//     logear($con, $user, $contrasenia);
 
-    // echo json_encode($logear);
-    // exit();
-}
+//     // echo json_encode($logear);
+//     // exit();
+// }
 
 //TAXIMETRISTAS DEL MES 
 

@@ -9,9 +9,117 @@ if (!$con) {
     die("Error de conexión: " . mysqli_connect_error());
 }
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start(); // Iniciar la sesión solo si no está activa
+// if (session_status() === PHP_SESSION_NONE) {
+//     session_start(); // Iniciar la sesión solo si no está activa
+// }
+
+// REGISTER ADMINISTRADOR
+function registrarNuevoAdministrador($con, $NombreNuevo_Administrador, $ApellidoNuevo_Administrador, $TelefonoNuevo_Administrador, $DireccionNuevo_Administrador, $user, $contrasenia) {
+    // Iniciar la transacción
+    mysqli_begin_transaction($con);
+
+    // Insertar los datos en la tabla persona
+    $consulta_insertar_persona = "INSERT INTO persona (Nombre, Telefono, Apellido, Direccion) 
+                                   VALUES (?, ?, ?, ?)";
+    
+    // Preparar la consulta
+    $stmt_persona = mysqli_prepare($con, $consulta_insertar_persona);
+    mysqli_stmt_bind_param($stmt_persona, "ssss", $NombreNuevo_Administrador, $TelefonoNuevo_Administrador, $ApellidoNuevo_Administrador, $DireccionNuevo_Administrador);
+
+    if (!mysqli_stmt_execute($stmt_persona)) {
+        // Revertir la transacción en caso de error
+        mysqli_rollback($con);
+        return [
+            'success' => false,
+            'message' => 'Error al insertar en la tabla persona: ' . mysqli_error($con)
+        ];
+    }
+
+    // Obtener el ID de la persona recién insertada
+    $persona_id = mysqli_insert_id($con);
+
+    // Hashear la contraseña antes de insertarla en la base de datos
+    $hashed_password = password_hash($contrasenia, PASSWORD_DEFAULT);
+
+    // Insertar los datos en la tabla administrador
+    $consulta_insertar_administrador = "INSERT INTO administrador (Usuario, Contraseña, FK_Persona) 
+                                        VALUES (?, ?, ?)";
+    
+    // Preparar la consulta
+    $stmt_admin = mysqli_prepare($con, $consulta_insertar_administrador);
+    mysqli_stmt_bind_param($stmt_admin, "ssi", $user, $hashed_password, $persona_id);
+
+    if (!mysqli_stmt_execute($stmt_admin)) {
+        // Revertir la transacción en caso de error
+        mysqli_rollback($con);
+        return [
+            'success' => false,
+            'message' => 'Error al insertar en la tabla administrador: ' . mysqli_error($con)
+        ];
+    }
+
+    // Confirmar la transacción si todo fue exitoso
+    mysqli_commit($con);
+
+    // Devolver respuesta exitosa
+    return [
+        'success' => true,
+        'message' => 'Administrador registrado correctamente.',
+        'persona_id' => $persona_id
+    ];
 }
+
+
+
+// LOGEAR ADMINISTRADOR
+function logear($con, $user, $contrasenia) {
+    // Preparar la consulta SQL para evitar inyección SQL
+    $consulta_login = "SELECT * FROM administrador WHERE Usuario = ?";
+    $stmt = mysqli_prepare($con, $consulta_login);
+
+    // Enlazar el parámetro (el usuario ingresado) a la consulta
+    mysqli_stmt_bind_param($stmt, "s", $user);
+
+    // Ejecutar la consulta
+    mysqli_stmt_execute($stmt);
+
+    // Obtener el resultado
+    $resultado_login = mysqli_stmt_get_result($stmt);
+
+    // Verificar si se encontró un usuario
+    if (mysqli_num_rows($resultado_login) > 0) {
+        $fila = mysqli_fetch_assoc($resultado_login);
+        $contrasenia_bd = $fila["Contraseña"];
+
+        if (password_verify($contrasenia, $contrasenia_bd)) {
+            // Iniciar sesión
+            session_start();
+            $_SESSION["Usuario"] = $user;
+
+            // Respuesta exitosa en formato JSON
+            echo json_encode(array(
+                "status" => "success",
+                "message" => ""
+            ));
+        } else {
+            // Contraseña incorrecta
+            echo json_encode(array(
+                "status" => "error",
+                "message" => "Contraseña incorrecta. Intentelo de nuevo"
+            ));
+        }
+    } else {
+        // Usuario no encontrado
+        echo json_encode(array(
+            "status" => "error",
+            "message" => "Usuario no encontrado. Revise sus credenciales"
+        ));
+    }
+
+    // Cerrar la sentencia
+    mysqli_stmt_close($stmt);
+}
+
 
 // LOGEAR TAXIMETRISTA
 function logearTaxi($con, $userTaxi, $contrasenia) {
@@ -69,8 +177,6 @@ function logearTaxi($con, $userTaxi, $contrasenia) {
     // Cerrar la sentencia
     mysqli_stmt_close($stmt);
 }
-
-
 
 function FormJornadaUserTaxis($con, $KmInicialTaximetrista, $NumeroDeCocheTaximetrista) {
     $consulta_insertar_jornada_Taximetrista = "INSERT INTO `jornada` (`Km_Inicio`, `Km_Final`, `Fecha`, `FK_Taxi`) 
@@ -680,5 +786,3 @@ function obtener_informacion_jornadas($con) {
     // Retornamos el array como JSON para usarlo en el frontend
     return json_encode($datos);
 }
-
-

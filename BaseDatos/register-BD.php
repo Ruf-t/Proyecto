@@ -1,28 +1,49 @@
 <?php
 require("functions.php");
 
-// $con = conectar_bd();
 
+//REGISTRAR ADMINISTRADOR
 if (isset($_POST["envio"])) {
-
     // Capturar los datos del formulario
+    $nombre = $_POST["nombre"];
+    $apellido = $_POST["apellido"];
+    $telefono = $_POST["telefono"];
+    $direccion = $_POST["direccion"];
     $user = $_POST["user"];
     $contrasenia = $_POST["contrasenia"];
 
-    // Hashear la contraseña antes de insertarla en la base de datos
-    $hashed_password = password_hash($contrasenia, PASSWORD_DEFAULT);
-
-    // Insertar el nuevo usuario con la contraseña hasheada
-    $insert_query = "INSERT INTO administrador (Usuario, Contraseña) VALUES ('$user', '$hashed_password')";
+    // Llamar a la función de registro
+    $resultado = registrarNuevoAdministrador($con, $nombre, $apellido, $telefono, $direccion, $user, $contrasenia);
     
-    if (mysqli_query($con, $insert_query)) {
-        echo "Usuario registrado exitosamente";
-        header("Location: ../Register-Login/index.php");
+    if ($resultado['success']) {
+        echo $resultado['message'];
+        header("Location: ../Register-Login/login.php");
+        exit();
     } else {
-        echo "Error al registrar el usuario: " . mysqli_error($con);
+        echo "Error al registrar el administrador: " . $resultado['message'];
     }
 }
 
+
+// if (isset($_POST["envio"])) {
+
+//     // Capturar los datos del formulario
+//     $user = $_POST["user"];
+//     $contrasenia = $_POST["contrasenia"];
+
+//     // Hashear la contraseña antes de insertarla en la base de datos
+//     $hashed_password = password_hash($contrasenia, PASSWORD_DEFAULT);
+
+//     // Insertar el nuevo usuario con la contraseña hasheada
+//     $insert_query = "INSERT INTO administrador (Usuario, Contraseña) VALUES ('$user', '$hashed_password')";
+    
+//     if (mysqli_query($con, $insert_query)) {
+//         echo "Usuario registrado exitosamente";
+//         header("Location: ../Register-Login/index.php");
+//     } else {
+//         echo "Error al registrar el usuario: " . mysqli_error($con);
+//     }
+// }
 
 function registrarTaxi($con, $nombre, $apellido, $direccionTaximetrista, $telTaxista, $libretaConducir, $vencimientoLibrCond, $fechaNacTaximetrista,  $userTaxi, $contraseniaTaxi ){
     

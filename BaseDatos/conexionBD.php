@@ -1,13 +1,8 @@
 <?php
 function conectar_bd(){
 
-<<<<<<< HEAD
 $servidor = "localhost";
-$bd = "proyectooo";
-=======
-$servidor = "localhost:3306";
 $bd = "proyecto";
->>>>>>> 8d786ecf56388b0f2f41260ff6c70698b90ba1fa
 $usuario = "root";
 $pass = "";
 // Por default "", en computadora de Juan "root"

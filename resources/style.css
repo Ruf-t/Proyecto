@@ -163,7 +163,6 @@ main{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .btn-inicioSesion{
@@ -174,23 +173,17 @@ main{
 
 .no-tengo-cuenta{
   display: flex;
-  justify-content: center; 
   align-items: baseline;
+
+  a{
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+.p_register{
+  margin-right: 1rem;
 }
 
-.div-labels-register{
-  display: flex;
-  flex-direction: column;
-    label{
-      margin-bottom: 1.5rem;
-    }
-}
-
-#form-register{
-  display: flex;
-  flex-direction: column;
-  
-}
 
 .p-log-reg{
   margin-top: 15px;
@@ -240,6 +233,11 @@ main{
   }
 }
 
+.div-btn-logo{
+  display: flex;
+
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -278,31 +276,32 @@ p {
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
+  margin-right: 1rem;
   
   label{
     padding: 0;
   }
   input{
-    width: 95%;
+    width: 100%;
   }
 }
+
 
 .btn_volver{
   width: 65px;
   top: 3rem;
-  left: 1rem;
+  left: 5rem;
   bottom: 3rem;
-
-  
 }
 
 .btn_submit_register{
   display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1/3;
 
-  .btn_registrarse{
-    button{
-      width: 95%;
-    }
+  button{
+    width: 50%;
   }
 }
 
@@ -352,6 +351,24 @@ button {
 
 button:hover {
   background-color: var(--colorAmarillo4);
+}
+
+
+/* MENSAJE CONTROL DE ERRORES */
+.message {
+  display: none; /* Oculto por defecto */
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.success {
+  background-color: #4CAF50; /* Verde para mensajes de éxito */
+}
+
+.error {
+  background-color: #F44336; /* Rojo para mensajes de error */
 }
 
 /*! PANEL/HOME **/
@@ -1300,17 +1317,6 @@ body.modal-modificar-open {
   justify-content: space-between;
   align-items: center;
 }
-
-.redirect-button{
-  width: 60px;
-  background-color: white;
-  top: 2rem;
-}
-
-.btn-redirect{
-  top: 1rem;
-}
-
 /* TABLA TAXIS*/
 .tabla-Taxis {
   overflow-y: auto;
