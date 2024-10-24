@@ -226,7 +226,7 @@ function datos_tabla_viaje($con) {
                              FROM 
                                     taximetrista t
                              JOIN
-                                    persona p_taxista ON t.FK_Persona = p_taxista.ID
+                                    persona p_taxista ON t.`FK-Persona` = p_taxista.ID
                              JOIN 
                                     viaje ON viaje.Fk_Taximetrista = t.ID
                              JOIN 
@@ -296,7 +296,7 @@ function obtenerViajesFiltrados($turno, $fecha, $con) {
 
 function mostrar_datos_taxistas($con) {
     $consulta_datos_taxistas = "SELECT * FROM taximetrista 
-                                INNER JOIN persona ON taximetrista.FK_Persona = persona.ID
+                                INNER JOIN persona ON taximetrista.`FK-Persona` = persona.ID
                                 ORDER BY persona.Nombre ASC"; 
 
     $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);

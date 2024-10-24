@@ -17,7 +17,6 @@
         <div class="div-addCliente">
             <h1 id="h1_taxistas"></h1>
             <!-- <button class="btn-abrir-modal boton-add-cliente">Añadir Taximetrista</button> -->
-            <button id="recargar-tabla-taxista"><img src="../resources/img/Iconos-SVG/icons-others/refresh.svg"></button>
             <button class="btn-abrir-modal boton-add-cliente" id="btn_abrir_modal_taxistas"></button>
         </div>
 

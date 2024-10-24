@@ -4,7 +4,9 @@ session_start();
 ?>
 
 <link rel="stylesheet" href="../resources/style.css">
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="../resources/ajax.js"></script>
 <body id="body-home">   
     <main>
         <?php
@@ -15,19 +17,8 @@ session_start();
         
         <section class="div-taxistas-mes">
             <h3 id="h3_taxistas_mes"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></h3>
-            <div>
-                <div>    
-                    <p class="nombre-taxistas-mes">Maharrm Hasanli</p>
-                    <p class="num-taxistas-mes">+598 92112906</p>
-                </div>
-                <div>
-                    <p class="nombre-taxistas-mes">Gina Garza</p>
-                    <p class="num-taxistas-mes">+598 92112906</p>
-                </div>
-                <div>
-                    <p class="nombre-taxistas-mes">Brian Reed</p>
-                    <p class="num-taxistas-mes">+598 92112906</p>
-                </div>
+            <div class="taxistas-lista">
+                
             </div>
         </section>
 
@@ -61,14 +52,6 @@ session_start();
                 </tbody>
             </table>
         </div>
-        <!-- <div class="div-panel-administracion">
-            <h3 id="h3_panel"></h3>
-            <div class="div-botones-administracion">
-                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-blue.svg"><span id="span_ordenes_panel"></span><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-red.svg"><span id="span_ganancias_panel"></span><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-                <button><img src="../resources/img/Iconos-SVG/icons-others/folder-open-orange.svg"><span id="span_taxis_panel"></span><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></button>
-            </div>
-        </div> -->
     </main>
     
     <div class="sidebar-container">
@@ -89,5 +72,6 @@ session_start();
     </div>
     
     <script src="../resources/script.js"></script>
+    
 </body>
 </html>

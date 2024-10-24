@@ -15,6 +15,13 @@
                 <img src="../resources/img/Others/foto-taxi.jpg" alt="Fondo">
             </div>
             <div class="right-panel">
+                <!-- <div class="redirect-button">
+                    <a href="index.php">
+                        <button type="button" class="btn-redirect">
+                            <img src="../resources/img/Iconos-SVG/icons-others/exit-icon.svg" alt="Icono de salida">
+                        </button>
+                    </a>
+                </div> -->
                 <div class="logo">
                     <img src="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3A.svg" alt="Logo">
                 </div>
@@ -45,6 +52,20 @@
                         <label for="contrasenia"><span id="label_contrasenia"></span></label>
                         <input type="password" id="contrasenia1" name="contrasenia">
                     </div>
+<<<<<<< HEAD
+=======
+                    <div class="div-labels-forms">
+                        <label for="telefono"><span id="label_telefono"></span></label>
+                        <input type="number" id="telefono" name="telefono">
+                    </div>
+                    <div class="div-labels-forms">
+                        <label for="direccion"><span id="label_direccion"></span></label>
+                        <input id="direccion" name="direccion">
+                    </div>
+                    <div class="btn-submit-register">
+                        <button type="submit" name="envio" id="btn_registrarse"></button>
+                    </div>
+>>>>>>> 8d786ecf56388b0f2f41260ff6c70698b90ba1fa
                 </form>
                 <div class="btn_submit_register">
                         <button class="btn_registrarse"><a id="a_volver" href="index.php"></a></button>
