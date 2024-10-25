@@ -404,6 +404,35 @@ button:hover {
   }
 }
 
+/* DIV TAXISTAS MES ACA */
+/* .taxista-item {
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos entre el nombre y el total 
+  align-items: center; /* Alinea verticalmente al centro 
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.nombre-container {
+  display: flex;
+  align-items: center;
+}
+
+.indice {
+  font-weight: bold;
+  margin-right: 5px; /* Espacio entre el índice y el nombre 
+}
+
+.nombre-taximetrista {
+  color: #333;
+}
+
+.total-generado {
+  font-weight: bold;
+  color: green;
+}
+
+
 .div-taxistas-mes {
   display: grid;
   grid-column: 1/2;
@@ -427,7 +456,6 @@ button:hover {
     border-radius: .3rem;
     margin-bottom: 1rem;
     gap: 1rem;
-    justify-content: space-between;
     
 
     & div{
@@ -456,7 +484,135 @@ button:hover {
     font-weight: 300;
     margin: 0;
   }
+} */
+
+.taxista-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
+.taxista-item {
+  border-bottom: 1px solid #ddd;
+  background-color: var(--colorAmarillo6); 
+  border-radius: 8px; 
+  margin-bottom: 10px; 
+}
+
+.nombre-container {
+  align-items: center;
+  gap: 10px;
+}
+
+.indice {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.nombre-taximetrista {
+  font-weight: 600; 
+  color: #333;
+}
+
+.total-generado {
+  font-weight: bold;
+  color: green;
+}
+
+.div-taxistas-mes {
+  display: grid;
+  grid-column: 1/3;
+  grid-row: 2;
+  border-radius: .5rem;
+}
+
+
+
+.div-taxistas-mes p {
+  margin-left: 1rem;
+  margin-bottom: 0;
+  color: black;
+}
+
+.div-taxistas-mes div {
+  display: flex;
+  border-radius: .3rem;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.div-taxistas-mes .nombre-taxistas-mes {
+  font-weight: 600;
+  margin: 0;
+}
+
+.div-taxistas-mes .num-taxistas-mes {
+  font-weight: 300;
+  margin: 0;
+}
+
+
+.taxista-item {
+  background-color: #e0e0e0; /* Cambia de color cuando se pasa el cursor */
+}
+
+.taxista-item{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.taxista-item { 
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: var(--colorAmarillo6); 
+  border-radius: 8px; 
+  margin-bottom: 10px;
+}
+
+/* .taxista-item:hover {
+  background-color: var(--colorAmarillo0) 
+} */
+
+.nombre-container {
+  display: flex;
+  align-items: center;
+}
+
+.indice {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.nombre-taximetrista {
+  color: #333;
+}
+
+.total-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.generado-text {
+  font-weight: normal;
+  color: #555;
+  margin-right: 5px;
+}
+
+.total-generado {
+  font-weight: bold;
+  color: green;
+}
+
+
+
+
 
 .div-botones-administracion {
   display: flex;

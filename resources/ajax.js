@@ -47,6 +47,83 @@ $.ajax({
 
 
 //TAXIMETRISTAS DEL MES 
+$(document).ready(function() {
+    // Función para obtener el ranking de taxistas
+    function obtenerRankingTaxistas() {
+        $.ajax({
+            url: '../BaseDatos/peticiones-ajax.php',
+            method: 'POST',
+            data: { action: 'get_ranking_taxistas' },
+            dataType: 'json',
+            success: function(response) {
+                // Limpiamos el contenedor donde se mostrará el ranking
+                $('.ranking-taxistas').empty();
+                
+                if (response.success) {
+                    response.data.forEach((taxista, index) => {
+                        // Creamos el div contenedor principal
+                        const div = document.createElement('div');
+                        div.classList.add('taxista-item');
+                        
+                        // Creamos el contenedor para el índice y nombre del taxista
+                        const nombreContainer = document.createElement('div');
+                        nombreContainer.classList.add('nombre-container');
+                        
+                        // Añadimos el índice y el nombre en una línea
+                        const indice = document.createElement('span');
+                        indice.classList.add('indice');
+                        indice.textContent = `${index + 1}.`;
+                        
+                        const nombreTaximetrista = document.createElement('span');
+                        nombreTaximetrista.classList.add('nombre-taximetrista');
+                        nombreTaximetrista.textContent = `${taxista.nombre_taximetrista}`;
+                        
+                        // Agregamos el índice y el nombre en el contenedor de nombre
+                        nombreContainer.appendChild(indice);
+                        nombreContainer.appendChild(nombreTaximetrista);
+                        
+                        // Creamos el contenedor para el total generado con el texto
+                        const totalContainer = document.createElement('div');
+                        totalContainer.classList.add('total-container');
+                        
+                        const totalGeneradoText = document.createElement('span');
+                        totalGeneradoText.classList.add('generado-text');
+                        totalGeneradoText.textContent = `Generó en el mes: `;
+                        
+                        const totalGenerado = document.createElement('span');
+                        totalGenerado.classList.add('total-generado');
+                        totalGenerado.textContent = `$${parseFloat(taxista.total_generado).toFixed(2)}`;
+                        
+                        // Agregamos el texto "Generó en el mes" y el total al contenedor de total
+                        totalContainer.appendChild(totalGeneradoText);
+                        totalContainer.appendChild(totalGenerado);
+                        
+                        // Añadimos el contenedor de nombre y el contenedor de total al div principal
+                        div.appendChild(nombreContainer);
+                        div.appendChild(totalContainer);
+                        
+                        // Finalmente, agregamos el div a la sección del ranking
+                        document.querySelector('.ranking-taxistas').appendChild(div);
+                    });
+                              
+                    
+                } else {
+                    // Si no hay resultados, mostramos el mensaje
+                    $('.ranking-taxistas').append('<div>' + response.message + '</div>');
+                }
+            },
+            error: function(xhr, status, error) {
+                // Manejo de errores
+                console.error('Error al obtener el ranking:', error);
+                $('.ranking-taxistas').append('<div>Hubo un error al cargar el ranking.</div>');
+            }
+        });
+    }
+
+    // Llamamos a la función al cargar la página
+    obtenerRankingTaxistas();
+});
+
 
 
 

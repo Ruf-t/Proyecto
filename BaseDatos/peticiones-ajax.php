@@ -1,6 +1,6 @@
 <?php
 include 'functions.php';
-include 'login-bd.php';
+// include 'login-bd.php';
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -87,7 +87,14 @@ if (isset($_POST["user"]) && isset($_POST["contrasenia"])){
 }
 
 //TAXIMETRISTAS DEL MES 
-
+if (isset($_POST['action']) && $_POST['action'] === 'get_ranking_taxistas') {
+    // Llamamos a la función de ranking
+    $ranking = RankingTaxistasMes($con);
+    
+    // Devolvemos la respuesta en formato JSON
+    echo json_encode($ranking);
+    exit();
+}
 
 // RECARGAR VIAJES (ACTUALIZADO)
 if (isset($_POST['turno']) || isset($_POST['fecha'])) {
@@ -239,3 +246,5 @@ if (isset($_POST['action']) && $_POST['action'] === 'obtener_tarifas') {
     echo json_encode(['error' => 'Acción no válida']);
     exit;
 }
+
+
