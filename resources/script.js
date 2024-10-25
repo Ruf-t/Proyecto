@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // CONFIGURACIÓN
                 if (h3_opcionesElement) h3_opcionesElement.textContent = data[language].h3_opciones;
                 if (texto_btnElement) texto_btnElement.textContent = data[language].switch_idioma;
-                if (cerrar_sesionElement) cerrar_sesionElement.textContent = data[language]
+                if (cerrar_sesionElement) cerrar_sesionElement.textContent = data[language].cerrar_sesion;
             })
             .catch(error => console.log(error));
     };

@@ -5,6 +5,51 @@ include 'functions.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+//TAXIMETRISTAS DEL MES 
+if (isset($_POST['action']) && $_POST['action'] === 'get_ranking_taxistas') {
+    // Llamamos a la función de ranking
+    $ranking = RankingTaxistasMes($con);
+    
+    // Devolvemos la respuesta en formato JSON
+    echo json_encode($ranking);
+    exit();
+}
+
+// MOSTRAR CLIENTES
+if (isset($_POST['accion']) && $_POST['accion'] == 'mostrar_clientes') {
+    $datos_clientes = mostrar_datos_cliente($con); // Llama a la función que obtiene los datos de clientes
+    header('Content-Type: application/json');
+    echo json_encode($datos_clientes); // Devuelve los datos en formato JSON
+    exit();
+}
+
+// RECARGAR VIAJES (ACTUALIZADO)
+if (isset($_POST['turno']) || isset($_POST['fecha'])) {
+    // Verificar si se enviaron filtros
+    $turno = isset($_POST['turno']) ? $_POST['turno'] : '';
+    $fecha = isset($_POST['fecha']) ? $_POST['fecha'] : '';
+
+    // Llamar a la función que obtiene los viajes filtrados
+    $datos_viaje = obtenerViajesFiltrados($turno, $fecha, $con);
+
+    if (!empty($datos_viaje)) {
+        foreach ($datos_viaje as $fila) {
+            echo "<tr>";
+            echo "<td>" . $fila['Nombre_Taxista'] . "</td>";
+            echo "<td>" . $fila['Nombre_Cliente'] . "</td>";
+            echo "<td>" . $fila['matricula'] . "</td>";
+            echo "<td>" . $fila['Fecha'] . "</td>";
+            echo "<td>" . $fila['Método_de_pago'] . "</td>";
+            echo "<td>" . $fila['Tarifa'] . "</td>";
+            echo "</tr>";
+        }
+    } else {
+        echo "<tr><td colspan='6'>No se encontraron viajes.</td></tr>";
+    }
+    exit();
+}
+
+
 //LOGIN ADMINISTRADOS
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $con = conectar_bd(); // Función para conectar a la BD
@@ -17,19 +62,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 
+
+
 //REGISTRAR ADMINISTRADOR
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = $_POST['user'];
-    
-    // Llamar a la función para verificar si el usuario ya está registrado
-    // if (usuarioYaRegistrado($con, $usuario)) {
-        // Si el usuario ya existe
-        echo json_encode(['exists' => true]);
-    } else {
-        // Si el usuario no existe
-        echo json_encode(['exists' => false]);
-    }
-// }
+    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //     $usuario = $_POST['user'];
+        
+    //     if (usuarioYaRegistrado($con, $usuario)) {
+    //         echo json_encode(['exists' => true]);
+    //     } else {
+    //         // Si el usuario no existe
+    //         echo json_encode(['exists' => false]);
+    //     }
+    // }
 
 // // AÑADIR TAXI
 // if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio']) && isset($_POST['estado']) ) {
@@ -112,41 +157,7 @@ if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio'
 //     // exit();
 // }
 
-//TAXIMETRISTAS DEL MES 
-if (isset($_POST['action']) && $_POST['action'] === 'get_ranking_taxistas') {
-    // Llamamos a la función de ranking
-    $ranking = RankingTaxistasMes($con);
-    
-    // Devolvemos la respuesta en formato JSON
-    echo json_encode($ranking);
-    exit();
-}
 
-// RECARGAR VIAJES (ACTUALIZADO)
-if (isset($_POST['turno']) || isset($_POST['fecha'])) {
-    // Verificar si se enviaron filtros
-    $turno = isset($_POST['turno']) ? $_POST['turno'] : '';
-    $fecha = isset($_POST['fecha']) ? $_POST['fecha'] : '';
-
-    // Llamar a la función que obtiene los viajes filtrados
-    $datos_viaje = obtenerViajesFiltrados($turno, $fecha, $con);
-
-    if (!empty($datos_viaje)) {
-        foreach ($datos_viaje as $fila) {
-            echo "<tr>";
-            echo "<td>" . $fila['Nombre_Taxista'] . "</td>";
-            echo "<td>" . $fila['Nombre_Cliente'] . "</td>";
-            echo "<td>" . $fila['matricula'] . "</td>";
-            echo "<td>" . $fila['Fecha'] . "</td>";
-            echo "<td>" . $fila['Método_de_pago'] . "</td>";
-            echo "<td>" . $fila['Tarifa'] . "</td>";
-            echo "</tr>";
-        }
-    } else {
-        echo "<tr><td colspan='6'>No se encontraron viajes.</td></tr>";
-    }
-    exit();
-}
 
 
 // AÑADIR TAXISTA 
@@ -199,34 +210,9 @@ if (isset($_POST['NombreNuevo_Cliente']) &&
     exit(); // asegura que no ejecute las peticiones por debajo
 }
 
-// MOSTRAR CLIENTES
-if (isset($_POST['accion']) && $_POST['accion'] == 'mostrar_clientes') {
-    $datos_clientes = mostrar_datos_cliente($con); // Llama a la función que obtiene los datos de clientes
-    header('Content-Type: application/json');
-    echo json_encode($datos_clientes); // Devuelve los datos en formato JSON
-    exit();
-}
 
 
-//APLICAR FILTROS TABLA VIAJES
-// Obtener los valores de los selectores
-$turno = $_POST['turno'] ?? '';
-$fecha = $_POST['fecha'] ?? '';
 
-// Función personalizada para obtener los viajes filtrados
-$viajesFiltrados = obtenerViajesFiltrados($turno, $fecha, $con);
-
-// Devolver las filas actualizadas
-foreach ($viajesFiltrados as $fila) {
-    echo "<tr>
-            <td>{$fila['Nombre_Taxista']}</td>
-            <td>{$fila['Nombre_Cliente']}</td>
-            <td>{$fila['matricula']}</td>
-            <td>{$fila['Fecha']}</td>
-            <td>{$fila['Método_de_pago']}</td>
-            <td>{$fila['Tarifa']}</td>
-          </tr>";
-}
 
 // MOSTRAR LA SUMA DE LOS VIAJES EN UNA JORNADA
 // if (isset($_POST['action']) && $_POST['action'] === 'obtener_tarifas') {
