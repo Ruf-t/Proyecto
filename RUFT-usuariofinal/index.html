@@ -1,0 +1,76 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUF-T</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body class="index-page">
+    <header>
+        <nav class="navbar">
+            <img src="img/logo.png" alt="Logo RUF-T" class="logo index-logo">
+            <ul class="nav-links">
+                <li><a href="#about"><span id="a_nosotros"></span>Nosotros</a></li>
+                <li><a href="#clientes"><span id="a_clientes"></span>Clientes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección de "Nosotros" -->
+    <section id="about" class="about-index section">
+        <div class="container">
+            <h1>Bienvenidos a RUF-T</h1>
+            <p>Somos una empresa de gestión de taxis dedicada a conectar clientes con servicios de transporte rápidos y seguros. Con una plataforma intuitiva y fácil de usar, facilitamos que los usuarios encuentren taxis de manera eficiente y conveniente.</p>
+            <!-- Imagen de la captura de pantalla -->
+            <img src="img/captura.png" alt="Captura de pantalla de la página" class="captura-img index-captura">
+        </div>
+    </section>
+
+    <!-- Sección de Clientes -->
+    <section id="clientes" class="clientes-index section">
+        <div class="container">
+            <h2>Clientes</h2>
+            <div class="client-grid">
+                <div class="client-item">
+                    <a href="carmisol.html">
+                        <img src="img/carmisol-logo.png" alt="Logo Carmisol" class="client-logo index-client-logo">
+                    </a>
+                    <p>Carmisol Taxi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 RUF-T. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animación de scroll
+        const sections = document.querySelectorAll('.section');
+
+        window.addEventListener('scroll', checkSectionVisibility);
+
+        function checkSectionVisibility() {
+            const triggerBottom = window.innerHeight / 5 * 4;
+
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+
+                if (sectionTop < triggerBottom) {
+                    section.classList.add('visible');
+                } else {
+                    section.classList.remove('visible');
+                }
+            });
+        }
+
+        // Llama a la función una vez al cargar la página
+        checkSectionVisibility();
+    </script>
+</body>
+</html>

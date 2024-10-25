@@ -1,0 +1,14 @@
+{
+    "en":{
+        "LOGIN":"-----------------------------------------",
+        "a_nosotros":"Us",
+        "p_inicio_sesion":"Enter your username and password"
+    },
+
+    "es":{
+        "LOGIN":"-----------------------------------------",
+        "a_nosotros":"Nosotros",
+        "p_inicio_sesion":"Ingresa tu usuario y contraseña"
+
+    }
+}

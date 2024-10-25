@@ -1,9 +1,14 @@
 <?php    
 
 
-// Si no hay usuario logueado, redirigir a la página de registro
+session_start(); // Asegúrate de iniciar la sesión
 
-
+// Verificar si la sesión está activa
+if (!isset($_SESSION['Usuario'])) {
+    // Redirigir al usuario a la página de inicio de sesión
+    header("Location: ../Register-Login/login.php");
+    exit;
+}
 // Incluir archivos necesarios (ajusta la ruta según tu estructura de carpetas)
 // include('BaseDatos/login-bd.php'); 
 // include('BaseDatos/functions.php');

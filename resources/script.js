@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
 // btnCerrarModalEliminar.forEach((btn, index) => {
 //     btn.addEventListener('click', () => {
 //         modalEliminar[index].close();
@@ -205,7 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const a_registrarmeElement = document.getElementById('a_registrarme');
     //REGISTER
     const h2_registerElement = document.getElementById('h2_register');
-    const p_registerElement = document.getElementById('p_register');
     const nombreElement = document.getElementById('nombre');
     const apellidoElement = document.getElementById('apellido');
     const contrasenia1Element = document.getElementById('contrasenia1');
@@ -303,6 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // CONFIGURACIÓN
     const h3_opcionesElement = document.getElementById('h3_opciones');
     const texto_btnElement = document.getElementById('switch_idioma');
+    const cerrar_sesionElement = document.getElementById('cerrar_sesion');
     
     const switchIdioma = document.getElementById('switch_idioma');
     let currentLanguage = 'es';
@@ -329,7 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (a_registrarmeElement) a_registrarmeElement.textContent = data[language].a_registrarme;
                 //REGISTER
                 if (h2_registerElement) h2_registerElement.textContent = data[language].h2_register;
-                if (p_registerElement) p_registerElement.textContent = data[language].p_register;
                 if (nombreElement) nombreElement.textContent = data[language].nombre;
                 if (apellidoElement) apellidoElement.textContent = data[language].apellido;
                 if (contrasenia1Element) contrasenia1Element.textContent = data[language].contrasenia1;
@@ -427,6 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // CONFIGURACIÓN
                 if (h3_opcionesElement) h3_opcionesElement.textContent = data[language].h3_opciones;
                 if (texto_btnElement) texto_btnElement.textContent = data[language].switch_idioma;
+                if (cerrar_sesionElement) cerrar_sesionElement.textContent = data[language]
             })
             .catch(error => console.log(error));
     };
@@ -444,3 +445,179 @@ document.addEventListener('DOMContentLoaded', () => {
     // Carga inicial: cargar idioma al abrir cualquier página
     loadContent(currentLanguage);
 });
+
+
+
+//---------------------CONTROL DE ERRORES REGISTER--------------------------------------
+
+document.getElementById('form-register').addEventListener('submit', function(event) {
+    event.preventDefault(); // Previene el envío por defecto
+
+    let nombre = document.getElementById('nombre').value;
+    let apellido = document.getElementById('apellido').value;
+    let telefono = document.getElementById('telefono').value;
+    let direccion = document.getElementById('direccion').value;
+    let user = document.getElementById('user1').value;
+    let contrasenia = document.getElementById('contrasenia1').value;
+    let message = document.getElementById('message');
+
+    // Obtener el idioma seleccionado del localStorage
+    let idioma = localStorage.getItem('language') || 'es'; // Por defecto español (es)
+
+    // Textos de validación según el idioma
+    const textos = {
+        es: {
+            camposVacios: "Debe completar todos los campos.",
+            camposIncompletos: "Faltan campos por completar.",
+            nombre: "El nombre debe empezar con mayúscula y tener un máximo de 12 letras, incluyendo acentos.",
+            apellido: "El apellido debe empezar con mayúscula y tener un máximo de 15 letras, incluyendo acentos.",
+            telefono: "El teléfono debe tener exactamente 9 números.",
+            direccion: "La dirección debe empezar con mayúscula y contener un número entre 1 y 9999.",
+            usuario: "El nombre de usuario debe empezar con mayúscula.",
+            contrasenia: "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.",
+            exito: "Formulario enviado exitosamente."
+        },
+        en: {
+            camposVacios: "All fields must be completed.",
+            camposIncompletos: "Some fields are missing.",
+            nombre: "The name must start with an uppercase letter and have a maximum of 12 letters, including accents.",
+            apellido: "The last name must start with an uppercase letter and have a maximum of 15 letters, including accents.",
+            telefono: "The phone number must be exactly 9 digits.",
+            direccion: "The address must start with an uppercase letter and contain a number between 1 and 9999.",
+            usuario: "The username must start with an uppercase letter.",
+            contrasenia: "The password must be at least 8 characters long, with one uppercase, one lowercase, one number, and one special character.",
+            exito: "Form submitted successfully."
+        }
+    };
+
+    // Limpiar el mensaje anterior
+    message.className = 'message';
+    message.style.display = 'none';
+
+    // Verificación si todos los campos están vacíos
+    if (!nombre && !apellido && !telefono && !direccion && !user && !contrasenia) {
+        message.className = 'message error';
+        message.innerText = textos[idioma].camposVacios;
+        message.style.display = 'block';
+        setTimeout(() => { message.style.display = 'none'; }, 3000);
+        return;
+    }
+
+    // Verificación si faltan campos por completar
+    if (!nombre || !apellido || !telefono || !direccion || !user || !contrasenia) {
+        message.className = 'message error';
+        message.innerText = textos[idioma].camposIncompletos;
+        message.style.display = 'block';
+        setTimeout(() => { message.style.display = 'none'; }, 3000);
+        return;
+    }
+
+    // Validación para el nombre
+    if (!/^[A-ZÁÉÍÓÚ][a-záéíóú]{1,11}$/.test(nombre)) {
+        message.className = 'message error';
+        message.innerText = textos[idioma].nombre;
+        message.style.display = 'block';
+        setTimeout(() => { message.style.display = 'none'; }, 3000);
+        return;
+    }
+
+    // Validación para el apellido
+    if (!/^[A-ZÁÉÍÓÚ][a-záéíóú]{1,14}$/.test(apellido)) {
+        message.className = 'message error';
+        message.innerText = textos[idioma].apellido;
+        message.style.display = 'block';
+        setTimeout(() => { message.style.display = 'none'; }, 3000);
+        return;
+    }
+
+    // Validación para el teléfono
+    if (!/^\d{9}$/.test(telefono)) {
+        message.className = 'message error';
+        message.innerText = textos[idioma].telefono;
+        message.style.display = 'block';
+        setTimeout(() => { message.style.display = 'none'; }, 3000);
+        return;
+    }
+
+    // Validación para la dirección
+    if (!/^[A-ZÁÉÍÓÚ].* [1-9][0-9]{0,3}$/.test(direccion)) {
+        message.className = 'message error';
+        message.innerText = textos[idioma].direccion;
+        message.style.display = 'block';
+        setTimeout(() => { message.style.display = 'none'; }, 3000);
+        return;
+    }
+
+    // Validación para el usuario
+    if (!/^[A-ZÁÉÍÓÚ][a-zA-Z0-9]{1,}$/.test(user)) {
+        message.className = 'message error';
+        message.innerText = textos[idioma].usuario;
+        message.style.display = 'block';
+        setTimeout(() => { message.style.display = 'none'; }, 3000);
+        return;
+    }
+
+    // Validación para la contraseña
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(contrasenia)) {
+        message.className = 'message error';
+        message.innerText = textos[idioma].contrasenia;
+        message.style.display = 'block';
+        setTimeout(() => { message.style.display = 'none'; }, 3000);
+        return;
+    }
+
+    // Si todo está correcto, muestra mensaje de éxito
+    message.className = 'message success';
+    message.innerText = textos[idioma].exito;
+    message.style.display = 'block';
+    
+    // Redirige después de 3 segundos
+    setTimeout(() => { 
+        message.style.display = 'none'; // Oculta el mensaje
+        window.location.href = 'login.php'; // Redirige a la página de inicio de sesión
+    }, 3000);
+});
+
+
+
+//---------------------CONTROL DE ERRORES INICIOSESION--------------------------------------
+// document.getElementById('form-inicioS-admin').addEventListener('submit', function(event) {
+//     event.preventDefault(); // Previene el envío por defecto
+
+//     let user = document.getElementById('user').value;
+//     let contrasenia = document.getElementById('contrasenia').value;
+//     let message = document.getElementById('message');
+
+//     // Limpiar el mensaje anterior
+//     message.className = 'message'; // Restablece la clase
+//     message.style.display = 'none'; // Oculta el mensaje
+
+//     // Validación para el usuario
+//     if (!/^[A-ZÁÉÍÓÚ][a-zA-Z0-9]{1,}$/.test(user)) {
+//         message.className = 'message error';
+//         message.innerText = "El nombre de usuario debe empezar con mayúscula.";
+//         message.style.display = 'block';
+//         setTimeout(() => { message.style.display = 'none'; }, 3000); // Oculta el mensaje después de 3 segundos
+//         return;
+//     }
+
+//     // Validación para la contraseña
+//     if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(contrasenia)) {
+//         message.className = 'mensajeAJAX error';
+//         message.innerText = "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.";
+//         message.style.display = 'block';
+//         setTimeout(() => { message.style.display = 'none'; }, 3000); // Oculta el mensaje después de 3 segundos
+//         return;
+//     }
+
+//     // Si todo es correcto, muestra el mensaje de éxito
+//     message.className = 'mensajeAJAX success';
+//     message.innerText = "Inicio de sesión exitoso.";
+//     message.style.display = 'block';
+
+//     // Redirige después de 3 segundos
+//     setTimeout(() => {
+//         message.style.display = 'none'; // Oculta el mensaje
+//         window.location.href = 'home.php'; // Redirige a la página de inicio
+//     }, 3000); // Espera 3 segundos antes de redirigir
+// });

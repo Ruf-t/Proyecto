@@ -3,11 +3,15 @@
     <main>
         <?php
         include '../header.php';
+        // include_once '../BaseDatos/login_bd.php';
         ?>
         <div class="div-configuracion">
             <h3 id="h3_opciones"></h3>
             <button id="switch_idioma"></button>
-            <button id="cerrar_sesion">Cerrar Sesion</button>
+            <!-- <button type="submit" name="cerrar_sesion" id="cerrar_sesion"></button> -->
+            <form method="post" action="../BaseDatos/login-bd.php">
+                <button type="submit" name="cerrar_sesion" id="cerrar_sesion">Cerrar Sesión</button>
+            </form>
         </div>
     </main>
 
