@@ -15,12 +15,21 @@ if (!$con) {
 
 // REGISTER ADMINISTRADOR
 function registrarNuevoAdministrador($con, $NombreNuevo_Administrador, $ApellidoNuevo_Administrador, $TelefonoNuevo_Administrador, $DireccionNuevo_Administrador, $user, $contrasenia) {
+    
+    if (empty($NombreNuevo_Administrador) || empty($ApellidoNuevo_Administrador) || empty($TelefonoNuevo_Administrador) || empty($DireccionNuevo_Administrador) || empty($user) || empty($contrasenia)) {
+        return [
+            'success' => false,
+            'message' => 'Todos los campos son obligatorios.'
+        ];
+    }
+
     // Iniciar la transacción
     mysqli_begin_transaction($con);
 
+    
     // Insertar los datos en la tabla persona
-    $consulta_insertar_persona = "INSERT INTO persona (Nombre, Telefono, Apellido, Direccion) 
-                                   VALUES (?, ?, ?, ?)";
+    $consulta_insertar_persona = "INSERT INTO `persona`(`Nombre`, `Telefono`, `Apellido`, `Direccion`) 
+                                   VALUES ('$NombreNuevo_Administrador','$ApellidoNuevo_Administrador' , '$TelefonoNuevo_Administrador', '$DireccionNuevo_Administrador')";
     
     // Preparar la consulta
     $stmt_persona = mysqli_prepare($con, $consulta_insertar_persona);
@@ -42,8 +51,8 @@ function registrarNuevoAdministrador($con, $NombreNuevo_Administrador, $Apellido
     $hashed_password = password_hash($contrasenia, PASSWORD_DEFAULT);
 
     // Insertar los datos en la tabla administrador
-    $consulta_insertar_administrador = "INSERT INTO administrador (Usuario, Contraseña, FK_Persona) 
-                                        VALUES (?, ?, ?)";
+    $consulta_insertar_administrador = "INSERT INTO `administrador`(`Usuario`, `Contraseña`, `FK_Persona`) 
+                                        VALUES ('$user', '$contrasenia', '$persona_id')";
     
     // Preparar la consulta
     $stmt_admin = mysqli_prepare($con, $consulta_insertar_administrador);
@@ -382,17 +391,6 @@ function mostrar_datos_taxis($con)
     return $datos_taxis;
 }
 
-//funcion para eliminar taxis
-function  eliminar_taxis($con, $id_taxis)
-{
-    $consulta_eliminar_taxis = "DELETE FROM taxi WHERE ID = '$id_taxis'";
-    if (mysqli_query($con, $consulta_eliminar_taxis)) {
-        echo "Taxis eliminado con exito";
-    } else {
-        echo "Error al eliminar taxis: " . mysqli_error($con) . "<br>";
-        echo "Consulta: " . $consulta_eliminar_taxis . "<br>";
-    }
-}
 
 
 // funcion mostrar viajes
@@ -552,7 +550,7 @@ function obtenerClientesRegistrados($con)
     }
 }
 
-//---------------------------------------AGREGAR TAXI------------------------------------------------------------
+//---------------------------------------AGREGAR TAXI Y ELIMINAR TAXI------------------------------------------------------------
 function agregar_taxi($con, $matricula, $modelo, $año, $estado)
 {
 
@@ -575,6 +573,14 @@ function agregar_taxi($con, $matricula, $modelo, $año, $estado)
     }
 }
 
+function eliminarTaxi($matricula, $con) {
+
+    $consulta_eliminar_taxi = "DELETE FROM taxis WHERE Matricula = ?";
+    $stmt = $con->prepare($consulta_eliminar_taxi);
+    $stmt->bind_param("s", $matricula);
+    
+    return $stmt->execute();
+}
 
 //--------------------------------------AGREGAR TAXISTA----------------------------------------------------
 //AGREGAR TAXISTA Y CONTROL DE ERROR EN LICENCIA

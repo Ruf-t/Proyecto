@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="../resources/style.css">
+<link rel="icon" href="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-3B.svg" type="image/png">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../resources/ajax.js"></script>
 
@@ -140,5 +141,4 @@
 
     <script src="../resources/script.js"></script>
 </body>
-
 </html>

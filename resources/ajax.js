@@ -76,6 +76,40 @@ $(document).ready(function(){
     });
 });
 
+// REGISTRO DE ADMINISTRADOR 
+$(document).ready(function() {
+    $('#form-register').on('submit', function(e) {
+        e.preventDefault();
+    
+        const formData = {
+            nombre: $('#nombre').val(),
+            apellido: $('#apellido').val(),
+            telefono: $('#telefono').val(),
+            direccion: $('#direccion').val(),
+            user: $('#user1').val(),
+            contrasenia: $('#contrasenia1').val()
+        };
+    
+        $.ajax({
+            url: '../BaseDatos/peticiones-ajax.php', // Asegúrate de que esta ruta sea correcta
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    alert(response.message);
+                    $('#form-register')[0].reset();
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error en la petición:', error);
+            }
+        });
+    });
+    
+}
 
 
 
@@ -243,6 +277,47 @@ $(document).ready(function() {
     });
 });
 
+//ELIMINAR TAXI
+$(document).ready(function() {
+    let matriculaSeleccionada; // Guardar la matrícula seleccionada
+
+    // Al abrir el modal, guardar la matrícula del taxi seleccionado
+    $(document).on('click', '.btn-abrir-modal-eliminar', function() {
+        matriculaSeleccionada = $(this).closest('tr').find('td').first().text();
+        $('.modal-eliminar').show(); // Asegurarse de que el modal se muestre
+    });
+
+    // Cuando se haga clic en el botón de "Aceptar" dentro del modal
+    $(document).on('click', '#eliminar_aceptar', function() {
+        if (matriculaSeleccionada) { // Verificar que haya una matrícula seleccionada
+            $.ajax({
+                url: '../BaseDatos/peticiones-ajax.php',
+                type: 'POST',
+                data: {
+                    action: 'eliminar_taxi',
+                    matricula: matriculaSeleccionada
+                },
+                success: function(response) {
+                    if (response === 'success') {
+                        alert('Taxi eliminado correctamente');
+                        location.reload(); // Recargar la página para actualizar la lista
+                    } else {
+                        $('.mensajeResultModal').text('Error al eliminar el taxi');
+                    }
+                },
+                error: function() {
+                    $('.mensajeResultModal').text('Error en la solicitud AJAX');
+                }
+            });
+            $('.modal-eliminar').hide(); // Cerrar el modal después de enviar la solicitud
+        }
+    });
+
+    // Cerrar el modal cuando se haga clic en el botón de cancelar
+    $(document).on('click', '#eliminar_cancelar', function() {
+        $('.modal-eliminar').hide();
+    });
+});
 
 // AÑADIR TAXIMETRISTA
 $(document).ready(function() {

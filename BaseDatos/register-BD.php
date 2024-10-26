@@ -3,26 +3,26 @@ require("functions.php");
 
 
 //REGISTRAR ADMINISTRADOR
-if (isset($_POST["envio"])) {
-    // Capturar los datos del formulario
-    $nombre = $_POST["nombre"];
-    $apellido = $_POST["apellido"];
-    $telefono = $_POST["telefono"];
-    $direccion = $_POST["direccion"];
-    $user = $_POST["user"];
-    $contrasenia = $_POST["contrasenia"];
+// if (isset($_POST["envio"])) {
+//     // Capturar los datos del formulario
+//     $nombre = $_POST["nombre"];
+//     $apellido = $_POST["apellido"];
+//     $telefono = $_POST["telefono"];
+//     $direccion = $_POST["direccion"];
+//     $user = $_POST["user"];
+//     $contrasenia = $_POST["contrasenia"];
 
-    // Llamar a la función de registro
-    $resultado = registrarNuevoAdministrador($con, $nombre, $apellido, $telefono, $direccion, $user, $contrasenia);
+//     // Llamar a la función de registro
+//     $resultado = registrarNuevoAdministrador($con, $nombre, $apellido, $telefono, $direccion, $user, $contrasenia);
     
-    if ($resultado['success']) {
-        echo $resultado['message'];
-        header("Location: ../Register-Login/login.php");
-        exit();
-    } else {
-        echo "Error al registrar el administrador: " . $resultado['message'];
-    }
-}
+//     if ($resultado['success']) {
+//         echo $resultado['message'];
+//         header("Location: ../Register-Login/login.php");
+//         exit();
+//     } else {
+//         echo "Error al registrar el administrador: " . $resultado['message'];
+//     }
+// }
 
 
 // if (isset($_POST["envio"])) {

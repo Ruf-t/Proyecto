@@ -65,16 +65,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 //REGISTRAR ADMINISTRADOR
-    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //     $usuario = $_POST['user'];
-        
-    //     if (usuarioYaRegistrado($con, $usuario)) {
-    //         echo json_encode(['exists' => true]);
-    //     } else {
-    //         // Si el usuario no existe
-    //         echo json_encode(['exists' => false]);
-    //     }
-    // }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre'], $_POST['apellido'], $_POST['telefono'], $_POST['direccion'], $_POST['usuario'], $_POST['contrasenia'])) {
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $telefono = $_POST['telefono'];
+    $direccion = $_POST['direccion'];
+    $usuario = $_POST['usuario'];
+    $contrasenia = $_POST['contrasenia'];
+
+    registrarNuevoAdministrador($con, $nombre, $apellido, $telefono, $direccion, $usuario, $contrasenia);
+}
+
 
 // // AÑADIR TAXI
 // if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio']) && isset($_POST['estado']) ) {
@@ -143,22 +144,16 @@ if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio'
     exit(); // asegura que no ejecute las peticiones por debajo
 }
 
-// LOGEAR
-// if (isset($_POST["user"]) && isset($_POST["contrasenia"])){
-
-//     $user = $_POST["user"];
-//     $contrasenia = $_POST["contrasenia"];
-
-//     header('Content-Type: application/json');
-
-//     logear($con, $user, $contrasenia);
-
-//     // echo json_encode($logear);
-//     // exit();
-// }
-
-
-
+//ELIMINAR TAXI
+if (isset($_POST['action']) && $_POST['action'] === 'eliminar_taxi') {
+    $matricula = $_POST['matricula'];
+    
+    if (eliminarTaxi($matricula, $con)) {
+        echo 'success';
+    } else {
+        echo 'error';
+    }
+}
 
 // AÑADIR TAXISTA 
 if (isset($_POST['Nombre']) && 

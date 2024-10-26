@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de sesión</title>
     <link rel="stylesheet" href="../resources/style.css">
+    <link rel="icon" href="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-3B.svg" type="image/png">
     <link rel="stylesheet" href="../resources/style-register-login.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/png" href="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3B.svg">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../resources/ajax.js"></script>
 </head>
 <body>
     <div class="login-box">
@@ -27,7 +30,7 @@
                     <p id="p_register" class="p_register"></p><a href="login.php"><span id="a_register"></span></a>
                 </div>
                 <div id="message" class="message"></div>
-                <form id="form-register" action="../BaseDatos/register-BD.php" method="post">
+                <form id="form-register" method="post">
                     <div class="div-labels-forms-register">
                         <label for="nombre"><span id="label_nombre"></span></label>
                         <input type="text" id="nombre" name="nombre" require>
@@ -53,7 +56,7 @@
                         <input type="password" id="contrasenia1" name="contrasenia" require>
                     </div>
                     <div class="btn_submit_register">
-                            <button class="btn_registrarse" type="submit" name="envio" id="btn_registrarse"></button>
+                            <button class="btn_registrarse" type="submit"  id="btn_registrarse"></button>
                     </div>
                 </form>
             </div>

@@ -12,59 +12,38 @@
         <nav class="navbar">
             <img src="../resources/img/Img-UsuarioFinal/logo.png" alt="Logo RUF-T" class="logo index-logo">
             <ul class="nav-links">
-                <li><a href="#about"><span id="a_nosotros"></span>Nosotros</a></li>
-                <li><a href="#clientes"><span id="a_clientes"></span>Clientes</a></li>
+                <li><a href="#about"><span id="a_nosotros"></span></a></li>
+                <li><a href="#clientes"><span id="a_clientes"></span></a></li>
+                <button id="switch_idioma"></button>
             </ul>
         </nav>
     </header>
     <section id="about" class="about-index section">
         <div class="container">
-            <h1>Bienvenidos a RUF-T</h1>
-            <p>Somos una empresa de gestión de taxis dedicada a conectar clientes con servicios de transporte rápidos y seguros. Con una plataforma intuitiva y fácil de usar, facilitamos que los usuarios encuentren taxis de manera eficiente y conveniente.</p>
+            <h1 id="h1_bienvenido"></h1>
+            <p id="p_info_nosotros"></p>
             <img src="../resources/img/Img-UsuarioFinal/captura.png" alt="Captura de pantalla de la página" class="captura-img index-captura">
         </div>
     </section>
     <section id="clientes" class="clientes-index section">
         <div class="container">
-            <h2>Clientes</h2>
+            <h2 id="h2_cliente"></h2>
             <div class="client-grid">
                 <div class="client-item">
                     <a href="carmisol.html">
                         <img src="../resources/img/Img-UsuarioFinal/carmisol-logo.png" alt="Logo Carmisol" class="client-logo index-client-logo">
                     </a>
-                    <p>Carmisol Taxi</p>
+                    <p id="p_carmisol"></p>
                 </div>
             </div>
         </div>
     </section>
     <footer>
         <div class="container">
-            <p>&copy; 2024 RUF-T. Todos los derechos reservados.</p>
+            <p>&copy; <span id="p_derechos"></span></p>
         </div>
     </footer>
 
-    <script>
-        // Animación de scroll
-        const sections = document.querySelectorAll('.section');
-
-        window.addEventListener('scroll', checkSectionVisibility);
-
-        function checkSectionVisibility() {
-            const triggerBottom = window.innerHeight / 5 * 4;
-
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-
-                if (sectionTop < triggerBottom) {
-                    section.classList.add('visible');
-                } else {
-                    section.classList.remove('visible');
-                }
-            });
-        }
-
-        // Llama a la función una vez al cargar la página
-        checkSectionVisibility();
-    </script>
+    <script src="script-idioma-index.js"></script>
 </body>
 </html>

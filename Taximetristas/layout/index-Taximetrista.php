@@ -2,7 +2,6 @@
 include_once("../../BaseDatos/functions.php");
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +9,8 @@ include_once("../../BaseDatos/functions.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
     <link rel="stylesheet" href="../style/style-Taximetristas.css">
- 
+    <link rel="icon" href="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-3B.svg" type="image/png">
 </head>
-
 <body class="body-login">
 <div class="container-login">
         <div class="login-card">

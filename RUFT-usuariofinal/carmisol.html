@@ -12,8 +12,9 @@
         <nav class="navbar">
             <a href="index.html"><img src="../resources/img/Img-UsuarioFinal/logo.png" alt="Logo RUF-T" class="logo"></a>
             <ul class="nav-links">
-                <li><a href="index.html#about">Nosotros</a></li>
-                <li><a href="index.html#clientes">Clientes</a></li>
+                <li><a href="index.html#about" id="a_nosotros"></a></li>
+                <li><a href="index.html#clientes" id="a_clientes"></a></li>
+                <button id="switch_idioma"></button>
             </ul>
         </nav>
     </header>
@@ -29,16 +30,16 @@
     </section>
     <section class="about">
         <div class="container">
-            <p>Carmisol es una empresa confiable de servicios de taxi en Paysandú, brindando transporte rápido, cómodo y seguro a sus clientes. ¡Pide tu taxi ahora y disfruta de un viaje eficiente!</p>
-            <a href="https://wa.link/hjedbz" class="btn-primary">
-                Pedir Taxi en WhatsApp
-            </a>
+            <p id="p_info_carmisol"></p>
+            <a href="https://wa.link/hjedbz" class="btn-primary" id="a_pedir_taxi"></a>
         </div>
     </section>
     <footer>
         <div class="container">
-            <p>&copy; 2024 Carmisol Taxi - Gestionado por RUF-T</p>
+            <p>&copy; <span id="p_derechos_carmisol"></span></p>
         </div>
     </footer>
+    
+    <script src="script-idioma-index.js"></script>
 </body>
 </html>
