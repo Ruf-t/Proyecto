@@ -9,18 +9,10 @@
 
 // session_start();
 
-
-    if (isset($_POST["cerrarSesionTaximetrista"])) {
-        // Llamada a la función login
-        cerrarSesionTaximetrista();
-    }
-
-
-
-
-
-
-
+if (isset($_POST["cerrarSesionTaximetrista"])) {
+    // Llamada a la función login
+    cerrarSesionTaximetrista();
+}
 
 function cerrarSesion(){
     if (!isset($_SESSION['user'])) {

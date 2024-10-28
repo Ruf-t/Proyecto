@@ -26,7 +26,7 @@
                 </div>
                 <h2 id="h2_inicio_sesion"></h2>
                 <p id="p_inicio_sesion"></p>
-                <form action="../layout/home.php">
+                <form id="form-inicioS-admin" method="post">
                     <label for="user"><span id="label_usuario"></span></label>
                     <input type="text" id="user" name="user">
                     <label for="contrasenia"><span id="label_contrasenia"></span></label>
@@ -42,7 +42,7 @@
             <button class="switch_idioma_index" id="switch_idioma"></button>
         </div>
     </div>
-<!-- id="form-inicioS-admin" method="post" action="../layout/home.php" -->
+    
     
     <script src="../resources/script.js"></script>
 </body>

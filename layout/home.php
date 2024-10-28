@@ -18,7 +18,18 @@ session_start();
         <section class="div-taxistas-mes">
             <h3 id="h3_taxistas_mes"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></h3>
             <div class="taxistas-lista">
-                
+                <div>    
+                    <p class="nombre-taxistas-mes">Maharrm Hasanli</p>
+                    <p class="num-taxistas-mes">+598 92112906</p>
+                </div>
+                <div>
+                    <p class="nombre-taxistas-mes">Gina Garza</p>
+                    <p class="num-taxistas-mes">+598 92112906</p>
+                </div>
+                <div>
+                    <p class="nombre-taxistas-mes">Brian Reed</p>
+                    <p class="num-taxistas-mes">+598 92112906</p>
+                </div>
             </div>
         </section>
 
