@@ -91,14 +91,14 @@ $(document).ready(function() {
         };
     
         $.ajax({
-            url: '../BaseDatos/peticiones-ajax.php', // Asegúrate de que esta ruta sea correcta
+            url: '../BaseDatos/peticiones-ajax.php', 
             type: 'POST',
             data: formData,
             dataType: 'json',
             success: function(response) {
                 if (response.success) {
                     alert(response.message);
-                    $('#form-register')[0].reset();
+                    $('#form-Fter')[0].reset();
                 } else {
                     alert(response.message);
                 }
@@ -108,11 +108,7 @@ $(document).ready(function() {
             }
         });
     });
-    
-}
-
-
-
+});
 
 //TAXIMETRISTAS DEL MES 
 $(document).ready(function() {
@@ -278,46 +274,46 @@ $(document).ready(function() {
 });
 
 //ELIMINAR TAXI
-$(document).ready(function() {
-    let matriculaSeleccionada; // Guardar la matrícula seleccionada
+// $(document).ready(function() {
+//     let matriculaSeleccionada; // Guardar la matrícula seleccionada
 
-    // Al abrir el modal, guardar la matrícula del taxi seleccionado
-    $(document).on('click', '.btn-abrir-modal-eliminar', function() {
-        matriculaSeleccionada = $(this).closest('tr').find('td').first().text();
-        $('.modal-eliminar').show(); // Asegurarse de que el modal se muestre
-    });
+//     // Al abrir el modal, guardar la matrícula del taxi seleccionado
+//     $(document).on('click', '.btn-abrir-modal-eliminar', function() {
+//         matriculaSeleccionada = $(this).closest('tr').find('td').first().text();
+//         $('.modal-eliminar').show(); // Asegurarse de que el modal se muestre
+//     });
 
-    // Cuando se haga clic en el botón de "Aceptar" dentro del modal
-    $(document).on('click', '#eliminar_aceptar', function() {
-        if (matriculaSeleccionada) { // Verificar que haya una matrícula seleccionada
-            $.ajax({
-                url: '../BaseDatos/peticiones-ajax.php',
-                type: 'POST',
-                data: {
-                    action: 'eliminar_taxi',
-                    matricula: matriculaSeleccionada
-                },
-                success: function(response) {
-                    if (response === 'success') {
-                        alert('Taxi eliminado correctamente');
-                        location.reload(); // Recargar la página para actualizar la lista
-                    } else {
-                        $('.mensajeResultModal').text('Error al eliminar el taxi');
-                    }
-                },
-                error: function() {
-                    $('.mensajeResultModal').text('Error en la solicitud AJAX');
-                }
-            });
-            $('.modal-eliminar').hide(); // Cerrar el modal después de enviar la solicitud
-        }
-    });
+//     // Cuando se haga clic en el botón de "Aceptar" dentro del modal
+//     $(document).on('click', '#eliminar_aceptar', function() {
+//         if (matriculaSeleccionada) { // Verificar que haya una matrícula seleccionada
+//             $.ajax({
+//                 url: '../BaseDatos/peticiones-ajax.php',
+//                 type: 'POST',
+//                 data: {
+//                     action: 'eliminar_taxi',
+//                     matricula: matriculaSeleccionada
+//                 },
+//                 success: function(response) {
+//                     if (response === 'success') {
+//                         alert('Taxi eliminado correctamente');
+//                         location.reload(); // Recargar la página para actualizar la lista
+//                     } else {
+//                         $('.mensajeResultModal').text('Error al eliminar el taxi');
+//                     }
+//                 },
+//                 error: function() {
+//                     $('.mensajeResultModal').text('Error en la solicitud AJAX');
+//                 }
+//             });
+//             $('.modal-eliminar').hide(); // Cerrar el modal después de enviar la solicitud
+//         }
+//     });
 
-    // Cerrar el modal cuando se haga clic en el botón de cancelar
-    $(document).on('click', '#eliminar_cancelar', function() {
-        $('.modal-eliminar').hide();
-    });
-});
+//     // Cerrar el modal cuando se haga clic en el botón de cancelar
+//     $(document).on('click', '#eliminar_cancelar', function() {
+//         $('.modal-eliminar').hide();
+//     });
+// });
 
 // AÑADIR TAXIMETRISTA
 $(document).ready(function() {
@@ -581,3 +577,95 @@ $(document).ready(function() {
 //     // Llamada a la función para obtener las tarifas de todas las jornadas
 //     obtenerTotalTarifasPorTodasJornadas();
 // });
+
+
+$(document).ready(function() {
+    // Capturar el evento de envío del formulario
+    $('#form-add-cliente').on('submit', function(e) {
+        e.preventDefault();  // Evitar que se recargue la página
+
+        // Limpiar mensajes previos
+        $('.mensajeResult').removeClass('success-message error-message').text('');
+        $('.respuestaAJAX').hide();
+
+        // Validar campos del formulario
+        let isValid = true;
+        let errorMessages = '';
+
+        if ($('#NombreNuevo_Cliente').val().trim() === '') {
+            errorMessages += 'El nombre es obligatorio.<br>';
+            isValid = false;
+        }
+        if ($('#ApellidoNuevo_Cliente').val().trim() === '') {
+            errorMessages += 'El apellido es obligatorio.<br>';
+            isValid = false;
+        }
+        if ($('#TelefonoNuevo_Cliente').val().trim() === '' || isNaN($('#TelefonoNuevo_Cliente').val())) {
+            errorMessages += 'El teléfono es obligatorio y debe ser numérico.<br>';
+            isValid = false;
+        }
+        if ($('#DeudaNuevo_Cliente').val().trim() === '' || isNaN($('#DeudaNuevo_Cliente').val())) {
+            errorMessages += 'La deuda es obligatoria y debe ser numérica.<br>';
+            isValid = false;
+        }
+        if ($('#DireccionNuevo_Cliente').val().trim() === '') {
+            errorMessages += 'La dirección es obligatoria.<br>';
+            isValid = false;
+        }
+
+        // Mostrar errores si hay campos no válidos
+        if (!isValid) {
+            $('.mensajeResult').html(errorMessages).addClass('error-message');
+            $('.respuestaAJAX').slideDown();
+            setTimeout(function() {
+                $('.respuestaAJAX').slideUp();
+            }, 5000);
+            return;
+        }
+
+        // Obtener los datos del formulario
+        var formData = $(this).serialize(); 
+
+        // Enviar la petición AJAX
+        $.ajax({
+            type: 'POST',
+            url: '../BaseDatos/peticiones-ajax.php',
+            data: formData,
+            dataType: 'json',  // Asegurarse de que se espera una respuesta en JSON
+            success: function(response) {
+                console.log("Respuesta del servidor:", response);
+                if (response.success) {
+                    // Mostrar mensaje de éxito
+                    $('.mensajeResult').text(response.message).addClass('success-message'); 
+                    $('.respuestaAJAX').slideDown();
+                    $('#form-add-cliente')[0].reset();  // Limpiar el formulario
+
+                    // Opcional: Cerrar modal después de un tiempo
+                    setTimeout(function() {
+                        $('.respuestaAJAX').slideUp();
+                        cerrarModal();
+                    }, 2000);
+                } else {
+                    // Si hubo algún error
+                    $('.mensajeResult').text(response.message).addClass('error-message'); 
+                    $('.respuestaAJAX').slideDown();
+
+                    setTimeout(function() {
+                        $('.respuestaAJAX').slideUp();
+                    }, 5000);
+                }
+            },
+            error: function(xhr, status, error) {
+                $('.mensajeResult').text('Ocurrió un error inesperado.').addClass('error-message');
+                $('.respuestaAJAX').slideDown();
+                setTimeout(function() {
+                    $('.respuestaAJAX').slideUp();
+                }, 5000);
+            }
+        });
+    });
+});
+
+function cerrarModal() {
+    document.querySelector(".modal").close();
+}

@@ -51,16 +51,16 @@ if (isset($_POST['turno']) || isset($_POST['fecha'])) {
 
 
 //LOGIN ADMINISTRADOS
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // $con = conectar_bd(); // Función para conectar a la BD
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     // $con = conectar_bd(); // Función para conectar a la BD
 
-    $user = $_POST["user"];
-    $contrasenia = $_POST["contrasenia"];
+//     $user = $_POST["user"];
+//     $contrasenia = $_POST["contrasenia"];
 
-    // Llamar a la función para verificar las credenciales
-    logear($con, $user, $contrasenia);
-    exit();
-}
+//     // Llamar a la función para verificar las credenciales
+//     logear($con, $user, $contrasenia);
+//     exit();
+// }
 
 
 
@@ -145,15 +145,15 @@ if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio'
 }
 
 //ELIMINAR TAXI
-if (isset($_POST['action']) && $_POST['action'] === 'eliminar_taxi') {
-    $matricula = $_POST['matricula'];
+// if (isset($_POST['action']) && $_POST['action'] === 'eliminar_taxi') {
+//     $matricula = $_POST['matricula'];
     
-    if (eliminarTaxi($matricula, $con)) {
-        echo 'success';
-    } else {
-        echo 'error';
-    }
-}
+//     if (eliminarTaxi($matricula, $con)) {
+//         echo 'success';
+//     } else {
+//         echo 'error';
+//     }
+// }
 
 // AÑADIR TAXISTA 
 if (isset($_POST['Nombre']) && 
@@ -253,5 +253,4 @@ if (isset($_POST['action']) && $_POST['action'] === 'obtener_tarifas') {
     echo json_encode(['error' => 'Acción no válida']);
     exit;
 }
-
 

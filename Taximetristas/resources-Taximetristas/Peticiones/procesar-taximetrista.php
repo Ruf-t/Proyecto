@@ -12,7 +12,6 @@ if (isset($_POST['userTaxi']) && isset($_POST['contraseniaTaxi'])) {
     }
     
 
-
 // verifica si se envio los datos del formulario de iniciar jornada
 if (isset($_POST['KmInicialTaximetrista']) && isset($_POST['NumeroDeCocheTaximetrista'])) {
     $kmInicial = $_POST['KmInicialTaximetrista'];

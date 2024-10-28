@@ -573,14 +573,14 @@ function agregar_taxi($con, $matricula, $modelo, $año, $estado)
     }
 }
 
-function eliminarTaxi($matricula, $con) {
+// function eliminarTaxi($matricula, $con) {
 
-    $consulta_eliminar_taxi = "DELETE FROM taxis WHERE Matricula = ?";
-    $stmt = $con->prepare($consulta_eliminar_taxi);
-    $stmt->bind_param("s", $matricula);
+//     $consulta_eliminar_taxi = "DELETE FROM taxis WHERE Matricula = ?";
+//     $stmt = $con->prepare($consulta_eliminar_taxi);
+//     $stmt->bind_param("s", $matricula);
     
-    return $stmt->execute();
-}
+//     return $stmt->execute();
+// }
 
 //--------------------------------------AGREGAR TAXISTA----------------------------------------------------
 //AGREGAR TAXISTA Y CONTROL DE ERROR EN LICENCIA

@@ -37,13 +37,12 @@ include_once("../../BaseDatos/functions.php");
             </div>
         </div>
     </div>
-    <button class="switch_idioma_index" id="switch_idioma"></button>
+    <!-- <button class="switch_idioma_index" id="switch_idioma"></button> -->
 
    
-    <!--  -->
 
-       <!---- importación de jQuery ---->
-       <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!---- importación de jQuery ---->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- Scripts personalizados -->
     <script src="../resources-Taximetristas/script-idioma.js"></script>
     <script src="/proyecto/resources/script.js"></script>
