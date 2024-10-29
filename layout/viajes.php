@@ -10,13 +10,13 @@
 
         <div class="btn-select-turno-fecha">
             <div class="selects">
-                <select id="turno">
+                <!-- <select id="turno">
                     <option value="" id="option_select_turno"></option>
                     <option value="1" id="option_select_turno1"></option>
                     <option value="2" id="option_select_turno2"></option>
-                </select>
+                </select> -->
 
-                <select id="fecha">
+                <select id="fecha"> 
                     <option value="" id="option_select_fecha"></option>
                     <option value="hoy" id="option_select_fecha_hoy"></option>
                     <option value="un_dia" id="option_select_fecha_1dia"></option>

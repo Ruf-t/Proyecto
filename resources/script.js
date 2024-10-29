@@ -56,17 +56,17 @@ btnsCerrarModal.forEach((btn, index) => {
 
 // --------DESPLEGAR MODAL TAXISTA-----------
 
-const btnsAbrirModalTaxista = document.querySelectorAll('.btn-abrir-modal');
-const btnsCerrarModalTaxista = document.querySelectorAll('.btn-cerrar-modal');
+const btnsAbrirModalTaxista = document.querySelectorAll('.btn-abrir-modal-taxista');
+const btnsCerrarModalTaxista = document.querySelectorAll('.btn-cerrar-modal-taxista');
 const modalsTaxista = document.querySelectorAll('.modal-taxistas');
 
-btnsAbrirModal.forEach((btn, index) => {
+btnsAbrirModalTaxista.forEach((btn, index) => {
     btn.addEventListener('click', () => {
         modalsTaxista[index].showModal();
     });
 });
 
-btnsCerrarModal.forEach((btn, index) => {
+btnsCerrarModalTaxista.forEach((btn, index) => {
     btn.addEventListener('click', () => {
         modalsTaxista[index].close();
     });

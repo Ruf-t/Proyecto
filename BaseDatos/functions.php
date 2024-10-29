@@ -260,8 +260,7 @@ function FormInciarViajeUserTaxis($con, $CostoViajeTaximetrista, $MetodoDePagoTa
 
 
 
-function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista)
-{
+function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista){
 
     // Verificar si las variables de sesión existen
     if (!isset($_SESSION['id_jornada']) || !isset($_SESSION['NumeroDeCocheTaximetrista'])) {
@@ -357,8 +356,7 @@ function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista)
 //     return $datos_cliente;
 // }
 
-function mostrar_datos_cliente($con)
-{
+function mostrar_datos_cliente($con){
     $consulta_datos_cliente = "SELECT * FROM persona 
                                JOIN cliente_registrado ON persona.ID = cliente_registrado.Fk_Persona";
 
@@ -377,8 +375,7 @@ function mostrar_datos_cliente($con)
 }
 
 //función mostrar taxis
-function mostrar_datos_taxis($con)
-{
+function mostrar_datos_taxis($con){
     $consulta_datos_taxis = "SELECT * FROM  taxi";
 
     $resultado_taxis = mysqli_query($con, $consulta_datos_taxis);
@@ -394,8 +391,7 @@ function mostrar_datos_taxis($con)
 
 
 // funcion mostrar viajes
-function datos_tabla_viaje($con)
-{
+function datos_tabla_viaje($con){
     $consulta_datos_viaje = "SELECT 
                                     p_taxista.Nombre AS Nombre_Taxista, 
                                     p_cliente.Nombre AS Nombre_Cliente,
@@ -434,8 +430,7 @@ function datos_tabla_viaje($con)
 }
 
 //FUNCION APLICAR FILTROS 
-function obtenerViajesFiltrados($turno, $fecha, $con)
-{
+function obtenerViajesFiltrados($turno, $fecha, $con){
 
     // Consulta base
     $query = "SELECT p_taxista.Nombre AS Nombre_Taxista, p_cliente.Nombre AS Nombre_Cliente, viaje.*, taxi.matricula,viaje.Método_de_pago   
@@ -474,8 +469,7 @@ function obtenerViajesFiltrados($turno, $fecha, $con)
 }
 
 
-function mostrar_datos_taxistas($con)
-{
+function mostrar_datos_taxistas($con){
     $consulta_datos_taxistas = "SELECT * FROM taximetrista 
                                 INNER JOIN persona ON taximetrista.`FK_Persona` = persona.ID
                                 ORDER BY persona.Nombre ASC";
@@ -499,8 +493,7 @@ function mostrar_datos_taxistas($con)
 
 
 
-function obtenerMatrículasTaxis($con)
-{
+function obtenerMatrículasTaxis($con){
     // Consulta para obtener las matrículas de la tabla taxi
     $consulta_obtener_matriculas = "SELECT ID, Matricula FROM taxi";
     $resultado_matriculas = mysqli_query($con, $consulta_obtener_matriculas);
@@ -526,8 +519,7 @@ function obtenerMatrículasTaxis($con)
 }
 
 
-function obtenerClientesRegistrados($con)
-{
+function obtenerClientesRegistrados($con){
     // Consulta SQL para obtener el ID del cliente registrado y su nombre
     $sql = "SELECT cliente_registrado.ID AS ClienteID, persona.Nombre 
             FROM cliente_registrado
@@ -551,8 +543,7 @@ function obtenerClientesRegistrados($con)
 }
 
 //---------------------------------------AGREGAR TAXI Y ELIMINAR TAXI------------------------------------------------------------
-function agregar_taxi($con, $matricula, $modelo, $año, $estado)
-{
+function agregar_taxi($con, $matricula, $modelo, $año, $estado){
 
     // Consulta SQL de inserción
     $sql = "INSERT INTO taxi (Matricula, Modelo, Año, Estado) VALUES ('$matricula', '$modelo', $año, '$estado')";
@@ -584,8 +575,7 @@ function agregar_taxi($con, $matricula, $modelo, $año, $estado)
 
 //--------------------------------------AGREGAR TAXISTA----------------------------------------------------
 //AGREGAR TAXISTA Y CONTROL DE ERROR EN LICENCIA
-function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_Nuevo_Taxista, $Fecha_venc_librCond_Nuevo_Taxista, $Direccion_Nuevo_Taxista, $Telefono_Nuevo_Taxista, $UserNuevo_Taxista, $ContrNuevo_Taxista)
-{
+function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_Nuevo_Taxista, $Fecha_venc_librCond_Nuevo_Taxista, $Direccion_Nuevo_Taxista, $Telefono_Nuevo_Taxista, $UserNuevo_Taxista, $ContrNuevo_Taxista){
     // Comenzar una transacción para asegurar la integridad de los datos
     mysqli_begin_transaction($con);
 
@@ -655,8 +645,7 @@ function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_
 
 
 
-function agregar_nuevo_cliente($con, $NombreNuevo_Cliente, $ApellidoNuevo_Cliente, $TelefonoNuevo_Cliente, $DireccionNuevo_Cliente, $DeudaNuevo_Cliente)
-{
+function agregar_nuevo_cliente($con, $NombreNuevo_Cliente, $ApellidoNuevo_Cliente, $TelefonoNuevo_Cliente, $DireccionNuevo_Cliente, $DeudaNuevo_Cliente){
     // Iniciar la transacción
     mysqli_begin_transaction($con);
 
@@ -702,8 +691,7 @@ function agregar_nuevo_cliente($con, $NombreNuevo_Cliente, $ApellidoNuevo_Client
 
 
 
-function cantidad_clientes($con)
-{
+function cantidad_clientes($con){
     $consulta_cant_clientes = "SELECT COUNT(DISTINCT persona.ID) AS cantidad_clientes
                                FROM persona 
                                JOIN cliente_registrado ON persona.ID = cliente_registrado.Fk_Persona";
@@ -782,8 +770,7 @@ function cantidad_clientes($con)
 //     return json_encode($tarifas);
 // }
 
-function obtener_informacion_jornadas($con)
-{
+function obtener_informacion_jornadas($con){
     // Consulta ajustada para incluir jornada, taxi, taximetrista, persona y suma de tarifas
     $query = " SELECT 
             j.ID AS id_jornada, 
@@ -796,8 +783,7 @@ function obtener_informacion_jornadas($con)
         INNER JOIN taxi t ON j.`FK_Taxi` = t.ID
         INNER JOIN taximetrista tx ON v.FK_Taximetrista = tx.ID
         INNER JOIN persona p ON tx.`FK_Persona` = p.ID 
-        GROUP BY j.ID, j.fecha, t.matricula, p.Nombre
-";
+        GROUP BY j.ID, j.fecha, t.matricula, p.Nombre";
 
     $result = $con->query($query);
 
@@ -821,26 +807,25 @@ function obtener_informacion_jornadas($con)
 
 
 // FUNCION DE TAXIMETRISTAS DEL MES
-function RankingTaxistasMes($con)
-{
+function RankingTaxistasMes($con){
     // Consulta SQL para obtener los 3 taxistas con más dinero generado en el mes actual
     $consulta_ranking_taxistas = "SELECT 
-    CONCAT(persona.Nombre, ' ', persona.Apellido) AS nombre_taximetrista, 
-    SUM(viaje.Tarifa) AS total_generado
-FROM 
-    viaje
-INNER JOIN 
-    taximetrista ON viaje.Fk_Taximetrista = taximetrista.ID
-INNER JOIN 
-    persona ON taximetrista.FK_Persona = persona.ID
-WHERE 
-    MONTH(viaje.Fecha) = MONTH(CURDATE()) 
-    AND YEAR(viaje.Fecha) = YEAR(CURDATE())
-GROUP BY 
-    persona.ID
-ORDER BY 
-    total_generado DESC
-LIMIT 3";
+                CONCAT(persona.Nombre, ' ', persona.Apellido) AS nombre_taximetrista, 
+                SUM(viaje.Tarifa) AS total_generado
+                FROM 
+                    viaje
+                INNER JOIN 
+                    taximetrista ON viaje.Fk_Taximetrista = taximetrista.ID
+                INNER JOIN 
+                    persona ON taximetrista.FK_Persona = persona.ID
+                WHERE 
+                    MONTH(viaje.Fecha) = MONTH(CURDATE()) 
+                    AND YEAR(viaje.Fecha) = YEAR(CURDATE())
+                GROUP BY 
+                    persona.ID
+                ORDER BY 
+                    total_generado DESC
+                LIMIT 3";
 
     // Ejecutar la consulta
     $resultado = mysqli_query($con, $consulta_ranking_taxistas);

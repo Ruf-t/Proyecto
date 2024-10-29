@@ -60,7 +60,7 @@
         <form id="form-add-taxi" class="formulario" method="post">
             <div class="div-labels-forms">
                 <label><span id="label_matricula"></span><input type="text" name="matricula" id="matricula"></label>
-                <label><span id="label_modelo"></span><input type="text" name="modelo" id="modelo" ></label>
+                <label><span id="label_modelo"></span><input type="text" name="modelo" id="modelo"></label>
             </div>
             <div class="div-labels-forms">
                 <label><span id="label_anio"></span><input type="number" name="anio" id="anio"></label>

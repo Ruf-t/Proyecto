@@ -3,21 +3,7 @@ session_start();
 cerrarSesion();
 
 
-//LOGIN 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $con = conectar_bd(); // Función para conectar a la BD
 
-    $user = $_POST["user"];
-    $contrasenia = $_POST["contrasenia"];
-
-    // Llamar a la función para verificar las credenciales
-    logear($con, $user, $contrasenia);
-}
-
-if (isset($_POST["cerrarSesionTaximetrista"])) {
-    // Llamada a la función login
-    cerrarSesionTaximetrista();
-}
 
 function cerrarSesion() {
     // Verifica si el usuario está logueado

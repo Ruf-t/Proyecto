@@ -60,8 +60,6 @@
                 </tbody>
             </table>
         </div>
-        
-
     </main>
 
     <div class="sidebar-container">

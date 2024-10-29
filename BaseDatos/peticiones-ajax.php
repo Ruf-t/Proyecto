@@ -50,18 +50,17 @@ if (isset($_POST['turno']) || isset($_POST['fecha'])) {
 }
 
 
-//LOGIN ADMINISTRADOS
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     // $con = conectar_bd(); // Función para conectar a la BD
+//LOGIN ADMINISTRADOR NO BORRAR
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // $con = conectar_bd(); // Función para conectar a la BD
 
-//     $user = $_POST["user"];
-//     $contrasenia = $_POST["contrasenia"];
+    $user = $_POST["user"];
+    $contrasenia = $_POST["contrasenia"];
 
-//     // Llamar a la función para verificar las credenciales
-//     logear($con, $user, $contrasenia);
-//     exit();
-// }
-
+    // Llamar a la función para verificar las credenciales
+    logear($con, $user, $contrasenia);
+    exit();
+}
 
 
 //REGISTRAR ADMINISTRADOR
@@ -94,6 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre'], $_POST['ape
 //     exit(); // asegura que no ejecute las peticiones por debajo
 // }
 
+
+//----------------CONTROL DE ERRORES TAXIS----------------------------------
 if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio']) && isset($_POST['estado'])) {
     
     // Obtener y limpiar los valores de los inputs
@@ -143,6 +144,64 @@ if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio'
     }
     exit(); // asegura que no ejecute las peticiones por debajo
 }
+
+//----------------CONTROL DE ERRORES CLIENTES----------------------------------
+if (isset($_POST['NombreNuevo_Cliente']) && isset($_POST['ApellidoNuevo_Cliente']) && isset($_POST['TelefonoNuevo_Cliente']) && isset($_POST['DeudaNuevo_Cliente']) && isset($_POST['DireccionNuevo_Cliente'])) {
+    
+    // Obtener y limpiar los valores de los inputs
+    $nombre = trim($_POST['NombreNuevo_Cliente']);
+    $apellido = trim($_POST['ApellidoNuevo_Cliente']);
+    $telefono = trim($_POST['TelefonoNuevo_Cliente']);
+    $deuda = trim($_POST['DeudaNuevo_Cliente']);
+    $direccion = trim($_POST['DireccionNuevo_Cliente']);
+    
+    $errores = [];
+
+    // Validar nombre
+    if (!preg_match('/^[A-Z][a-zA-Z]{0,11}$/', $nombre)) {
+        $errores[] = "El nombre debe empezar con mayúscula y tener un máximo de 12 caracteres.";
+    }
+
+    // Validar apellido
+    if (!preg_match('/^[A-Z][a-zA-Z]{0,15}$/', $apellido)) {
+        $errores[] = "El apellido debe empezar con mayúscula y tener un máximo de 16 caracteres.";
+    }
+
+    // Validar teléfono
+    if (!preg_match('/^\d{9}$/', $telefono)) {
+        $errores[] = "El teléfono debe tener exactamente 9 números.";
+    }
+
+    // Validar deuda
+    if (!ctype_digit($deuda)) {
+        $errores[] = "La deuda debe contener solo números.";
+    }
+
+    // Validar dirección
+    if (!preg_match('/^[A-Z][a-zA-Z\s]+ [1-9]\d{0,3}$/', $direccion)) {
+        $errores[] = "La dirección debe empezar con mayúscula y tener un número entre 1 y 9999.";
+    }
+
+    // Si hay errores, devolverlos en formato JSON
+    if (!empty($errores)) {
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => implode(' ', $errores)]);
+        exit();
+    }
+
+    // Si no hay errores, llama a la función para agregar el cliente
+    $respuesta = agregar_nuevo_cliente($con, $nombre, $apellido, $telefono, $deuda, $direccion);
+
+    // Formatear y devolver la respuesta
+    header('Content-Type: application/json');
+    if ($respuesta) {
+        echo json_encode(['success' => true, 'message' => 'Cliente agregado correctamente']);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Hubo un problema al agregar el cliente.']);
+    }
+    exit(); // asegura que no ejecute las peticiones por debajo
+}
+
 
 //ELIMINAR TAXI
 // if (isset($_POST['action']) && $_POST['action'] === 'eliminar_taxi') {

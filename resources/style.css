@@ -182,6 +182,7 @@ main{
   a{
     text-decoration: none;
     font-weight: bold;
+    color: var(--colorAmarillo);
   }
 }
 .p_register{
@@ -872,7 +873,6 @@ select{
   border: none;
 }
 
-
 /*! VIAJES **/
 /*? BOTON SELECT */
 .btn-select-turno-fecha{
@@ -905,7 +905,7 @@ select{
   height: 380px; 
   align-items: start; 
 }
-#tabla-viaje table{
+#tabla-viaje {
   table-layout: auto;
   border-collapse: collapse;
   font-size: 1rem;
@@ -968,18 +968,6 @@ select{
   border-radius: .2rem;
   box-sizing: border-box;
 }
-.tabla-clientes table th {
-  z-index: 1;
-  position: sticky;
-}
-
-.columnas-tabla-clientes{
-  background-color: #f4f4f4;
-  height: 40px;
-}
-.tabla-clientes th:last-child, .tabla-clientes td:last-child {
-  border-right: none;
-}
 .tabla-clientes th button {
   border-collapse: collapse;
   font-size: 1rem;
@@ -988,6 +976,14 @@ select{
   background-color: #f4f4f4;
   border-radius: .2rem;
   box-sizing: border-box;
+}
+
+.columnas-tabla-clientes{
+  background-color: #f4f4f4;
+  height: 40px;
+}
+.tabla-clientes th:last-child, .tabla-clientes td:last-child {
+  border-right: none;
 }
 .tabla-clientes th:nth-child(3), .tabla-clientes td:nth-child(3) {
   width: 10rem;
@@ -1443,15 +1439,6 @@ body.modal-modificar-open {
   border-radius: .2rem;
   box-sizing: border-box;
 }
-#tabla-ingresos th:nth-child(3), #tabla-ingresos td:nth-child(3) {
-    width: 10rem;
-}
-#tabla-ingresos th:nth-child(4), #tabla-ingresos td:nth-child(4) {
-  width: 10rem;
-}
-#tabla-ingresos th:nth-child(5), #tabla-ingresos td:nth-child(5) {
-  width: 10rem;
-}
 .income {
   color: #28a745;
   font-weight: bold;
@@ -1461,6 +1448,7 @@ body.modal-modificar-open {
   justify-content: space-between;
   align-items: center;
 }
+
 /* TABLA TAXIS*/
 .tabla-Taxis {
   overflow-x: auto;
@@ -1492,7 +1480,6 @@ body.modal-modificar-open {
   border-radius: .2rem;
   box-sizing: border-box;
 }
-
 .tabla-Taxis .income {
   color: #28a745;
   font-weight: bold;
@@ -1522,6 +1509,7 @@ body.modal-modificar-open {
   background-color: white;
   width: 40px;
 }
+
 .boton-papelera:hover{
   background-color: #dddada;
 }

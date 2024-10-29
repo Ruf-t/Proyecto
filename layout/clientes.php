@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <!-- --------------------MODAL AÑADIR ------------------------------>
+        <!-- --------------------MODAL AÑADIR ------------------------------> 
         <dialog class="modal">
             <div class="div-titulo-modal">
                 <h2 id="h2_agregar_cliente"></h2> 
