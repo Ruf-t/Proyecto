@@ -1,6 +1,7 @@
 {
     "en":{
         "INDEX":"-----------------------------------------",
+        "a_contacto":"Contact Us",
         "a_nosotros":"Us",
         "a_clientes":"Customers",
         "h1_bienvenido":"Welcome to RUF-T",
@@ -13,11 +14,18 @@
         "CARMISOL":"-----------------------------------------",
         "p_info_carmisol":"Carmisol is a reliable taxi service company in Paysandú, providing fast, comfortable and safe transportation to its customers. Order your taxi now and enjoy an efficient trip!",
         "a_pedir_taxi":"Order a taxi on WhatsApp",
-        "p_derechos_carmisol":"2024 Carmisol Taxi - Managed by RUF-T"
+        "p_derechos_carmisol":"2024 Carmisol Taxi - Managed by RUF-T",
+
+        "CONTACTANOS":"-----------------------------------------",
+        "h1_contactanos": "Do you want to take your taxi company to the next level?",
+        "p_info_contacto": "With our modern and innovative system, you'll have access to tools that enhance operational efficiency, enable real-time vehicle tracking, and optimize the passenger experience. It's time to grow your business with cutting-edge technology!",
+        "p_contactanos": "Contact us so we can provide you with the information you need about our service",
+        "a_contactanos": "Contact us"
     },
 
     "es":{
         "INDEX":"-----------------------------------------",
+        "a_contacto":"Contactanos",
         "a_nosotros":"Nosotros",
         "a_clientes":"Clientes",
         "h1_bienvenido":"Bienvenidos a RUF-T",
@@ -30,6 +38,13 @@
         "CARMISOL":"-----------------------------------------",
         "p_info_carmisol":"Carmisol es una empresa confiable de servicios de taxi en Paysandú, brindando transporte rápido, cómodo y seguro a sus clientes. ¡Pide tu taxi ahora y disfruta de un viaje eficiente!",
         "a_pedir_taxi":"Pedir Taxi en WhatsApp",
-        "p_derechos_carmisol":"2024 Carmisol Taxi - Gestionado por RUF-T"
+        "p_derechos_carmisol":"2024 Carmisol Taxi - Gestionado por RUF-T",
+
+        "CONTACTANOS":"-----------------------------------------",
+        "h1_contactanos":"¿Quieres llevar tu empresa de taxis al siguiente nivel?",
+        "p_info_contacto":"Con nuestro sistema moderno e innovador, tendrás acceso a herramientas que mejoran la eficiencia de tus operaciones, facilitan el seguimiento de vehículos en tiempo real y optimizan la experiencia de tus pasajeros. ¡Es el momento de hacer crecer tu negocio con tecnología de punta!",
+        "p_contactanos":"Contactate con nosotros para que te podamos brindar la informacion que necesites acerca de nuestro servicio",
+        "a_contactanos":"Contactanos"
+
     }
 }

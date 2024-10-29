@@ -429,14 +429,18 @@ function datos_tabla_viaje($con){
     return $datos;
 }
 
-//FUNCION APLICAR FILTROS 
-function obtenerViajesFiltrados($turno, $fecha, $con){
 
+//FUNCION APLICAR FILTROS 
+function obtenerViajesFiltrados($turno, $fecha, $con) {
     // Consulta base
-    $query = "SELECT p_taxista.Nombre AS Nombre_Taxista, p_cliente.Nombre AS Nombre_Cliente, viaje.*, taxi.matricula,viaje.Método_de_pago   
-                FROM taximetrista t JOIN persona p_taxista ON t.`FK_Persona` = p_taxista.ID JOIN viaje ON viaje.Fk_Taximetrista = t.ID
-                JOIN cliente_registrado c ON viaje.Fk_Cliente_Registrado = c.ID JOIN persona p_cliente ON c.Fk_Persona = p_cliente.ID
-                INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID WHERE 1=1";
+    $query = "SELECT p_taxista.Nombre AS Nombre_Taxista, p_cliente.Nombre AS Nombre_Cliente, viaje.*, taxi.matricula, viaje.Método_de_pago   
+              FROM taximetrista t 
+              JOIN persona p_taxista ON t.FK_Persona = p_taxista.ID 
+              JOIN viaje ON viaje.Fk_Taximetrista = t.ID
+              JOIN cliente_registrado c ON viaje.Fk_Cliente_Registrado = c.ID 
+              JOIN persona p_cliente ON c.Fk_Persona = p_cliente.ID
+              INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID 
+              WHERE 1=1";
 
     // Filtrar por turno si está seleccionado
     if (!empty($turno)) {
@@ -454,8 +458,9 @@ function obtenerViajesFiltrados($turno, $fecha, $con){
         $query .= " AND MONTH(Fecha) = MONTH(CURDATE()) ORDER BY Fecha DESC";
     } elseif ($fecha == 'seis_meses') {
         $query .= " AND Fecha >= CURDATE() - INTERVAL 6 MONTH ORDER BY Fecha DESC";
+    } elseif (preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha)) { // Verifica si es una fecha en formato YYYY-MM-DD
+        $query .= " AND DATE(Fecha) = '$fecha' ORDER BY Fecha DESC";
     }
-
 
     $resultado = $con->query($query);
     $viajes = [];
@@ -467,6 +472,7 @@ function obtenerViajesFiltrados($turno, $fecha, $con){
 
     return $viajes;
 }
+
 
 
 function mostrar_datos_taxistas($con){

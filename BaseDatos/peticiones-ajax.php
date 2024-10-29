@@ -51,8 +51,7 @@ if (isset($_POST['turno']) || isset($_POST['fecha'])) {
 
 
 //LOGIN ADMINISTRADOR NO BORRAR
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // $con = conectar_bd(); // Función para conectar a la BD
+if (isset($_POST['user']) && $_POST['contrasenia']) {
 
     $user = $_POST["user"];
     $contrasenia = $_POST["contrasenia"];
@@ -76,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre'], $_POST['ape
 }
 
 
-// // AÑADIR TAXI
+// AÑADIR TAXI
 // if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio']) && isset($_POST['estado']) ) {
 //     $matricula = $_POST['matricula'];
 //     $modelo = $_POST['modelo'];
@@ -94,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre'], $_POST['ape
 // }
 
 
-//----------------CONTROL DE ERRORES TAXIS----------------------------------
+//----------------AÑADIR TAXIS----------------------------------
 if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio']) && isset($_POST['estado'])) {
     
     // Obtener y limpiar los valores de los inputs
@@ -145,7 +144,7 @@ if (isset($_POST['matricula']) && isset($_POST['modelo']) && isset($_POST['anio'
     exit(); // asegura que no ejecute las peticiones por debajo
 }
 
-//----------------CONTROL DE ERRORES CLIENTES----------------------------------
+//----------------AÑADIR CLIENTES----------------------------------
 if (isset($_POST['NombreNuevo_Cliente']) && isset($_POST['ApellidoNuevo_Cliente']) && isset($_POST['TelefonoNuevo_Cliente']) && isset($_POST['DeudaNuevo_Cliente']) && isset($_POST['DireccionNuevo_Cliente'])) {
     
     // Obtener y limpiar los valores de los inputs
@@ -243,26 +242,26 @@ if (isset($_POST['Nombre']) &&
 }
 
 // AÑADIR CLIENTE  
-if (isset($_POST['NombreNuevo_Cliente']) && 
-    isset($_POST['ApellidoNuevo_Cliente']) && 
-    isset($_POST['TelefonoNuevo_Cliente']) && 
-    isset($_POST['DireccionNuevo_Cliente']) && 
-    isset($_POST['DeudaNuevo_Cliente'])){
+// if (isset($_POST['NombreNuevo_Cliente']) && 
+//     isset($_POST['ApellidoNuevo_Cliente']) && 
+//     isset($_POST['TelefonoNuevo_Cliente']) && 
+//     isset($_POST['DireccionNuevo_Cliente']) && 
+//     isset($_POST['DeudaNuevo_Cliente'])){
 
-    $NombreNuevo_Cliente = $_POST['NombreNuevo_Cliente'];
-    $ApellidoNuevo_Cliente = $_POST['ApellidoNuevo_Cliente'];
-    $TelefonoNuevo_Cliente = $_POST['TelefonoNuevo_Cliente'];
-    $DireccionNuevo_Cliente = $_POST['DireccionNuevo_Cliente'];
-    $DeudaNuevo_Cliente = $_POST['DeudaNuevo_Cliente'];
+//     $NombreNuevo_Cliente = $_POST['NombreNuevo_Cliente'];
+//     $ApellidoNuevo_Cliente = $_POST['ApellidoNuevo_Cliente'];
+//     $TelefonoNuevo_Cliente = $_POST['TelefonoNuevo_Cliente'];
+//     $DireccionNuevo_Cliente = $_POST['DireccionNuevo_Cliente'];
+//     $DeudaNuevo_Cliente = $_POST['DeudaNuevo_Cliente'];
 
-    // guarda la llamada de la función en la variable respuesta
-    $respuesta = agregar_nuevo_cliente($con, $NombreNuevo_Cliente, $ApellidoNuevo_Cliente, $TelefonoNuevo_Cliente, $DireccionNuevo_Cliente, $DeudaNuevo_Cliente);
+//     // guarda la llamada de la función en la variable respuesta
+//     $respuesta = agregar_nuevo_cliente($con, $NombreNuevo_Cliente, $ApellidoNuevo_Cliente, $TelefonoNuevo_Cliente, $DireccionNuevo_Cliente, $DeudaNuevo_Cliente);
    
-    header('Content-Type: application/json');
-    // devuelve la respuesta en formato JSON
-    echo json_encode($respuesta);
-    exit(); // asegura que no ejecute las peticiones por debajo
-}
+//     header('Content-Type: application/json');
+//     // devuelve la respuesta en formato JSON
+//     echo json_encode($respuesta);
+//     exit(); // asegura que no ejecute las peticiones por debajo
+// }
 
 
 

@@ -45,6 +45,7 @@ $.ajax({
 //     });
 // });
 
+
 //LOGIN ADMINISTRADOR 
 $(document).ready(function(){
     $('#form-inicioS-admin').submit(function(event){
@@ -55,7 +56,7 @@ $(document).ready(function(){
         let contrasenia = $('#contrasenia').val();
 
         $.ajax({
-            url: '../BaseDatos/login-bd.php', // Envía los datos a login-bd.php
+            url: '../BaseDatos/peticiones-ajax.php', // Envía los datos a login-bd.php
             type: 'POST',
             data: {
                 user: user,
@@ -80,31 +81,73 @@ $(document).ready(function(){
 $(document).ready(function() {
     $('#form-register').on('submit', function(e) {
         e.preventDefault();
-    
+        
+        // Recopilar datos del formulario
         const formData = {
-            nombre: $('#nombre').val(),
-            apellido: $('#apellido').val(),
-            telefono: $('#telefono').val(),
-            direccion: $('#direccion').val(),
-            user: $('#user1').val(),
-            contrasenia: $('#contrasenia1').val()
+            NombreNuevo_Administrador: $('#NombreNuevo_Administrador').val().trim(),
+            ApellidoNuevo_Administrador: $('#ApellidoNuevo_Administrador').val().trim(),
+            TelefonoNuevo_Administrador: $('#TelefonoNuevo_Administrador').val().trim(),
+            DireccionNuevo_Administrador: $('#DireccionNuevo_Administrador').val().trim(),
+            UserNuevo_Administrador: $('#UserNuevo_Administrador').val().trim(),
+            contraseniaNuevo_Administrador: $('#contraseniaNuevo_Administrador').val().trim()
         };
+
+        // Validación de campos con requerimientos específicos
+        let errorMsg = '';
+
+        // Validación de Nombre: máximo 20 letras
+        if (!/^[A-Za-z]{1,20}$/.test(formData.NombreNuevo_Administrador)) {
+            errorMsg += 'El nombre debe contener solo letras y tener un máximo de 20 caracteres.\n';
+        }
+
+        // Validación de Apellido: máximo 25 letras
+        if (!/^[A-Za-z]{1,25}$/.test(formData.ApellidoNuevo_Administrador)) {
+            errorMsg += 'El apellido debe contener solo letras y tener un máximo de 25 caracteres.\n';
+        }
+
+        // Validación de Teléfono: exactamente 9 dígitos
+        if (!/^\d{9}$/.test(formData.TelefonoNuevo_Administrador)) {
+            errorMsg += 'El teléfono debe contener exactamente 9 dígitos.\n';
+        }
+
+        // Validación de Dirección: al menos una letra y un número
+        if (!/^(?=.*[A-Za-z])(?=.*\d).+$/.test(formData.DireccionNuevo_Administrador)) {
+            errorMsg += 'La dirección debe contener al menos una letra y un número.\n';
+        }
+
+        // Validación de Usuario: una mayúscula, solo letras, máximo 20 caracteres
+        if (!/^(?=.*[A-Z])[A-Za-z]{1,20}$/.test(formData.UserNuevo_Administrador)) {
+            errorMsg += 'El usuario debe contener al menos una letra mayúscula y tener un máximo de 20 caracteres.\n';
+        }
+
+        // Validación de Contraseña: una mayúscula, una minúscula, un número, entre 6 y 20 caracteres
+        if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{6,20}$/.test(formData.contraseniaNuevo_Administrador)) {
+            errorMsg += 'La contraseña debe tener al menos una mayúscula, una minúscula, un número, y entre 6 y 20 caracteres.\n';
+        }
+
+        // Si hay errores, mostrar mensajes y detener la ejecución
+        if (errorMsg) {
+            alert(errorMsg);
+            return;
+        }
     
+        // Realizar la petición AJAX si pasa todas las validaciones
         $.ajax({
-            url: '../BaseDatos/peticiones-ajax.php', 
+            url: '../BaseDatos/peticiones-ajax.php',
             type: 'POST',
             data: formData,
             dataType: 'json',
             success: function(response) {
-                if (response.success) {
-                    alert(response.message);
-                    $('#form-Fter')[0].reset();
+                if (response && response.success) {
+                    alert(response.message || 'Administrador registrado correctamente');
+                    $('#form-register')[0].reset();
                 } else {
-                    alert(response.message);
+                    alert(response.message || 'Error al registrar el administrador');
                 }
             },
             error: function(xhr, status, error) {
                 console.error('Error en la petición:', error);
+                alert('Hubo un problema en la conexión. Inténtalo de nuevo más tarde.');
             }
         });
     });
@@ -198,7 +241,7 @@ $(document).ready(function() {
         e.preventDefault();  // Evitar que se recargue la página
 
         // Limpiar mensajes anteriores
-        $('.mensajeResultModal').removeClass('success-message error-message').text('');
+        $('.mensajeResult').removeClass('success-message error-message').text('');
 
         // Validar los campos antes de enviar
         var matricula = $('#matricula').val().trim();
@@ -232,10 +275,10 @@ $(document).ready(function() {
 
         // Si hay errores, mostrar el mensaje
         if (errorMessage) {
-            $('.mensajeResultModal').html(errorMessage).addClass('error-message'); 
-            $('.respuestaAJAX-Modal').slideDown();
+            $('.mensajeResult').html(errorMessage).addClass('error-message'); 
+            $('.respuestaAJAX').slideDown();
             setTimeout(function() {
-                $('.respuestaAJAX-Modal').slideUp();
+                $('.respuestaAJAX').slideUp();
             }, 5000); // Ocultar el mensaje después de 5 segundos
             return false;  // Detener el envío del formulario
         }
@@ -252,22 +295,22 @@ $(document).ready(function() {
                 console.log("Respuesta del servidor:", response);
                 if (response.success) {
                     // Si la operación fue exitosa
-                    $('.mensajeResultModal').html(response.message).addClass('success-message'); 
-                    $('.respuestaAJAX-Modal').slideUp();
+                    $('.mensajeResult').html(response.message).addClass('success-message'); 
+                    $('.respuestaAJAX').slideUp();
                 } else {
                     // Si hubo algún error en la respuesta del servidor
-                    $('.mensajeResultModal').html(response.message).addClass('error-message'); 
-                    $('.respuestaAJAX-Modal').slideUp();
+                    $('.mensajeResult').html(response.message).addClass('error-message'); 
+                    $('.respuestaAJAX').slideUp();
   
                     setTimeout(function() {
-                        $('.respuestaAJAX-Modal').slideDown();
+                        $('.respuestaAJAX').slideDown();
                     }, 5000);
                 }
             },
             error: function(xhr, status, error) {
                 // Si ocurre un error inesperado en la solicitud AJAX
-                $('.mensajeResultModal').html('Ocurrió un error inesperado.').addClass('error-message');
-                $('.respuestaAJAX-Modal').slideDown();
+                $('.mensajeResult').html('Ocurrió un error inesperado.').addClass('error-message');
+                $('.respuestaAJAX').slideDown();
             }
         });
     });
@@ -423,18 +466,21 @@ $(document).ready(function() {
 
 //FUNCION CARGAR Y ACTUALIZAR TABLA VIAJES
 $(document).ready(function() {
-    $('#turno, #fecha').on('change', function() {
-        var turno = $('#turno').val();
+    $('#fecha').on('change', function() {
         var fecha = $('#fecha').val();
+        var fechaEspecifica = $('#fecha-especifica').val();
+
+        if (fecha === 'personalizada' && fechaEspecifica) {
+            fecha = fechaEspecifica;
+        }
 
         $.ajax({
             url: '../BaseDatos/peticiones-ajax.php',
             type: 'POST',
             data: {
-                turno: turno,
                 fecha: fecha
             },
-            success: function(response) {º
+            success: function(response) {
                 $('#viajes-body').html(response);
             },
             error: function(xhr, status, error) {
@@ -444,15 +490,18 @@ $(document).ready(function() {
     });
 
     $('#recargar-tabla').click(function() {
-        var turno = $('#turno').val();
         var fecha = $('#fecha').val();
+        var fechaEspecifica = $('#fecha-especifica').val();
+
+        if (fecha === 'personalizada' && fechaEspecifica) {
+            fecha = fechaEspecifica;
+        }
 
         $.ajax({
             url: '../BaseDatos/peticiones-ajax.php',
             type: 'POST',
             data: {
-                turno: turno,
-                fecha: fecha 
+                fecha: fecha
             },
             success: function(response) {
                 $('#viajes-body').html(response);
@@ -462,9 +511,17 @@ $(document).ready(function() {
             }
         });
     });
+
 });
 
-
+//FECHA PERSONALIZADA VIAJES
+$('#fecha').change(function() {
+    if ($(this).val() === 'personalizada') {
+        $('#fecha-personalizada').show(); 
+    } else {
+        $('#fecha-personalizada').hide(); 
+    }
+});
 
 
 

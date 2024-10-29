@@ -111,10 +111,6 @@ main{
   border-radius: 9px;
 }
 
-
-
-
-
 .success-message{
   color: #34C759;
   z-index: 99999;
@@ -659,10 +655,6 @@ button:hover {
   color: green;
 }
 
-
-
-
-
 .div-botones-administracion {
   display: flex;
 }
@@ -878,7 +870,7 @@ select{
 .btn-select-turno-fecha{
   display: flex;
   flex-direction: row;
-  justify-content:start;
+  justify-content: start;
   width: 100%;
   height: 50px;
   grid-row: 2/3;
@@ -892,6 +884,25 @@ select{
 .selects select{
   margin-right: 1rem;
 }
+#fecha-personalizada{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  & input{
+    color: var(--colorAmarillo4);
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer; 
+    border-radius: .4rem; 
+    font-weight: bold;
+    margin: 0;
+  }
+}
+#fecha-personalizada input{
+  margin-left: 1rem;
+}
+
 
 /*? TABLA VIAJES */
 .div-tabla-viaje {
