@@ -8,6 +8,6 @@ if (!isset($_SESSION['Usuario'])) {
 ?>
 <div class="header">
     <div class="nombre-usuario">
-        <h1 id="titulo_header"></h1>
+        <h1><span id="titulo_header"></span><?php echo $_SESSION['Usuario']; ?></h1>
     </div>
-</div>
+</div> 

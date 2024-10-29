@@ -233,10 +233,8 @@ $(document).ready(function() {
 
 
 
-
 // AÑADIR TAXI
 $(document).ready(function() {
-    // Capturar el evento de envío del formulario
     $('#form-add-taxi').on('submit', function(e) {
         e.preventDefault();  // Evitar que se recargue la página
 
@@ -248,69 +246,58 @@ $(document).ready(function() {
         var modelo = $('#modelo').val().trim();
         var anio = $('#anio').val().trim();
         var estado = $('#estado').val();
-        var error = false;
         var errorMessage = '';
 
-       // Obtener el año actual
-       var currentYear = new Date().getFullYear();
-       var maxYear = currentYear + 2;
+        // Obtener el año actual
+        var currentYear = new Date().getFullYear();
+        var maxYear = currentYear + 2;
 
-       // Verificar si algún campo está vacío
-       if (matricula === '' || modelo === '' || anio === '' || estado === '') {
-           errorMessage = 'Debe completar todos los campos.';
-       } else {
-           if (matricula.length < 7 || matricula.length > 8) {
-               errorMessage = 'La matrícula debe tener entre 7 y 8 caracteres.';
-           } else if (modelo.length < 3 || modelo.length > 20) {
-               errorMessage = 'El modelo debe tener entre 3 y 20 caracteres.';
-           } else if (!/^\d{4}$/.test(anio)) {
-               errorMessage = 'El año debe ser un número de 4 dígitos.';
-           } else {
-               // Validar el rango del año
-               if (anio < 1990 || anio > maxYear) {
-                   errorMessage = 'El año debe ser un número entre 1990 y ' + maxYear + '.';
-               }
-           }
-       }
+        // Verificar si algún campo está vacío
+        if (matricula === '' || modelo === '' || anio === '' || estado === '') {
+            errorMessage = 'Debe completar todos los campos.';
+        } else {
+            if (matricula.length < 7 || matricula.length > 8) {
+                errorMessage = 'La matrícula debe tener entre 7 y 8 caracteres.';
+            } else if (modelo.length < 3 || modelo.length > 20) {
+                errorMessage = 'El modelo debe tener entre 3 y 20 caracteres.';
+            } else if (!/^\d{4}$/.test(anio)) {
+                errorMessage = 'El año debe ser un número de 4 dígitos.';
+            } else {
+                // Validar el rango del año
+                if (anio < 1990 || anio > maxYear) {
+                    errorMessage = 'El año debe ser un número entre 1990 y ' + maxYear + '.';
+                }
+            }
+        }
 
-        // Si hay errores, mostrar el mensaje
+        // Si hay errores, mostrar el mensaje y salir
         if (errorMessage) {
-            $('.mensajeResult').html(errorMessage).addClass('error-message'); 
-            $('.respuestaAJAX').slideDown();
-            setTimeout(function() {
-                $('.respuestaAJAX').slideUp();
-            }, 5000); // Ocultar el mensaje después de 5 segundos
-            return false;  // Detener el envío del formulario
+            $('.mensajeResult').html(errorMessage).addClass('error-message');
+            $('.respuestaAJAX').slideDown().delay(5000).slideUp(); // Mostrar mensaje y ocultar después de 5s
+            return;  // Detener el envío del formulario
         }
 
         // Si todo está bien, enviar la petición AJAX
-        var formData = $(this).serialize();  // Obtener los datos del formulario
+        var formData = $(this).serialize();
 
         $.ajax({
             type: 'POST',
             url: '../BaseDatos/peticiones-ajax.php',
             data: formData,
-            dataType: 'json',  // Asegurarse de que se espera una respuesta en JSON
+            dataType: 'json',
             success: function(response) {
                 console.log("Respuesta del servidor:", response);
                 if (response.success) {
-                    // Si la operación fue exitosa
-                    $('.mensajeResult').html(response.message).addClass('success-message'); 
-                    $('.respuestaAJAX').slideUp();
+                    $('.mensajeResult').html(response.message).removeClass('error-message').addClass('success-message');
+                    $('.respuestaAJAX').slideDown().delay(5000).slideUp();
                 } else {
-                    // Si hubo algún error en la respuesta del servidor
-                    $('.mensajeResult').html(response.message).addClass('error-message'); 
-                    $('.respuestaAJAX').slideUp();
-  
-                    setTimeout(function() {
-                        $('.respuestaAJAX').slideDown();
-                    }, 5000);
+                    $('.mensajeResult').html(response.message).removeClass('success-message').addClass('error-message');
+                    $('.respuestaAJAX').slideDown().delay(5000).slideUp();
                 }
             },
             error: function(xhr, status, error) {
-                // Si ocurre un error inesperado en la solicitud AJAX
                 $('.mensajeResult').html('Ocurrió un error inesperado.').addClass('error-message');
-                $('.respuestaAJAX').slideDown();
+                $('.respuestaAJAX').slideDown().delay(5000).slideUp();
             }
         });
     });

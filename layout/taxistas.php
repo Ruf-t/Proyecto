@@ -17,7 +17,7 @@
         <div class="div-addCliente">
             <h1 id="h1_taxistas"></h1>
             <!-- <button class="btn-abrir-modal boton-add-cliente">Añadir Taximetrista</button> -->
-            <button class="btn-abrir-modal boton-add-cliente" id="btn_abrir_modal_taxistas"></button>
+            <button class="btn-abrir-modal boton-add-taxista" id="btn_abrir_modal_taxistas"></button>
         </div>
 
         <!-- ------------------------------------MODAL AÑADIR--------------------------------------------->

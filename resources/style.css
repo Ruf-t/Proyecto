@@ -375,10 +375,11 @@ button {
   cursor: pointer;
   font-size: 16px;
   transition: ease-in-out 230ms;
+  background-color: var(--colorAmarillo5);
 }
 
 button:hover {
-  background-color: var(--colorAmarillo4);
+  background-color: var(--colorAmarillo3);
 }
 
 
@@ -693,6 +694,22 @@ button:hover {
   background-color: var(--colorAmarillo3);
 }
 
+.boton-add-taxista{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: .5rem;
+  border: none;
+  width: 150px;
+  height: 50px;
+  margin-right: 1rem;
+  background-color: var(--colorAmarillo5);
+}
+.boton-add-taxista:hover{
+  background-color: var(--colorAmarillo3);
+}
+
 /*Taxis*/
 .div-addTaxi{
   display: flex;
@@ -877,13 +894,6 @@ select{
   grid-column: 1/2;
   margin-top: 1.5rem;
 }
-.selects{
-  display: flex;
-  flex-direction: row;
-}
-.selects select{
-  margin-right: 1rem;
-}
 #fecha-personalizada{
   display: flex;
   flex-direction: row;
@@ -901,6 +911,19 @@ select{
 }
 #fecha-personalizada input{
   margin-left: 1rem;
+}
+#recargar-tabla{
+  width: 3.5rem;
+  padding: 10px;
+  background-color: var(--colorAmarillo5);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: ease-in-out 230ms;
+}
+
+#recargar-tabla:hover{
+  background-color: var(--colorAmarillo3);
 }
 
 
@@ -1387,6 +1410,9 @@ body.modal-modificar-open {
   width: 100%;
   grid-row: 2/3;
 }
+#h1_ingresos{
+  margin-bottom: 2rem;
+}
 .selects{
   display: flex;
   flex-direction: row;
@@ -1397,7 +1423,7 @@ body.modal-modificar-open {
 .btn-aplicar-filtro{
   width: 8rem;
   padding: 10px;
-  background-color: var(--colorAmarillo4);
+  background-color: var(--colorAmarillo5);
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
@@ -1405,7 +1431,7 @@ body.modal-modificar-open {
 }
 
 .btn-aplicar-filtro:hover{
-  background-color: var(--colorAmarillo5);
+  background-color: var(--colorAmarillo3);
 }
 
 /*? TABLA INGRESOS */
@@ -1539,16 +1565,24 @@ body.modal-modificar-open {
   display: grid;
   grid-column: 1 / 3;
   grid-row: 2/4;
-  width: 50%;
-  height: 50%;
+  width: 25%;
+  height: 25%;
   text-align: center;
   gap: 1rem;
+
+  button{
+    background-color: var(--colorAmarillo5);
+  }
+  button:hover{
+    background-color: var(--colorAmarillo3);
+  }
 
   & #h3_opciones{
     text-align: start;
   }
+  
+  /* & #cerrar_sesion {
+    color: rgb(255, 255, 255);
+  } */
 
-  & #cerrar_sesion{
-    color: red;
-  }
 }

@@ -37,7 +37,7 @@ include_once("../../BaseDatos/functions.php");
             </div>
         </div>
     </div>
-    <!-- <button class="switch_idioma_index" id="switch_idioma"></button> -->
+    <button class="switch_idioma_index" id="switch_idioma"></button>
 
    
 
