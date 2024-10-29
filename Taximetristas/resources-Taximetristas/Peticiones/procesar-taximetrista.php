@@ -1,7 +1,5 @@
 <?php
 include '../../../BaseDatos/functions.php';
-include '../../../BaseDatos/login-bd.php';
-
 
 if (isset($_POST['userTaxi']) && isset($_POST['contraseniaTaxi'])) {
         // Obtener datos del formulario
@@ -13,7 +11,6 @@ if (isset($_POST['userTaxi']) && isset($_POST['contraseniaTaxi'])) {
         exit();
     }
     
-
 
 // verifica si se envio los datos del formulario de iniciar jornada
 if (isset($_POST['KmInicialTaximetrista']) && isset($_POST['NumeroDeCocheTaximetrista'])) {

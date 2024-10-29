@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../resources/style.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="icon" href="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-3B.svg" type="image/png">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../resources/ajax.js"></script>
 
@@ -21,7 +21,7 @@
         </div>
 
         <!-- ------------------------------------MODAL AÑADIR--------------------------------------------->
-        <dialog class="modal">
+        <dialog class="modal-taxistas">
             <div class="div-titulo-modal">
                 <h2 id="h2_agregar_taxista"></h2>   
                 <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
@@ -33,7 +33,6 @@
                 </div>
                 <div class="div-labels-forms">
                     <label><span id="label_fecha_nac"></span><input type="date" name="FechaNac-Nuevo-Taxista"></label>
-
                     <label><span id="label_fecha_venc"></span><input type="date" name="Fecha-venc-librCond-Nuevo-Taxista"></label>
                 </div>
                 <div class="div-labels-forms">
@@ -142,5 +141,4 @@
 
     <script src="../resources/script.js"></script>
 </body>
-
 </html>

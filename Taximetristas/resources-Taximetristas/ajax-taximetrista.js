@@ -19,7 +19,7 @@ $.ajax({
             success: function(response) {
                 console.log(response);  // Imprime la respuesta para ver si llega correctamente
                 if (response.status === "success") {
-                    window.location.href = '../layout/home-taximetrista.php';
+                    window.location.href = '../layout/home-Taximetrista.php';
                 } else {
                     $('.mensajeAJAX').text(response.message).addClass('error-message');
                     $('.respuestaAJAX').slideDown();

@@ -1,0 +1,252 @@
+:root {
+    --colorAmarillo5: rgb(255, 149, 51);
+    --colorAmarillo6: rgb(252, 210, 74);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #f1f1f1;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Barra de navegación */
+header {
+    background-color: #000;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    animation: slideInDown 1s ease;
+}
+
+@keyframes slideInDown {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    width: 100px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s, transform 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #f1b92e;
+    transform: translateY(-3px);
+}
+
+/* Ajustes para la página de inicio (index) */
+.index-captura {
+    max-width: 100%;
+    width: 100%;
+    margin-top: 120px;
+    border-radius: 10px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.index-client-logo {
+    width: 120px;
+    margin: 20px auto;
+    transition: transform 0.3s ease;
+}
+
+.index-client-logo:hover {
+    transform: scale(1.1);
+}
+
+/* Separar secciones */
+.section {
+    margin-top: 60px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilo para la página de clientes */
+.client-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.client-item {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.client-item:hover {
+    transform: scale(1.05);
+}
+
+/* Botón de WhatsApp */
+.btn-primary {
+    background-color: #25D366;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #1DA851;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 50px;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+/* Sección de información */
+.about {
+    background-color: #fff;
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.about p {
+    font-size: 1rem;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+/* Imagen del taxi */
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.taxi-img {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#switch_idioma {
+    width: 80px;
+    height: 35px;
+    color: white;
+    background-color: var(--colorAmarillo5);
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+#switch_idioma:hover {
+    cursor: pointer;
+    background-color: var(--colorAmarillo6);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .btn-primary {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 10px;
+    }
+    .client-item {
+        width: 100%;
+    }
+    .logo {
+        width: 70px;
+    }
+    .about{
+        
+    }
+    .about p {
+        font-size: 0.9rem;
+    }
+
+    footer p {
+        font-size: 0.8rem;
+    }
+}

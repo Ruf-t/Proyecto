@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de sesión</title>
     <link rel="stylesheet" href="../resources/style.css">
+    <link rel="icon" href="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-3B.svg" type="image/png">
     <link rel="stylesheet" href="../resources/style-register-login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/png" href="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3B.svg">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../resources/ajax.js"></script>
 </head>
 <body>
     <div class="login-box">
@@ -15,45 +19,44 @@
                 <img src="../resources/img/Others/foto-taxi.jpg" alt="Fondo">
             </div>
             <div class="right-panel">
-                <!-- <div class="redirect-button">
-                    <a href="index.php">
-                        <button type="button" class="btn-redirect">
-                            <img src="../resources/img/Iconos-SVG/icons-others/exit-icon.svg" alt="Icono de salida">
-                        </button>
-                    </a>
-                </div> -->
                 <div class="logo">
+                    <a href="login.php">
+                        <button><img class="img_flecha" src="../resources/img/Iconos-SVG/icons-others/flecha-izq.svg"></button>
+                    </a>
                     <img src="../resources/img/Logos-SVG-SinFondo/Modelo-A/Logo-3A.svg" alt="Logo">
                 </div>
                 <h2 id="h2_register"></h2>
-                <p id="p_register"></p>
-                <form id="form-register"  action="../BaseDatos/register-BD.php" method="post">
-                    <div class="div-labels-forms">
+                <div class="no-tengo-cuenta">
+                    <p id="p_register" class="p_register"></p><a href="login.php"><span id="a_register"></span></a>
+                </div>
+                <div id="message" class="message"></div>
+                <form id="form-register" method="post">
+                    <div class="div-labels-forms-register">
                         <label for="nombre"><span id="label_nombre"></span></label>
-                        <input type="text" id="nombre" name="nombre">
+                        <input type="text" id="nombre" name="nombre" require>
                     </div>
-                    <div class="div-labels-forms">
+                    <div class="div-labels-forms-register">
                         <label for="apellido"><span id="label_apellido"></span></label>
-                        <input type="text" id="apellido" name="apellido">
+                        <input type="text" id="apellido" name="apellido" require>
                     </div>
-                    <div class="div-labels-forms">
-                        <label for="user"><span id="label_usuario"></span></label>
-                        <input type="text" id="user1" name="user">
-                    </div>
-                    <div class="div-labels-forms">
-                        <label for="contrasenia"><span id="label_contrasenia"></span></label>
-                        <input type="password" id="contrasenia1" name="contrasenia">
-                    </div>
-                    <div class="div-labels-forms">
+                    <div class="div-labels-forms-register">
                         <label for="telefono"><span id="label_telefono"></span></label>
-                        <input type="number" id="telefono" name="telefono">
+                        <input type="number" id="telefono" name="telefono" require>
                     </div>
-                    <div class="div-labels-forms">
+                    <div class="div-labels-forms-register">
                         <label for="direccion"><span id="label_direccion"></span></label>
-                        <input id="direccion" name="direccion">
+                        <input id="direccion" name="direccion" require>
                     </div>
-                    <div class="btn-submit-register">
-                        <button type="submit" name="envio" id="btn_registrarse"></button>
+                    <div class="div-labels-forms-register">
+                        <label for="user"><span id="label_usuario"></span></label>
+                        <input type="text" id="user1" name="user" require>
+                    </div>
+                    <div class="div-labels-forms-register">
+                        <label for="contrasenia"><span id="label_contrasenia"></span></label>
+                        <input type="password" id="contrasenia1" name="contrasenia" require>
+                    </div>
+                    <div class="btn_submit_register">
+                            <button class="btn_registrarse" type="submit"  id="btn_registrarse"></button>
                     </div>
                 </form>
             </div>

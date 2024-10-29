@@ -19,7 +19,8 @@ $userTaxi = $_SESSION['userTaxi'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="title_panel"></title>
-    <link rel="icon" href="../../resources/img/Others/Favicon-Ruft.png" type="image/png">
+    <link rel="icon" href="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-3B.svg" type="image/png">
+    <!-- <link rel="icon" href="../../resources/img/Others/Favicon-Ruft.png" type="image/png"> -->
     <link rel="stylesheet" href="../style/style-Taximetristas.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>

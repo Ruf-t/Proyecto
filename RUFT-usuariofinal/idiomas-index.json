@@ -1,0 +1,35 @@
+{
+    "en":{
+        "INDEX":"-----------------------------------------",
+        "a_nosotros":"Us",
+        "a_clientes":"Customers",
+        "h1_bienvenido":"Welcome to RUF-T",
+        "p_info_nosotros":"We are a taxi management company dedicated to connecting customers with fast and safe transportation services. With an intuitive and user-friendly platform, we make it easy for users to find taxis efficiently and conveniently.",
+        "h2_cliente":"Customers",
+        "p_carmisol":"Carmisol Taxi",
+        "p_derechos":"2024 RUF-T - All rights reserved.",
+        "switch_idioma":"Change Language",
+
+        "CARMISOL":"-----------------------------------------",
+        "p_info_carmisol":"Carmisol is a reliable taxi service company in Paysandú, providing fast, comfortable and safe transportation to its customers. Order your taxi now and enjoy an efficient trip!",
+        "a_pedir_taxi":"Order a taxi on WhatsApp",
+        "p_derechos_carmisol":"2024 Carmisol Taxi - Managed by RUF-T"
+    },
+
+    "es":{
+        "INDEX":"-----------------------------------------",
+        "a_nosotros":"Nosotros",
+        "a_clientes":"Clientes",
+        "h1_bienvenido":"Bienvenidos a RUF-T",
+        "p_info_nosotros":"Somos una empresa de gestión de taxis dedicada a conectar clientes con servicios de transporte rápidos y seguros. Con una plataforma intuitiva y fácil de usar, facilitamos que los usuarios encuentren taxis de manera eficiente y conveniente.",
+        "h2_cliente":"Clientes",
+        "p_carmisol":"Carmisol Taxi",
+        "p_derechos":"2024 RUF-T - Todos los derechos reservados.",
+        "switch_idioma":"Cambiar Idioma",
+
+        "CARMISOL":"-----------------------------------------",
+        "p_info_carmisol":"Carmisol es una empresa confiable de servicios de taxi en Paysandú, brindando transporte rápido, cómodo y seguro a sus clientes. ¡Pide tu taxi ahora y disfruta de un viaje eficiente!",
+        "a_pedir_taxi":"Pedir Taxi en WhatsApp",
+        "p_derechos_carmisol":"2024 Carmisol Taxi - Gestionado por RUF-T"
+    }
+}

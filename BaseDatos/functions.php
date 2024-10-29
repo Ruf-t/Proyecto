@@ -1,6 +1,6 @@
 <?php
 
-include('conexionBD.php');
+include_once('conexionBD.php');
 $con = conectar_bd();
 
 
@@ -9,39 +9,222 @@ if (!$con) {
     die("Error de conexión: " . mysqli_connect_error());
 }
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start(); // Iniciar la sesión solo si no está activa
+// if (session_status() === PHP_SESSION_NONE) {
+//     session_start(); // Iniciar la sesión solo si no está activa
+// }
+
+// REGISTER ADMINISTRADOR
+function registrarNuevoAdministrador($con, $NombreNuevo_Administrador, $ApellidoNuevo_Administrador, $TelefonoNuevo_Administrador, $DireccionNuevo_Administrador, $user, $contrasenia) {
+    
+    if (empty($NombreNuevo_Administrador) || empty($ApellidoNuevo_Administrador) || empty($TelefonoNuevo_Administrador) || empty($DireccionNuevo_Administrador) || empty($user) || empty($contrasenia)) {
+        return [
+            'success' => false,
+            'message' => 'Todos los campos son obligatorios.'
+        ];
+    }
+
+    // Iniciar la transacción
+    mysqli_begin_transaction($con);
+
+    
+    // Insertar los datos en la tabla persona
+    $consulta_insertar_persona = "INSERT INTO `persona`(`Nombre`, `Telefono`, `Apellido`, `Direccion`) 
+                                   VALUES ('$NombreNuevo_Administrador','$ApellidoNuevo_Administrador' , '$TelefonoNuevo_Administrador', '$DireccionNuevo_Administrador')";
+    
+    // Preparar la consulta
+    $stmt_persona = mysqli_prepare($con, $consulta_insertar_persona);
+    mysqli_stmt_bind_param($stmt_persona, "ssss", $NombreNuevo_Administrador, $TelefonoNuevo_Administrador, $ApellidoNuevo_Administrador, $DireccionNuevo_Administrador);
+
+    if (!mysqli_stmt_execute($stmt_persona)) {
+        // Revertir la transacción en caso de error
+        mysqli_rollback($con);
+        return [
+            'success' => false,
+            'message' => 'Error al insertar en la tabla persona: ' . mysqli_error($con)
+        ];
+    }
+
+    // Obtener el ID de la persona recién insertada
+    $persona_id = mysqli_insert_id($con);
+
+    // Hashear la contraseña antes de insertarla en la base de datos
+    $hashed_password = password_hash($contrasenia, PASSWORD_DEFAULT);
+
+    // Insertar los datos en la tabla administrador
+    $consulta_insertar_administrador = "INSERT INTO `administrador`(`Usuario`, `Contraseña`, `FK_Persona`) 
+                                        VALUES ('$user', '$contrasenia', '$persona_id')";
+    
+    // Preparar la consulta
+    $stmt_admin = mysqli_prepare($con, $consulta_insertar_administrador);
+    mysqli_stmt_bind_param($stmt_admin, "ssi", $user, $hashed_password, $persona_id);
+
+    if (!mysqli_stmt_execute($stmt_admin)) {
+        // Revertir la transacción en caso de error
+        mysqli_rollback($con);
+        return [
+            'success' => false,
+            'message' => 'Error al insertar en la tabla administrador: ' . mysqli_error($con)
+        ];
+    }
+
+    // Confirmar la transacción si todo fue exitoso
+    mysqli_commit($con);
+
+    // Devolver respuesta exitosa
+    return [
+        'success' => true,
+        'message' => 'Administrador registrado correctamente.',
+        'persona_id' => $persona_id
+    ];
 }
 
-// En functions.php
-function FormJornadaUserTaxis($con, $KmInicialTaximetrista, $NumeroDeCocheTaximetrista) {
+
+
+// LOGEAR ADMINISTRADOR
+function logear($con, $user, $contrasenia) {
+    // Preparar la consulta SQL para evitar inyección SQL
+    $consulta_login = "SELECT * FROM administrador WHERE Usuario = ?";
+    $stmt = mysqli_prepare($con, $consulta_login);
+
+    // Enlazar el parámetro (el usuario ingresado) a la consulta
+    mysqli_stmt_bind_param($stmt, "s", $user);
+
+    // Ejecutar la consulta
+    mysqli_stmt_execute($stmt);
+
+    // Obtener el resultado
+    $resultado_login = mysqli_stmt_get_result($stmt);
+
+    // Verificar si se encontró un usuario
+    if (mysqli_num_rows($resultado_login) > 0) {
+        $fila = mysqli_fetch_assoc($resultado_login);
+        $contrasenia_bd = $fila["Contraseña"];
+
+        if (password_verify($contrasenia, $contrasenia_bd)) {
+            // Iniciar sesión
+            session_start();
+            $_SESSION["Usuario"] = $user;
+
+            // Respuesta exitosa en formato JSON
+            echo json_encode(array(
+                "status" => "success",
+                "message" => ""
+            ));
+        } else {
+            // Contraseña incorrecta
+            echo json_encode(array(
+                "status" => "error",
+                "message" => "Contraseña incorrecta. Intentelo de nuevo"
+            ));
+        }
+    } else {
+        // Usuario no encontrado
+        echo json_encode(array(
+            "status" => "error",
+            "message" => "Usuario no encontrado. Revise sus credenciales"
+        ));
+    }
+
+    // Cerrar la sentencia
+    mysqli_stmt_close($stmt);
+}
+
+
+
+
+// LOGEAR TAXIMETRISTA
+function logearTaxi($con, $userTaxi, $contrasenia)
+{
+    // Preparar la consulta SQL para evitar inyección SQL
+    $consulta_login = "SELECT * FROM taximetrista WHERE Usuario = ?";
+    $stmt = mysqli_prepare($con, $consulta_login);
+
+    if (!$stmt) {
+        // Manejo de error en la preparación de la consulta
+        echo json_encode(array(
+            "status" => "error",
+            "message" => "Error en la consulta SQL"
+        ));
+        return;
+    }
+
+    // Enlazar el parámetro (el usuario ingresado) a la consulta
+    mysqli_stmt_bind_param($stmt, "s", $userTaxi);
+
+    // Ejecutar la consulta
+    mysqli_stmt_execute($stmt);
+
+    // Obtener el resultado
+    $resultado_login = mysqli_stmt_get_result($stmt);
+
+    // Verificar si se encontró un usuario
+    if (mysqli_num_rows($resultado_login) > 0) {
+        $fila = mysqli_fetch_assoc($resultado_login);
+        $contrasenia_bd = $fila["Contrasenia"];
+
+        // Verificar si la contraseña ingresada coincide con la almacenada (hash)
+        if (password_verify($contrasenia, $contrasenia_bd)) {
+            $_SESSION["userTaxi"] = $userTaxi;  // Guardar el usuario en la sesión
+
+            // Respuesta exitosa en formato JSON
+            echo json_encode(array(
+                "status" => "success",
+                "message" => ""
+            ));
+        } else {
+            // Contraseña incorrecta
+            echo json_encode(array(
+                "status" => "error",
+                "message" => "Contraseña incorrecta. Intentelo de nuevo"
+            ));
+        }
+    } else {
+        // Usuario no encontrado
+        echo json_encode(array(
+            "status" => "error",
+            "message" => "Usuario no encontrado. Revise sus credenciales"
+        ));
+    }
+
+    // Cerrar la sentencia
+    mysqli_stmt_close($stmt);
+}
+
+
+function FormJornadaUserTaxis($con, $KmInicialTaximetrista, $NumeroDeCocheTaximetrista)
+{
     $consulta_insertar_jornada_Taximetrista = "INSERT INTO `jornada` (`Km_Inicio`, `Km_Final`, `Fecha`, `FK_Taxi`) 
     VALUES ('$KmInicialTaximetrista', NULL, current_timestamp(), '$NumeroDeCocheTaximetrista')";
 
     if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
         // Obtener el ID de la jornada recién insertada
         $id_jornada = mysqli_insert_id($con);
-        
+
         // Guardar el ID de la jornada en la sesión del usuario
         $_SESSION['id_jornada'] = $id_jornada;
         $_SESSION['NumeroDeCocheTaximetrista'] = $NumeroDeCocheTaximetrista;
         $_SESSION['KmInicialTaximetrista'] = $KmInicialTaximetrista;
-        
+
         // Devolver una respuesta de éxito
-        return ['success' => true, 
-                'message' => 'Jornada iniciada con éxito', 
-                'id_jornada' => $id_jornada];
+        return [
+            'success' => true,
+            'message' => 'Jornada iniciada con éxito',
+            'id_jornada' => $id_jornada
+        ];
     } else {
         // Devolver un error
-        return ['success' => false,
-                'message' => 'Error al iniciar la jornada: ' . mysqli_error($con)];
+        return [
+            'success' => false,
+            'message' => 'Error al iniciar la jornada: ' . mysqli_error($con)
+        ];
     }
 }
 
 
 
 
-function FormInciarViajeUserTaxis($con, $CostoViajeTaximetrista, $MetodoDePagoTaximetrista, $ClienteViajeTaximetrista) {
+function FormInciarViajeUserTaxis($con, $CostoViajeTaximetrista, $MetodoDePagoTaximetrista, $ClienteViajeTaximetrista)
+{
     // Verificación inicial
     if (empty($ClienteViajeTaximetrista)) {
         $ClienteViajeTaximetrista = "NULL";
@@ -64,7 +247,7 @@ function FormInciarViajeUserTaxis($con, $CostoViajeTaximetrista, $MetodoDePagoTa
         // Insertar el viaje en la tabla 'viaje'
         $consulta_insertar_viaje_Taximetrista = "INSERT INTO `viaje` (`ID`, `Tarifa`, `Método_de_pago`, `Fecha`, `Fk_Taximetrista`, `Fk_Cliente_Registrado`, `Fk_Taxi`, `Fk_Jornada`, `Fk_Turno`) 
             VALUES (NULL, '$CostoViajeTaximetrista', '$MetodoDePagoTaximetrista', current_timestamp(), '$id_taximetrista', $ClienteViajeTaximetrista, '$NumeroDeCocheTaximetrista', '$id_jornada', NULL)";
-        
+
         if (mysqli_query($con, $consulta_insertar_viaje_Taximetrista)) {
             return ['success' => true, 'message' => 'Viaje registrado con éxito'];
         } else {
@@ -79,30 +262,35 @@ function FormInciarViajeUserTaxis($con, $CostoViajeTaximetrista, $MetodoDePagoTa
 
 
 
-function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista){
- 
-       // Verificar si las variables de sesión existen
-       if (!isset($_SESSION['id_jornada']) || !isset($_SESSION['NumeroDeCocheTaximetrista'])) {
+function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista)
+{
+
+    // Verificar si las variables de sesión existen
+    if (!isset($_SESSION['id_jornada']) || !isset($_SESSION['NumeroDeCocheTaximetrista'])) {
         return ['success' => false, 'message' => 'Sesión no válida o incompleta.'];
     }
 
     $id_jornada = $_SESSION['id_jornada'];
     $NumeroDeCocheTaximetrista = $_SESSION['NumeroDeCocheTaximetrista'];
-    
+
     // Insertar la nueva jornada en la base de datos
     $consulta_actualizar_jornada_Taximetrista = "UPDATE `jornada` SET `Km_Final`='$KmFinalTaximetrista', `Fecha`=current_timestamp() 
     WHERE `ID`='$id_jornada' AND `FK_Taxi`='$NumeroDeCocheTaximetrista'";
-    
 
-    if (mysqli_query($con, $consulta_actualizar_jornada_Taximetrista)) {    
+
+    if (mysqli_query($con, $consulta_actualizar_jornada_Taximetrista)) {
         // Devolver una respuesta de éxito
-        return ['success' => true, 
-            'message' => 'Jornada terminada con éxito', 
-            'id_jornada' => $id_jornada];
+        return [
+            'success' => true,
+            'message' => 'Jornada terminada con éxito',
+            'id_jornada' => $id_jornada
+        ];
     } else {
         // Devolver un error
-        return ['success' => false,
-                'message' => 'Error al terminar la jornada: ' . mysqli_error($con)];
+        return [
+            'success' => false,
+            'message' => 'Error al terminar la jornada: ' . mysqli_error($con)
+        ];
     }
 }
 
@@ -111,9 +299,9 @@ function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista){
 // function ValidarAdmin($emailAdmin, $passwordAdmin){
 //     $nombre = $_POST['user'];
 //     $password = $_POST['password'];
-    
-    
-    
+
+
+
 //     $consulta = mysqli_query($con, "SELECT * FROM  WHERE user = '$nombre' AND pass = '$password'");
 
 //     if (!$consulta) {
@@ -130,9 +318,9 @@ function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista){
 //     ('$nombre', '$password', '$dirCalle', '$apellido', '$email', '$dirNum')";
 
 //     if (mysqli_query($con, $consulta_insertar_user)) {
-    //         echo $text;
-    // Mostrar los datos
-    // echo consultar_datos_Usuario($con);
+//         echo $text;
+// Mostrar los datos
+// echo consultar_datos_Usuario($con);
 //     } else {
 //         echo "Error al insertar datos: " . mysqli_error($con) . "<br>";
 //         echo "Consulta: " . $consulta_insertar_user . "<br>";
@@ -141,9 +329,9 @@ function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista){
 
 
 // funcion inciar jornada
-// function FormJornadaUserTaxis($con, $KmInicialTaximetrista,$NumeroDeCocheTaximetrista){
+// function ($con, $KmInicialTaximetrista,$NumeroDeCocheTaximetrista){
 //     $text = "<h4 class='text'>Cliente agregado con exito!</h4>";
-//     $consulta_insertar_jornada_Taximetrista = "INSERT INTO jornada (ID, Km_Inicio, Km_Final, Fecha, FK-Taxi) VALUES 
+//     $consulta_insertar_jornada_Taximetrista = "INSERT INTO jornada (ID, Km_Inicio, Km_Final, Fecha, FK_Taxi) VALUES 
 //     ('', '$KmInicialTaximetrista', Null, current_timestamp(), '$NumeroDeCocheTaximetrista');";
 // if (mysqli_query($con, $consulta_insertar_jornada_Taximetrista)) {
 //     echo $text;
@@ -171,10 +359,11 @@ function FormTerminarJornadaUserTaxis($con, $KmFinalTaximetrista){
 //     return $datos_cliente;
 // }
 
-function mostrar_datos_cliente($con) {
+function mostrar_datos_cliente($con)
+{
     $consulta_datos_cliente = "SELECT * FROM persona 
                                JOIN cliente_registrado ON persona.ID = cliente_registrado.Fk_Persona";
-    
+
     $resultado_cliente = mysqli_query($con, $consulta_datos_cliente);
 
     if (!$resultado_cliente) {
@@ -190,9 +379,10 @@ function mostrar_datos_cliente($con) {
 }
 
 //función mostrar taxis
-function mostrar_datos_taxis($con) {
+function mostrar_datos_taxis($con)
+{
     $consulta_datos_taxis = "SELECT * FROM  taxi";
-    
+
     $resultado_taxis = mysqli_query($con, $consulta_datos_taxis);
 
     $datos_taxis = array();
@@ -203,20 +393,11 @@ function mostrar_datos_taxis($con) {
     return $datos_taxis;
 }
 
-//funcion para eliminar taxis
-function  eliminar_taxis($con, $id_taxis) {
-    $consulta_eliminar_taxis = "DELETE FROM taxi WHERE ID = '$id_taxis'";
-    if (mysqli_query($con, $consulta_eliminar_taxis)) {
-        echo "Taxis eliminado con exito";
-        } else {
-            echo "Error al eliminar taxis: " . mysqli_error($con) . "<br>";
-            echo "Consulta: " . $consulta_eliminar_taxis . "<br>";
-            }
-}
 
 
 // funcion mostrar viajes
-function datos_tabla_viaje($con) {
+function datos_tabla_viaje($con)
+{
     $consulta_datos_viaje = "SELECT 
                                     p_taxista.Nombre AS Nombre_Taxista, 
                                     p_cliente.Nombre AS Nombre_Cliente,
@@ -226,7 +407,7 @@ function datos_tabla_viaje($con) {
                              FROM 
                                     taximetrista t
                              JOIN
-                                    persona p_taxista ON t.`FK-Persona` = p_taxista.ID
+                                    persona p_taxista ON t.FK_Persona = p_taxista.ID
                              JOIN 
                                     viaje ON viaje.Fk_Taximetrista = t.ID
                              JOIN 
@@ -255,11 +436,12 @@ function datos_tabla_viaje($con) {
 }
 
 //FUNCION APLICAR FILTROS 
-function obtenerViajesFiltrados($turno, $fecha, $con) {
+function obtenerViajesFiltrados($turno, $fecha, $con)
+{
 
     // Consulta base
     $query = "SELECT p_taxista.Nombre AS Nombre_Taxista, p_cliente.Nombre AS Nombre_Cliente, viaje.*, taxi.matricula,viaje.Método_de_pago   
-                FROM taximetrista t JOIN persona p_taxista ON t.`FK-Persona` = p_taxista.ID JOIN viaje ON viaje.Fk_Taximetrista = t.ID
+                FROM taximetrista t JOIN persona p_taxista ON t.`FK_Persona` = p_taxista.ID JOIN viaje ON viaje.Fk_Taximetrista = t.ID
                 JOIN cliente_registrado c ON viaje.Fk_Cliente_Registrado = c.ID JOIN persona p_cliente ON c.Fk_Persona = p_cliente.ID
                 INNER JOIN taxi ON viaje.Fk_Taxi = taxi.ID WHERE 1=1";
 
@@ -280,11 +462,11 @@ function obtenerViajesFiltrados($turno, $fecha, $con) {
     } elseif ($fecha == 'seis_meses') {
         $query .= " AND Fecha >= CURDATE() - INTERVAL 6 MONTH ORDER BY Fecha DESC";
     }
-    
+
 
     $resultado = $con->query($query);
     $viajes = [];
-    
+
     // Guardar los resultados en un array
     while ($fila = $resultado->fetch_assoc()) {
         $viajes[] = $fila;
@@ -294,10 +476,11 @@ function obtenerViajesFiltrados($turno, $fecha, $con) {
 }
 
 
-function mostrar_datos_taxistas($con) {
+function mostrar_datos_taxistas($con)
+{
     $consulta_datos_taxistas = "SELECT * FROM taximetrista 
-                                INNER JOIN persona ON taximetrista.`FK-Persona` = persona.ID
-                                ORDER BY persona.Nombre ASC"; 
+                                INNER JOIN persona ON taximetrista.`FK_Persona` = persona.ID
+                                ORDER BY persona.Nombre ASC";
 
     $resultado_taxistas = mysqli_query($con, $consulta_datos_taxistas);
 
@@ -318,7 +501,8 @@ function mostrar_datos_taxistas($con) {
 
 
 
-function obtenerMatrículasTaxis($con) {
+function obtenerMatrículasTaxis($con)
+{
     // Consulta para obtener las matrículas de la tabla taxi
     $consulta_obtener_matriculas = "SELECT ID, Matricula FROM taxi";
     $resultado_matriculas = mysqli_query($con, $consulta_obtener_matriculas);
@@ -344,12 +528,13 @@ function obtenerMatrículasTaxis($con) {
 }
 
 
-function obtenerClientesRegistrados($con) {
+function obtenerClientesRegistrados($con)
+{
     // Consulta SQL para obtener el ID del cliente registrado y su nombre
     $sql = "SELECT cliente_registrado.ID AS ClienteID, persona.Nombre 
             FROM cliente_registrado
             JOIN persona ON cliente_registrado.Fk_Persona = persona.ID";
-    
+
     $result = mysqli_query($con, $sql);
 
     if ($result && mysqli_num_rows($result) > 0) {
@@ -367,8 +552,9 @@ function obtenerClientesRegistrados($con) {
     }
 }
 
-//---------------------------------------AGREGAR TAXI------------------------------------------------------------
-function agregar_taxi($con, $matricula, $modelo, $año, $estado) {
+//---------------------------------------AGREGAR TAXI Y ELIMINAR TAXI------------------------------------------------------------
+function agregar_taxi($con, $matricula, $modelo, $año, $estado)
+{
 
     // Consulta SQL de inserción
     $sql = "INSERT INTO taxi (Matricula, Modelo, Año, Estado) VALUES ('$matricula', '$modelo', $año, '$estado')";
@@ -380,7 +566,7 @@ function agregar_taxi($con, $matricula, $modelo, $año, $estado) {
             'success' => true,
             'message' => 'Taxi añadido correctamente.',
         ];
-    } else{
+    } else {
         // Devolver una respuesta de error
         return [
             'success' => false,
@@ -389,10 +575,19 @@ function agregar_taxi($con, $matricula, $modelo, $año, $estado) {
     }
 }
 
+// function eliminarTaxi($matricula, $con) {
+
+//     $consulta_eliminar_taxi = "DELETE FROM taxis WHERE Matricula = ?";
+//     $stmt = $con->prepare($consulta_eliminar_taxi);
+//     $stmt->bind_param("s", $matricula);
+    
+//     return $stmt->execute();
+// }
 
 //--------------------------------------AGREGAR TAXISTA----------------------------------------------------
 //AGREGAR TAXISTA Y CONTROL DE ERROR EN LICENCIA
-function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_Nuevo_Taxista, $Fecha_venc_librCond_Nuevo_Taxista, $Direccion_Nuevo_Taxista, $Telefono_Nuevo_Taxista, $UserNuevo_Taxista, $ContrNuevo_Taxista){
+function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_Nuevo_Taxista, $Fecha_venc_librCond_Nuevo_Taxista, $Direccion_Nuevo_Taxista, $Telefono_Nuevo_Taxista, $UserNuevo_Taxista, $ContrNuevo_Taxista)
+{
     // Comenzar una transacción para asegurar la integridad de los datos
     mysqli_begin_transaction($con);
 
@@ -437,7 +632,7 @@ function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_
     $hashed_password = password_hash($ContrNuevo_Taxista, PASSWORD_DEFAULT);
 
     // Insertar en la tabla taximetrista
-    $consulta_insertar_taximetrista = "INSERT INTO `taximetrista`(`Fecha_Expiracion_Licencia`, `Fecha_Nacimiento`, `Usuario`, `Contrasenia`,  `FK-Persona`) 
+    $consulta_insertar_taximetrista = "INSERT INTO `taximetrista`(`Fecha_Expiracion_Licencia`, `Fecha_Nacimiento`, `Usuario`, `Contrasenia`,  `FK_Persona`) 
                                        VALUES ('$Fecha_venc_librCond_Nuevo_Taxista', '$FechaNac_Nuevo_Taxista', '$UserNuevo_Taxista', '$hashed_password', '$persona_id')";
 
     if (!mysqli_query($con, $consulta_insertar_taximetrista)) {
@@ -462,7 +657,8 @@ function agregar_taximetrista($con, $Nombre, $Apellido_Nuevo_Taxista, $FechaNac_
 
 
 
-function agregar_nuevo_cliente($con, $NombreNuevo_Cliente, $ApellidoNuevo_Cliente, $TelefonoNuevo_Cliente, $DireccionNuevo_Cliente, $DeudaNuevo_Cliente) {
+function agregar_nuevo_cliente($con, $NombreNuevo_Cliente, $ApellidoNuevo_Cliente, $TelefonoNuevo_Cliente, $DireccionNuevo_Cliente, $DeudaNuevo_Cliente)
+{
     // Iniciar la transacción
     mysqli_begin_transaction($con);
 
@@ -507,17 +703,18 @@ function agregar_nuevo_cliente($con, $NombreNuevo_Cliente, $ApellidoNuevo_Client
 }
 
 
-    
-function cantidad_clientes($con) {
+
+function cantidad_clientes($con)
+{
     $consulta_cant_clientes = "SELECT COUNT(DISTINCT persona.ID) AS cantidad_clientes
                                FROM persona 
                                JOIN cliente_registrado ON persona.ID = cliente_registrado.Fk_Persona";
-    
+
     $resultado = mysqli_query($con, $consulta_cant_clientes);
 
-    $fila = mysqli_fetch_assoc($resultado); 
+    $fila = mysqli_fetch_assoc($resultado);
 
-    return $fila['cantidad_clientes']; 
+    return $fila['cantidad_clientes'];
 }
 
 // function obtener_ingreso_jornada($con, $id_jornada) {
@@ -557,14 +754,14 @@ function cantidad_clientes($con) {
 //     // Paso 1: Obtener todos los IDs de jornada
 //     $queryJornadas = "SELECT DISTINCT FK_Jornada FROM viaje";
 //     $resultJornadas = $con->query($queryJornadas);
-    
+
 //     $tarifas = [];
 
 //     // Paso 2: Recorremos todas las jornadas
 //     if ($resultJornadas->num_rows > 0) {
 //         while ($rowJornada = $resultJornadas->fetch_assoc()) {
 //             $id_jornada = $rowJornada['FK_Jornada'];
-            
+
 //             // Paso 3: Consultamos la suma de tarifas para cada jornada
 //             $queryTarifas = "SELECT SUM(tarifa) AS total_tarifas FROM viaje WHERE FK_Jornada = ?";
 //             $stmt = $con->prepare($queryTarifas);
@@ -587,7 +784,8 @@ function cantidad_clientes($con) {
 //     return json_encode($tarifas);
 // }
 
-function obtener_informacion_jornadas($con) {
+function obtener_informacion_jornadas($con)
+{
     // Consulta ajustada para incluir jornada, taxi, taximetrista, persona y suma de tarifas
     $query = " SELECT 
             j.ID AS id_jornada, 
@@ -597,14 +795,14 @@ function obtener_informacion_jornadas($con) {
             p.Nombre AS taxista_nombre  
         FROM viaje v
         INNER JOIN jornada j ON v.FK_Jornada = j.ID
-        INNER JOIN taxi t ON j.`FK-Taxi` = t.ID
+        INNER JOIN taxi t ON j.`FK_Taxi` = t.ID
         INNER JOIN taximetrista tx ON v.FK_Taximetrista = tx.ID
-        INNER JOIN persona p ON tx.`FK-Persona` = p.ID 
+        INNER JOIN persona p ON tx.`FK_Persona` = p.ID 
         GROUP BY j.ID, j.fecha, t.matricula, p.Nombre
 ";
 
     $result = $con->query($query);
-    
+
     $datos = [];
 
     if ($result->num_rows > 0) {
@@ -624,3 +822,58 @@ function obtener_informacion_jornadas($con) {
 }
 
 
+// FUNCION DE TAXIMETRISTAS DEL MES
+function RankingTaxistasMes($con)
+{
+    // Consulta SQL para obtener los 3 taxistas con más dinero generado en el mes actual
+    $consulta_ranking_taxistas = "SELECT 
+    CONCAT(persona.Nombre, ' ', persona.Apellido) AS nombre_taximetrista, 
+    SUM(viaje.Tarifa) AS total_generado
+FROM 
+    viaje
+INNER JOIN 
+    taximetrista ON viaje.Fk_Taximetrista = taximetrista.ID
+INNER JOIN 
+    persona ON taximetrista.FK_Persona = persona.ID
+WHERE 
+    MONTH(viaje.Fecha) = MONTH(CURDATE()) 
+    AND YEAR(viaje.Fecha) = YEAR(CURDATE())
+GROUP BY 
+    persona.ID
+ORDER BY 
+    total_generado DESC
+LIMIT 3";
+
+    // Ejecutar la consulta
+    $resultado = mysqli_query($con, $consulta_ranking_taxistas);
+
+    if ($resultado) {
+        // Verificar si se obtuvieron resultados
+        if (mysqli_num_rows($resultado) > 0) {
+            $ranking = [];
+            while ($fila = mysqli_fetch_assoc($resultado)) {
+                // Almacenar cada taxista en el array
+                $ranking[] = $fila;
+            }
+
+            // Devolver los resultados en un array con éxito
+            return [
+                'success' => true,
+                'message' => 'Ranking generado con éxito',
+                'data' => $ranking
+            ];
+        } else {
+            // Si no hay resultados, devolver un mensaje adecuado
+            return [
+                'success' => false,
+                'message' => 'No se encontraron taxistas para este mes.'
+            ];
+        }
+    } else {
+        // En caso de error en la ejecución de la consulta
+        return [
+            'success' => false,
+            'message' => 'Error al generar el ranking: ' . mysqli_error($con)
+        ];
+    }
+}

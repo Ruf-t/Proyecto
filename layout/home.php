@@ -1,10 +1,5 @@
-<?php
-
-session_start();
-?>
-
 <link rel="stylesheet" href="../resources/style.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="icon" href="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-3B.svg" type="image/png">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../resources/ajax.js"></script>
 <body id="body-home">   
@@ -16,26 +11,14 @@ session_start();
         ?>
         
         <section class="div-taxistas-mes">
-            <h3 id="h3_taxistas_mes"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></h3>
-            <div class="taxistas-lista">
-                <div>    
-                    <p class="nombre-taxistas-mes">Maharrm Hasanli</p>
-                    <p class="num-taxistas-mes">+598 92112906</p>
-                </div>
-                <div>
-                    <p class="nombre-taxistas-mes">Gina Garza</p>
-                    <p class="num-taxistas-mes">+598 92112906</p>
-                </div>
-                <div>
-                    <p class="nombre-taxistas-mes">Brian Reed</p>
-                    <p class="num-taxistas-mes">+598 92112906</p>
-                </div>
+            <h3 id="h3_taxistas_mes"></h3>
+            <div class="ranking-taxistas">
             </div>
         </section>
 
         
         <div class="div-h3-panel">
-            <h3 id="h3_tabla_viaje_panel"><img src="../resources/img/Iconos-SVG/icons-others/flecha-mayorque.svg"></h3>
+            <h3 id="h3_tabla_viaje_panel"></h3>
         </div>
         <div class="div-tabla-panel">
             <table id="table-panel">

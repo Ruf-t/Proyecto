@@ -1,8 +1,7 @@
 <?php
-include("/xampp/htdocs/Proyecto/BaseDatos/login-bd.php");
+include_once("../../BaseDatos/functions.php");
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +9,8 @@ include("/xampp/htdocs/Proyecto/BaseDatos/login-bd.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
     <link rel="stylesheet" href="../style/style-Taximetristas.css">
- 
+    <link rel="icon" href="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-3B.svg" type="image/png">
 </head>
-
 <body class="body-login">
 <div class="container-login">
         <div class="login-card">
@@ -39,13 +37,12 @@ include("/xampp/htdocs/Proyecto/BaseDatos/login-bd.php");
             </div>
         </div>
     </div>
-    <button class="switch_idioma_index" id="switch_idioma"></button>
+    <!-- <button class="switch_idioma_index" id="switch_idioma"></button> -->
 
    
-    <!--  -->
 
-       <!---- importación de jQuery ---->
-       <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!---- importación de jQuery ---->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- Scripts personalizados -->
     <script src="../resources-Taximetristas/script-idioma.js"></script>
     <script src="/proyecto/resources/script.js"></script>
