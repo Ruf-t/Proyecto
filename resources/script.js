@@ -74,13 +74,35 @@ btnsCerrarModal.forEach((btn, index) => {
 
 //---------------ABRIR MODAL MODIFICAR------------------
 const btnsAbrirModalModificar = document.querySelectorAll('.btn-abrir-modal-modificar');
-const modalModificar = document.querySelector('.modal');  // Solo hay un modal
+const modalModificar = document.querySelector('.modal-modificar');  // Solo hay un modal
 const btnCerrarModalModificar = document.querySelector('.btn-cerrar-modal-modificar');  // Botón de cerrar
 
 // Añadir el evento a todos los botones para abrir el mismo modal
 btnsAbrirModalModificar.forEach(btn => {
     btn.addEventListener('click', () => {
         modalModificar.showModal();  // Abre el mismo modal para todos los botones
+    });
+});
+
+btnsCerrarModalModificar.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        modals[index].close();
+    });
+});
+
+const btnsAbrirModal = document.querySelectorAll('.btn-abrir-modal');
+const btnsCerrarModal = document.querySelectorAll('.btn-cerrar-modal');
+const modals = document.querySelectorAll('.modal');
+
+btnsAbrirModal.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        modals[index].showModal();
+    });
+});
+
+btnsCerrarModal.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        modals[index].close();
     });
 });
 
@@ -290,7 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const th_estadoElement = document.getElementById('th_estado');
     const th_proximo_servicioElement = document.getElementById('th_proximo_servicio');
     const th_modificar_eliminarElement = document.getElementById('th_modificar_eliminar');
-    const h2_agregar_taxiElement =  document.getElementById('h2_agregar_taxi');
+    const h2_agregar_taxiElement = document.getElementById('h2_agregar_taxi');
+    const h2_modificar_taxiElement = document.getElementById('h2_modificar_taxi');
     const label_matriculaElement = document.getElementById('label_matricula');
     const label_modeloElement = document.getElementById('label_modelo');
     const label_anioElement = document.getElementById('label_anio');
@@ -300,6 +323,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const option_select_estado2Element = document.getElementById('option_select_estado2');
     const btn_add_taxiElement = document.getElementById('btn_add_taxi');
     const h2_eliminar_taxiElement = document.getElementById('h2_eliminar_taxi');
+
+    const label_matricula_modiElement = document.getElementById('label_matricula_modi');
+    const label_modelo_modiElement = document.getElementById('label_modelo_modi');
+    const label_anio_modiElement = document.getElementById('label_anio_modi');
+    const label_estado_modiElement = document.getElementById('label_estado_modi');
+    const option_select_estado_modiElement = document.getElementById('option_select_estado_modi');
+    const option_select_estado1_modiElement = document.getElementById('option_select_estado1_modi');
+    const option_select_estado2_modiElement = document.getElementById('option_select_estado2_modi');
+    const btn_add_taxi_modiElement = document.getElementById('btn_add_taxi_modi');
     // CONFIGURACIÓN
     const h3_opcionesElement = document.getElementById('h3_opciones');
     const texto_btnElement = document.getElementById('switch_idioma');
@@ -415,6 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (th_proximo_servicioElement) th_proximo_servicioElement.textContent = data[language].th_proximo_servicio;
                 if (th_modificar_eliminarElement) th_modificar_eliminarElement.textContent = data[language].th_modificar_eliminar;
                 if (h2_agregar_taxiElement) h2_agregar_taxiElement.textContent = data[language].h2_agregar_taxi;
+                if (h2_modificar_taxiElement) h2_modificar_taxiElement.textContent = data[language].h2_modificar_taxi;
                 if (label_matriculaElement) label_matriculaElement.textContent = data[language].label_matricula;
                 if (label_modeloElement) label_modeloElement.textContent = data[language].label_modelo;
                 if (label_anioElement) label_anioElement.textContent = data[language].label_anio;
@@ -423,7 +456,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (option_select_estado1Element) option_select_estado1Element.textContent = data[language].option_select_estado1;
                 if (option_select_estado2Element) option_select_estado2Element.textContent = data[language].option_select_estado2;
                 if (btn_add_taxiElement) btn_add_taxiElement.textContent = data[language].btn_add_taxi;
-                if (h2_eliminar_taxiElement) h2_eliminar_taxiElement.textContent = data[language].h2_eliminar_taxi;                
+                if (h2_eliminar_taxiElement) h2_eliminar_taxiElement.textContent = data[language].h2_eliminar_taxi;
+                
+                if (label_matricula_modiElement) label_matricula_modiElement.textContent = data[language].label_matricula_modi;
+                if (label_modelo_modiElement) label_modelo_modiElement.textContent = data[language].label_modelo_modi;
+                if (label_anio_modiElement) label_anio_modiElement.textContent = data[language].label_anio_modi;
+                if (label_estado_modiElement) label_estado_modiElement.textContent = data[language].label_estado_modi;
+                if (option_select_estado_modiElement) option_select_estado_modiElement.textContent = data[language].option_select_estado_modi;
+                if (option_select_estado1_modiElement) option_select_estado1_modiElement.textContent = data[language].option_select_estado1_modi;
+                if (option_select_estado2_modiElement) option_select_estado2_modiElement.textContent = data[language].option_select_estado2_modi;
+                if (btn_add_taxi_modiElement) btn_add_taxi_modiElement.textContent = data[language].btn_add_taxi_modi;
                 // CONFIGURACIÓN
                 if (h3_opcionesElement) h3_opcionesElement.textContent = data[language].h3_opciones;
                 if (texto_btnElement) texto_btnElement.textContent = data[language].switch_idioma;

@@ -68,7 +68,7 @@
                     <select name="estado" id="estado" class="select-estado">
                     <option value="" id="option_select_estado"></option>
                     <option value="Disponible" id="option_select_estado1"></option>
-                    <option value="No Disponible" id="option_select_estado2"></option>
+                    <option value="No Disponible" id="optiobtnn_select_estado2"></option>
                     </select>
                 </label>
             </div>
@@ -84,29 +84,26 @@
     <!-- ------------------------------------MODAL MODIFICAR------------------------------------------- -->
     <dialog class="modal-modificar">
         <div class="div-titulo-modal-modificar">
-            <h2 id="h2_modificar_taxista"></h2>   
-            <button class="btn-cerrar-modal-modificar"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
+            <h2 id="h2_modificar_taxi"></h2>   
+            <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
         </div>
-        <form id="form-add-taxistas" method="post">
+        <form id="form-modi-taxi" class="formulario" method="post">
             <div class="div-labels-forms">
-                <label><span id="label_nombre"></span><input type="text" name="Nombre" id="Nombre-Nuevo-Taxista"></label>
-                <label><span id="label_apellido"></span><input type="text" name="Apellido-Nuevo-Taxista"></label>
+                <label><span id="label_matricula_modi"></span><input type="text" name="matricula" id="matricula"></label>
+                <label><span id="label_modelo_modi"></span><input type="text" name="modelo" id="modelo"></label>
             </div>
             <div class="div-labels-forms">
-                <label><span id="label_fecha_nac"></span><input type="date" name="FechaNac-Nuevo-Taxista"></label>
-
-                <label><span id="label_fecha_venc"></span><input type="date" name="Fecha-venc-librCond-Nuevo-Taxista"></label>
+                <label><span id="label_anio_modi"></span><input type="number" name="anio" id="anio"></label>
+                <label><span id="label_estado_modi"></span>
+                    <select name="estado" id="estado" class="select-estado">
+                    <option value="" id="option_select_estado_modi"></option>
+                    <option value="Disponible" id="option_select_estado1_modi"></option>
+                    <option value="No Disponible" id="optiobtnn_select_estado2_modi"></option>
+                    </select>
+                </label>
             </div>
             <div class="div-labels-forms">
-                <label class="label-direccion"><span id="label_direccion"></span><input type="text" name="Direccion-Nuevo-Taxista" id="Direccion-Nuevo-Taxista"></label>
-                <label class="label-direccion"><span id="label_telefono"></span><input type="text" name="Telefono-Nuevo-Taxista" id="Telefono-Nuevo-Taxista"></label>
-            </div>
-            <div class="div-labels-forms">
-                <label class="label-direccion"><span id="label_user"></span><input type="text" name="UserNuevo-Taxista" id="UserNuevo-Taxista"></label>
-                <label class="label-direccion"><span id="label_contra"></span><input type="password" name="ContrNuevo-Taxista" id="ContrNuevo-Taxista"></label>
-            </div>
-            <div class="div-labels-forms">
-                <button type="submit" class="boton-enviar-modal-editar" id="btn_enviar_cliente"></button>
+                <button type="submit" class="boton-enviar-modal-taxis btn-cerrar-modal" id="btn_add_taxi_modi"></button>
             </div>
         </form>
     </dialog>

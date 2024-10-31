@@ -77,6 +77,7 @@ $(document).ready(function(){
     });
 });
 
+
 // REGISTRO DE ADMINISTRADOR 
 $(document).ready(function() {
     $('#form-register').on('submit', function(e) {
@@ -95,35 +96,30 @@ $(document).ready(function() {
         // Validación de campos con requerimientos específicos
         let errorMsg = '';
 
-        // Validación de Nombre: máximo 20 letras
-        if (!/^[A-Za-z]{1,20}$/.test(formData.NombreNuevo_Administrador)) {
-            errorMsg += 'El nombre debe contener solo letras y tener un máximo de 20 caracteres.\n';
+        if (formData.NombreNuevo_Administrador === '' || formData.ApellidoNuevo_Administrador === '' ||
+            formData.TelefonoNuevo_Administrador === '' || formData.DireccionNuevo_Administrador === '' ||
+            formData.UserNuevo_Administrador === '' || formData.contraseniaNuevo_Administrador === '') {
+            
+            errorMsg = 'Debe completar todos los campos.\n';
+        } else {
+            // Resto de las validaciones
+            if (!/^[A-Za-z]{1,20}$/.test(formData.NombreNuevo_Administrador)) {
+                errorMsg += 'El nombre debe contener solo letras y tener un máximo de 20 caracteres.\n';
+            } else if (!/^[A-Za-z]{1,25}$/.test(formData.ApellidoNuevo_Administrador)) {
+                errorMsg += 'El apellido debe contener solo letras y tener un máximo de 25 caracteres.\n';
+            } else if (!/^\d{9}$/.test(formData.TelefonoNuevo_Administrador)) {
+                errorMsg += 'El teléfono debe contener exactamente 9 dígitos.\n';
+            } else if (!/^(?=.*[A-Za-z])(?=.*\d).+$/.test(formData.DireccionNuevo_Administrador)) {
+                errorMsg += 'La dirección debe contener al menos una letra y un número.\n';
+            } else if (!/^(?=.*[A-Z])[A-Za-z]{1,20}$/.test(formData.UserNuevo_Administrador)) {
+                errorMsg += 'El usuario debe contener al menos una letra mayúscula y tener un máximo de 20 caracteres.\n';
+            } else if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{6,20}$/.test(formData.contraseniaNuevo_Administrador)) {
+                errorMsg += 'La contraseña debe tener al menos una mayúscula, una minúscula, un número, y entre 6 y 20 caracteres.\n';
+            }
         }
+        
 
-        // Validación de Apellido: máximo 25 letras
-        if (!/^[A-Za-z]{1,25}$/.test(formData.ApellidoNuevo_Administrador)) {
-            errorMsg += 'El apellido debe contener solo letras y tener un máximo de 25 caracteres.\n';
-        }
-
-        // Validación de Teléfono: exactamente 9 dígitos
-        if (!/^\d{9}$/.test(formData.TelefonoNuevo_Administrador)) {
-            errorMsg += 'El teléfono debe contener exactamente 9 dígitos.\n';
-        }
-
-        // Validación de Dirección: al menos una letra y un número
-        if (!/^(?=.*[A-Za-z])(?=.*\d).+$/.test(formData.DireccionNuevo_Administrador)) {
-            errorMsg += 'La dirección debe contener al menos una letra y un número.\n';
-        }
-
-        // Validación de Usuario: una mayúscula, solo letras, máximo 20 caracteres
-        if (!/^(?=.*[A-Z])[A-Za-z]{1,20}$/.test(formData.UserNuevo_Administrador)) {
-            errorMsg += 'El usuario debe contener al menos una letra mayúscula y tener un máximo de 20 caracteres.\n';
-        }
-
-        // Validación de Contraseña: una mayúscula, una minúscula, un número, entre 6 y 20 caracteres
-        if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{6,20}$/.test(formData.contraseniaNuevo_Administrador)) {
-            errorMsg += 'La contraseña debe tener al menos una mayúscula, una minúscula, un número, y entre 6 y 20 caracteres.\n';
-        }
+        
 
         // Si hay errores, mostrar mensajes y detener la ejecución
         if (errorMsg) {
@@ -157,6 +153,15 @@ $(document).ready(function() {
 $(document).ready(function() {
     // Función para obtener el ranking de taxistas
     function obtenerRankingTaxistas() {
+
+        // Verificamos si el contenedor .ranking-taxistas existe en el DOM
+        const rankingContainer = document.querySelector('.ranking-taxistas');
+        
+        if (!rankingContainer) {
+            // Si el contenedor no existe, terminamos la ejecución de la función
+            return;
+        }
+
         $.ajax({
             url: '../BaseDatos/peticiones-ajax.php',
             method: 'POST',

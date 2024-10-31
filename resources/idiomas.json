@@ -106,6 +106,7 @@
         "th_proximo_servicio":"Next Service",
         "th_modificar_eliminar":"Modify-Delete",
         "h2_agregar_taxi":"Add new Taxi",
+        "h2_modificar_taxi":"Update Taxi",
         "label_matricula":"Number Plate",        
         "label_modelo":"Brant and Model",
         "label_anio":"Year",
@@ -114,6 +115,17 @@
         "option_select_estado1":"Available",
         "option_select_estado2":"Occupied",
         "btn_add_taxi":"Add",
+
+        "MODAL MODIFICAR":"--------------------",
+        "label_matricula_modi":"Number Plate",        
+        "label_modelo_modi":"Brant and Model",
+        "label_anio_modi":"Year",
+        "label_estado_modi":"State (Active or Inactive)",
+        "option_select_estado_modi":"Slect State",
+        "option_select_estado1_modi":"Available",
+        "option_select_estado2_modi":"Occupied",
+        "btn_add_taxi_modi":"Update",
+        
         "h2_eliminar_taxi":"Do you want to delete Taxi?",
 
         "CONFIG":"-----------------------------------------",
@@ -247,6 +259,7 @@
         "th_proximo_servicio":"Proximo Servicio",
         "th_modificar_eliminar":"Modificar-Eliminar",
         "h2_agregar_taxi":"Agregar Taxi",
+        "h2_modificar_taxi":"Modificar Taxi",
         "label_matricula":"Matricula",        
         "label_modelo":"Marca y Modelo",
         "label_anio":"Año",
@@ -255,6 +268,18 @@
         "option_select_estado1":"Disponible",
         "option_select_estado2":"No Disponible",
         "btn_add_taxi":"Añadir",
+
+
+        "MODAL MODIFICAR":"--------------------",
+        "label_matricula_modi":"Matricula",        
+        "label_modelo_modi":"Marca y Modelo",
+        "label_anio_modi":"Año",
+        "label_estado_modi":"Estado (Activo o Inactivo)",
+        "option_select_estado_modi":"Selecciona un estado",
+        "option_select_estado1_modi":"Disponible",
+        "option_select_estado2_modi":"No Disponible",    
+        "btn_add_taxi_modi":"Modificar",
+
         "h2_eliminar_taxi":"¿Deseas eliminar el Taxi?",
 
 
