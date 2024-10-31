@@ -72,39 +72,77 @@ btnsCerrarModal.forEach((btn, index) => {
 //     });
 // });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //---------------ABRIR MODAL MODIFICAR------------------
-const btnsAbrirModalModificar = document.querySelectorAll('.btn-abrir-modal-modificar');
-const modalModificar = document.querySelector('.modal-modificar');  // Solo hay un modal
-const btnCerrarModalModificar = document.querySelector('.btn-cerrar-modal-modificar');  // Botón de cerrar
+// const btnsAbrirModalModificar = document.querySelectorAll('.btn-abrir-modal-modificar');
+// const modalModificar = document.querySelector('.modal-modificar');  // Solo hay un modal
+// const btnCerrarModalModificar = document.querySelector('.btn-cerrar-modal-modificar');  // Botón de cerrar
 
-// Añadir el evento a todos los botones para abrir el mismo modal
-btnsAbrirModalModificar.forEach(btn => {
-    btn.addEventListener('click', () => {
-        modalModificar.showModal();  // Abre el mismo modal para todos los botones
-    });
-});
+// // Añadir el evento a todos los botones para abrir el mismo modal
+// btnsAbrirModalModificar.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//         modalModificar.showModal();  // Abre el mismo modal para todos los botones
+//     });
+// });
 
-btnsCerrarModalModificar.forEach((btn, index) => {
-    btn.addEventListener('click', () => {
-        modals[index].close();
-    });
-});
+// btnsCerrarModalModificar.forEach((btn, index) => {
+//     btn.addEventListener('click', () => {
+//         modals[index].close();
+//     });
+// });
 
-const btnsAbrirModal = document.querySelectorAll('.btn-abrir-modal');
-const btnsCerrarModal = document.querySelectorAll('.btn-cerrar-modal');
-const modals = document.querySelectorAll('.modal');
+// const btnsAbrirModal = document.querySelectorAll('.btn-abrir-modal');
+// const btnsCerrarModal = document.querySelectorAll('.btn-cerrar-modal');
+// const modals = document.querySelectorAll('.modal');
 
-btnsAbrirModal.forEach((btn, index) => {
-    btn.addEventListener('click', () => {
-        modals[index].showModal();
-    });
-});
+// btnsAbrirModal.forEach((btn, index) => {
+//     btn.addEventListener('click', () => {
+//         modals[index].showModal();
+//     });
+// });
 
-btnsCerrarModal.forEach((btn, index) => {
-    btn.addEventListener('click', () => {
-        modals[index].close();
-    });
-});
+// btnsCerrarModal.forEach((btn, index) => {
+//     btn.addEventListener('click', () => {
+//         modals[index].close();
+//     });
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //---------------ABRIR MODAL ELIMINAR------------------
@@ -257,6 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const th_ingresoElement = document.getElementById('th_ingreso');
     const h3_tabla_viaje_panelElement = document.getElementById('h3_tabla_viaje_panel');
     //VIAJES 
+    const h1_viajesElement = document.getElementById('h1_viajes');
     const option_select_turnoElement = document.getElementById('option_select_turno');
     const option_select_turno1Element = document.getElementById('option_select_turno1');
     const option_select_turno2Element = document.getElementById('option_select_turno2');
@@ -391,6 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (th_ingresoElement) th_ingresoElement.textContent = data[language].th_ingreso;
                 if (h3_tabla_viaje_panelElement) h3_tabla_viaje_panelElement.textContent = data[language].h3_tabla_viaje_panel;
                 //VIAJES
+                if (h1_viajesElement) h1_viajesElement.textContent = data[language].h1_viajes;
                 if (option_select_turnoElement) option_select_turnoElement.textContent = data[language].option_select_turno;
                 if (option_select_turno1Element) option_select_turno1Element.textContent = data[language].option_select_turno1;
                 if (option_select_turno2Element) option_select_turno2Element.textContent = data[language].option_select_turno2;

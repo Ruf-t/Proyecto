@@ -46,6 +46,7 @@
         "h3_tabla_viaje_panel": "Trip Table",
 
         "VIAJES":"------------------------------------------",
+        "h1_viajes":"Trips",
         "option_select_turno":"Select a shift",
         "option_select_turno1":"Shift 1",
         "option_select_turno2":"Shift 2",
@@ -199,6 +200,7 @@
         "h3_tabla_viaje_panel": "Tabla Viajes",
 
         "VIAJES":"------------------------------------------",
+        "h1_viajes":"Viajes",
         "option_select_turno":"Selecciona un turno",
         "option_select_turno1":"Turno 1",
         "option_select_turno2":"Turno 2",

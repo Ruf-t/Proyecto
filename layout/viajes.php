@@ -8,6 +8,7 @@
         $datos_viaje = datos_tabla_viaje($con);
         ?>
         <div class="btn-select-turno-fecha">
+            <h1 id="h1_viajes"></h1>
             <div class="selects">
                 <select id="fecha"> 
                     <option value="" id="option_select_fecha"></option>
