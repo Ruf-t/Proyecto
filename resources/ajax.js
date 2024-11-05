@@ -515,7 +515,54 @@ $('#fecha').change(function() {
     }
 });
 
+//filtro ingresos 
+$(document).ready(function() {
+    $('#fecha_I').change(function() {
+        let fechaSeleccionada = $(this).val();
+        console.log('Fecha seleccionada:', fechaSeleccionada); // Para depuración
 
+        // Comprobar que el valor no esté vacío
+        if (fechaSeleccionada) {
+            $.ajax({
+                url: '../BaseDatos/peticiones-ajax.php',
+                type: 'POST',
+                data: {
+                    action: 'filtrar_ingresos',
+                    fecha: fechaSeleccionada
+                },
+                success: function(response) {
+                    console.log('Respuesta del servidor:', response); // Para depuración
+                    let datos = JSON.parse(response);
+                    let filas = '';
+
+                    // Verificar si hay datos
+                    if (datos.length > 0) {
+                        // Crear filas de la tabla a partir de los datos
+                        $.each(datos, function(index, fila) {
+                            filas += '<tr>' +
+                                '<td>' + fila.taxi_numero + '</td>' +
+                                '<td>' + fila.taxista_nombre + '</td>' +
+                                '<td>' + fila.fecha + '</td>' +
+                                '<td>' + fila.total_tarifas + '</td>' +
+                            '</tr>';
+                        });
+                        $('#jornadas-body').html(filas);
+                    } else {
+                        // Si no hay datos, mostrar un mensaje
+                        $('#jornadas-body').html('<tr><td colspan="4">No hay ingresos para la fecha seleccionada.</td></tr>');
+                    }
+                },
+                error: function() {
+                    console.error('Error al cargar los datos.');
+                    $('#jornadas-body').html('<tr><td colspan="4">Error al cargar los datos.</td></tr>');
+                }
+            });
+        } else {
+            // Opción por defecto seleccionada
+            $('#jornadas-body').html(''); // Limpiar la tabla si no hay selección
+        }
+    });
+});
 
 
 $(document).ready(function() {

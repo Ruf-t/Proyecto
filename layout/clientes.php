@@ -40,8 +40,8 @@
             <div class="div-labels-forms">
                 <label><span id="label_direccion"></span><input type="text" name="DireccionNuevo_Cliente" id="DireccionNuevo_Cliente"></label>
             </div>  
-            <div class="div-labels-forms">  
-                <button type="submit" id="btn_enviar_cliente"></button>
+            <div class="div-labels-forms-button">  
+                <button type="submit" class="boton-enviar-modal" id="btn_enviar_cliente"></button>
             </div>
             </form>
         </dialog>

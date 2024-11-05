@@ -5,7 +5,7 @@ if (isset($_POST['userTaxi']) && isset($_POST['contraseniaTaxi'])) {
         // Obtener datos del formulario
         $userTaxi = $_POST["userTaxi"];
         $contraseniaTaxi = $_POST["contraseniaTaxi"];
-        
+         
         // Llamar a la función para agregar usuario
         logearTaxi($con, $userTaxi, $contraseniaTaxi);
         exit();

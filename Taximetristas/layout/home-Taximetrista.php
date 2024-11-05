@@ -1,7 +1,7 @@
 <?php
 include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
 
-// session_start();
+session_start();
 if (!isset($_SESSION['userTaxi'])) {
     header("Location: index-Taximetrista.php");
     exit;

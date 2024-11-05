@@ -28,7 +28,8 @@ $.ajax({
                     }, 5000);
                 }
             },
-            
+                        // '../resources-Taximetristas/Peticiones/procesar-taximetrista.php'
+                        // ../layout/home-Taximetrista.php
             error: function(error) {
                 $('.mensajeAJAX').text('Ocurrió un error inesperado.');
                 $('.respuestaAJAX').slideDown();

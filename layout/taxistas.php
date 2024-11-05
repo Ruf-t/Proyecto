@@ -17,14 +17,14 @@
         <div class="div-addCliente">
             <h1 id="h1_taxistas"></h1>
             <!-- <button class="btn-abrir-modal boton-add-cliente">Añadir Taximetrista</button> -->
-            <button class="btn-abrir-modal boton-add-taxista" id="btn_abrir_modal_taxistas"></button>
+            <button class="btn-abrir-modal-modificar boton-add-taxista" id="btn_abrir_modal_taxistas"></button>
         </div>
 
         <!-- ------------------------------------MODAL AÑADIR--------------------------------------------->
         <dialog class="modal modal-taxistas">
-            <div class="div-titulo-modal">
+            <div class="div-titulo-modal">      
                 <h2 id="h2_agregar_taxista"></h2>   
-                <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
+                <button class="btn-cerrar-modal-modificar"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
             <form id="form-add-taxistas" method="post">
                 <div class="div-labels-forms">
@@ -43,7 +43,7 @@
                     <label class="label-direccion"><span id="label_user"></span><input type="text" name="UserNuevo-Taxista" id="UserNuevo-Taxista"></label>
                     <label class="label-direccion"><span id="label_contra"></span><input type="password" name="ContrNuevo-Taxista" id="ContrNuevo-Taxista"></label>
                 </div>
-                <div class="div-labels-forms">
+                <div class="div-labels-forms-button">
                     <button type="submit" class="boton-enviar-modal" id="btn_enviar_cliente"></button>
                 </div>
             </form>

@@ -131,8 +131,7 @@ function logear($con, $user, $contrasenia) {
 
 
 // LOGEAR TAXIMETRISTA
-function logearTaxi($con, $userTaxi, $contrasenia)
-{
+function logearTaxi($con, $userTaxi, $contrasenia){
     // Preparar la consulta SQL para evitar inyección SQL
     $consulta_login = "SELECT * FROM taximetrista WHERE Usuario = ?";
     $stmt = mysqli_prepare($con, $consulta_login);
@@ -810,6 +809,10 @@ function obtener_informacion_jornadas($con){
     // Retornamos el array como JSON para usarlo en el frontend
     return json_encode($datos);
 }
+
+
+
+
 
 
 // FUNCION DE TAXIMETRISTAS DEL MES

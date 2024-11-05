@@ -83,29 +83,22 @@ btnsCerrarModal.forEach((btn, index) => {
 
 
 
+const btnsAbrirModalModificar = document.querySelectorAll('.btn-abrir-modal-modificar');
+const modalModificar = document.querySelector('.modal-modificar');  // Solo hay un modal
+const btnCerrarModalModificar = document.querySelector('.btn-cerrar-modal-modificar');  // Botón de cerrar
 
+// Añadir el evento a todos los botones para abrir el mismo modal
+btnsAbrirModalModificar.forEach(btn => {
+    btn.addEventListener('click', () => {
+        modalModificar.showModal();  // Abre el mismo modal para todos los botones
+    });
+});
 
-
-
-
-
-//---------------ABRIR MODAL MODIFICAR------------------
-// const btnsAbrirModalModificar = document.querySelectorAll('.btn-abrir-modal-modificar');
-// const modalModificar = document.querySelector('.modal-modificar');  // Solo hay un modal
-// const btnCerrarModalModificar = document.querySelector('.btn-cerrar-modal-modificar');  // Botón de cerrar
-
-// // Añadir el evento a todos los botones para abrir el mismo modal
-// btnsAbrirModalModificar.forEach(btn => {
-//     btn.addEventListener('click', () => {
-//         modalModificar.showModal();  // Abre el mismo modal para todos los botones
-//     });
-// });
-
-// btnsCerrarModalModificar.forEach((btn, index) => {
-//     btn.addEventListener('click', () => {
-//         modals[index].close();
-//     });
-// });
+btnsCerrarModalModificar.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        modals[index].close();
+    });
+});
 
 // const btnsAbrirModal = document.querySelectorAll('.btn-abrir-modal');
 // const btnsCerrarModal = document.querySelectorAll('.btn-cerrar-modal');

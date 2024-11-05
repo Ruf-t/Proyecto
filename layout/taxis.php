@@ -72,7 +72,7 @@
                     </select>
                 </label>
             </div>
-            <div class="div-labels-forms">
+            <div class="div-labels-forms-button">
                 <button type="submit" class="boton-enviar-modal-taxis btn-cerrar-modal" id="btn_add_taxi"></button>
             </div>
         </form>

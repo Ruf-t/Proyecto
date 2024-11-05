@@ -10,7 +10,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'get_ranking_taxistas') {
     $ranking = RankingTaxistasMes($con);
     
     // Devolvemos la respuesta en formato JSON
-    echo json_encode($ranking);
+    echo json_encode($ranking); 
     exit();
 }
 
@@ -48,6 +48,62 @@ if (isset($_POST['turno']) || isset($_POST['fecha'])) {
     exit();
 }
 
+//filtro ingresos
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'];
+
+    if ($action === 'filtrar_ingresos') {
+        $fecha = $_POST['fecha'];
+
+        // Realizar la lógica para filtrar según la fecha seleccionada
+        $query = "SELECT 
+                    j.ID AS id_jornada, 
+                    j.fecha, 
+                    SUM(v.tarifa) AS total_tarifas, 
+                    t.matricula AS taxi_numero, 
+                    p.Nombre AS taxista_nombre  
+                  FROM viaje v
+                  INNER JOIN jornada j ON v.FK_Jornada = j.ID
+                  INNER JOIN taxi t ON j.FK_Taxi = t.ID
+                  INNER JOIN taximetrista tx ON v.FK_Taximetrista = tx.ID
+                  INNER JOIN persona p ON tx.FK_Persona = p.ID ";
+
+        // Filtrado por fecha
+        if ($fecha) {
+            if ($fecha === 'hoy') {
+                $query .= "WHERE DATE(j.fecha) = CURDATE() ";
+            } elseif ($fecha === 'un_dia') {
+                $query .= "WHERE j.fecha >= DATE_SUB(CURDATE(), INTERVAL 1 DAY) ";
+            } elseif ($fecha === 'semana') {
+                $query .= "WHERE j.fecha >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) ";
+            } elseif ($fecha === 'mes') {
+                $query .= "WHERE j.fecha >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) ";
+            } elseif ($fecha === 'seis_meses') {
+                $query .= "WHERE j.fecha >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH) ";
+            }
+        }
+
+        $query .= "GROUP BY j.ID, j.fecha, t.matricula, p.Nombre";
+
+        $result = $con->query($query);
+        $datos = [];
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $datos[] = [
+                    'id_jornada' => $row['id_jornada'],
+                    'fecha' => $row['fecha'],
+                    'total_tarifas' => $row['total_tarifas'] ?? 0,
+                    'taxi_numero' => $row['taxi_numero'],
+                    'taxista_nombre' => $row['taxista_nombre'] ?? 'Desconocido'
+                ];
+            }
+        }
+
+        // Retornar los datos filtrados como JSON
+        echo json_encode($datos);
+    }
+}
 
 //LOGIN ADMINISTRADOR NO BORRAR
 if (isset($_POST['user']) && $_POST['contrasenia']) {
@@ -293,21 +349,23 @@ if (isset($_POST['Nombre']) &&
 //     echo json_encode(['error' => 'Método no válido']);
 // }
 
-if (isset($_POST['action']) && $_POST['action'] === 'obtener_tarifas') {
+// if (isset($_POST['action']) && $_POST['action'] === 'obtener_tarifas') {
     
-    // Configurar el encabezado para devolver JSON, debe ir antes de cualquier echo o salida
-    header('Content-Type: application/json');
+//     // Configurar el encabezado para devolver JSON, debe ir antes de cualquier echo o salida
+//     header('Content-Type: application/json');
     
-    // Llamar a la función que obtiene las tarifas y devolver el JSON
-    echo obtener_informacion_jornadas($con);
+//     // Llamar a la función que obtiene las tarifas y devolver el JSON
+//     echo obtener_informacion_jornadas($con);
     
-    // Detener la ejecución para evitar que cualquier salida posterior interfiera
-    exit;
+//     // Detener la ejecución para evitar que cualquier salida posterior interfiera
+//     exit;
     
-} else {
-    // En caso de que no se pase la acción correcta, devolver un error en formato JSON
-    header('Content-Type: application/json');
-    echo json_encode(['error' => 'Acción no válida']);
-    exit;
-}
+// } else {
+//     // En caso de que no se pase la acción correcta, devolver un error en formato JSON
+//     header('Content-Type: application/json');
+//     echo json_encode(['error' => 'Acción no válida']);
+//     exit;
+// }
+
+
 
