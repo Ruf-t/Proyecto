@@ -6,6 +6,28 @@ $.ajax({
     $('<style>').html(css).appendTo('head');
   });
   
+  $(document).ready(function() {
+    // Escuchar el evento de envío del formulario
+    $('#formCerrarSesion').on('submit', function(event) {
+        event.preventDefault();  // Evita la recarga de la página
+
+        // Enviar la solicitud AJAX
+        $.ajax({
+            url: '../../resources-Taximetristas/Peticiones/procesar-taximetrista.php',
+            type: 'POST',
+            data: { cerrarSesionTaximetrista: true },  // Enviar la señal para cerrar sesión
+            success: function(response) {
+                // Aquí puedes manejar la respuesta, como redirigir al usuario
+                window.location.href = "index-Taximetrista.php";  // Redirige al inicio de sesión
+            },
+            error: function(error) {
+                alert("Error al cerrar sesión");
+            }
+        });
+    });
+});
+
+
 
   $(document).ready(function() {
     $('#form-inicioS-taximetrista').on('submit', function(event) {
@@ -28,7 +50,8 @@ $.ajax({
                     }, 5000);
                 }
             },
-            
+                        // '../resources-Taximetristas/Peticiones/procesar-taximetrista.php'
+                        // ../layout/home-Taximetrista.php
             error: function(error) {
                 $('.mensajeAJAX').text('Ocurrió un error inesperado.');
                 $('.respuestaAJAX').slideDown();

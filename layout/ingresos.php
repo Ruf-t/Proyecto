@@ -13,29 +13,20 @@
         // $datos_res_jornada = json_decode($jsonDatos, true);
 
         $jsonDatosJornadas = obtener_informacion_jornadas($con);
-        $datos_res_jornada = json_decode($jsonDatosJornadas, true); // true para obtener un array asociativo
-
-
+        $datos_res_jornada = json_decode($jsonDatosJornadas, true); // true para obtener un array asociativo        
         ?>
         <div class="btn-select-filtro">
             <h1 id="h1_ingresos"></h1>
-            <!-- <div class="selects">
-                <select id="turno">
-                    <option value="" id="option_select_turno"></option>
-                    <option value="Turno 1" id="option_select_turno1"></option>
-                    <option value="Turno 2" id="option_select_turno2"></option>
+            <div class="selects">
+                <select id="fecha_I">
+                    <option value="">Seleccione una fecha</option>
+                    <option value="hoy">Hoy</option>
+                    <option value="un_dia">Último día</option>
+                    <option value="semana">Última semana</option>
+                    <option value="mes">Último mes</option>
+                    <option value="seis_meses">Últimos 6 meses</option>
                 </select>
-                <select id="fecha">
-                        <option value="" id="option_select_fecha"></option>
-                        <option value="hoy" id="option_select_fecha_hoy"></option>
-                        <option value="un_dia" id="option_select_fecha_1dia"></option>
-                        <option value="semana" id="option_select_fecha_semana"></option>
-                        <option value="mes" id="option_select_fecha_mes"></option>
-                        <option value="seis_meses" id="option_select_fecha_6meses"></option>
-                        <option value="personalizada" id="option_select_fecha_personalizada"></option>
-                    </select>
-            <button class="btn-aplicar-filtro" id="btn_aplicar_filtro"></button>
-            </div> -->
+            </div>
         </div>
         <div id="resultado"></div>
         <div class="div-tabla-ingresos">
@@ -48,7 +39,7 @@
                         <th id="th_ingreso"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="jornadas-body">
                 <?php foreach ($datos_res_jornada as $fila) { ?>
                             <tr>
                                 <td><?php echo $fila['taxi_numero']; ?></td> 

@@ -67,7 +67,7 @@ $userTaxi = $_SESSION['userTaxi'];
                 <option value="" id="select_metodo_pago"></option>
                 <option value="efectivo" id="select_efectivo"></option>
                 <option value="tarjeta" id="select_tarjeta"></option>
-                <option value="transferencia" id="select_trasferencia"></option>
+                <!-- <option value="transferencia" id="select_trasferencia"></option> -->
             </select>
             <p id="p_nombre_cliente"></p>
             <select name="ClienteViajeTaximetrista" id="ClienteViajeTaximetrista">
@@ -101,7 +101,7 @@ $userTaxi = $_SESSION['userTaxi'];
     </div>
 
 
-    <!-- <script src="/proyecto/resources/script.js"></script> -->
+    <script src="/proyecto/resources/script.js"></script>
     <script src="../resources-Taximetristas/script-idioma.js"></script>
     <script src="../resources-Taximetristas/ajax-taximetrista.js"></script>
     <!---- importacion de jquery---->

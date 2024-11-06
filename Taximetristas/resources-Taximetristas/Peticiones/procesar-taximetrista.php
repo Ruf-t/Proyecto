@@ -1,11 +1,11 @@
 <?php
 include '../../../BaseDatos/functions.php';
-
+session_start();
 if (isset($_POST['userTaxi']) && isset($_POST['contraseniaTaxi'])) {
         // Obtener datos del formulario
         $userTaxi = $_POST["userTaxi"];
         $contraseniaTaxi = $_POST["contraseniaTaxi"];
-        
+         
         // Llamar a la función para agregar usuario
         logearTaxi($con, $userTaxi, $contraseniaTaxi);
         exit();
@@ -55,6 +55,31 @@ if (isset($_POST['CostoViajeTaximetrista']) && isset($_POST['MetodoDePagoTaximet
 }
 
 
+// cerrarSesionTaximetrista();
+
+function cerrarSesionTaximetrista(){
+    if (!isset($_SESSION['userTaxi'])) {
+        // Si no hay sesión activa, redirige
+        echo json_encode(["status" => "error", "message" => "No hay sesión activa."]);
+        return;
+    }
+    
+    // Si el botón de cerrar sesión fue presionado
+    if (isset($_POST['cerrarSesionTaximetrista'])) {    
+        // Destruir todas las variables de sesión
+        session_unset();
+    
+        // Destruir la sesión
+        session_destroy();
+    
+        // Retornar una respuesta exitosa en formato JSON
+        echo json_encode(["status" => "success", "message" => "Sesión cerrada exitosamente"]);
+    }
+}
+
+// Llamar a la función de cerrar sesión
+cerrarSesionTaximetrista();
+// session_start();
 
 
 // Si ninguna de las condiciones anteriores se cumple

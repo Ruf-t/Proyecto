@@ -46,6 +46,7 @@
         "h3_tabla_viaje_panel": "Trip Table",
 
         "VIAJES":"------------------------------------------",
+        "h1_viajes":"Trips",
         "option_select_turno":"Select a shift",
         "option_select_turno1":"Shift 1",
         "option_select_turno2":"Shift 2",
@@ -72,7 +73,6 @@
         "th_telefono":"Phone Number",
         "th_direccion":"Address",
         "th_deuda":"Debt",
-        "h2_eliminar_cliente":"Do you want to delete Customer?",
 
         "TAXISTAS":"------------------------------------------",
         "h1_taxistas":"Drivers List",
@@ -86,9 +86,6 @@
         "th_nacimiento":"Birth",
         "th_fecha_venc":"Driver's License Expiration Date",
         "th_info_taxista":"Driver Info",
-        "h2_eliminar_taxista":"Do you want to delete driver?",
-        "eliminar_aceptar":"Allow",
-        "eliminar_cancelar":"Cancel",
 
         "INGRESOS":"------------------------------------------",
         "h1_ingresos":"Incomes",
@@ -106,6 +103,7 @@
         "th_proximo_servicio":"Next Service",
         "th_modificar_eliminar":"Modify-Delete",
         "h2_agregar_taxi":"Add new Taxi",
+        "h2_modificar_taxi":"Update Taxi",
         "label_matricula":"Number Plate",        
         "label_modelo":"Brant and Model",
         "label_anio":"Year",
@@ -114,7 +112,6 @@
         "option_select_estado1":"Available",
         "option_select_estado2":"Occupied",
         "btn_add_taxi":"Add",
-        "h2_eliminar_taxi":"Do you want to delete Taxi?",
 
         "CONFIG":"-----------------------------------------",
         "h3_opciones":"Options",
@@ -137,7 +134,47 @@
         "select_trasferencia": "Bank Transfer",
         "p_nombre_cliente": "Enter the customer's name (If registered)",
         "option_select_cliente": "--Select a client--",
-        "p_km_final": "Final Km"
+        "p_km_final": "Final Km",
+
+        "MODAL-MODIFICAR": "--------------------------------------------------------------",
+        "MODAL_CLIENTES_MODIFICAR": "-----------------------------------------",
+        "h2_modificar_cliente": "Edit Client",
+        "label_nombre_modificar": "Name:",
+        "label_apellido_modificar": "Last Name:",
+        "label_telefono_modificar": "Phone:",
+        "label_deuda_modificar": "Debt:",
+        "label_direccion_modificar": "Address:",
+        "btn_enviar_modificar": "Submit",
+
+        "MODAL_TAXISTAS_MODIFICAR": "---------------------------------------------",
+        "h2_modificar_taxista": "Edit Driver",
+        "label_fecha_nac_modificar": "Date of Birth:",
+        "label_fecha_venc_modificar": "Driver's License Expiration Date:",
+        "label_user_modificar": "Username:",
+        "label_contra_modificar": "Password:",
+
+        "MODAL_TAXIS_MODIFICAR": "---------------------------------------------",
+        "label_matricula_modi": "License Plate",        
+        "label_modelo_modi": "Make and Model",
+        "label_anio_modi": "Year",
+        "label_estado_modi": "Status (Active or Inactive)",
+        "option_select_estado_modi": "Select a status",
+        "option_select_estado1_modi": "Available",
+        "option_select_estado2_modi": "Not Available",    
+        "btn_add_taxi_modi": "Edit",
+       
+        "MODAL_ELIMINAR": "---------------------------------------------",
+        "eliminar_aceptar":"Allow",
+        "eliminar_cancelar":"Cancel",
+
+        "MODAL_CLIENTES_ELIMINAR": "---------------------------------------------",
+        "h2_eliminar_cliente":"Do you want to delete Customer?",
+
+        "MODAL_TAXISTA_ELIMINAR": "---------------------------------------------",
+        "h2_eliminar_taxista":"¿Do you want to delete Driver?",
+
+        "MODAL_TAXIS_ELIMINAR": "---------------------------------------------",
+        "h2_eliminar_taxi": "Do you want to delete the Taxi?"
     },
 
     "es":{
@@ -187,6 +224,7 @@
         "h3_tabla_viaje_panel": "Tabla Viajes",
 
         "VIAJES":"------------------------------------------",
+        "h1_viajes":"Viajes",
         "option_select_turno":"Selecciona un turno",
         "option_select_turno1":"Turno 1",
         "option_select_turno2":"Turno 2",
@@ -213,7 +251,6 @@
         "th_telefono":"Teléfono",
         "th_direccion":"Dirección",
         "th_deuda":"Deuda",
-        "h2_eliminar_cliente":"¿Deseas eliminar el Cliente?",
 
         "TAXISTAS":"------------------------------------------",
         "h1_taxistas":"Lista de Taximetristas",
@@ -225,11 +262,8 @@
         "label_contra":"Contraseña:",
         "btn_enviar_taxista":"Enviar",
         "th_nacimiento":"Nacimiento",
-        "th_fecha_venc":"Fecha de vencimiento libreta",
+        "th_fecha_venc":"Vencimiento Libreta",
         "th_info_taxista":"Info Taxista",
-        "h2_eliminar_taxista":"¿Deseas eliminar el taxista?",
-        "eliminar_aceptar":"Aceptar",
-        "eliminar_cancelar":"Cancelar",
 
         "INGRESOS":"------------------------------------------",
         "h1_ingresos":"Ingresos",
@@ -247,6 +281,7 @@
         "th_proximo_servicio":"Proximo Servicio",
         "th_modificar_eliminar":"Modificar-Eliminar",
         "h2_agregar_taxi":"Agregar Taxi",
+        "h2_modificar_taxi":"Modificar Taxi",
         "label_matricula":"Matricula",        
         "label_modelo":"Marca y Modelo",
         "label_anio":"Año",
@@ -255,14 +290,11 @@
         "option_select_estado1":"Disponible",
         "option_select_estado2":"No Disponible",
         "btn_add_taxi":"Añadir",
-        "h2_eliminar_taxi":"¿Deseas eliminar el Taxi?",
-
 
         "CONFIG":"--------------------------------------------",
         "h3_opciones":"Opciones",
         "switch_idioma":"Cambiar idioma",
         "cerrar_sesion":"Cerrar Sesion",
-
 
         "HOME":"-----------------------------------------",
         "btn_iniciar_turno":"Iniciar Turno",
@@ -280,6 +312,46 @@
         "select_trasferencia":"Transferencia bancaria",
         "p_nombre_cliente":"Ingresa el nombre del cliente (Si es que esta registrado)",
         "option_select_cliente":"--Selecciona un cliente--",
-        "p_km_final":"Km final"
+        "p_km_final":"Km final",
+
+        "MODAL-MODIFICAR":"--------------------------------------------------------------",
+        "MODAL_CLIENTES_MODIFICAR":"-----------------------------------------",
+        "h2_modificar_cliente":"Modificar Cliente",
+        "label_nombre_modificar":"Nombre:",
+        "label_apellido_modificar":"Apellido:",
+        "label_telefono_modificar":"Teléfono:",
+        "label_deuda_modificar":"Deuda:",
+        "label_direccion_modificar":"Dirección:",
+        "btn_enviar_modificar":"Enviar",
+        
+        "MODAL_TAXISTAS_MODIFICAR":"---------------------------------------------",
+        "h2_modificar_taxista":"Modificar Taxista",
+        "label_fecha_nac_modificar":"Fecha de Nacimiento:",
+        "label_fecha_venc_modificar":"Fecha venc. Licencia de Conducir:",
+        "label_user_modificar":"Usuario:",
+        "label_contra_modificar":"Contraseña:",
+        
+        "MODAL_TAXIS_MODIFICAR":"---------------------------------------------",
+        "label_matricula_modi":"Matricula",        
+        "label_modelo_modi":"Marca y Modelo",
+        "label_anio_modi":"Año",
+        "label_estado_modi":"Estado (Activo o Inactivo)",
+        "option_select_estado_modi":"Selecciona un estado",
+        "option_select_estado1_modi":"Disponible",
+        "option_select_estado2_modi":"No Disponible",    
+        "btn_add_taxi_modi":"Modificar", 
+
+        "MODAL_ELIMINAR": "---------------------------------------------",
+        "eliminar_aceptar":"Aceptar",
+        "eliminar_cancelar":"Cancelar",
+
+        "MODAL_CLIENTES_ELIMINAR": "---------------------------------------------",
+        "h2_eliminar_cliente":"¿Deseas eliminar el cliente?",
+
+        "MODAL_TAXISTA_ELIMINAR": "---------------------------------------------",
+        "h2_eliminar_taxista":"¿Deseas eliminar el taxista?",
+
+        "MODAL_TAXIS_ELIMINAR": "---------------------------------------------",
+        "h2_eliminar_taxi":"¿Deseas eliminar el taxi?"
     }
 }

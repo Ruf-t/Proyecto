@@ -40,8 +40,8 @@
             <div class="div-labels-forms">
                 <label><span id="label_direccion"></span><input type="text" name="DireccionNuevo_Cliente" id="DireccionNuevo_Cliente"></label>
             </div>  
-            <div class="div-labels-forms">  
-                <button type="submit" id="btn_enviar_cliente"></button>
+            <div class="div-labels-forms-button">  
+                <button type="submit" class="boton-enviar-modal" id="btn_enviar_cliente"></button>
             </div>
             </form>
         </dialog>
@@ -49,29 +49,23 @@
         <!-- ------------------------------------MODAL MODIFICAR------------------------------------------- -->
         <dialog class="modal-modificar">
             <div class="div-titulo-modal-modificar">
-                <h2 id="h2_modificar_taxista"></h2>   
+                <h2 id="h2_modificar_cliente"></h2>   
                 <button class="btn-cerrar-modal-modificar"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
-            <form id="form-add-taxistas" method="post">
-                <div class="div-labels-forms">
-                    <label><span id="label_nombre"></span><input type="text" name="Nombre" id="Nombre-Nuevo-Taxista"></label>
-                    <label><span id="label_apellido"></span><input type="text" name="Apellido-Nuevo-Taxista"></label>
-                </div>
-                <div class="div-labels-forms">
-                    <label><span id="label_fecha_nac"></span><input type="date" name="FechaNac-Nuevo-Taxista"></label>
-
-                    <label><span id="label_fecha_venc"></span><input type="date" name="Fecha-venc-librCond-Nuevo-Taxista"></label>
-                </div>
-                <div class="div-labels-forms">
-                    <label class="label-direccion"><span id="label_direccion"></span><input type="text" name="Direccion-Nuevo-Taxista" id="Direccion-Nuevo-Taxista"></label>
-                    <label class="label-direccion"><span id="label_telefono"></span><input type="text" name="Telefono-Nuevo-Taxista" id="Telefono-Nuevo-Taxista"></label>
-                </div>
-                <div class="div-labels-forms">
-                    <label class="label-direccion"><span id="label_user"></span><input type="text" name="UserNuevo-Taxista" id="UserNuevo-Taxista"></label>
-                    <label class="label-direccion"><span id="label_contra"></span><input type="password" name="ContrNuevo-Taxista" id="ContrNuevo-Taxista"></label>
-                </div>
-                <div class="div-labels-forms">
-                    <button type="submit" class="boton-enviar-modal-editar" id="btn_enviar_cliente"></button>
+            <form id="form-modi-cliente" class="formulario" method="post">
+            <div class="div-labels-forms">    
+                <label><span id="label_nombre_modificar"></span><input type="text" name="NombreNuevo_Cliente" id="NombreNuevo_Cliente"></label>
+                <label><span id="label_apellido_modificar"></span><input type="text" name="ApellidoNuevo_Cliente" id="ApellidoNuevo_Cliente"></label>
+            </div>
+            <div class="div-labels-forms">    
+                <label><span id="label_telefono_modificar"></span><input type="number" name="TelefonoNuevo_Cliente" id="TelefonoNuevo_Cliente"></label>
+                <label><span id="label_deuda_modificar"></span><input type="number" name="DeudaNuevo_Cliente" id="DeudaNuevo_Cliente"></label>
+            </div>    
+            <div class="div-labels-forms">
+                <label><span id="label_direccion_modificar"></span><input type="text" name="DireccionNuevo_Cliente" id="DireccionNuevo_Cliente"></label>
+            </div> 
+                <div class="div-labels-forms-button">
+                    <button type="submit" class="boton-enviar-modal-editar" id="btn_enviar_modificar"></button>
                 </div>
             </form>
         </dialog>

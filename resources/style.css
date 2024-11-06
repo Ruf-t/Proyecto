@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+/*? ------------------------------------VARIABLES DE COLORES------------------------------------------------------- */
 :root {
   --colorAmarillo: #f1b92e;
   --colorAmarillo1: #ffee55d7;
@@ -32,7 +33,10 @@
   --colorRojo2: hsla(356, 100%, 60%, 0.5);
   --colorRojo3: hsla(356, 100%, 60%);
 }
+/*? ------------------------------------------------FIN---------------------------------------------------------- */
 
+
+/*! ------------------------------------------ESTILOS GENERALES-------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -69,267 +73,6 @@ main{
   }
   & > .div-addCliente{
     grid-column: 1/3;
-  }
-}
-
-.respuestaAJAX{
-  display: none;
-  z-index: 99999;
-  position: fixed;
-  top: 10px;
-  left: 50%;
-
-  p{
-      margin: 0;
-      display: inline-block;
-      background-color: #DFDED4;
-      border: 1px solid #DFDED4;
-      padding: 10px;
-      border-radius: 9px;
-      padding-left: 10px;
-      z-index: 99999;
-  }
-}
-
-
-.respuestaAJAX-Modal {
-  display: none;
-  z-index: 99999;
-  position: absolute;  
-  left: 50%;
-  transform: translateX(-50%);  
-  top: 80%; 
-  width: auto;
-  text-align: center;  
-}
-
-.respuestaAJAX-Modal p {
-  margin: 0;
-  background-color: #DFDED4;
-  border: 1px solid #DFDED4;
-  padding: 10px;
-  border-radius: 9px;
-}
-
-.success-message{
-  color: #34C759;
-  z-index: 99999;
-}
-.error-message{
-  color: #E74C3C;
-  z-index: 99999;
-}
-
-/** LOGIN **/
-.login-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-.login-container {
-  width: 80%;
-  max-width: 900px;
-  height: 90%;
-  max-height: 500px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.left-panel {
-  width: 50%;
-}
-
-.left-panel img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.right-panel {
-  width: 50%;
-  height: 100%;
-  background-color: var(--colorBlanco);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.btn_flecha_volver{
-  width: 50px;
-}
-
-.btn-inicioSesion{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.no-tengo-cuenta{
-  display: flex;
-  align-items: baseline;
-
-  a{
-    text-decoration: none;
-    font-weight: bold;
-    color: var(--colorAmarillo);
-  }
-}
-.p_register{
-  margin-right: 1rem;
-}
-
-
-.p-log-reg{
-  margin-top: 15px;
-  margin-right: 1rem;
-
-  & a{
-    text-decoration: none;
-    color: var(--colorAmarillo);
-  }
-}
-
-.switch_idioma_index{
-  width: 8rem;
-  height: 4rem;
-  border-radius:7px;
-  border: none;
-  background-color: var(--colorAmarillo5);
-  color: white;
-  top: 1rem;
-  right: 1rem;
-  position: fixed;
-}
-
-.switch_idioma_index:hover{
-  background-color: var(--colorAmarillo3);
-  color: black;
-}
-
-@media (max-width: 800px) {
-  .login-container{
-    border-radius: 10px;
-  }
-  .left-panel {
-    display: none;
-    border-radius: 10px;
-  }
-  .right-panel {
-    width: 90%;
-    height: 120%;
-    max-height: 500px;
-    background-color: var(--colorBlanco);
-    padding: rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 10px ;
-  }
-}
-
-.div-btn-logo{
-  display: flex;
-
-}
-
-.logo {
-  display: flex;
-  align-items: flex-start;
-  justify-content: start;
-  margin-bottom: 1.2rem;
-
-  img {
-    width: 100px;
-  }
-
-  .img_flecha{
-    width: 80px;
-  }
-
-  button{
-    margin-right: 6rem;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    background-color: white;
-  }
-
-  button:hover{
-    background-color: white;
-  }
-}
-
-.logo-login{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.2rem;
-
-  img {
-    width: 100px;
-  }
-}
-
-h2 {
-  color: var(--colorGris1);
-  margin-bottom: 10px;
-}
-
-p {
-  color: var(--colorGris2);
-  margin-bottom: 20px;
-}
-
-
-.div-labels-forms {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  justify-content: center;
-}
-
-.btn-submit-register{
-  display: flex;
-}
-
-.div-labels-forms-register{
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: space-between;
-  margin-right: 1rem;
-  
-  label{
-    padding: 0;
-  }
-  input{
-    width: 100%;
-  }
-}
-
-
-.btn_volver{
-  width: 65px;
-  top: 3rem;
-  left: 5rem;
-  bottom: 3rem;
-}
-
-.btn_submit_register{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-column: 1/3;
-
-  button{
-    width: 50%;
   }
 }
 
@@ -382,444 +125,14 @@ button:hover {
   background-color: var(--colorAmarillo3);
 }
 
-
-/* MENSAJE CONTROL DE ERRORES */
-.message {
-  display: none; /* Oculto por defecto */
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  color: #fff;
-}
-
-.success {
-  background-color: #4CAF50; /* Verde para mensajes de éxito */
-}
-
-.error {
-  background-color: #F44336; /* Rojo para mensajes de error */
-}
-
-/*! PANEL/HOME **/
-.div-panel-administracion {
-  display: grid;
-  grid-column: 1 / 2;
-  grid-row: 5;
-  width: 95%;
-
-  .div-botones-administracion {
-    display: flex;
-    justify-content: space-between;
-    gap: .7rem;
-    margin-right: 5px;
-
-    button {
-      display: flex; 
-      gap: 5px;
-      border-radius: .5rem;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      border: none;
-      transition: ease-in-out 170ms;
-      font-weight: 600;
-    }
-
-    & button:nth-child(1) {
-      background-color: var(--colorAzul);
-      color: var(--colorAzul3);
-    }
-    & button:nth-child(2) {
-      background-color: var(--colorRojo);
-      color: var(--colorRojo3);
-    }
-    & button:nth-child(3) {
-      background-color: var(--colorAmarillo2);
-      color: var(--colorAmarillo4);
-    }
-    & button:nth-child(1):hover {
-      background-color: var(--colorAzul2);
-    }
-    & button:nth-child(2):hover {
-      background-color: var(--colorRojo2);
-    }
-    & button:nth-child(3):hover {
-      background-color: var(--colorAmarillo3);
-    }
-  }
-}
-
-/* DIV TAXISTAS MES ACA */
-/* .taxista-item {
-  display: flex;
-  justify-content: space-between; /* Distribuye los elementos entre el nombre y el total 
-  align-items: center; /* Alinea verticalmente al centro 
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.nombre-container {
-  display: flex;
-  align-items: center;
-}
-
-.indice {
-  font-weight: bold;
-  margin-right: 5px; /* Espacio entre el índice y el nombre 
-}
-
-.nombre-taximetrista {
-  color: #333;
-}
-
-.total-generado {
-  font-weight: bold;
-  color: green;
-}
-
-
-.div-taxistas-mes {
-  display: grid;
-  grid-column: 1/2;
-  grid-row: 2;
-  border-radius: .5rem;
-
-  & h3{
-    display: flex;
-    align-items: center;
-    text-align: center;
-  }
-
-  & p{
-    margin-left: 1rem;
-    margin-bottom: 0;
-    color: black;
-  }
-  
-  & div{
-    display: flex;
-    border-radius: .3rem;
-    margin-bottom: 1rem;
-    gap: 1rem;
-    
-
-    & div{
-      padding: .5rem;
-      height: 70px;
-      width: 200px;
-      display: flex;
-      flex-direction: column;
-      margin: 0;
-      background-color: var(--colorAmarillo6);  
-    }
-
-  }
-    
-  & h3{
-    text-align: center;
-    margin-top: 7px;
-    margin-bottom: 1rem;
-  }
-  & .nombre-taxistas-mes{
-    font-weight: 600;
-    margin: 0;
-  }
-
-  & .num-taxistas-mes{
-    font-weight: 300;
-    margin: 0;
-  }
-} */
-
-.taxista-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-.taxista-item {
-  border-bottom: 1px solid #ddd;
-  background-color: var(--colorAmarillo6); 
-  border-radius: 8px; 
-  margin-bottom: 10px; 
-}
-
-.nombre-container {
-  align-items: center;
-  gap: 10px;
-}
-
-.indice {
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.nombre-taximetrista {
-  font-weight: 600; 
-  color: #333;
-}
-
-.total-generado {
-  font-weight: bold;
-  color: green;
-}
-
-.div-taxistas-mes {
-  display: grid;
-  grid-column: 1/3;
-  grid-row: 2;
-  border-radius: .5rem;
-}
-
-
-
-.div-taxistas-mes p {
-  margin-left: 1rem;
-  margin-bottom: 0;
-  color: black;
-}
-
-.div-taxistas-mes div {
-  display: flex;
-  border-radius: .3rem;
-  gap: 0.5rem;
-  align-items: flex-start;
-}
-
-.div-taxistas-mes .nombre-taxistas-mes {
-  font-weight: 600;
-  margin: 0;
-}
-
-.div-taxistas-mes .num-taxistas-mes {
-  font-weight: 300;
-  margin: 0;
-}
-
-
-.taxista-item {
-  background-color: #e0e0e0; /* Cambia de color cuando se pasa el cursor */
-}
-
-.taxista-item{
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-.taxista-item { 
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  background-color: var(--colorAmarillo6); 
-  border-radius: 8px; 
+h2 {
+  color: var(--colorGris1);
   margin-bottom: 10px;
 }
 
-/* .taxista-item:hover {
-  background-color: var(--colorAmarillo0) 
-} */
-
-.nombre-container {
-  display: flex;
-  align-items: center;
-}
-
-.indice {
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.nombre-taximetrista {
-  color: #333;
-}
-
-.total-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 5px;
-}
-
-.generado-text {
-  font-weight: normal;
-  color: #555;
-  margin-right: 5px;
-}
-
-.total-generado {
-  font-weight: bold;
-  color: green;
-}
-
-.div-botones-administracion {
-  display: flex;
-}
-
-.header {
-  position: absolute;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2.1rem 1rem 0;
-}
-
-.exit-img {
-  right: 4;
-}
-
-.div-addCliente{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: .7rem;
-  grid-row: 2/3;
-}
-
-.boton-add-cliente{
-  text-align: center;
-  padding: 10px;
-  border-radius: .5rem;
-  border: none;
-  width: 150px;
-  height: 50px;
-  margin-right: 1rem;
-  background-color: var(--colorAmarillo5);
-}
-.boton-add-cliente:hover{
-  background-color: var(--colorAmarillo3);
-}
-
-.boton-add-taxista{
-  display: flex;
-  text-align: center;
-  align-items: center;
-  padding: 10px;
-  border-radius: .5rem;
-  border: none;
-  width: 150px;
-  height: 50px;
-  margin-right: 1rem;
-  background-color: var(--colorAmarillo5);
-}
-.boton-add-taxista:hover{
-  background-color: var(--colorAmarillo3);
-}
-
-/*Taxis*/
-.div-addTaxi{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: .7rem;
-  grid-row: 2/3;
-  grid-column: 1/3;
-}
-
-.boton-add-Taxi{
-  text-align: center;
-  padding: 10px;
-  border-radius: .5rem;
-  border: none;
-  width: 150px;
-  height: 50px;
-  margin-right: 15px;
-  background-color: var(--colorAmarillo5);
-}
-.boton-add-Taxi:hover{
-  background-color: var(--colorAmarillo3);
-}
-
-/** SIDE BAR **/
-.sidebar-container {
-  position: fixed;
-  background: #1c1c1c;
-  width: 100%;
-  max-width: 300px;
-  height: 100%;
-  padding-left: 1rem;
-  padding-top: 1rem;
-}
-
-.div-usuario {
-  padding: 1rem;
-}
-.user-name {
-  color: white;
-}
-.user-num {
-  color: grey;
-}
-
-/* .menu-container nav {
-  padding-top: 1rem;
-} */
-
-.menu-container nav a {
-  display: block;
-  text-decoration: none;
-  padding: 1rem;
-  color: #c7c7c7;
-  display: flex;
-  align-items: center;
-  text-align: center;
-}
-
-.menu-container nav a img {
-  font-size: 25px;
-  align-items: center;
-  margin-right: .5rem;
-}
-
-.menu-container nav a:hover  {
-  color: #fcc652;
-}
-
-.config-container {
-  position: fixed;
-  bottom: 0;
-}
-
-.config-container nav a {
-  display: block;
-  text-decoration: none;
-  padding: 1rem;
-  color: #c7c7c7;
-  display: flex;
-  align-items: center;
-  text-align: center;
-}
-
-.config-container nav a:hover {
-  color: #fcc652;
-}
-
-.btn-config{
-  margin-top: 3rem;
-}
-
-.a-menu{
-  font-weight: 600;
-}
-.a-menu.active  {
-  background-color: #fff;
-  color: #ffae00;
-  border-bottom-left-radius: 2rem;
-  border-top-left-radius: 2rem;
-  font-weight: 600;
-}
-
-
-.above-active {
-  border-bottom-right-radius: 5px;
-}
-
-.below-active {
-  border-top-right-radius: 5px;
+p {
+  color: var(--colorGris2);
+  margin-bottom: 20px;
 }
 
 select{
@@ -831,258 +144,32 @@ select{
   border-radius: .4rem; 
   font-weight: bold;
 }
+/*! ------------------------------------------------FIN---------------------------------------------------------- */
 
-.div-h3-panel{
-  margin-top: 1rem;
-  display: grid;
-  grid-row: 3/5;
-  grid-column: 1/3;
-}
-/*? ESTILO TABLA HOME/PANEL */
-.div-tabla-panel {
-  margin-top: 3rem;
-  overflow-x: auto;
-  overflow-y: auto; 
-  margin-right: 1rem;
-  display: grid;
-  grid-row: 3/5;
-  grid-column: 1/3;
-  height: 350px; 
-}
 
-#table-panel {
-  table-layout: auto;
-  border-collapse: collapse;
-  font-size: 1rem;
-  text-align: center;
-  height: 100%; 
-}
-
-#table-panel th, td {
-  padding: 2px;
-}
-
-#table-panel tr {
-  padding: 2px;
-}
-
-#table-panel th {
-  font-size: 1rem;
-  text-align: center;
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 1; 
-  background-color: #f4f4f4;
-  border-radius: .2rem;
-  box-sizing: border-box;
-}
-
-#table-panel, #table-panel th, #table-panel td {
-  border: none;
-}
-
-/*! VIAJES **/
-/*? BOTON SELECT */
-.btn-select-turno-fecha{
+/** ------------------------------------------ESTILOS DE MODAL-------------------------------------------------- */
+.div-labels-forms{
   display: flex;
   flex-direction: row;
-  justify-content: start;
-  width: 100%;
-  height: 50px;
-  grid-row: 2/3;
-  grid-column: 1/2;
-  margin-top: 1.5rem;
-}
-#fecha-personalizada{
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-
-  & input{
-    color: var(--colorAmarillo4);
-    text-decoration: none;
-    font-size: 1rem;
-    cursor: pointer; 
-    border-radius: .4rem; 
-    font-weight: bold;
-    margin: 0;
+  align-items: center;
+  text-align: start;
+  justify-content: space-between;
+  
+  label{
+    padding: 0;
+  }
+  input{
+    width: 100%;
   }
 }
-#fecha-personalizada input{
-  margin-left: 1rem;
-}
-#recargar-tabla{
-  width: 3.5rem;
-  padding: 10px;
-  background-color: var(--colorAmarillo5);
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: ease-in-out 230ms;
-}
 
-#recargar-tabla:hover{
-  background-color: var(--colorAmarillo3);
-}
-
-
-/*? TABLA VIAJES */
-.div-tabla-viaje {
-  overflow-x: auto;
-  overflow-y: auto;
-  margin-right: 1rem;
-  display: grid;
-  grid-row: 3/5;
-  grid-column: 1/3;
-  max-height: 380px;
-  height: 380px; 
-  align-items: start; 
-}
-#tabla-viaje {
-  table-layout: auto;
-  border-collapse: collapse;
-  font-size: 1rem;
-  text-align: center;
-  height: auto;
-}
-
-#tabla-viaje th, td {
-  padding: 2px;
-}
-#tabla-viaje td {
-  height: 5px;
-}
-#tabla-viaje tr {
-  padding: 2px;
-}
-#tabla-viaje th{
-  font-size: 1rem;
-  text-align: center;
-  padding: 1rem 0 1rem 0;
-}
-#tabla-viaje th{
-  position: sticky;
-  top: 0;
-  z-index: 1; 
-  padding: 1rem 0;
-  background-color: #f4f4f4;
-  border-radius: .2rem;
-  box-sizing: border-box;
-}
-#tabla-viaje, #tabla-viaje th, #tabla-viaje td {
-  border: none;
-}
-
-/*? TABLA CLIENTES*/
-.tabla-clientes {
-  overflow-x: auto;
-  overflow-y: auto;
-  margin-right: 1rem;
-  display: grid;
-  grid-row: 3/5;
-  grid-column: 1/3;
-  max-height: 380px;
-  height: 380px; 
-  align-items: start; 
-}
-.tabla-clientes table{
-  table-layout: auto;
-  border-collapse: collapse;
-  font-size: 1rem;
-  text-align: center;
-  height: auto;
-}
-.tabla-clientes table th{
-  position: sticky;
-  top: 0;
-  z-index: 1; 
-  padding: 1rem 0;
-  background-color: #f4f4f4;
-  border-radius: .2rem;
-  box-sizing: border-box;
-}
-.tabla-clientes th button {
-  border-collapse: collapse;
-  font-size: 1rem;
-  text-align: center;
-  padding: 1rem 0 1rem 0;
-  background-color: #f4f4f4;
-  border-radius: .2rem;
-  box-sizing: border-box;
-}
-
-.columnas-tabla-clientes{
-  background-color: #f4f4f4;
-  height: 40px;
-}
-.tabla-clientes th:last-child, .tabla-clientes td:last-child {
-  border-right: none;
-}
-.tabla-clientes th:nth-child(3), .tabla-clientes td:nth-child(3) {
-  width: 10rem;
-}
-.tabla-clientes th:nth-child(4), .tabla-clientes td:nth-child(4) {
-  width: 10rem;
-}
-.tabla-clientes th:nth-child(5), .tabla-clientes td:nth-child(5) {
-  width: 10rem;
-}
-.tabla-clientes .income {
-  color: #28a745;
-  font-weight: bold;
-}
-
-.tabla-clientes, .tabla-clientes th, .tabla-clientes td {
-  border: none;
-}
-.boton-editar{
-  background-color: white;
-  width: 40px;
-}
-.boton-editar:hover{
-  background-color: #dddada;
-}
-
-.boton-papelera{
-  background-color: white;
-  width: 40px;
-}
-.boton-papelera:hover{
-  background-color: #dddada;
-}
-
-.div-cantidad-clientes{
-  justify-content: space-between;
-  align-items: center;
+.div-labels-forms-button{
+  display: flex;
   justify-content: center;
-  align-items: center ;
-  flex-direction: column;
-  display: flex;
-  grid-row: 2/3;
-}
-.div-paginas{
-  display: flex;
-  align-items: center;
 
-}
-.paginas{
-  margin: 3px;
-  height: 2.7rem;
-  width: 2.7rem;
-}
-.paginas:hover{
-  cursor: pointer;
-  background-color: white
-}
-.pasar-paginas{
-  margin: 3px;
-  height: 2.7rem;
-  width: 2.7rem;
-}
-.active {
-  background-color: var(--colorAmarillo4);
-  color: black;
+  button{
+    width: 50%;
+  }
 }
 
 /*-----------ESTILOS MODAL-------*/
@@ -1124,7 +211,7 @@ select{
   max-width: 50%;
   border: none;
   border-radius: 10px;
-  height: 75%;
+  height: 80%;
   padding: 15px;
   position: absolute;
   top: 50%;
@@ -1312,6 +399,703 @@ body.modal-modificar-open {
   cursor: pointer;
  }
 
+/** ------------------------------------------------FIN---------------------------------------------------------- */
+
+
+/*? ------------------------------------------ESTILOS DE MENSAJES-------------------------------------------------- */
+.respuestaAJAX{
+  display: none;
+  z-index: 99999;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+
+  p{
+      margin: 0;
+      display: inline-block;
+      background-color: #DFDED4;
+      border: 1px solid #DFDED4;
+      padding: 10px;
+      border-radius: 9px;
+      padding-left: 10px;
+      z-index: 99999;
+  }
+}
+
+.respuestaAJAX-Modal {
+  display: none;
+  z-index: 99999;
+  position: absolute;  
+  left: 50%;
+  transform: translateX(-50%);  
+  top: 80%; 
+  width: auto;
+  text-align: center;  
+}
+
+.respuestaAJAX-Modal p {
+  margin: 0;
+  background-color: #DFDED4;
+  border: 1px solid #DFDED4;
+  padding: 10px;
+  border-radius: 9px;
+}
+
+.success-message{
+  color: #34C759;
+  z-index: 99999;
+}
+.error-message{
+  color: #E74C3C;
+  z-index: 99999;
+}
+
+.message {
+  display: none; /* Oculto por defecto */
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.success {
+  background-color: #4CAF50; /* Verde para mensajes de éxito */
+}
+
+.error {
+  background-color: #F44336; /* Rojo para mensajes de error */
+}
+/*? -------------------------------------------------FIN---------------------------------------------------------- */
+
+
+/*! ------------------------------------------ESTILOS DE LOGIN-------------------------------------------------- */
+.login-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.login-container {
+  width: 80%;
+  max-width: 900px;
+  height: 90%;
+  max-height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+
+  img {
+    width: 100px;
+  }
+}
+
+.no-tengo-cuenta{
+  display: flex;
+  align-items: baseline;
+
+  .p-log-reg{
+    margin-top: 15px;
+    margin-right: 1rem;
+  }
+
+  a{
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--colorAmarillo);
+  }
+}
+
+#form-inicioS-admin{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  }
+/*! -------------------------------------------------FIN---------------------------------------------------------- */
+
+
+/** ----------------------------------COMPARTIDOS REGISTER-LOGIN----------------------------------------------- */
+.left-panel {
+  width: 50%;
+}
+
+.left-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.right-panel {
+  width: 50%;
+  height: 100%;
+  background-color: var(--colorBlanco);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.switch_idioma_index{
+  width: 8rem;
+  height: 4rem;
+  border-radius:7px;
+  border: none;
+  background-color: var(--colorAmarillo5);
+  color: white;
+  top: 1rem;
+  right: 1rem;
+  position: fixed;
+}
+
+.switch_idioma_index:hover{
+  background-color: var(--colorAmarillo3);
+  color: black;
+}
+.div-btn-idioma{
+  display: flex;
+  justify-content: flex-end;
+  height: 50px;
+  width: 50px;
+
+  & #btn-idioma-login{
+      width: 100%;
+      background: none;
+  }   
+}
+/** -------------------------------------------------FIN---------------------------------------------------------- */
+
+/*? ------------------------------------------ESTILOS DE REGISTER-------------------------------------------------- **/
+.logo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+  margin-bottom: 1.2rem;
+
+  img {
+    width: 100px;
+  }
+
+  .img_flecha{
+    width: 80px;
+  }
+
+  button{
+    margin-right: 6rem;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+  }
+
+  button:hover{
+    background-color: white;
+  }
+}
+.btn_flecha_volver{
+  width: 50px;
+}
+.div-btn-logo{
+  display: flex;
+
+}
+
+.p_register{
+  margin-right: 1rem;
+}
+
+.div-labels-forms-register{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  margin-right: 1rem;
+  
+  label{
+    padding: 0;
+  }
+  input{
+    width: 100%;
+  }
+}
+
+.btn_volver{
+  width: 65px;
+  top: 3rem;
+  left: 5rem;
+  bottom: 3rem;
+}
+
+.btn_submit_register{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1/3;
+
+  button{
+    width: 50%;
+  }
+}
+
+#form-register{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+& #nombre nombre{
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+& #apellido apellido{
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+& #usuario user{
+  grid-column: 1/3;
+  grid-row: 3/4;
+}
+
+& #contrasenia contrasenia{
+  grid-column: 1/3;
+  grid-row: 4/5;
+}
+
+& envio{
+  grid-column: 1/3;
+  grid-row: 5/6;
+}
+/*? -------------------------------------------------FIN---------------------------------------------------------- */
+
+
+/*! ------------------------------------------ESTILOS DE SLIDEBAR-------------------------------------------------- **/
+
+.sidebar-container {
+  position: fixed;
+  background: #1c1c1c;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  padding-left: 1rem;
+  padding-top: 1rem;
+}
+
+.div-usuario {
+  padding: 1rem;
+}
+
+.menu-container nav a {
+  display: block;
+  text-decoration: none;
+  padding: 1rem;
+  color: #c7c7c7;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.menu-container nav a img {
+  font-size: 25px;
+  align-items: center;
+  margin-right: .5rem;
+}
+
+.menu-container nav a:hover  {
+  color: #fcc652;
+}
+
+.config-container {
+  position: fixed;
+  bottom: 0;
+}
+
+.config-container nav a {
+  display: block;
+  text-decoration: none;
+  padding: 1rem;
+  color: #c7c7c7;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.config-container nav a:hover {
+  color: #fcc652;
+}
+
+.btn-config{
+  margin-top: 3rem;
+}
+
+.a-menu{
+  font-weight: 600;
+}
+.a-menu.active  {
+  background-color: #fff;
+  color: #ffae00;
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+  font-weight: 600;
+}
+
+
+.above-active {
+  border-bottom-right-radius: 5px;
+}
+
+.below-active {
+  border-top-right-radius: 5px;
+}
+
+/*! -------------------------------------------------FIN---------------------------------------------------------- */
+
+
+/** ------------------------------------------ESTILOS DE HOME-------------------------------------------------- **/
+.div-taxistas-mes {
+  display: grid;
+  grid-column: 1/3;
+  grid-row: 2;
+  border-radius: .5rem;
+}
+
+.div-taxistas-mes p {
+  margin-left: 1rem;
+  margin-bottom: 0;
+  color: black;
+}
+
+.div-taxistas-mes div {
+  display: flex;
+  border-radius: .3rem;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.div-taxistas-mes .nombre-taxistas-mes {
+  font-weight: 600;
+  margin: 0;
+}
+
+.div-taxistas-mes .num-taxistas-mes {
+  font-weight: 300;
+  margin: 0;
+}
+
+.div-panel-administracion {
+  display: grid;
+  grid-column: 1 / 2;
+  grid-row: 5;
+  width: 95%;
+
+  .div-botones-administracion {
+    display: flex;
+    justify-content: space-between;
+    gap: .7rem;
+    margin-right: 5px;
+
+    button {
+      display: flex; 
+      gap: 5px;
+      border-radius: .5rem;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border: none;
+      transition: ease-in-out 170ms;
+      font-weight: 600;
+    }
+
+    & button:nth-child(1) {
+      background-color: var(--colorAzul);
+      color: var(--colorAzul3);
+    }
+    & button:nth-child(2) {
+      background-color: var(--colorRojo);
+      color: var(--colorRojo3);
+    }
+    & button:nth-child(3) {
+      background-color: var(--colorAmarillo2);
+      color: var(--colorAmarillo4);
+    }
+    & button:nth-child(1):hover {
+      background-color: var(--colorAzul2);
+    }
+    & button:nth-child(2):hover {
+      background-color: var(--colorRojo2);
+    }
+    & button:nth-child(3):hover {
+      background-color: var(--colorAmarillo3);
+    }
+  }
+}
+
+.div-h3-panel{
+  margin-top: 1rem;
+  display: grid;
+  grid-row: 3/5;
+  grid-column: 1/3;
+}
+
+/*? ESTILO TABLA*/
+.div-tabla-panel {
+  margin-top: 3rem;
+  overflow-x: auto;
+  overflow-y: auto; 
+  margin-right: 1rem;
+  display: grid;
+  grid-row: 3/5;
+  grid-column: 1/3;
+  height: 350px; 
+}
+
+#table-panel {
+  table-layout: auto;
+  border-collapse: collapse;
+  font-size: 1rem;
+  text-align: center;
+  height: 100%; 
+}
+
+#table-panel th, td {
+  padding: 2px;
+}
+
+#table-panel tr {
+  padding: 2px;
+}
+
+#table-panel th {
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1; 
+  background-color: #f4f4f4;
+  border-radius: .2rem;
+  box-sizing: border-box;
+}
+
+#table-panel, #table-panel th, #table-panel td {
+  border: none;
+}
+/** -------------------------------------------------FIN---------------------------------------------------------- */
+
+
+/*? ------------------------------------------ESTILOS DE VIAJES-------------------------------------------------- **/
+.btn-select-turno-fecha{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 100%;
+  height: 50px;
+  grid-row: 2/3;
+  grid-column: 1/2;
+    /* margin-top: 1.5rem; */
+}
+#h1_viajes{
+  margin-bottom: .5rem;
+}
+#fecha-personalizada{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  & input{
+    color: var(--colorAmarillo4);
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer; 
+    border-radius: .4rem; 
+    font-weight: bold;
+    margin: 0;
+  }
+}
+#fecha-personalizada input{
+  margin-left: 1rem;
+}
+#recargar-tabla{
+  width: 3.5rem;
+  padding: 10px;
+  background-color: var(--colorAmarillo5);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: ease-in-out 230ms;
+}
+
+#recargar-tabla:hover{
+  background-color: var(--colorAmarillo3);
+}
+
+/*? TABLA VIAJES */
+.div-tabla-viaje {
+  overflow-x: auto;
+  overflow-y: auto;
+  margin-right: 1rem;
+  display: grid;
+  grid-row: 3/5;
+  grid-column: 1/3;
+  max-height: 380px;
+  height: 380px; 
+  align-items: start; 
+}
+#tabla-viaje {
+  table-layout: auto;
+  border-collapse: collapse;
+  font-size: 1rem;
+  text-align: center;
+  height: auto;
+}
+
+#tabla-viaje th, td {
+  padding: 2px;
+}
+#tabla-viaje td {
+  height: 5px;
+}
+#tabla-viaje tr {
+  padding: 2px;
+}
+#tabla-viaje th{
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+}
+#tabla-viaje th{
+  position: sticky;
+  top: 0;
+  z-index: 1; 
+  padding: 1rem 0;
+  background-color: #f4f4f4;
+  border-radius: .2rem;
+  box-sizing: border-box;
+}
+#tabla-viaje, #tabla-viaje th, #tabla-viaje td {
+  border: none;
+}
+
+/*? -------------------------------------------------FIN---------------------------------------------------------- */
+
+
+/*! ------------------------------------------ESTILOS DE CLIENTES-------------------------------------------------- **/
+
+.div-addCliente{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .7rem;
+  grid-row: 2/3;
+}
+
+.boton-add-cliente{
+  text-align: center;
+  padding: 10px;
+  border-radius: .5rem;
+  border: none;
+  width: 150px;
+  height: 50px;
+  margin-right: 1rem;
+  background-color: var(--colorAmarillo5);
+}
+.boton-add-cliente:hover{
+  background-color: var(--colorAmarillo3);
+}
+
+/*? TABLA CLIENTES*/
+.tabla-clientes {
+  overflow-x: auto;
+  overflow-y: auto;
+  margin-right: 1rem;
+  display: grid;
+  grid-row: 3/5;
+  grid-column: 1/3;
+  max-height: 380px;
+  height: 380px; 
+  align-items: start; 
+}
+.tabla-clientes table{
+  table-layout: auto;
+  border-collapse: collapse;
+  font-size: 1rem;
+  text-align: center;
+  height: auto;
+}
+.tabla-clientes table th{
+  position: sticky;
+  top: 0;
+  z-index: 1; 
+  padding: 1rem 0;
+  background-color: #f4f4f4;
+  border-radius: .2rem;
+  box-sizing: border-box;
+}
+.tabla-clientes th button {
+  border-collapse: collapse;
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+  background-color: #f4f4f4;
+  border-radius: .2rem;
+  box-sizing: border-box;
+}
+
+.columnas-tabla-clientes{
+  background-color: #f4f4f4;
+  height: 40px;
+}
+.tabla-clientes th:last-child, .tabla-clientes td:last-child {
+  border-right: none;
+}
+.tabla-clientes th:nth-child(3), .tabla-clientes td:nth-child(3) {
+  width: 10rem;
+}
+.tabla-clientes th:nth-child(4), .tabla-clientes td:nth-child(4) {
+  width: 10rem;
+}
+.tabla-clientes th:nth-child(5), .tabla-clientes td:nth-child(5) {
+  width: 10rem;
+}
+.tabla-clientes .income {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.tabla-clientes, .tabla-clientes th, .tabla-clientes td {
+  border: none;
+}
+
+/*! -------------------------------------------------FIN---------------------------------------------------------- */
+
+
+/** ------------------------------------------ESTILOS DE TAXISTAS-------------------------------------------------- **/
+
+.boton-add-taxista{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: .5rem;
+  border: none;
+  width: 150px;
+  height: 50px;
+  margin-right: 1rem;
+  background-color: var(--colorAmarillo5);
+}
+.boton-add-taxista:hover{
+  background-color: var(--colorAmarillo3);
+}
 
 /*Tabla Taximetristas*/
 .tabla-taxistas {
@@ -1379,28 +1163,10 @@ body.modal-modificar-open {
 .tabla-taxistas, .tabla-taxistas th, .tabla-taxistas td {
   border: none;
 }
-.boton-info{
-  background-color: white;
-  width: 40px;
-}
-.boton-info:hover{
-  background-color: #dddada;
-}
+/** -------------------------------------------------FIN---------------------------------------------------------- */
 
-.boton-papelera{
-  background-color: white;
-  width: 40px;
-}
-.boton-papelera:hover{
-  background-color: #dddada;
-}
 
-.div-cantidad-taximetristas{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
+/*? ------------------------------------------ESTILOS DE INGRESOS-------------------------------------------------- **/
 /*INGRESOS*/
 /*? BOTON SELECT */
 .btn-select-filtro{
@@ -1411,7 +1177,7 @@ body.modal-modificar-open {
   grid-row: 2/3;
 }
 #h1_ingresos{
-  margin-bottom: 2rem;
+  margin-bottom: .5rem;
 }
 .selects{
   display: flex;
@@ -1431,6 +1197,20 @@ body.modal-modificar-open {
 }
 
 .btn-aplicar-filtro:hover{
+  background-color: var(--colorAmarillo3);
+}
+
+#recargar-tabla-I{
+  width: 3.5rem;
+  padding: 10px;
+  background-color: var(--colorAmarillo5);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: ease-in-out 230ms;
+}
+
+#recargar-tabla-I:hover{
   background-color: var(--colorAmarillo3);
 }
 
@@ -1486,6 +1266,35 @@ body.modal-modificar-open {
   align-items: center;
 }
 
+/*? -------------------------------------------------FIN---------------------------------------------------------- */
+
+
+/*! ------------------------------------------ESTILOS DE TAXIS-------------------------------------------------- **/
+
+/*Taxis*/
+.div-addTaxi{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .7rem;
+  grid-row: 2/3;
+  grid-column: 1/3;
+}
+
+.boton-add-Taxi{
+  text-align: center;
+  padding: 10px;
+  border-radius: .5rem;
+  border: none;
+  width: 150px;
+  height: 50px;
+  margin-right: 15px;
+  background-color: var(--colorAmarillo5);
+}
+.boton-add-Taxi:hover{
+  background-color: var(--colorAmarillo3);
+}
+
 /* TABLA TAXIS*/
 .tabla-Taxis {
   overflow-x: auto;
@@ -1534,32 +1343,10 @@ body.modal-modificar-open {
   border: none;
 }
 
-.boton-editar{
-  background-color: white;
-  width: 40px;
-}
-.boton-editar:hover{
-  background-color: #dddada;
-}
+/*! -------------------------------------------------FIN---------------------------------------------------------- */
 
-.boton-papelera{
-  background-color: white;
-  width: 40px;
-}
 
-.boton-papelera:hover{
-  background-color: #dddada;
-}
-
-.div-cantidad-Taxis{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.select-estado{
-  width: 100%;
-}
-
+/** ------------------------------------------ESTILOS DE CONFIG-------------------------------------------------- **/
 /* CONFIGURACIÓN */
 .div-configuracion{
   display: grid;
@@ -1580,9 +1367,108 @@ body.modal-modificar-open {
   & #h3_opciones{
     text-align: start;
   }
-  
-  /* & #cerrar_sesion {
-    color: rgb(255, 255, 255);
-  } */
-
 }
+
+/** -------------------------------------------------FIN---------------------------------------------------------- */
+
+
+/*? ----------------------------------------------OTROS------------------------------------------------------------ **/
+.taxista-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.taxista-item {
+  border-bottom: 1px solid #ddd;
+  background-color: var(--colorAmarillo6); 
+  border-radius: 8px; 
+  margin-bottom: 10px; 
+}
+
+.nombre-container {
+  align-items: center;
+  gap: 10px;
+}
+
+.indice {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.nombre-taximetrista {
+  font-weight: 600; 
+  color: #333;
+}
+
+.taxista-item {
+  background-color: #e0e0e0; /* Cambia de color cuando se pasa el cursor */
+}
+
+.taxista-item{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.taxista-item { 
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: var(--colorAmarillo6); 
+  border-radius: 8px; 
+  margin-bottom: 10px;
+}
+
+.nombre-container {
+  display: flex;
+  align-items: center;
+}
+
+.indice {
+  font-weight: bold;
+  margin-right: 5px;
+}
+.nombre-taximetrista {
+  color: #333;
+}
+
+.total-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.generado-text {
+  font-weight: normal;
+  color: #555;
+  margin-right: 5px;
+}
+
+.header {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.1rem 1rem 0;
+}
+
+.boton-editar{
+  background-color: white;
+  width: 40px;
+}
+.boton-editar:hover{
+  background-color: #dddada;
+}
+.boton-papelera{
+  background-color: white;
+  width: 40px;
+}
+.boton-papelera:hover{
+  background-color: #dddada;
+}
+/*? -------------------------------------------------FIN---------------------------------------------------------- */

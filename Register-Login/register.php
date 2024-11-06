@@ -32,28 +32,28 @@
                 <div id="message" class="message"></div>
                 <form id="form-register" method="post">
                     <div class="div-labels-forms-register">
-                        <label for="nombre"><span id="label_nombre"></span></label>
-                        <input type="text" id="nombre" name="nombre" require>
+                        <label for="NombreNuevo_Administrador"><span id="label_nombre"></span></label>
+                        <input type="text" id="NombreNuevo_Administrador" name="NombreNuevo_Administrador" require>
                     </div>
                     <div class="div-labels-forms-register">
-                        <label for="apellido"><span id="label_apellido"></span></label>
-                        <input type="text" id="apellido" name="apellido" require>
+                        <label for="ApellidoNuevo_Administrador"><span id="label_apellido"></span></label>
+                        <input type="text" id="ApellidoNuevo_Administrador" name="ApellidoNuevo_Administrador" require>
                     </div>
                     <div class="div-labels-forms-register">
-                        <label for="telefono"><span id="label_telefono"></span></label>
-                        <input type="number" id="telefono" name="telefono" require>
+                        <label for="TelefonoNuevo_Administrador"><span id="label_telefono"></span></label>
+                        <input type="number" id="TelefonoNuevo_Administrador" name="TelefonoNuevo_Administrador" require>
                     </div>
                     <div class="div-labels-forms-register">
-                        <label for="direccion"><span id="label_direccion"></span></label>
-                        <input id="direccion" name="direccion" require>
+                        <label for="DireccionNuevo_Administrador"><span id="label_direccion"></span></label>
+                        <input id="DireccionNuevo_Administrador" name="DireccionNuevo_Administrador" require>
                     </div>
                     <div class="div-labels-forms-register">
-                        <label for="user"><span id="label_usuario"></span></label>
-                        <input type="text" id="user1" name="user" require>
+                        <label for="UserNuevo_Administrador"><span id="label_usuario"></span></label>
+                        <input type="text" id="UserNuevo_Administrador" name="UserNuevo_Administrador" require>
                     </div>
                     <div class="div-labels-forms-register">
-                        <label for="contrasenia"><span id="label_contrasenia"></span></label>
-                        <input type="password" id="contrasenia1" name="contrasenia" require>
+                        <label for="contraseniaNuevo_Administrador"><span id="label_contrasenia"></span></label>
+                        <input type="password" id="contraseniaNuevo_Administrador" name="contraseniaNuevo_Administrador" require>
                     </div>
                     <div class="btn_submit_register">
                             <button class="btn_registrarse" type="submit"  id="btn_registrarse"></button>

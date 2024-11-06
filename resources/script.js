@@ -54,35 +54,29 @@ btnsCerrarModal.forEach((btn, index) => {
     });
 });
 
-// --------DESPLEGAR MODAL TAXISTA-----------
 
-// const btnsAbrirModalTaxista = document.querySelectorAll('.btn-abrir-modal-taxista');
-// const btnsCerrarModalTaxista = document.querySelectorAll('.btn-cerrar-modal-taxista');
-// const modalsTaxista = document.querySelectorAll('.modal-taxistas');
-
-// btnsAbrirModalTaxista.forEach((btn, index) => {
-//     btn.addEventListener('click', () => {
-//         modalsTaxista[index].showModal();
-//     });
-// });
-
-// btnsCerrarModalTaxista.forEach((btn, index) => {
-//     btn.addEventListener('click', () => {
-//         modalsTaxista[index].close();
-//     });
-// });
 
 //---------------ABRIR MODAL MODIFICAR------------------
-const btnsAbrirModalModificar = document.querySelectorAll('.btn-abrir-modal-modificar');
-const modalModificar = document.querySelector('.modal');  // Solo hay un modal
-const btnCerrarModalModificar = document.querySelector('.btn-cerrar-modal-modificar');  // Botón de cerrar
 
-// Añadir el evento a todos los botones para abrir el mismo modal
+const btnsAbrirModalModificar = document.querySelectorAll('.btn-abrir-modal-modificar');
+const modalModificar = document.querySelector('.modal-modificar');
+const btnCerrarModaModificar = document.querySelector('.btn-cerrar-modal-modificar');
+
 btnsAbrirModalModificar.forEach(btn => {
     btn.addEventListener('click', () => {
-        modalModificar.showModal();  // Abre el mismo modal para todos los botones
+        modalModificar.showModal(); 
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btnCerrarModalModificar = document.querySelector('.btn-cerrar-modal-modificar');
+    if (btnCerrarModalModificar) {
+        btnCerrarModalModificar.addEventListener('click', () => {
+            modalModificar.close();
+        });
+    }
+});
+
 
 
 //---------------ABRIR MODAL ELIMINAR------------------
@@ -104,67 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-
-
-// btnCerrarModalEliminar.forEach((btn, index) => {
-//     btn.addEventListener('click', () => {
-//         modalEliminar[index].close();
-//     });
-// });
-
-
-
-
-
-// const btnsAbrirModal = document.querySelectorAll('.btn-abrir-modal');
-// const btnsCerrarModal = document.querySelectorAll('.btn-cerrar-modal');
-// const modals = document.querySelectorAll('.modal');
-// const formAddTaxi = document.getElementById('form-add-taxi');
-
-// btnsAbrirModal.forEach((btn, index) => {
-//     btn.addEventListener('click', () => {
-//         modals[index].showModal();
-//     });
-// });
-
-// btnsCerrarModal.forEach((btn, index) => {
-//     btn.addEventListener('click', () => {
-//         modals[index].close();
-//     });
-// });
-
-// formAddTaxi.addEventListener('submit', function(event) {
-//     event.preventDefault(); 
-//     modals.forEach(modal => {
-//         if (modal.open) {
-//             modal.close(); 
-//         }
-//     });
-    
-// });
-
-
-// Prevenir que el modal se cierre automáticamente y hacer el POST manualmente
-// formulario.addEventListener('submit', (event) => {
-//     event.preventDefault(); // Evita el cierre automático
-
-//     const formData = new FormData(formulario);
-
-//     // Puedes realizar la lógica para enviar los datos aquí, por ejemplo, usando fetch
-//     fetch('ruta_a_tu_archivo.php', {
-//         method: 'POST',
-//         body: formData
-//     })
-//     .then(response => response.text())
-//     .then(data => {
-//         console.log(data);
-//         modal.close(); // Cerrar modal manualmente después de enviar
-//     })
-//     .catch(error => {
-//         console.error('Error:', error);
-//     });
-// });
 
 
 
@@ -235,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const th_ingresoElement = document.getElementById('th_ingreso');
     const h3_tabla_viaje_panelElement = document.getElementById('h3_tabla_viaje_panel');
     //VIAJES 
+    const h1_viajesElement = document.getElementById('h1_viajes');
     const option_select_turnoElement = document.getElementById('option_select_turno');
     const option_select_turno1Element = document.getElementById('option_select_turno1');
     const option_select_turno2Element = document.getElementById('option_select_turno2');
@@ -261,6 +195,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const th_direccionElement = document.getElementById('th_direccion');
     const th_deudaElement = document.getElementById('th_deuda');
     const h2_eliminar_clienteElement = document.getElementById('h2_eliminar_cliente');
+    const h2_modificar_clienteElement = document.getElementById('h2_modificar_cliente');
+    const label_nombre_modificarElement = document.getElementById('label_nombre_modificar');
+    const label_apellido_modificarElement = document.getElementById('label_apellido_modificar');
+    const label_direccion_modificarElement = document.getElementById('label_direccion_modificar');
+    const label_telefono_modificarElement = document.getElementById('label_telefono_modificar');
+    const label_deuda_modificarElement = document.getElementById('label_deuda_modificar');
+    const btn_enviar_modificarElement = document.getElementById('btn_enviar_modificar');
     //TAXISTAS
     const h1_taxistasElement = document.getElementById('h1_taxistas');
     const btn_abrir_modal_taxistasElement= document.getElementById('btn_abrir_modal_taxistas');
@@ -276,6 +217,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const h2_eliminar_taxistaElement = document.getElementById('h2_eliminar_taxista');
     const eliminar_aceptarElement = document.getElementById('eliminar_aceptar');
     const eliminar_cancelarElement = document.getElementById('eliminar_cancelar');
+    const h2_modificar_taxistaElement = document.getElementById('h2_modificar_taxista');
+    const label_fecha_nac_modificarElement = document.getElementById('label_fecha_nac_modificar');
+    const label_fecha_venc_modificarElement = document.getElementById('eliminar_cancelar');
+    const label_user_modificarElement = document.getElementById('eliminar_cancelar');
+    const label_contra_modificar_Element = document.getElementById('eliminar_cancelar');
     //INGRESOS
     const h1_ingresosElement = document.getElementById('h1_ingresos');
     const btn_aplicar_filtroElement = document.getElementById('btn_aplicar_filtro');
@@ -290,7 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const th_estadoElement = document.getElementById('th_estado');
     const th_proximo_servicioElement = document.getElementById('th_proximo_servicio');
     const th_modificar_eliminarElement = document.getElementById('th_modificar_eliminar');
-    const h2_agregar_taxiElement =  document.getElementById('h2_agregar_taxi');
+    const h2_agregar_taxiElement = document.getElementById('h2_agregar_taxi');
+    const h2_modificar_taxiElement = document.getElementById('h2_modificar_taxi');
     const label_matriculaElement = document.getElementById('label_matricula');
     const label_modeloElement = document.getElementById('label_modelo');
     const label_anioElement = document.getElementById('label_anio');
@@ -300,6 +247,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const option_select_estado2Element = document.getElementById('option_select_estado2');
     const btn_add_taxiElement = document.getElementById('btn_add_taxi');
     const h2_eliminar_taxiElement = document.getElementById('h2_eliminar_taxi');
+
+    const label_matricula_modiElement = document.getElementById('label_matricula_modi');
+    const label_modelo_modiElement = document.getElementById('label_modelo_modi');
+    const label_anio_modiElement = document.getElementById('label_anio_modi');
+    const label_estado_modiElement = document.getElementById('label_estado_modi');
+    const option_select_estado_modiElement = document.getElementById('option_select_estado_modi');
+    const option_select_estado1_modiElement = document.getElementById('option_select_estado1_modi');
+    const option_select_estado2_modiElement = document.getElementById('option_select_estado2_modi');
+    const btn_add_taxi_modiElement = document.getElementById('btn_add_taxi_modi');
     // CONFIGURACIÓN
     const h3_opcionesElement = document.getElementById('h3_opciones');
     const texto_btnElement = document.getElementById('switch_idioma');
@@ -359,6 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (th_ingresoElement) th_ingresoElement.textContent = data[language].th_ingreso;
                 if (h3_tabla_viaje_panelElement) h3_tabla_viaje_panelElement.textContent = data[language].h3_tabla_viaje_panel;
                 //VIAJES
+                if (h1_viajesElement) h1_viajesElement.textContent = data[language].h1_viajes;
                 if (option_select_turnoElement) option_select_turnoElement.textContent = data[language].option_select_turno;
                 if (option_select_turno1Element) option_select_turno1Element.textContent = data[language].option_select_turno1;
                 if (option_select_turno2Element) option_select_turno2Element.textContent = data[language].option_select_turno2;
@@ -384,7 +341,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (th_telefonoElement) th_telefonoElement.textContent = data[language].th_telefono;
                 if (th_direccionElement) th_direccionElement.textContent = data[language].th_direccion;
                 if (th_deudaElement) th_deudaElement.textContent = data[language].th_deuda;
-                if (h2_eliminar_clienteElement) h2_eliminar_clienteElement.textContent = data[language].h2_eliminar_cliente;                
+                if (h2_eliminar_clienteElement) h2_eliminar_clienteElement.textContent = data[language].h2_eliminar_cliente;      
+                if (h2_modificar_clienteElement) h2_modificar_clienteElement.textContent = data[language].h2_modificar_cliente;      
+                if (label_nombre_modificarElement) label_nombre_modificarElement.textContent = data[language].label_nombre_modificar;
+                if (label_apellido_modificarElement) label_apellido_modificarElement.textContent = data[language].label_apellido_modificar;
+                if (label_telefono_modificarElement) label_telefono_modificarElement.textContent = data[language].label_telefono_modificar;
+                if (label_deuda_modificarElement) label_deuda_modificarElement.textContent = data[language].label_deuda_modificar;
+                if (label_direccion_modificarElement) label_direccion_modificarElement.textContent = data[language].label_direccion_modificar;
+                if (btn_enviar_modificarElement) btn_enviar_modificarElement.textContent = data[language].btn_enviar_modificar;
+
                 //TAXISTAS
                 if (h1_taxistasElement) h1_taxistasElement.textContent = data[language].h1_taxistas;
                 if (btn_abrir_modal_taxistasElement) btn_abrir_modal_taxistasElement.textContent = data[language].btn_abrir_modal_taxistas;
@@ -415,6 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (th_proximo_servicioElement) th_proximo_servicioElement.textContent = data[language].th_proximo_servicio;
                 if (th_modificar_eliminarElement) th_modificar_eliminarElement.textContent = data[language].th_modificar_eliminar;
                 if (h2_agregar_taxiElement) h2_agregar_taxiElement.textContent = data[language].h2_agregar_taxi;
+                if (h2_modificar_taxiElement) h2_modificar_taxiElement.textContent = data[language].h2_modificar_taxi;
                 if (label_matriculaElement) label_matriculaElement.textContent = data[language].label_matricula;
                 if (label_modeloElement) label_modeloElement.textContent = data[language].label_modelo;
                 if (label_anioElement) label_anioElement.textContent = data[language].label_anio;
@@ -423,13 +389,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (option_select_estado1Element) option_select_estado1Element.textContent = data[language].option_select_estado1;
                 if (option_select_estado2Element) option_select_estado2Element.textContent = data[language].option_select_estado2;
                 if (btn_add_taxiElement) btn_add_taxiElement.textContent = data[language].btn_add_taxi;
-                if (h2_eliminar_taxiElement) h2_eliminar_taxiElement.textContent = data[language].h2_eliminar_taxi;                
+                if (h2_eliminar_taxiElement) h2_eliminar_taxiElement.textContent = data[language].h2_eliminar_taxi;
+                
+                if (label_matricula_modiElement) label_matricula_modiElement.textContent = data[language].label_matricula_modi;
+                if (label_modelo_modiElement) label_modelo_modiElement.textContent = data[language].label_modelo_modi;
+                if (label_anio_modiElement) label_anio_modiElement.textContent = data[language].label_anio_modi;
+                if (label_estado_modiElement) label_estado_modiElement.textContent = data[language].label_estado_modi;
+                if (option_select_estado_modiElement) option_select_estado_modiElement.textContent = data[language].option_select_estado_modi;
+                if (option_select_estado1_modiElement) option_select_estado1_modiElement.textContent = data[language].option_select_estado1_modi;
+                if (option_select_estado2_modiElement) option_select_estado2_modiElement.textContent = data[language].option_select_estado2_modi;
+                if (btn_add_taxi_modiElement) btn_add_taxi_modiElement.textContent = data[language].btn_add_taxi_modi;
                 // CONFIGURACIÓN
                 if (h3_opcionesElement) h3_opcionesElement.textContent = data[language].h3_opciones;
                 if (texto_btnElement) texto_btnElement.textContent = data[language].switch_idioma;
                 if (cerrar_sesionElement) cerrar_sesionElement.textContent = data[language].cerrar_sesion;
             })
-            .catch(error => console.log(error));
+            // .catch(error => console.log(error));
     };
 
     // Si existe el botón de cambiar idioma, agregamos el listener

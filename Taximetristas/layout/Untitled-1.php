@@ -1,12 +1,12 @@
 <?php
 include("/xampp/htdocs/Proyecto/BaseDatos/functions.php");
 
-session_start();
-    if (!isset($_SESSION['userTaxi'])) {
-        header("Location: index-Taximetrista.php");
-        exit;
-    }
-    $userTaxi = $_SESSION['userTaxi'];
+// session_start();
+//     if (!isset($_SESSION['userTaxi'])) {
+//         header("Location: index-Taximetrista.php");
+//         exit;
+//     }
+//     $userTaxi = $_SESSION['userTaxi'];
 
         if (isset($_POST['envioIniciarJornadaTaximetrista'])) {
             // Obtener datos del formulario

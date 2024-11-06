@@ -22,7 +22,7 @@
 
         <!-- ------------------------------------MODAL AÑADIR--------------------------------------------->
         <dialog class="modal modal-taxistas">
-            <div class="div-titulo-modal">
+            <div class="div-titulo-modal">      
                 <h2 id="h2_agregar_taxista"></h2>   
                 <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
@@ -43,41 +43,40 @@
                     <label class="label-direccion"><span id="label_user"></span><input type="text" name="UserNuevo-Taxista" id="UserNuevo-Taxista"></label>
                     <label class="label-direccion"><span id="label_contra"></span><input type="password" name="ContrNuevo-Taxista" id="ContrNuevo-Taxista"></label>
                 </div>
-                <div class="div-labels-forms">
+                <div class="div-labels-forms-button">
                     <button type="submit" class="boton-enviar-modal" id="btn_enviar_cliente"></button>
                 </div>
             </form>
         </dialog>
 
         <!-- ------------------------------------MODAL MODIFICAR------------------------------------------- -->
-        <!-- <dialog class="modal-modificar">
-            <div class="div-titulo-modal-modificar">
+        <dialog class="modal-modificar modal-taxistas">
+            <div class="div-titulo-modal">      
                 <h2 id="h2_modificar_taxista"></h2>   
                 <button class="btn-cerrar-modal-modificar"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
-            <form id="form-add-taxistas" method="post">
+            <form id="form-modi-taxistas" method="post">
                 <div class="div-labels-forms">
-                    <label><span id="label_nombre"></span><input type="text" name="Nombre" id="Nombre-Nuevo-Taxista"></label>
-                    <label><span id="label_apellido"></span><input type="text" name="Apellido-Nuevo-Taxista"></label>
+                    <label><span id="label_nombre_modificar"></span><input type="text" name="Nombre" id="Nombre-Nuevo-Taxista-Modificar"></label>
+                    <label><span id="label_apellido_modificar"></span><input type="text" name="Apellido-Nuevo-Taxista-Modificar"></label>
                 </div>
                 <div class="div-labels-forms">
-                    <label><span id="label_fecha_nac"></span><input type="date" name="FechaNac-Nuevo-Taxista"></label>
-
-                    <label><span id="label_fecha_venc"></span><input type="date" name="Fecha-venc-librCond-Nuevo-Taxista"></label>
+                    <label><span id="label_fecha_nac_modificar"></span><input type="date" name="FechaNac-Nuevo-Taxista-Modificar"></label>
+                    <label><span id="label_fecha_venc_modificar"></span><input type="date" name="Fecha-venc-librCond-Nuevo-Taxista-Modificar"></label>
                 </div>
                 <div class="div-labels-forms">
-                    <label class="label-direccion"><span id="label_direccion"></span><input type="text" name="Direccion-Nuevo-Taxista" id="Direccion-Nuevo-Taxista"></label>
-                    <label class="label-direccion"><span id="label_telefono"></span><input type="text" name="Telefono-Nuevo-Taxista" id="Telefono-Nuevo-Taxista"></label>
+                    <label class="label-direccion"><span id="label_direccion_modificar"></span><input type="text" name="Direccion-Nuevo-Taxista-Modificar" id="Direccion-Nuevo-Taxista-Modificar"></label>
+                    <label class="label-direccion"><span id="label_telefono_modificar"></span><input type="text" name="Telefono-Nuevo-Taxista-Modificar" id="Telefono-Nuevo-Taxista-Modificar"></label>
                 </div>
                 <div class="div-labels-forms">
-                    <label class="label-direccion"><span id="label_user"></span><input type="text" name="UserNuevo-Taxista" id="UserNuevo-Taxista"></label>
-                    <label class="label-direccion"><span id="label_contra"></span><input type="password" name="ContrNuevo-Taxista" id="ContrNuevo-Taxista"></label>
+                    <label class="label-direccion"><span id="label_user_modificar"></span><input type="text" name="UserNuevo-Taxista" id="UserNuevo-Taxista-Modificar"></label>
+                    <label class="label-direccion"><span id="label_contra_modificar"></span><input type="password" name="ContrNuevo-Taxista" id="ContrNuevo-Taxista-Modificar"></label>
                 </div>
-                <div class="div-labels-forms">
-                    <button type="submit" class="boton-enviar-modal-editar" id="btn_enviar_cliente"></button>
+                <div class="div-labels-forms-button">
+                    <button type="submit" class="boton-enviar-modal-editar" id="btn_enviar_modificar"></button>
                 </div>
             </form>
-        </dialog> -->
+        </dialog>
 
         <!--------------------------------------MODAL ELIMINAR------------------------------------------------->
         <dialog class="modal-eliminar">

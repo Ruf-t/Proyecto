@@ -1,64 +1,46 @@
 <?php 
-session_start();
-cerrarSesion();
+
 
 
 //LOGIN 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $con = conectar_bd(); // Función para conectar a la BD
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {º
+//     $con = conectar_bd(); // Función para conectar a la BD
 
-    $user = $_POST["user"];
-    $contrasenia = $_POST["contrasenia"];
+//     $user = $_POST["user"];
+//     $contrasenia = $_POST["contrasenia"];
 
-    // Llamar a la función para verificar las credenciales
-    logear($con, $user, $contrasenia);
-}
+//     // Llamar a la función para verificar las credenciales
+//     logear($con, $user, $contrasenia);
+// }
 
-if (isset($_POST["cerrarSesionTaximetrista"])) {
-    // Llamada a la función login
-    cerrarSesionTaximetrista();
-}
+// if (isset($_POST["cerrarSesionTaximetrista"])) {
+//     // Llamada a la función login
+//     cerrarSesionTaximetrista();
+// }
 
-function cerrarSesion() {
-    // Verifica si el usuario está logueado
-    if (!isset($_SESSION['Usuario'])) { // Asegúrate de que este es el nombre de la variable de sesión que usaste
-        header("Location: ../Register-Login/login.php");
-        exit;
-    }
+// function cerrarSesion() {
+//     // Verifica si el usuario está logueado
+//     if (!isset($_SESSION['Usuario'])) { // Asegúrate de que este es el nombre de la variable de sesión que usaste
+//         header("Location: ../Register-Login/login.php");
+//         exit;
+//     }
     
-    // Verifica si se ha enviado el formulario para cerrar sesión
-    if (isset($_POST['cerrar_sesion'])) {    
-        // Destruir todas las variables de sesión
-        session_unset();
+//     // Verifica si se ha enviado el formulario para cerrar sesión
+//     if (isset($_POST['cerrar_sesion'])) {    
+//         // Destruir todas las variables de sesión
+//         session_unset();
     
-        // Destruir la sesión
-        session_destroy();
+//         // Destruir la sesión
+//         session_destroy();
     
-        // Redirigir al usuario al inicio de sesión
-        header("Location: ../Register-Login/login.php");
-        exit;
-    }
-}
+//         // Redirigir al usuario al inicio de sesión
+//         header("Location: ../Register-Login/login.php");
+//         exit;
+//     }
+// }
 
 
 
-function cerrarSesionTaximetrista(){
-    if (!isset($_SESSION['userTaxi'])) {
-        header("Location: ../Taximetristas/layout/index-Taximetrista.php");
-        exit;
-    }
-    if (isset($_POST['cerrarSesionTaximetrista'])) {    
-        // Destruir todas las variables de sesión
-        session_unset();
-    
-        // Destruir la sesión
-        session_destroy();
-    
-        // Redirigir al usuario al inicio de sesión
-        header("Location: ../Taximetristas/layout/index-Taximetrista.php");
-        exit;
-    }
-}
 
 // function logearTaxi($con, $userTaxi, $contrasenia) {
 //     $consulta_login = "SELECT * FROM taximetrista WHERE Usuario = '$userTaxi'";
