@@ -17,11 +17,11 @@
         <div class="div-addCliente">
             <h1 id="h1_taxistas"></h1>
             <!-- <button class="btn-abrir-modal boton-add-cliente">Añadir Taximetrista</button> -->
-            <button class="btn-abrir-modal boton-add-cliente" id="btn_abrir_modal_taxistas"></button>
+            <button class="btn-abrir-modal boton-add-taxista" id="btn_abrir_modal_taxistas"></button>
         </div>
 
         <!-- ------------------------------------MODAL AÑADIR--------------------------------------------->
-        <dialog class="modal-taxistas">
+        <dialog class="modal modal-taxistas">
             <div class="div-titulo-modal">
                 <h2 id="h2_agregar_taxista"></h2>   
                 <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
@@ -50,7 +50,7 @@
         </dialog>
 
         <!-- ------------------------------------MODAL MODIFICAR------------------------------------------- -->
-        <dialog class="modal-modificar">
+        <!-- <dialog class="modal-modificar">
             <div class="div-titulo-modal-modificar">
                 <h2 id="h2_modificar_taxista"></h2>   
                 <button class="btn-cerrar-modal-modificar"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
@@ -77,7 +77,7 @@
                     <button type="submit" class="boton-enviar-modal-editar" id="btn_enviar_cliente"></button>
                 </div>
             </form>
-        </dialog>
+        </dialog> -->
 
         <!--------------------------------------MODAL ELIMINAR------------------------------------------------->
         <dialog class="modal-eliminar">

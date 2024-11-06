@@ -27,9 +27,7 @@ include_once("../../BaseDatos/functions.php");
                     <h3 class="h3-titulos" id="h3_contra"></h3>
                     <input type="password" id="contraseniaTaxi" name="contraseniaTaxi" require>
                 </div>
-              
                    <button class="button-login-TXs" id="btn_login"></button>
-
             </form>
             <!-- <p class="p-log-reg">No tengo cuenta <a href="register-Taximetrista.php">Registrarme</a></p> -->
             <div class="respuestaAJAX" id="respuestaAJAX-index">
@@ -37,7 +35,7 @@ include_once("../../BaseDatos/functions.php");
             </div>
         </div>
     </div>
-    <!-- <button class="switch_idioma_index" id="switch_idioma"></button> -->
+    <button class="switch_idioma_index" id="switch_idioma"></button>
 
    
 

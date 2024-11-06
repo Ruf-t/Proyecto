@@ -19,7 +19,7 @@
         ?>
         <div class="btn-select-filtro">
             <h1 id="h1_ingresos"></h1>
-            <div class="selects">
+            <!-- <div class="selects">
                 <select id="turno">
                     <option value="" id="option_select_turno"></option>
                     <option value="Turno 1" id="option_select_turno1"></option>
@@ -35,7 +35,7 @@
                         <option value="personalizada" id="option_select_fecha_personalizada"></option>
                     </select>
             <button class="btn-aplicar-filtro" id="btn_aplicar_filtro"></button>
-            </div>
+            </div> -->
         </div>
         <div id="resultado"></div>
         <div class="div-tabla-ingresos">
@@ -60,8 +60,6 @@
                 </tbody>
             </table>
         </div>
-        
-
     </main>
 
     <div class="sidebar-container">

@@ -59,5 +59,3 @@ if (isset($_POST['CostoViajeTaximetrista']) && isset($_POST['MetodoDePagoTaximet
 
 // Si ninguna de las condiciones anteriores se cumple
 // echo json_encode(['success' => false, 'message' => 'Por favor, rellena todos los campos.']);
-
-

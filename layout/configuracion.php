@@ -8,7 +8,7 @@
         <div class="div-configuracion">
             <h3 id="h3_opciones"></h3>
             <button id="switch_idioma"></button>
-            <form method="post" action="../BaseDatos/login-bd.php">
+            <form class="form-cerrarS" method="post" action="../BaseDatos/login-bd.php">
                 <button type="submit" name="cerrar_sesion" id="cerrar_sesion"></button>
             </form>
         </div>

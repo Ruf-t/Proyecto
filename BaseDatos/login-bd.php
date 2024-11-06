@@ -2,6 +2,7 @@
 session_start();
 cerrarSesion();
 
+
 //LOGIN 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $con = conectar_bd(); // Función para conectar a la BD

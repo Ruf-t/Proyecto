@@ -111,10 +111,6 @@ main{
   border-radius: 9px;
 }
 
-
-
-
-
 .success-message{
   color: #34C759;
   z-index: 99999;
@@ -182,6 +178,7 @@ main{
   a{
     text-decoration: none;
     font-weight: bold;
+    color: var(--colorAmarillo);
   }
 }
 .p_register{
@@ -378,10 +375,11 @@ button {
   cursor: pointer;
   font-size: 16px;
   transition: ease-in-out 230ms;
+  background-color: var(--colorAmarillo5);
 }
 
 button:hover {
-  background-color: var(--colorAmarillo4);
+  background-color: var(--colorAmarillo3);
 }
 
 
@@ -658,10 +656,6 @@ button:hover {
   color: green;
 }
 
-
-
-
-
 .div-botones-administracion {
   display: flex;
 }
@@ -697,6 +691,22 @@ button:hover {
   background-color: var(--colorAmarillo5);
 }
 .boton-add-cliente:hover{
+  background-color: var(--colorAmarillo3);
+}
+
+.boton-add-taxista{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: .5rem;
+  border: none;
+  width: 150px;
+  height: 50px;
+  margin-right: 1rem;
+  background-color: var(--colorAmarillo5);
+}
+.boton-add-taxista:hover{
   background-color: var(--colorAmarillo3);
 }
 
@@ -872,26 +882,50 @@ select{
   border: none;
 }
 
-
 /*! VIAJES **/
 /*? BOTON SELECT */
 .btn-select-turno-fecha{
   display: flex;
   flex-direction: row;
-  justify-content:start;
+  justify-content: start;
   width: 100%;
   height: 50px;
   grid-row: 2/3;
   grid-column: 1/2;
   margin-top: 1.5rem;
 }
-.selects{
+#fecha-personalizada{
   display: flex;
   flex-direction: row;
+  height: 100%;
+
+  & input{
+    color: var(--colorAmarillo4);
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer; 
+    border-radius: .4rem; 
+    font-weight: bold;
+    margin: 0;
+  }
 }
-.selects select{
-  margin-right: 1rem;
+#fecha-personalizada input{
+  margin-left: 1rem;
 }
+#recargar-tabla{
+  width: 3.5rem;
+  padding: 10px;
+  background-color: var(--colorAmarillo5);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: ease-in-out 230ms;
+}
+
+#recargar-tabla:hover{
+  background-color: var(--colorAmarillo3);
+}
+
 
 /*? TABLA VIAJES */
 .div-tabla-viaje {
@@ -905,7 +939,7 @@ select{
   height: 380px; 
   align-items: start; 
 }
-#tabla-viaje table{
+#tabla-viaje {
   table-layout: auto;
   border-collapse: collapse;
   font-size: 1rem;
@@ -968,18 +1002,6 @@ select{
   border-radius: .2rem;
   box-sizing: border-box;
 }
-.tabla-clientes table th {
-  z-index: 1;
-  position: sticky;
-}
-
-.columnas-tabla-clientes{
-  background-color: #f4f4f4;
-  height: 40px;
-}
-.tabla-clientes th:last-child, .tabla-clientes td:last-child {
-  border-right: none;
-}
 .tabla-clientes th button {
   border-collapse: collapse;
   font-size: 1rem;
@@ -988,6 +1010,14 @@ select{
   background-color: #f4f4f4;
   border-radius: .2rem;
   box-sizing: border-box;
+}
+
+.columnas-tabla-clientes{
+  background-color: #f4f4f4;
+  height: 40px;
+}
+.tabla-clientes th:last-child, .tabla-clientes td:last-child {
+  border-right: none;
 }
 .tabla-clientes th:nth-child(3), .tabla-clientes td:nth-child(3) {
   width: 10rem;
@@ -1380,6 +1410,9 @@ body.modal-modificar-open {
   width: 100%;
   grid-row: 2/3;
 }
+#h1_ingresos{
+  margin-bottom: 2rem;
+}
 .selects{
   display: flex;
   flex-direction: row;
@@ -1390,7 +1423,7 @@ body.modal-modificar-open {
 .btn-aplicar-filtro{
   width: 8rem;
   padding: 10px;
-  background-color: var(--colorAmarillo4);
+  background-color: var(--colorAmarillo5);
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
@@ -1398,7 +1431,7 @@ body.modal-modificar-open {
 }
 
 .btn-aplicar-filtro:hover{
-  background-color: var(--colorAmarillo5);
+  background-color: var(--colorAmarillo3);
 }
 
 /*? TABLA INGRESOS */
@@ -1443,15 +1476,6 @@ body.modal-modificar-open {
   border-radius: .2rem;
   box-sizing: border-box;
 }
-#tabla-ingresos th:nth-child(3), #tabla-ingresos td:nth-child(3) {
-    width: 10rem;
-}
-#tabla-ingresos th:nth-child(4), #tabla-ingresos td:nth-child(4) {
-  width: 10rem;
-}
-#tabla-ingresos th:nth-child(5), #tabla-ingresos td:nth-child(5) {
-  width: 10rem;
-}
 .income {
   color: #28a745;
   font-weight: bold;
@@ -1461,6 +1485,7 @@ body.modal-modificar-open {
   justify-content: space-between;
   align-items: center;
 }
+
 /* TABLA TAXIS*/
 .tabla-Taxis {
   overflow-x: auto;
@@ -1492,7 +1517,6 @@ body.modal-modificar-open {
   border-radius: .2rem;
   box-sizing: border-box;
 }
-
 .tabla-Taxis .income {
   color: #28a745;
   font-weight: bold;
@@ -1522,6 +1546,7 @@ body.modal-modificar-open {
   background-color: white;
   width: 40px;
 }
+
 .boton-papelera:hover{
   background-color: #dddada;
 }
@@ -1540,16 +1565,24 @@ body.modal-modificar-open {
   display: grid;
   grid-column: 1 / 3;
   grid-row: 2/4;
-  width: 50%;
-  height: 50%;
+  width: 25%;
+  height: 25%;
   text-align: center;
   gap: 1rem;
+
+  button{
+    background-color: var(--colorAmarillo5);
+  }
+  button:hover{
+    background-color: var(--colorAmarillo3);
+  }
 
   & #h3_opciones{
     text-align: start;
   }
+  
+  /* & #cerrar_sesion {
+    color: rgb(255, 255, 255);
+  } */
 
-  & #cerrar_sesion{
-    color: red;
-  }
 }
