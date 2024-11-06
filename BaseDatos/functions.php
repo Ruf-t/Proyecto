@@ -864,7 +864,7 @@ function obtener_informacion_jornadas($con){
 }
 
 //filtrar ingresos (jornadas) 
-function obtener_informacion_jornadas_filtradas($con, $fecha) {
+function obtener_informacion_jornadas_filtradas($con, $fecha_I) {
     // Consulta base para obtener las jornadas
     $query = "SELECT 
                 j.ID AS id_jornada, 
@@ -880,7 +880,7 @@ function obtener_informacion_jornadas_filtradas($con, $fecha) {
               WHERE 1=1";
 
     // Aplicar filtro según el valor de $fecha
-    switch ($fecha) {
+    switch ($fecha_I) {
         case 'hoy':
             $query .= " AND DATE(j.fecha) = CURDATE()";
             break;
@@ -897,8 +897,8 @@ function obtener_informacion_jornadas_filtradas($con, $fecha) {
             $query .= " AND j.fecha >= CURDATE() - INTERVAL 6 MONTH";
             break;
         default:
-            if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha)) { // Si es una fecha específica en formato YYYY-MM-DD
-                $query .= " AND DATE(j.fecha) = '$fecha'";
+            if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha_I)) { // Si es una fecha específica en formato YYYY-MM-DD
+                $query .= " AND DATE(j.fecha) = '$fecha_I'";
             }
             break;
     }

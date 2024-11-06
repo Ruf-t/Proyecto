@@ -526,7 +526,7 @@ $(document).ready(function() {
             url: '../BaseDatos/peticiones-ajax.php',
             type: 'POST',
             data: {
-                 fecha: fechaSeleccionada 
+                fecha_I: fechaSeleccionada 
                 },
             success: function(response) {
                 console.log(response);  // Ver la respuesta cruda

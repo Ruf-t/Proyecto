@@ -48,16 +48,17 @@ if (isset($_POST['turno']) || isset($_POST['fecha'])) {
     exit();
 }
 
+if (isset($_POST['fecha_I'])) {
+    $fecha_I = $_POST['fecha_I'];
 
+    // Incluir la función que obtiene las jornadas filtradas
+    include_once('functions.php'); 
 
-//LOGIN ADMINISTRADOR NO BORRAR
-if (isset($_POST['user']) && $_POST['contrasenia']) {
+    // Llamar a la función que obtiene las jornadas filtradas
+    $html = obtener_informacion_jornadas_filtradas($con, $fecha_I);
 
-    $user = $_POST["user"];
-    $contrasenia = $_POST["contrasenia"];
-    
-    // Llamar a la función para verificar las credenciales
-    logear($con, $user, $contrasenia);
+    // Devolver el HTML generado como respuesta
+    echo $html;
     exit();
 }
 
