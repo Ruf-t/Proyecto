@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="../resources/style.css">
 <link rel="icon" href="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-3B.svg" type="image/png">
+<title id="title_viajes"></title>
 <body id="body-home">
     <main>
         <?php
@@ -19,11 +20,11 @@
                     <option value="seis_meses" id="option_select_fecha_6meses"></option>
                     <option value="personalizada" id="option_select_fecha_personalizada"></option>
                 </select>
+                <div id="fecha-personalizada" style="display: none;">
+                    <input type="date" id="fecha-especifica" name="fecha-especifica">
+                </div>     
                 <button id="recargar-tabla"><img src="../resources/img/Iconos-SVG/icons-others/refresh.svg"></button>
             </div>
-            <div id="fecha-personalizada" style="display: none;">
-                <input type="date" id="fecha-especifica" name="fecha-especifica">
-            </div>                
         </div>
         <div class="div-tabla-viaje">
             <table id="tabla-viaje">

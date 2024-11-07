@@ -3,6 +3,7 @@
 <link rel="icon" href="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-3B.svg" type="image/png">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../resources/ajax.js"></script>
+<title id="title_clientes"></title>
 <body id="body-home">
     <main>
     <div class="respuestaAJAX">
@@ -50,7 +51,7 @@
         <dialog class="modal-modificar">
             <div class="div-titulo-modal-modificar">
                 <h2 id="h2_modificar_cliente"></h2>   
-                <button class="btn-cerrar-modal-modificar"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
+                <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
             <form id="form-modi-cliente" class="formulario" method="post">
             <div class="div-labels-forms">    

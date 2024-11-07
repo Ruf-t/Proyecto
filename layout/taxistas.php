@@ -2,6 +2,7 @@
 <link rel="icon" href="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-3B.svg" type="image/png">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../resources/ajax.js"></script>
+<title id="title_taxistas"></title>
 
 <body id="body-home">
     <main>
@@ -16,7 +17,6 @@
 
         <div class="div-addCliente">
             <h1 id="h1_taxistas"></h1>
-            <!-- <button class="btn-abrir-modal boton-add-cliente">Añadir Taximetrista</button> -->
             <button class="btn-abrir-modal boton-add-taxista" id="btn_abrir_modal_taxistas"></button>
         </div>
 
@@ -50,10 +50,10 @@
         </dialog>
 
         <!-- ------------------------------------MODAL MODIFICAR------------------------------------------- -->
-        <dialog class="modal-modificar modal-taxistas">
-            <div class="div-titulo-modal">      
+        <dialog class="modal-modificar ">
+            <div class="div-titulo-modal-modificar">      
                 <h2 id="h2_modificar_taxista"></h2>   
-                <button class="btn-cerrar-modal-modificar"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
+                <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
             </div>
             <form id="form-modi-taxistas" method="post">
                 <div class="div-labels-forms">
@@ -84,8 +84,8 @@
                 <h2 id="h2_eliminar_taxista"></h2>   
             </div>
             <div class="btns-aceptar-cancelar">
-                <button id="eliminar_aceptar"></button>
-                <button id="eliminar_cancelar" class="btn-cerrar-modal-eliminar"></button>
+                <button id="eliminar_aceptar" class="btn-aceptar"></button>
+                <button id="eliminar_cancelar" class="btn-cancelar btn-cerrar-modal-eliminar"></button>
             </div>
         </dialog>
 

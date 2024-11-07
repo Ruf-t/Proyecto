@@ -62,7 +62,7 @@ if (isset($_POST['turno']) || isset($_POST['fecha'])) {
         foreach ($datos_viaje as $fila) {
             echo "<tr>";
             echo "<td>" . $fila['Nombre_Taxista'] . "</td>";
-            echo "<td>" . $fila['Nombre_Clien   te'] . "</td>";
+            echo "<td>" . $fila['Nombre_Cliente'] . "</td>";
             echo "<td>" . $fila['matricula'] . "</td>";
             echo "<td>" . $fila['Fecha'] . "</td>";
             echo "<td>" . $fila['Método_de_pago'] . "</td>";

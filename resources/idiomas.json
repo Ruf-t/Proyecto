@@ -32,6 +32,7 @@
         "config_menu":"Settings",
 
         "PANEL":"----------------------------------------",
+        "title_home":"Panel",
         "h3_panel": "Administration Panel",
         "span_ordenes_panel": "Orders",
         "span_ganancias_panel": "Earnings",
@@ -46,6 +47,7 @@
         "h3_tabla_viaje_panel": "Trip Table",
 
         "VIAJES":"------------------------------------------",
+        "title_viajes":"Trips",
         "h1_viajes":"Trips",
         "option_select_turno":"Select a shift",
         "option_select_turno1":"Shift 1",
@@ -59,6 +61,7 @@
         "option_select_fecha_personalizada":"Custom date",
 
         "CLIENTES":"-----------------------------------------",
+        "title_clientes":"Customers",
         "h1_clientes":"Customers",
         "btn_abrir_modal_cliente":"Add Customer",
         "h2_agregar_cliente":"Add new Customer",
@@ -75,6 +78,7 @@
         "th_deuda":"Debt",
 
         "TAXISTAS":"------------------------------------------",
+        "title_taxistas":"Drivers",
         "h1_taxistas":"Drivers List",
         "btn_abrir_modal_taxistas":"Add Driver",
         "h2_agregar_taxista":"Add Driver",
@@ -88,12 +92,14 @@
         "th_info_taxista":"Driver Info",
 
         "INGRESOS":"------------------------------------------",
+        "title_ingresos":"Incomes",
         "h1_ingresos":"Incomes",
         "btn_aplicar_filtro":"Apply Filter",
         "th_numero_taxi":"Taxi N°",
         "th_turnos":"Shifts",
         
         "TAXIS":"---------------------------------------------",
+        "title_taxis":"Taxis",
         "h1_taxi":"Taxis list",
         "btn_abrir_modal_taxi":"Add Taxi",
         "th_kilometros":"Kilometers",
@@ -114,6 +120,7 @@
         "btn_add_taxi":"Add",
 
         "CONFIG":"-----------------------------------------",
+        "title_config":"Settings",
         "h3_opciones":"Options",
         "switch_idioma":"Change language",
         "cerrar_sesion":"Logout",
@@ -210,6 +217,7 @@
         "config_menu":"Configuración",
 
         "PANEL":"----------------------------------------",
+        "title_home":"Panel",
         "h3_panel": "Panel de Administración",
         "span_ordenes_panel": "Órdenes",
         "span_ganancias_panel": "Ganancias",
@@ -224,6 +232,7 @@
         "h3_tabla_viaje_panel": "Tabla Viajes",
 
         "VIAJES":"------------------------------------------",
+        "title_viajes":"Viajes",
         "h1_viajes":"Viajes",
         "option_select_turno":"Selecciona un turno",
         "option_select_turno1":"Turno 1",
@@ -237,6 +246,7 @@
         "option_select_fecha_personalizada":"Fecha personalizada",
 
         "CLIENTES":"-----------------------------------------",
+        "title_clientes":"Clientes",
         "h1_clientes":"Clientes",
         "btn_abrir_modal_cliente":"Añadir cliente",
         "h2_agregar_cliente":"Agregar Cliente",
@@ -253,6 +263,7 @@
         "th_deuda":"Deuda",
 
         "TAXISTAS":"------------------------------------------",
+        "title_taxistas":"Taxistas",
         "h1_taxistas":"Lista de Taximetristas",
         "btn_abrir_modal_taxistas":"Añadir Taximetrista",
         "h2_agregar_taxista":"Agregar Taximetrista",
@@ -266,12 +277,14 @@
         "th_info_taxista":"Info Taxista",
 
         "INGRESOS":"------------------------------------------",
+        "title_ingresos":"Ingresos",
         "h1_ingresos":"Ingresos",
         "btn_aplicar_filtro":"Aplicar filtro",
         "th_numero_taxi":"N° Taxi",
         "th_turnos":"Turnos",
 
         "TAXIS":"---------------------------------------------",
+        "title_taxis":"Taxis",
         "h1_taxi":"Lista de Taxis",
         "btn_abrir_modal_taxi":"Añadir Taxi",
         "th_kilometros":"Kilometros",
@@ -292,6 +305,7 @@
         "btn_add_taxi":"Añadir",
 
         "CONFIG":"--------------------------------------------",
+        "title_config":"Configuración",
         "h3_opciones":"Opciones",
         "switch_idioma":"Cambiar idioma",
         "cerrar_sesion":"Cerrar Sesion",

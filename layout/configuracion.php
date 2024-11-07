@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="../resources/style.css">
 <link rel="icon" href="../resources/img/Logos-SVG-SinFondo/Modelo-B/Logo-3B.svg" type="image/png">
+<title id="title_config"></title>
 <body id="body-home">
     <main>
         <?php

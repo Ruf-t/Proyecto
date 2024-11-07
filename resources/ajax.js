@@ -542,10 +542,6 @@ $(document).ready(function() {
 });
 
 
-
-
-
-
 $(document).ready(function() {
     $('#form-inicioS-admin').submit(function(e) {
         e.preventDefault(); // Evita la recarga de la página

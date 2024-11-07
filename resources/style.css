@@ -270,7 +270,7 @@ body.modal-open {
   max-width: 50%;
   border: none;
   border-radius: 10px;
-  height: 65%;
+  height: 67%;
   padding: 15px;
   position: absolute;
   top: 50%;
@@ -321,7 +321,7 @@ body.modal-modificar-open {
 }
 
 .modal-eliminar{
-  max-width: 35%;
+  max-width: 36%;
   border: none;
   border-radius: 10px;
   height: 28%;
@@ -341,10 +341,22 @@ body.modal-modificar-open {
     
     #eliminar_aceptar{
       width: 49%;
+      background-color: var(--colorAmarillo5);
     }
+    #eliminar_aceptar:hover{
+      background-color: var(--colorAmarillo3);
+      cursor: pointer;
+    }
+  
     #eliminar_cancelar{
       width: 49%;
+      background-color: var(--colorAmarillo5);
     }
+    #eliminar_cancelar:hover{
+      background-color: var(--colorAmarillo3);
+      cursor: pointer;
+    }
+
 }
 
 .div-titulo-modal-eliminar{
@@ -859,7 +871,7 @@ body.modal-modificar-open {
   display: grid;
   grid-row: 3/5;
   grid-column: 1/3;
-  height: 350px; 
+  height: 340px; 
 }
 
 #table-panel {
@@ -905,7 +917,6 @@ body.modal-modificar-open {
   height: 50px;
   grid-row: 2/3;
   grid-column: 1/2;
-    /* margin-top: 1.5rem; */
 }
 #h1_viajes{
   margin-bottom: .5rem;
@@ -913,6 +924,7 @@ body.modal-modificar-open {
 #fecha-personalizada{
   display: flex;
   flex-direction: row;
+  align-items: center;
   height: 100%;
 
   & input{
@@ -923,14 +935,15 @@ body.modal-modificar-open {
     border-radius: .4rem; 
     font-weight: bold;
     margin: 0;
+    width: 14.2rem;
   }
 }
 #fecha-personalizada input{
-  margin-left: 1rem;
+  margin-right: 1rem;
 }
 #recargar-tabla{
   width: 3.5rem;
-  padding: 10px;
+  padding: 5px;
   background-color: var(--colorAmarillo5);
   border-radius: 5px;
   cursor: pointer;
@@ -1091,7 +1104,7 @@ body.modal-modificar-open {
   padding: 10px;
   border-radius: .5rem;
   border: none;
-  width: 150px;
+  width: 110px;
   height: 50px;
   margin-right: 1rem;
   background-color: var(--colorAmarillo5);
@@ -1175,7 +1188,6 @@ body.modal-modificar-open {
 .btn-select-filtro{
   display: flex;
   flex-direction: column;
-  justify-content:center;
   width: 100%;
   grid-row: 2/3;
 }
@@ -1185,6 +1197,7 @@ body.modal-modificar-open {
 .selects{
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 .selects select{
   margin-right: 1rem;
