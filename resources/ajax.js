@@ -746,3 +746,79 @@ $(document).ready(function() {
 function cerrarModal() {
     document.querySelector(".modal").close();
 }
+// MODIFICAR TAXI
+$(document).ready(function() {
+    $('#form-modi-taxi').on('submit', function(e) {
+        e.preventDefault();  // Evitar recargar la página
+
+        // Limpiar mensajes anteriores
+        $('.mensajeResult').removeClass('success-message error-message').text('');
+
+        // Obtener valores y validarlos
+        var id = $('#id_Modificar').val().trim();  // ID oculto del taxi a modificar
+        var matricula = $('#matricula_Modificar').val().trim();
+        var modelo = $('#modelo_Modificar').val().trim();
+        var anio = $('#anio_Modificar').val().trim();
+        var estado = $('#estado_Modificar').val();
+        var errorMessage = '';
+
+        // Verificar si el campo ID está presente y no vacío
+        if (id === '') {
+            errorMessage = 'ID de taxi no encontrado. Intenta de nuevo.';
+        } else {
+            // Obtener el año actual para la validación
+            var currentYear = new Date().getFullYear();
+            var maxYear = currentYear + 2;
+
+            // Verificar si algún otro campo está vacío
+            if (matricula === '' || modelo === '' || anio === '' || estado === '') {
+                errorMessage = 'Debe completar todos los campos.';
+            } else {
+                // Validar longitud de matrícula y modelo
+                if (matricula.length < 7 || matricula.length > 8) {
+                    errorMessage = 'La matrícula debe tener entre 7 y 8 caracteres.';
+                } else if (modelo.length < 3 || modelo.length > 20) {
+                    errorMessage = 'El modelo debe tener entre 3 y 20 caracteres.';
+                } else if (!/^\d{4}$/.test(anio)) {
+                    errorMessage = 'El año debe ser un número de 4 dígitos.';
+                } else {
+                    // Validar el rango del año
+                    if (anio < 1990 || anio > maxYear) {
+                        errorMessage = 'El año debe estar entre 1990 y ' + maxYear + '.';
+                    }
+                }
+            }
+        }
+
+        // Mostrar mensaje de error si existe
+        if (errorMessage) {
+            $('.mensajeResult').html(errorMessage).addClass('error-message');
+            $('.respuestaAJAX').slideDown().delay(5000).slideUp(); // Mostrar mensaje y ocultar después de 5s
+            return;
+        }
+
+        // Si todo está bien, enviar la petición AJAX
+        var formData = $(this).serialize() + "&action=modificarTaxi"; // Añadir acción específica
+
+        $.ajax({
+            type: 'POST',
+            url: '../BaseDatos/peticiones-ajax.php',
+            data: formData,
+            dataType: 'json',
+            success: function(response) {
+                console.log("Respuesta del servidor:", response);
+                if (response.success) {
+                    $('.mensajeResult').html(response.message).removeClass('error-message').addClass('success-message');
+                    $('.respuestaAJAX').slideDown().delay(5000).slideUp();
+                } else {
+                    $('.mensajeResult').html(response.message).removeClass('success-message').addClass('error-message');
+                    $('.respuestaAJAX').slideDown().delay(5000).slideUp();
+                }
+            },
+            error: function(xhr, status, error) {
+                $('.mensajeResult').html('Ocurrió un error inesperado.').addClass('error-message');
+                $('.respuestaAJAX').slideDown().delay(5000).slideUp();
+            }
+        });
+    });
+});

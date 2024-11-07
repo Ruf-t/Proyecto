@@ -79,7 +79,6 @@ function cerrarSesionTaximetrista(){
 
 // Llamar a la función de cerrar sesión
 cerrarSesionTaximetrista();
-// session_start();
 
 
 // Si ninguna de las condiciones anteriores se cumple

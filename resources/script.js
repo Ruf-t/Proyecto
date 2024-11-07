@@ -23,7 +23,7 @@ alinks.forEach(link => {
          const prevLink = link.previousElementSibling;
          if (prevLink) {
              prevLink.classList.add('above-active');
-         }1
+         }
  
          // Referenciar al <a> de abajo (si existe) y añadir clase
          const nextLink = link.nextElementSibling;
@@ -36,7 +36,7 @@ alinks.forEach(link => {
 
 
 
-// --------DESPLEGAR MODAL-----------
+// --------DESPLEGAR MODAL CERRAR MODAL-----------
 
 const btnsAbrirModal = document.querySelectorAll('.btn-abrir-modal');
 const btnsCerrarModal = document.querySelectorAll('.btn-cerrar-modal');
@@ -44,13 +44,17 @@ const modals = document.querySelectorAll('.modal');
 
 btnsAbrirModal.forEach((btn, index) => {
     btn.addEventListener('click', () => {
-        modals[index].showModal();
+        if (modals[index]) {  // Verifica que el modal exista
+            modals[index].showModal();
+        }
     });
 });
 
 btnsCerrarModal.forEach((btn, index) => {
     btn.addEventListener('click', () => {
-        modals[index].close();
+        if (modals[index]) {  // Verifica que el modal exista
+            modals[index].close();
+        }
     });
 });
 
@@ -58,26 +62,43 @@ btnsCerrarModal.forEach((btn, index) => {
 
 //---------------ABRIR MODAL MODIFICAR------------------
 
+// const btnsAbrirModalModificar = document.querySelectorAll('.btn-abrir-modal-modificar');
+// const btnCerrarModaModificar = document.querySelectorAll('.btn-cerrar-modal-modificar');
+// const modalModificar = document.querySelectorAll('.modal-modificar');
+
+// btnsAbrirModalModificar.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//         modalModificar.showModal(); 
+//     });
+// });
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     const btnCerrarModalModificar = document.querySelector('.btn-cerrar-modal-modificar');
+//     if (btnCerrarModalModificar) {
+//         btnCerrarModalModificar.addEventListener('click', () => {
+//             modalModificar.close();
+//         });
+//     }
+// });
+
+// -------- ABRIR Y CERRAR MODAL DE MODIFICAR -----------
 const btnsAbrirModalModificar = document.querySelectorAll('.btn-abrir-modal-modificar');
 const modalModificar = document.querySelector('.modal-modificar');
-const btnCerrarModaModificar = document.querySelector('.btn-cerrar-modal-modificar');
+const btnCerrarModalModificar = document.querySelector('.modal-modificar .btn-cerrar-modal');
 
+// Abre el modal de modificar taxis
 btnsAbrirModalModificar.forEach(btn => {
     btn.addEventListener('click', () => {
         modalModificar.showModal(); 
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const btnCerrarModalModificar = document.querySelector('.btn-cerrar-modal-modificar');
-    if (btnCerrarModalModificar) {
-        btnCerrarModalModificar.addEventListener('click', () => {
-            modalModificar.close();
-        });
-    }
-});
-
-
+// Cierra el modal de modificar taxis
+if (btnCerrarModalModificar) {
+    btnCerrarModalModificar.addEventListener('click', () => {
+        modalModificar.close();
+    });
+}
 
 //---------------ABRIR MODAL ELIMINAR------------------
 const btnsAbrirModalEliminar = document.querySelectorAll('.btn-abrir-modal-eliminar');

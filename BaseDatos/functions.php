@@ -908,7 +908,6 @@ function obtener_informacion_jornadas_filtradas($con, $fecha_I) {
 
     $result = $con->query($query);
     $html = '';
-
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $html .= "
@@ -987,4 +986,16 @@ function RankingTaxistasMes($con){
             'message' => 'Error al generar el ranking: ' . mysqli_error($con)
         ];
     }
+}
+
+
+function modificar_taxi($con, $id, $matricula, $modelo, $anio, $estado) {
+    $sql = "UPDATE taxi SET Matricula = ?, Modelo = ?, Año = ?, Estado = ? WHERE ID = ?";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("ssisi", $matricula, $modelo, $anio, $estado, $id);
+
+    // Ejecuta y devuelve el resultado
+    $resultado = $stmt->execute();
+    $stmt->close();
+    return $resultado;
 }

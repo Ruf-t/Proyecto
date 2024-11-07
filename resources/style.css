@@ -161,6 +161,9 @@ select{
   input{
     width: 100%;
   }
+  select{
+    width: 100%;
+  }
 }
 
 .div-labels-forms-button{
@@ -299,13 +302,13 @@ body.modal-modificar-open {
   display: flex;
   justify-content: space-between;
 
-  .btn-cerrar-modal-modificar{
+  .btn-cerrar-modal{
     width: 31px;
     height: 31px;
     background-color: white;
     cursor: pointer;
   }
-  .btn-cerrar-modal-modificar:hover{
+  .btn-cerrar-modal:hover{
     background-color: #ccc;
   }
 }

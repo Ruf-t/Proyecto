@@ -16,7 +16,6 @@
         require_once '..\BaseDatos\functions.php';
         $datos_taxis = mostrar_datos_taxis($con);
         ?>
-
         <div class="div-addTaxi">
             <h1 id="h1_taxi"></h1>
             <button class="btn-abrir-modal boton-add-Taxi" id="btn_abrir_modal_taxi"></button>
@@ -36,6 +35,7 @@
                 <tbody>
                 <?php foreach ($datos_taxis as $fila) { ?>
                         <tr>
+                            <tr data-id="<?php echo $fila['ID']; ?>">  <!-- Aquí agregamos el ID -->
                             <td><?php echo $fila['Matricula']; ?></td>
                             <td><?php echo $fila['Modelo']; ?></td>
                             <td><?php echo $fila['Año']; ?></td>
@@ -88,22 +88,23 @@
             <button class="btn-cerrar-modal"><img src="../resources/img/Iconos-SVG/icons-others/cruz-exit.svg"></button>
         </div>
         <form id="form-modi-taxi" class="formulario" method="post">
+            <input type="hidden" name="id" id="id_Modificar" value="">
             <div class="div-labels-forms">
-                <label><span id="label_matricula_modi"></span><input type="text" name="matricula" id="matricula"></label>
-                <label><span id="label_modelo_modi"></span><input type="text" name="modelo" id="modelo"></label>
+                <label><span id="label_matricula_modi"></span><input type="text" name="matricula" id="matricula_Modificar"></label>
+                <label><span id="label_modelo_modi"></span><input type="text" name="modelo" id="modelo_Modificar"></label>
             </div>
             <div class="div-labels-forms">
-                <label><span id="label_anio_modi"></span><input type="number" name="anio" id="anio"></label>
+                <label><span id="label_anio_modi"></span><input type="number" name="anio" id="anio_Modificar"></label>
                 <label><span id="label_estado_modi"></span>
-                    <select name="estado" id="estado" class="select-estado">
+                    <select name="estado" id="estado_Modificar" class="select-estado">
                     <option value="" id="option_select_estado_modi"></option>
                     <option value="Disponible" id="option_select_estado1_modi"></option>
                     <option value="No Disponible" id="optiobtnn_select_estado2_modi"></option>
                     </select>
                 </label>
             </div>
-            <div class="div-labels-forms">
-                <button type="submit" class="boton-enviar-modal-taxis btn-cerrar-modal" id="btn_add_taxi_modi"></button>
+            <div class="div-labels-forms-button">
+                <button type="submit" class="boton-enviar-modal-taxis btn-cerrar-modal-modificar" id="btn_add_taxi_modi"></button>
             </div>
         </form>
     </dialog>

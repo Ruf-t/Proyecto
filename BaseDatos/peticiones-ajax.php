@@ -4,6 +4,33 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// LOGIN 
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $con = conectar_bd(); // Función para conectar a la BD
+
+//     $user = $_POST["user"];
+//     $contrasenia = $_POST["contrasenia"];
+
+//     // Llamar a la función para verificar las credenciales
+//     logear($con, $user, $contrasenia);
+//     exit();
+// }
+
+$con = conectar_bd();
+
+// LOGIN este anda
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["user"]) && isset($_POST["contrasenia"])) {
+    $user = $_POST["user"];
+    $contrasenia = $_POST["contrasenia"];
+
+    // Llamar a la función para verificar las credenciales
+    logear($con, $user, $contrasenia);
+    exit();
+}
+
+
+
+
 //TAXIMETRISTAS DEL MES 
 if (isset($_POST['action']) && $_POST['action'] === 'get_ranking_taxistas') {
     // Llamamos a la función de ranking
@@ -254,6 +281,62 @@ if (isset($_POST['NombreNuevo_Administrador'], $_POST['ApellidoNuevo_Administrad
                 exit(); // asegura que no ejecute las peticiones por debajo
             }
             
+
+
+
+//MODIICAR TAXI
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'modificarTaxi') {
+    if (isset($_POST['matricula'], $_POST['modelo'], $_POST['anio'], $_POST['estado'], $_POST['id'])) {
+
+        // Obtener y limpiar los valores de los inputs
+        $id = trim($_POST['id']);
+        $matricula = trim($_POST['matricula']);
+        $modelo = trim($_POST['modelo']);
+        $anio = trim($_POST['anio']);
+        $estado = trim($_POST['estado']);
+        
+        $errores = [];
+
+        // Validaciones
+        if (strlen($matricula) < 7 || strlen($matricula) > 8) {
+            $errores[] = "La matrícula debe tener entre 7 y 8 caracteres.";
+        }
+        
+        if (strlen($modelo) < 3 || strlen($modelo) > 20) {
+            $errores[] = "El modelo debe tener entre 3 y 20 caracteres.";
+        }
+        
+        if (!preg_match('/^\d{4}$/', $anio)) {
+            $errores[] = "El año debe tener 4 dígitos.";
+        }
+        
+        if (empty($estado)) {
+            $errores[] = "Por favor, selecciona un estado.";
+        }
+
+        // Si hay errores, enviarlos como JSON
+        if (!empty($errores)) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => implode(' ', $errores)]);
+            exit();
+        }
+
+        // Llamada a la función en functions.php para modificar el taxi
+        require_once 'functions.php';
+        $respuesta = modificar_taxi($con, $id, $matricula, $modelo, $anio, $estado);
+        
+        header('Content-Type: application/json');
+        if ($respuesta) {
+            echo json_encode(['success' => true, 'message' => 'Taxi modificado correctamente']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Error al modificar el taxi']);
+        }
+        exit();
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Datos incompletos']);
+    }
+}
+
             // AÑADIR CLIENTE  
             // if (isset($_POST['NombreNuevo_Cliente']) && 
             //     isset($_POST['ApellidoNuevo_Cliente']) && 
